@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
 
 import { clientLogin } from './auth';
 import apolloClient from './apollo'
 
 const App: React.FC = () => {
+  const me = gql`
+    query me {
+      me {
+        email
+        firstName
+      }
+    }
+  `;
+  const { data } = useQuery(me);
+  console.log('data>>', data)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 

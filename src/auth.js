@@ -19,8 +19,6 @@ const tokenProvider = new TokenProvider(
   state.auth.token
 );
 
-console.log('tokenProv', tokenProvider)
-
 export const cleanUpSession = () => {
   tokenProvider.invalidateTokenInfo();
   return store.dispatch(clearAuthentication());

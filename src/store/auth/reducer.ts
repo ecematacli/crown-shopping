@@ -12,8 +12,9 @@ const initialState = {
 const authReducer = (state: State = initialState, action: AuthAction) => {
   switch (action.type) {
     case ActionTypes.setToken:
+      console.log('set token payload', action.payload);
       return {
-        ...state,
+        authenticated: true,
         token: action.payload,
       };
     case ActionTypes.clearAuthentication:
