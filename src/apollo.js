@@ -1,7 +1,8 @@
 import { setContext } from '@apollo/client/link/context';
-import { ApolloClient } from '@apollo/client';
+import { ApolloClient, createHttpLink } from '@apollo/client';
 import { fromPromise } from '@apollo/client/link/utils/fromPromise';
-import { onError } from "@apollo/client/link/error";
+import { onError } from '@apollo/client/link/error';
+import { from } from '@apollo/client'
 import {
   InMemoryCache,
   IntrospectionFragmentMatcher,
@@ -11,11 +12,14 @@ import config from './sunrise.config';
 import { getAuthToken, cleanUpSession } from './auth';
 import introspectionQueryResultData from './graphql-fragments.json';
 
-const authLink = setContext(async (_, { headers = {} }) => ({
-  headers: { ...headers, ...(await getAuthToken()) },
-}));
+const authLink = setContext(async (_, { headers = {} }) => {
+  const authorization = await getAuthToken();
+  return {
+    headers: { ...headers, authorization },
+  };
+});
 
-const errorLink = onError(({ networkError, operation }) => {
+const errorLink = onError(async({ networkError, operation, forward }) => {
   const statusCode = networkError?.statusCode;
   if (statusCode === 401 || statusCode === 403) {
     const { headers } = operation.getContext();
@@ -24,12 +28,14 @@ const errorLink = onError(({ networkError, operation }) => {
       'Unauthorized or forbidden connection, cleaning up session...',
       networkError
     );
-    const cleanUp = fromPromise(cleanUpSession().then(getAuthToken)).flatMap(
+    cleanUpSession();
+    const authorization = await getAuthToken();
+    return fromPromise(authorization.flatMap(
       authorization => {
         operation.setContext({ headers: { ...headers, authorization } });
-        return;
+        return forward(operation);
       }
-    );
+    ))
   }
   return null;
 });
@@ -38,14 +44,15 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData,
 });
 
+const httpLink = createHttpLink({
+  uri: process.env.VUE_APP_GRAPHQL_HTTP ||
+  `${config.ct.api}/${config.ct.auth.projectKey}/graphql`,
+})
+
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache({ fragmentMatcher }),
-  link: {
-    ...authLink.concat(errorLink),
-    uri:
-      process.env.VUE_APP_GRAPHQL_HTTP ||
-      `${config.ct.api}/${config.ct.auth.projectKey}/graphql`,
-  },
+  link: authLink.concat(httpLink)  
+  // link: from([errorLink, authLink, httpLink])
 });
 
 export default apolloClient;
