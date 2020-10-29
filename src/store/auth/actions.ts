@@ -4,7 +4,7 @@ import {
   SetTokenAction,
   SetAuthenticated,
   ClearAuthAction,
-} from './types';
+} from './actionTypes';
 
 export const setToken = (token: any) => (dispatch: Dispatch) => {
   dispatch<SetTokenAction>({

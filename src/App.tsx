@@ -4,7 +4,6 @@ import { gql, useQuery } from '@apollo/client';
 import { clientLogin } from './auth';
 import apolloClient from './apollo';
 
-console.log(localStorage.getItem('auth'));
 const App: React.FC = () => {
   const ME = gql`
     query me {

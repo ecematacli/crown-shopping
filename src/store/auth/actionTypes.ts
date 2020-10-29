@@ -1,3 +1,5 @@
+import { AuthState } from './reducer';
+
 export enum ActionTypes {
   setToken = 'SET_TOKEN',
   clearAuthentication = 'CLEAR_AUTHENTICATION',
@@ -6,7 +8,7 @@ export enum ActionTypes {
 
 export interface SetTokenAction {
   type: ActionTypes.setToken;
-  payload: any; // Revisit
+  payload: AuthState; 
 }
 
 export interface ClearAuthAction {

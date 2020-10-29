@@ -1,3 +1,5 @@
+import { AuthState } from './auth/reducer'
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('auth');
@@ -10,11 +12,12 @@ export const loadState = () => {
   }
 }
 
-export const saveState = (state) => {
+export const saveState = (state: AuthState) => {
+  console.log(state, 'state')
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('auth', serializedState)
   } catch(err) {
-    // Ignore
+    // Don't do anything
   }
 }

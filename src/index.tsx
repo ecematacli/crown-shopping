@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 
 import App from './App';
 import apolloClient from './apollo';
-import store from './store';
+import store from './store/store';
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>

@@ -1,6 +1,6 @@
 import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 
-import store from './store';
+import store from './store/store';
 import {
   setToken,
   clearAuthentication,
@@ -9,6 +9,7 @@ import {
 import config from './sunrise.config';
 
 const state = store.getState();
+console.log(state)
 
 const tokenProvider = new TokenProvider(
   {
@@ -48,10 +49,10 @@ export const clientLogout = (apolloClient, redirect) => {
     });
 };
 
-const buildAuthorizationHeader = () =>
-  tokenProvider
+const buildAuthorizationHeader = () => {
+  return tokenProvider
     .getTokenInfo()
-    .then(tokenInfo => `${tokenInfo.token_type} ${tokenInfo.access_token}`);
+    .then(tokenInfo => `${tokenInfo.token_type} ${tokenInfo.access_token}`)};
 
 export const getAuthToken = () => {
   return buildAuthorizationHeader().catch(error => {
