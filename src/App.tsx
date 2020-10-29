@@ -4,6 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 import { clientLogin } from './auth';
 import apolloClient from './apollo';
 
+console.log(localStorage.getItem('auth'));
 const App: React.FC = () => {
   const ME = gql`
     query me {
@@ -20,16 +21,16 @@ const App: React.FC = () => {
   const [password, setPassword] = useState('');
 
   return (
-    <div className='App'>
+    <div className="App">
       <input
-        type='email'
+        type="email"
         value={username}
-        onChange={e => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
-        type='password'
+        type="password"
         value={password}
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={() => clientLogin(apolloClient, { username, password })}>
         LOGIN

@@ -1,6 +1,6 @@
 import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 
-import { store } from './store';
+import store from './store';
 import {
   setToken,
   clearAuthentication,
@@ -25,7 +25,7 @@ export const cleanUpSession = () => {
 };
 
 export const clientLogin = async (apolloClient, credentials) => {
-  await store.dispatch(clearAuthentication());
+  store.dispatch(clearAuthentication());
   tokenProvider.fetchTokenInfo = sdkAuth => sdkAuth.customerPasswordFlow(credentials);
   await tokenProvider.invalidateTokenInfo();
   return apolloClient
