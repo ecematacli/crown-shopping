@@ -9,7 +9,6 @@ import {
 import config from './sunrise.config';
 
 const state = store.getState();
-console.log(state)
 
 const tokenProvider = new TokenProvider(
   {
@@ -17,7 +16,7 @@ const tokenProvider = new TokenProvider(
     fetchTokenInfo: sdkAuth => sdkAuth.anonymousFlow(),
     onTokenInfoChanged: tokenInfo => store.dispatch(setToken(tokenInfo)),
   },
-  state.auth.token
+  state.token
 );
 
 export const cleanUpSession = () => {
