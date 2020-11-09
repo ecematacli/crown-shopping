@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import React, { useState } from 'react'
+import { gql, useQuery } from '@apollo/client'
 
-import { clientLogin } from './auth';
-import apolloClient from './apollo';
+import { clientLogin } from './auth'
+import apolloClient from './apollo'
+import Header from './components/header/Header'
 
 const App: React.FC = () => {
   const ME = gql`
@@ -14,28 +15,19 @@ const App: React.FC = () => {
         }
       }
     }
-  `;
-  const { data } = useQuery(ME);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  `
+  const { data } = useQuery(ME)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
-    <div className="App">
-      <input
-        type="email"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={() => clientLogin(apolloClient, { username, password })}>
-        LOGIN
-      </button>
+    <div className='App'>
+      <Header />
+      <input type='email' value={username} onChange={e => setUsername(e.target.value)} />
+      <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+      <button onClick={() => clientLogin(apolloClient, { username, password })}>LOGIN</button>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
