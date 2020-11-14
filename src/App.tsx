@@ -1,38 +1,26 @@
-import React from 'react'
-import { gql, useQuery } from '@apollo/client'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ApolloProvider } from '@apollo/client';
 
-
+import apolloClient from './apollo';
+import store from './store/store';
 import GlobalStyles from './Global.styles';
 import { AppContainer, AppWrapper } from './App.styles';
 import Header from './components/header/Header';
+import AppRouter from './routers/AppRouter';
 
-const App: React.FC = () => {
-  const ME = gql`
-    query me {
-      me {
-        activeCart {
-          id
-          lineItems {
-            id
-            quantity
-          }
-        }
-      }
-    }
-  `
-  // const { data } = useQuery(ME)
-  // const [username, setUsername] = useState('')
-  // const [password, setPassword] = useState('')
+const App: React.FC = () => (
+  <ApolloProvider client={apolloClient}>
+    <Provider store={store}>
+      <AppContainer>
+        <GlobalStyles />
+        <AppWrapper>
+          <Header />
+          <AppRouter />
+        </AppWrapper>
+      </AppContainer>
+    </Provider>
+  </ApolloProvider>
+);
 
-
-  return (
-    <AppContainer>
-      <GlobalStyles />
-      <AppWrapper>
-        <Header />
-      </AppWrapper>
-    </AppContainer>
-  )
-}
-
-export default App
+export default App;

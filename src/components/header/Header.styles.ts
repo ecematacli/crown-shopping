@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const AlignedDiv = styled.div `
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+  font-size: 14px;
+`
 
-export const IconContainer = styled.div`
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const IconWrapper = styled.div``;
+export const IconWrapper = styled(AlignedDiv)`
+  margin-right: 1rem;
+  cursor: pointer;
+  .icon {
+    padding-right: 1rem;
+  }
+`

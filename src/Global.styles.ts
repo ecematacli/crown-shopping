@@ -10,6 +10,10 @@ body {
   background-color: #F6F6F6;
   font-family: 'Lato', sans-serif;
 }
+
+html {
+  font-size: 10px;
+}
 `;
 
 export default GlobalStyles;
