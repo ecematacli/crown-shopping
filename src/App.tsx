@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import React, { useState } from 'react'
+import { gql, useQuery } from '@apollo/client'
 
 import { clientLogin } from './auth';
 import apolloClient from './apollo';
@@ -19,10 +19,10 @@ const App: React.FC = () => {
         }
       }
     }
-  `;
-  const { data } = useQuery(ME);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  `
+  const { data } = useQuery(ME)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
 
   return (
@@ -46,7 +46,7 @@ const App: React.FC = () => {
         LOGIN
       </button> */}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
