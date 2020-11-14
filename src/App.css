@@ -1,0 +1,8 @@
+.app {
+  position: relative;
+  padding: 24px;
+}
+.app-wrapper {
+  margin: 0 auto;
+  max-width: 1090px;
+}
