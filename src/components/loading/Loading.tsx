@@ -1,16 +1,12 @@
 import React from 'react';
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from 'react-bootstrap/Spinner';
 
-const Loading = () => {
-  return (
-    <div>HHHZZZZZ
+import { LoadingContainer } from './Loading.styles';
 
-      <Spinner animation="border" />
-
-
-    </div>
-  )
-
-}
+const Loading = () => (
+  <LoadingContainer>
+    <Spinner animation="border" variant="secondary" />
+  </LoadingContainer>
+)
 
 export default Loading;
