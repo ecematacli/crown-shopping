@@ -1,33 +1,30 @@
-import React from 'react';
-// import InputGroup from 'react-bootstrap/InputGroup';
-// import FormControl from 'react-bootstrap/FormControl';
-// import Form from 'react-bootstrap/Form'
-import { Button, Form } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { Button, Form } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
-import { FormContainer } from './LoginForm.styles';
-import useLogin from './useLogin';
+import { FormContainer } from './LoginForm.styles'
+import useLogin from './useLogin'
 
 const LoginForm = () => {
-  const { t } = useTranslation('login');
-  const { email, onEmailChange, password, onPasswordChange } = useLogin();
+  const { t } = useTranslation('login')
+  const { email, onEmailChange, password, onPasswordChange, onFormSubmit } = useLogin()
 
   return (
     <FormContainer>
-      <Form>
-        <Form.Group controlId='formBasicEmail'>
+      <Form onSubmit={onFormSubmit}>
+        <Form.Group controlId='formBasicEmail' className='form-group'>
           <Form.Label>{t('login:email')}</Form.Label>
           <Form.Control
-            type="email"
+            type='email'
             placeholder={t('login:emailPlaceholder')}
             value={email}
             onChange={onEmailChange}
           />
         </Form.Group>
-        <Form.Group controlId='formBasicPassword'>
+        <Form.Group controlId='formBasicPassword' className='form-group'>
           <Form.Label>{t('login:email')}</Form.Label>
           <Form.Control
-            type="password"
+            type='password'
             placeholder={t('login:passwordPlaceholder')}
             value={password}
             onChange={onPasswordChange}
@@ -38,7 +35,7 @@ const LoginForm = () => {
         </Button>
       </Form>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

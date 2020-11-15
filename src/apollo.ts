@@ -24,8 +24,9 @@ const errorLink = onError(({ networkError, operation, forward }: ErrorResponse) 
         'Unauthorized or forbidden connection to commercetools, cleaning up session...',
         networkError
       )
+      cleanUpSession()
       //@ts-ignore
-      return fromPromise(cleanUpSession().then(getAuthToken)).flatMap(authorization => {
+      return fromPromise(getAuthToken).flatMap(authorization => {
         operation.setContext({ headers: { ...headers, authorization } })
         return forward(operation)
       })
@@ -40,9 +41,19 @@ const httpLink = createHttpLink({
     `${config.ct.api}/${config.ct.auth.projectKey}/graphql`,
 })
 
+const defaultOptions = {
+  query: {
+    errorPolicy: 'all' as any,
+  },
+  mutate: {
+    errorPolicy: 'all' as any,
+  },
+}
+
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([errorLink, authLink, httpLink]),
+  defaultOptions,
 })
 
 export default apolloClient
