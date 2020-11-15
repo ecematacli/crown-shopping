@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-export const AlignedDiv = styled.div `
+export const AlignedDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
-`
+`;
+
+export const HeaderContainer = styled(AlignedDiv)`
+  margin-bottom: 3rem;
+`;
 
 export const IconWrapper = styled(AlignedDiv)`
   margin-right: 1rem;
@@ -13,4 +17,4 @@ export const IconWrapper = styled(AlignedDiv)`
   .icon {
     padding-right: 1rem;
   }
-`
+`;

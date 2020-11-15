@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 
 import history from '../../history';
 import logo from '../../assets/img/logo.svg';
-import { AlignedDiv, IconWrapper } from './Header.styles';
+import { AlignedDiv, HeaderContainer, IconWrapper } from './Header.styles';
 
 const Header = () => {
   const { t } = useTranslation('header');
 
   return (
-    <AlignedDiv>
+    <HeaderContainer>
       <div>
         <img src={logo} alt="logo" />
       </div>
@@ -23,7 +23,7 @@ const Header = () => {
           <span>{t('header:cart')}</span>
         </IconWrapper>
       </AlignedDiv>
-    </AlignedDiv>
+    </HeaderContainer>
   );
 };
 

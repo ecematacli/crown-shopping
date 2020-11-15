@@ -7,7 +7,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, a,  em
 }
 
 body {
-  background-color: #F6F6F6;
+  /* background-color: #F6F6F6; */
   font-family: 'Lato', sans-serif;
 }
 
