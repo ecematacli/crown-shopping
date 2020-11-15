@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { useMutation } from '@apollo/client'
 
 import { SIGN_IN } from '../../../graphql/mutations/signIn'
+import apolloClient from '../../../apollo'
+import { clientLogin } from '../../../auth'
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>
 
 export default () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [signIn, { data }] = useMutation(SIGN_IN)
+  const [signIn] = useMutation(SIGN_IN)
 
   const onEmailChange = (e: InputEvent) => setEmail(e.target.value)
 
@@ -16,8 +18,15 @@ export default () => {
 
   const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await signIn({ variables: { draft: { email, password } } })
-    console.log(data)
+    try {
+      const { data } = await signIn({ variables: { draft: { email, password } } })
+      console.log('data coming', data)
+      if (data) {
+        clientLogin(apolloClient, { email, password })
+      }
+    } catch (e) {
+      console.log('error while logging in: ', e)
+    }
   }
 
   return {

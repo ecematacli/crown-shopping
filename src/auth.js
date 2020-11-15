@@ -44,16 +44,19 @@ export const clientLogout = (apolloClient, redirect) => {
     })
 }
 
-const buildAuthorizationHeader = () => {
-  return tokenProvider
-    .getTokenInfo()
-    .then(tokenInfo => `${tokenInfo.token_type} ${tokenInfo.access_token}`)
+const buildAuthorizationHeader = async () => {
+  const some = await tokenProvider.getTokenInfo()
+  console.log('tokenProv', tokenProvider)
+  console.log('.then tokenInfo', some)
+  const tokenInfo = await tokenProvider.getTokenInfo()
+  return `${tokenInfo.token_type} ${tokenInfo.access_token}`
 }
 
 export const getAuthToken = () => {
   return buildAuthorizationHeader().catch(error => {
     // eslint-disable-next-line no-console
     console.warn('Could not connect to commercetools, cleaning up session...', error)
-    return cleanUpSession().then(() => buildAuthorizationHeader())
+    cleanUpSession()
+    return buildAuthorizationHeader()
   })
 }
