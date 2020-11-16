@@ -16,7 +16,6 @@ const authLink = setContext(async (_, { headers = {} }) => {
 
 const errorLink = onError(({ networkError, operation, forward }: ErrorResponse) => {
   if (networkError && 'statusCode' in networkError) {
-    console.log('network error block', networkError)
     const statusCode = networkError.statusCode
     if (statusCode === 401 || statusCode === 403) {
       const { headers } = operation.getContext()

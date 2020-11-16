@@ -7,6 +7,7 @@ export const FormContainer = styled.div`
   .form-group {
     margin-bottom: 2rem;
     > input {
+      outline: none;
       font-size: 14px;
     }
   }

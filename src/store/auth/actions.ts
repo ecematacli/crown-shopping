@@ -4,21 +4,23 @@ import {
   SetTokenAction,
   SetAuthenticated,
   ClearAuthAction,
-} from './actionTypes';
+  Token,
+} from './types';
 
-export const setToken = (token: any) => (dispatch: Dispatch) => {
+export const setToken = (token: Token) => (dispatch: Dispatch) => {
+  console.log('token in setToken ACTION', token)
   dispatch<SetTokenAction>({
     type: ActionTypes.setToken,
     payload: token,
   });
 };
 
-export const setAuthenticated = (authenticated: boolean) => (
+export const setAuthenticated = (isAuthenticated: boolean) => (
   dispatch: Dispatch
 ) => {
   dispatch<SetAuthenticated>({
     type: ActionTypes.setAuthenticated,
-    payload: authenticated,
+    payload: isAuthenticated,
   });
 };
 

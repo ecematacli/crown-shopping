@@ -1,4 +1,16 @@
-import { AuthState } from './reducer';
+export interface AuthState {
+  token: Token;
+  authenticated: boolean;
+}
+
+export interface Token {
+  access_token: string;
+  expires_at: number;
+  expires_in: number;
+  refresh_token: number;
+  scope: string;
+  token_type: 'Bearer';
+}
 
 export enum ActionTypes {
   setToken = 'SET_TOKEN',
@@ -8,7 +20,7 @@ export enum ActionTypes {
 
 export interface SetTokenAction {
   type: ActionTypes.setToken;
-  payload: AuthState; 
+  payload: Token; 
 }
 
 export interface ClearAuthAction {

@@ -20,7 +20,6 @@ export default () => {
     e.preventDefault()
     try {
       const { data } = await signIn({ variables: { draft: { email, password } } })
-      console.log('data coming', data)
       if (data) {
         clientLogin(apolloClient, { email, password })
       }

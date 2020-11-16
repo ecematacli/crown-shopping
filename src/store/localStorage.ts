@@ -1,4 +1,4 @@
-import { AuthState } from './auth/reducer'
+import { AuthState } from './auth/types'
 
 export const loadState = () => {
   try {

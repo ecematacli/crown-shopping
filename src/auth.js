@@ -10,7 +10,9 @@ const tokenProvider = new TokenProvider(
   {
     sdkAuth: new SdkAuth(config.ct.auth),
     fetchTokenInfo: sdkAuth => sdkAuth.anonymousFlow(),
-    onTokenInfoChanged: tokenInfo => store.dispatch(setToken(tokenInfo)),
+    onTokenInfoChanged: tokenInfo => {
+      console.log('token info on onTokenInfoChanged', tokenInfo)
+      return store.dispatch(setToken(tokenInfo))},
   },
   state.token
 )
@@ -21,6 +23,8 @@ export const cleanUpSession = () => {
 }
 
 export const clientLogin = async (apolloClient, credentials) => {
+  console.log('credentials', credentials)
+
   store.dispatch(clearAuthentication())
   tokenProvider.fetchTokenInfo = sdkAuth => sdkAuth.customerPasswordFlow(credentials)
   await tokenProvider.invalidateTokenInfo()
@@ -45,9 +49,7 @@ export const clientLogout = (apolloClient, redirect) => {
 }
 
 const buildAuthorizationHeader = async () => {
-  const some = await tokenProvider.getTokenInfo()
-  console.log('tokenProv', tokenProvider)
-  console.log('.then tokenInfo', some)
+  await tokenProvider.getTokenInfo()
   const tokenInfo = await tokenProvider.getTokenInfo()
   return `${tokenInfo.token_type} ${tokenInfo.access_token}`
 }

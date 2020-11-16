@@ -1,17 +1,5 @@
-import { ActionTypes, AuthAction } from './actionTypes';
+import { ActionTypes, AuthAction, AuthState } from './types';
 
-export interface AuthState {
-  token: Token;
-  authenticated: boolean;
-}
-export interface Token {
-  access_token: string;
-  expires_at: number;
-  expires_in: number;
-  refresh_token: number;
-  scope: string;
-  token_type: 'Bearer';
-}
 
 const initialState = {
   token: null,
@@ -21,9 +9,13 @@ const initialState = {
 const authReducer = (state: AuthState = initialState, action: AuthAction) => {
   switch (action.type) {
     case ActionTypes.setToken:
-      console.log('set token payload', action.payload);
+      console.log('payload REDUCER', action.payload)
+      console.log('return from REDUCER>>', {
+        ...state,
+         token: action.payload,
+       })
       return {
-        authenticated: true,
+       ...state,
         token: action.payload,
       };
     case ActionTypes.clearAuthentication:
