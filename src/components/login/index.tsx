@@ -1,20 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react'
 
-import { FormContainer, SignUpFormContainer } from './index.styles';
-import LoginForm from './loginForm/LoginForm';
-import SignUpForm from './signupForm/SignUpForm';
+import { FormContainer, SignUpFormContainer } from './index.styles'
+import AppLayout from '../../common/components/appLayout/AppLayout'
+import LoginForm from './loginForm/LoginForm'
+import SignUpForm from './signupForm/SignUpForm'
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   return (
-    <Fragment>
+    <AppLayout>
       <FormContainer>
         <LoginForm />
       </FormContainer>
       <SignUpFormContainer>
         <SignUpForm />
       </SignUpFormContainer>
-    </Fragment>
-  );
-};
+    </AppLayout>
+  )
+}
 
-export default LoginPage;
+export default LoginPage

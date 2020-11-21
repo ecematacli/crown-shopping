@@ -1,24 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import { AppContainer, AppWrapper } from './App.styles';
-import AppRouter from './routers/AppRouter';
-import Header from './components/header/Header';
-import CategoriesMenu from './components/categoriesMenu/CategoriesMenu';
+import AppRouter from './routers/AppRouter'
+import Header from './components/header/Header'
+import AppLayout from './common/components/appLayout/AppLayout'
+import CategoriesMenu from './components/categoriesMenu/CategoriesMenu'
 
 const App: React.FC = () => (
   <Fragment>
-    <AppContainer>
-      <AppWrapper>
-        <Header />
-      </AppWrapper>
-    </AppContainer>
+    <AppLayout>
+      <Header />
+    </AppLayout>
     <CategoriesMenu />
-    <AppContainer>
-      <AppWrapper>
-        <AppRouter />
-      </AppWrapper>
-    </AppContainer>
+    <AppRouter />
   </Fragment>
-);
+)
 
-export default App;
+export default App
