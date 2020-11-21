@@ -9,11 +9,6 @@ const initialState = {
 const authReducer = (state: AuthState = initialState, action: AuthAction) => {
   switch (action.type) {
     case ActionTypes.setToken:
-      console.log('payload REDUCER', action.payload)
-      console.log('return from REDUCER>>', {
-        ...state,
-         token: action.payload,
-       })
       return {
        ...state,
         token: action.payload,

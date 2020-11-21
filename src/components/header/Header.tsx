@@ -4,32 +4,14 @@ import { useTranslation } from 'react-i18next';
 import history from '../../history';
 import logo from '../../assets/img/logo.svg';
 import { AlignedDiv, HeaderContainer, IconWrapper } from './Header.styles';
-import { useQuery, gql } from '@apollo/client';
 
 const Header = () => {
   const { t } = useTranslation('header');
 
-  const GET_DOGS = gql`
-    query categories($locale: Locale!, $where: String) {
-      categories(where: $where) {
-        results {
-          id
-          slug(locale: $locale)
-        }
-      }
-    }
-  `;
-
-  const { data, loading } = useQuery(GET_DOGS, {
-    variables: { locale: 'en', where: 'parent is not defined' },
-  });
-
-  console.log('data!!!', data);
-
   return (
     <HeaderContainer>
-      <div>
-        <img src={logo} alt="logo" />
+      <div onClick={() => history.push('/')}>
+        <img src={logo} alt="logo" className="logo-image" />
       </div>
       <AlignedDiv>
         <IconWrapper onClick={() => history.push('/login')}>

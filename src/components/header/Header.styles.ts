@@ -9,6 +9,10 @@ export const AlignedDiv = styled.div`
 
 export const HeaderContainer = styled(AlignedDiv)`
   margin-bottom: 3rem;
+
+  .logo-image {
+    cursor: pointer;
+  }
 `;
 
 export const IconWrapper = styled(AlignedDiv)`

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FormContainer = styled.div`
   background-color: ${({ theme: { colors } }) => colors.grays[0]};
@@ -17,4 +17,15 @@ export const FormContainer = styled.div`
     font-weight: bold;
     margin-top: 2rem;
   }
-`
+
+  .btn-primary:focus,
+  .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: ${({ theme: { colors } }) => colors.blacks[0]};
+    border-color: ${({ theme: { colors } }) => colors.blacks[0]};
+    box-shadow: none;
+  }
+`;
+
+export const SignUpFormContainer = styled(FormContainer)`
+  margin: 4rem 0 2rem;
+`;

@@ -25,9 +25,11 @@ export default {
   },
   languages: {
     en: 'English',
+    nl: 'Dutch',
   },
   countries: {
     US: 'United States',
+    NL: 'Nederland',
   },
   formats: {
     number: {
@@ -35,6 +37,12 @@ export default {
         currency: {
           style: 'currency',
           currency: 'USD',
+        },
+      },
+      NL: {
+        currency: {
+          style: 'currency',
+          currency: 'EUR',
         },
       },
     },

@@ -8,7 +8,6 @@ import {
 } from './types';
 
 export const setToken = (token: Token) => (dispatch: Dispatch) => {
-  console.log('token in setToken ACTION', token)
   dispatch<SetTokenAction>({
     type: ActionTypes.setToken,
     payload: token,

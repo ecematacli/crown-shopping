@@ -1,0 +1,13 @@
+{
+  "signup": "Aanmelden",
+  "email": "E-mailadres",
+  "emailPlaceholder": "Voer email in",
+  "firstName": "Voornaam",
+  "namePlaceholder": "Vul uw naam in",
+  "lastName": "Achternaam",
+  "lastNamePlaceholder": "Voer uw achternaam in",
+  "password": "Wachtwoord",
+  "passwordPlaceholder": "Voer wachtwoord in",
+  "confirmPassword": "Bevestig wachtwoord",
+  "submit": "Verzenden"
+}
