@@ -1,25 +1,26 @@
 import React from 'react';
 
+import { capitalizeFirstLetter } from '../../utils';
 import useCategoriesMenu from './useCategoriesMenu';
+import { MenuContainer, MenuNavbar } from './Categories.styles';
 
 const CategoriesMenu = () => {
-  const { categories } = useCategoriesMenu();
+  const { data } = useCategoriesMenu();
 
-  console.log(categories)
-
-  // const renderCategories = () => {
-  //   return categories.results.map(category => (
-  //     <span>
-  //       {category.slug}
-  //     </span>
-  //   ))
-  // }
+  const renderCategories = () => {
+    return data.categories.results.map(category => (
+      <li key={category.id} className="menu-item">
+        {capitalizeFirstLetter(category.slug)}
+      </li>
+    ))
+  }
 
   return (
-    <div>
-      {/* {categories && renderCategories()} */}
-      <h1>h</h1>
-    </div>
+    <MenuContainer>
+      <MenuNavbar>
+        {data && renderCategories()}
+      </MenuNavbar>
+    </MenuContainer>
   )
 }
 

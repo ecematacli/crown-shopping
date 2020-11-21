@@ -39,7 +39,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "apollo:generate": "apollo codegen:generate --localSchemaFile=graphql.schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql-global-types.ts types"
   },
   "eslintConfig": {
     "extends": [
@@ -58,5 +59,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "apollo": "^2.31.1"
   }
 }

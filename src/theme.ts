@@ -1,6 +1,6 @@
 export default {
   colors: {
-    grays: ['#f9f9f9'],
+    grays: ['#f9f9f9', '#adadad', '#d6d6d6'],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],
     white: ['#fff'],
@@ -9,6 +9,6 @@ export default {
   breakpoints: {
     md: '768px',
     lg: '992px',
-    xl: '1200px' 
-  }
+    xl: '1200px',
+  },
 };
