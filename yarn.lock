@@ -1080,19 +1080,18 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commercetools/sdk-auth@^3.0.10":
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/@commercetools/sdk-auth/-/sdk-auth-3.0.10.tgz#77abed48383fbeb3e864e473ce20b81835f9e6bf"
-  integrity sha512-spVT4GlTK1LCZUVbVZAM/lLHDFhtafF23+1YI1jS56F47HfEsAhA1kMtz4zd6T/5SDJ2mJPLXPQz5UYGsFTIFQ==
+"@commercetools/sdk-auth@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/sdk-auth/-/sdk-auth-1.5.0.tgz#bc2103e96b587ede31386caf589edd05ddace78d"
+  integrity sha512-tQoqdYnbXVsbCDCol6Nf07aIkfUE50a85xtU21V2HlqHCswelscogH0E5NRVpB4Y4KH34zXFVlGt8mZuOw/FKA==
   dependencies:
-    "@commercetools/sdk-middleware-http" "^6.0.9"
-    lodash.defaultsdeep "^4.6.0"
-    qss "2.0.3"
+    "@commercetools/sdk-middleware-http" "4.0.10"
+    lodash.defaultsdeep "4.6.0"
 
-"@commercetools/sdk-middleware-http@^6.0.9":
-  version "6.0.9"
-  resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-http/-/sdk-middleware-http-6.0.9.tgz#b0e59e59ffa76615d97e6f53c22a5b7e16d5f041"
-  integrity sha512-yo/ECMoEr7pC8Piq0niECnsv3QDsbBaZVa/zW2WwMYk1bGy1gfHNZYTN5cKDyTlBHHMn9E3EJnBz35M7aX1Vhw==
+"@commercetools/sdk-middleware-http@4.0.10":
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-http/-/sdk-middleware-http-4.0.10.tgz#5b08e23906f4542a7a920befc576b59ede478c78"
+  integrity sha512-MO/OT0aUv9T2J8Sp9xcdSw8760iHaYOjS0E+64dCTqUvanoaAt/+sPHzwgAriI+z1uIyywCmF4TSs5juxCecZA==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
@@ -7264,10 +7263,10 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
-lodash.defaultsdeep@^4.6.0:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
-  integrity sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==
+lodash.defaultsdeep@4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.0.tgz#bec1024f85b1bd96cbea405b23c14ad6443a6f81"
+  integrity sha1-vsECT4WxvZbL6kBbI8FK1kQ6b4E=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -9292,11 +9291,6 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
-
-qss@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/qss/-/qss-2.0.3.tgz#630b38b120931b52d04704f3abfb0f861604a9ec"
-  integrity sha512-j48ZBT5IZbSqJiSU8EX4XrN8nXiflHvmMvv2XpFc31gh7n6EpSs75bNr6+oj3FOLWyT8m09pTmqLNl34L7/uPQ==
 
 query-string@^4.1.0:
   version "4.3.4"
