@@ -6,12 +6,14 @@ import { LocaleContext } from '../../contexts/LocaleContext';
 
 export default () => {
   const { locale } = useContext(LocaleContext);
-  const { data } = useQuery(GET_CATEGORIES, {
+  const {
+    data: { categories },
+  } = useQuery(GET_CATEGORIES, {
     variables: { locale, where: 'parent is not defined' },
   });
 
   return {
-    data,
+    categories,
   };
 };
 

@@ -3,10 +3,22 @@ import React from 'react';
 import useCategoriesMenu from './useCategoriesMenu';
 
 const CategoriesMenu = () => {
-  const { data } = useCategoriesMenu();
+  const { categories } = useCategoriesMenu();
+
+  console.log(categories)
+
+  // const renderCategories = () => {
+  //   return categories.results.map(category => (
+  //     <span>
+  //       {category.slug}
+  //     </span>
+  //   ))
+  // }
+
   return (
     <div>
-      <h1>Hi</h1>
+      {/* {categories && renderCategories()} */}
+      <h1>h</h1>
     </div>
   )
 }
