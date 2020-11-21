@@ -16,7 +16,7 @@ export interface Categories_categories {
   results: Categories_categories_results[];
 }
 
-export interface Categories {
+export interface categories {
   categories: Categories_categories;
 }
 

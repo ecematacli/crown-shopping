@@ -17,7 +17,7 @@ export interface CustomerSignMeUp_customerSignMeUp {
   customer: CustomerSignMeUp_customerSignMeUp_customer;
 }
 
-export interface customerSignMeUp {
+export interface CustomerSignMeUp {
   /**
    * If used with an access token for Anonymous Sessions, all orders and carts
    * belonging to the anonymousId will be assigned to the newly created customer.

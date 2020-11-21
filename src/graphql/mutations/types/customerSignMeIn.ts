@@ -17,7 +17,7 @@ export interface CustomerSignMeIn_customerSignMeIn {
   customer: CustomerSignMeIn_customerSignMeIn_customer;
 }
 
-export interface CustomerSignMeIn {
+export interface customerSignMeIn {
   /**
    * Retrieves the authenticated customer (a customer that matches the given email/password pair).
    *
