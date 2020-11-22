@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import AppRouter from './routers/AppRouter'
 import Header from './components/header/Header'
 import AppLayout from './common/components/appLayout/AppLayout'
-import CategoriesMenu from './components/categoriesMenu/CategoriesMenu'
+import CategoriesMenu from './components/categoriesMenu'
 
 const App: React.FC = () => (
   <Fragment>

@@ -5,22 +5,32 @@
 // GraphQL query operation: categories
 // ====================================================
 
-export interface Categories_categories_results {
-  __typename: 'Category'
-  id: string
-  slug: string | null
+export interface categories_categories_results_children {
+  __typename: "Category";
+  id: string;
+  slug: string | null;
 }
 
-export interface Categories_categories {
-  __typename: 'CategoryQueryResult'
-  results: Categories_categories_results[]
+export interface categories_categories_results {
+  __typename: "Category";
+  id: string;
+  slug: string | null;
+  /**
+   * Direct child categories.
+   */
+  children: categories_categories_results_children[] | null;
 }
 
-export interface Categories {
-  categories: Categories_categories
+export interface categories_categories {
+  __typename: "CategoryQueryResult";
+  results: categories_categories_results[];
 }
 
-export interface CategoriesVariables {
-  locale: any
-  where?: string | null
+export interface categories {
+  categories: categories_categories;
+}
+
+export interface categoriesVariables {
+  locale: any;
+  where?: string | null;
 }

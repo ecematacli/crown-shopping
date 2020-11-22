@@ -10,7 +10,7 @@ const CategoriesMenu = () => {
 
   const renderCategories = () => {
     return data.categories.results.map(category => (
-      <li key={category.id} className='menu-item'>
+      <li onMouseEnter={() => console.log('called!!')} key={category.id} className='menu-item'>
         {capitalizeFirstLetter(category.slug)}
       </li>
     ))

@@ -6,6 +6,11 @@ export const GET_CATEGORIES = gql`
       results {
         id
         slug(locale: $locale)
+        children {
+          id
+          slug(locale: $locale)
+          name(locale: $locale)
+        }
       }
     }
   }
