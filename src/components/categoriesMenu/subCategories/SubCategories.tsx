@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // import { capitalizeFirstLetter } from '../../utils'
 // import useCategoriesMenu from './useCategoriesMenu'
@@ -6,13 +6,11 @@ import React from 'react'
 // import { MenuContainer, MenuNavbar } from './Categories.styles'
 
 const SubCategories = () => {
-
-
   return (
-    <div>
+    <div style={{ width: '100%', height: 200, backgroundColor: 'aqua' }}>
       XX
-</div>
-  )
-}
+    </div>
+  );
+};
 
-export default SubCategories
+export default SubCategories;
