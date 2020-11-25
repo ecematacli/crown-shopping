@@ -4,14 +4,19 @@ export const GET_CATEGORIES = gql`
   query categories($locale: Locale!, $where: String) {
     categories(where: $where) {
       results {
-        id
-        slug(locale: $locale)
+        ...CategoryMenuInfo
         children {
-          id
-          slug(locale: $locale)
-          name(locale: $locale)
+          ...CategoryMenuInfo
+          children {
+            ...CategoryMenuInfo
+          }
         }
       }
     }
+  }
+  fragment CategoryMenuInfo on Category {
+    id
+    name(locale: $locale)
+    slug(locale: $locale)
   }
 `;

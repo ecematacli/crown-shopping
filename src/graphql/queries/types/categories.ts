@@ -5,15 +5,28 @@
 // GraphQL query operation: categories
 // ====================================================
 
+export interface categories_categories_results_children_children {
+  __typename: "Category";
+  id: string;
+  name: string | null;
+  slug: string | null;
+}
+
 export interface categories_categories_results_children {
   __typename: "Category";
   id: string;
+  name: string | null;
   slug: string | null;
+  /**
+   * Direct child categories.
+   */
+  children: categories_categories_results_children_children[] | null;
 }
 
 export interface categories_categories_results {
   __typename: "Category";
   id: string;
+  name: string | null;
   slug: string | null;
   /**
    * Direct child categories.

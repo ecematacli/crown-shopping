@@ -5,30 +5,31 @@ import useCategoriesMenu from './useCategoriesMenu';
 import AppLayout from '../../common/components/appLayout/AppLayout';
 import { MenuContainer, MenuNavbar } from './index.styles';
 import Subcategories from './subcategories/Subcategories';
+import history from '../../history';
 
-const CategoriesMenu = () => {
-  const { data, isSubcategoryOpen, setIsSubcategoryOpen } = useCategoriesMenu();
+const CategoriesMenu: React.FC = () => {
+  const { data, openedCategory, setOpenedCategory } = useCategoriesMenu();
 
-  console.log('??', isSubcategoryOpen);
-
-  const renderCategories = () => {
-    return data.categories.results.map((category) => (
-      <li
-        onMouseEnter={() => setIsSubcategoryOpen(true)}
-        onMouseLeave={() => setIsSubcategoryOpen(false)}
-        key={category.id}
-        className="menu-item">
-        {capitalizeFirstLetter(category.slug)}
-      </li>
-    ));
-  };
+  const renderMainCategories = () =>
+    data.categories.results.map(category => {
+      return (
+        <li
+          key={category.id}
+          onMouseEnter={() => setOpenedCategory(category)}
+          // onMouseLeave={() => setOpenedCategory(null)}
+          onClick={() => history.push(`${category.slug}`)}
+          className="menu-item">
+          <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
+        </li>
+      )
+    })
 
   return (
     <MenuContainer>
-      <AppLayout className="some">
-        <MenuNavbar>{data && renderCategories()}</MenuNavbar>
+      <AppLayout className="layout">
+        <MenuNavbar>{data && renderMainCategories()}</MenuNavbar>
       </AppLayout>
-      {isSubcategoryOpen && <Subcategories />}
+      {openedCategory && <Subcategories subcategories={openedCategory.children} />}
     </MenuContainer>
   );
 };

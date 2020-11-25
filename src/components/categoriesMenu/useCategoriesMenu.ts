@@ -5,8 +5,23 @@ import { GET_CATEGORIES } from '../../graphql/queries/category';
 import { categories } from '../../graphql/queries/types/categories';
 import { LocaleContext } from '../../contexts/LocaleContext';
 
+interface Category {
+  slug: string;
+  name: string;
+  id: string;
+}
+
+export interface Subcategory extends Category {
+  children: SecondLevelSubcategory[];
+}
+interface SecondLevelSubcategory extends Category {}
+
+interface OpenedCategories extends Category {
+  children: Subcategory[];
+}
+
 export default () => {
-  const [isSubcategoryOpen, setIsSubcategoryOpen] = useState(false)
+  const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
   const { locale } = useContext(LocaleContext);
   const variables = { locale, where: 'parent is not defined' };
 
@@ -16,7 +31,7 @@ export default () => {
 
   return {
     data,
-    isSubcategoryOpen,
-    setIsSubcategoryOpen,
+    openedCategory,
+    setOpenedCategory,
   };
 };
