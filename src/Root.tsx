@@ -7,6 +7,8 @@ import store from './store/store';
 import GlobalStyles from './Global.styles';
 import theme from './theme';
 import { LocaleContextProvider } from './contexts/LocaleContext';
+import { OpenedMenuContextProvider } from './contexts/OpenedMenuContext';
+
 import { ThemeProvider } from 'styled-components';
 import App from './App';
 
@@ -15,8 +17,10 @@ const Root: React.FC = () => (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <LocaleContextProvider>
-          <GlobalStyles />
-          <App />
+          <OpenedMenuContextProvider>
+            <GlobalStyles />
+            <App />
+          </OpenedMenuContextProvider>
         </LocaleContextProvider>
       </ThemeProvider>
     </Provider>

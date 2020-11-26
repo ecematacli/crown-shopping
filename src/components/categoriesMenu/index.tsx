@@ -8,15 +8,15 @@ import Subcategories from './subcategories/Subcategories';
 import history from '../../history';
 
 const CategoriesMenu: React.FC = () => {
-  const { data, openedCategory, setOpenedCategory } = useCategoriesMenu();
+  const { data, openedCategory, handleOpenedCategory } = useCategoriesMenu();
 
   const renderMainCategories = () =>
     data.categories.results.map(category => {
       return (
         <li
           key={category.id}
-          onMouseEnter={() => setOpenedCategory(category)}
-          onMouseLeave={() => setOpenedCategory(null)}
+          onMouseEnter={() => handleOpenedCategory(category)}
+          onMouseLeave={() => handleOpenedCategory(null)}
           onClick={() => history.push(`${category.slug}`)}
           className="menu-item">
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>

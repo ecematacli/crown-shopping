@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../graphql/queries/category';
 import { categories } from '../../graphql/queries/types/categories';
 import { LocaleContext } from '../../contexts/LocaleContext';
-
+import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
 interface Category {
   slug: string;
   name: string;
@@ -23,15 +23,21 @@ interface OpenedCategories extends Category {
 export default () => {
   const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
   const { locale } = useContext(LocaleContext);
+  const { setIsMenuOpened } = useContext(OpenedMenuContext);
   const variables = { locale, where: 'parent is not defined' };
 
   const { data } = useQuery<categories>(GET_CATEGORIES, {
     variables,
   });
 
+  const handleOpenedCategory = (category: OpenedCategories) => {
+    setOpenedCategory(category);
+    category ? setIsMenuOpened(true) : setIsMenuOpened(false);
+  };
+
   return {
     data,
     openedCategory,
-    setOpenedCategory,
+    handleOpenedCategory,
   };
 };

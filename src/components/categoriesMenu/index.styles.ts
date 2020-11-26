@@ -16,7 +16,6 @@ export const MenuNavbar = styled.ul`
   justify-content: space-between;
 
   li {
-    /* font-size: 16px; */
     position: relative;
     span {
       &::after {

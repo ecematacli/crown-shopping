@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SubcategoryContainer = styled.div`
   width: 100%;
-  height: 37rem;
+  height: 35.3rem;
   font-size: 15px;
 
   .subcategories {
