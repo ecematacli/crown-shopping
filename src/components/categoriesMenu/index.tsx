@@ -16,7 +16,7 @@ const CategoriesMenu: React.FC = () => {
         <li
           key={category.id}
           onMouseEnter={() => setOpenedCategory(category)}
-          // onMouseLeave={() => setOpenedCategory(null)}
+          onMouseLeave={() => setOpenedCategory(null)}
           onClick={() => history.push(`${category.slug}`)}
           className="menu-item">
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>

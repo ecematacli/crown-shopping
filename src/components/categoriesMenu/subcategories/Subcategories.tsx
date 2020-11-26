@@ -9,19 +9,27 @@ interface Props {
 }
 
 const Subcategories: React.FC<Props> = ({ subcategories }) => {
+
+  const renderSecondLevelSubcategory = (subcategory: Subcategory) => {
+    return subcategory.children.map(s => (
+      <div className='second-level-subcategory'>
+        <span className='level2-subcategory-title' key={s.id}>
+          {s.name}
+        </span>
+      </div>
+    ))
+  }
   return (
     <SubcategoryContainer>
       <AppLayout>
-        {subcategories.map(subcategory => (
-          <div className='subcategories' key={subcategory.id}>
-            <span className='first-level-subcategory'>{subcategory.name}</span>
-            {subcategory.children.map(s => (
-              <span className='second-level-subcategory' key={s.id}>
-                {s.name}
-              </span>
-            ))}
-          </div>
-        ))}
+        <div className='subcategories'>
+          {subcategories.map(subcategory => (
+            <div key={subcategory.id}>
+              <span className='subcategory-title'>{subcategory.name}</span>
+              {renderSecondLevelSubcategory(subcategory)}
+            </div>
+          ))}
+        </div>
       </AppLayout>
     </SubcategoryContainer>
   );

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../graphql/queries/category';
