@@ -13,6 +13,7 @@ export const SubcategoryContainer = styled.div`
     padding-right: 20rem;
     font-weight: bold;
     display: flex;
+    cursor: pointer;
   }
 
   .second-level-subcategory {
@@ -22,5 +23,6 @@ export const SubcategoryContainer = styled.div`
 
   .level2-subcategory-title {
     padding: 0.5rem 0;
+    cursor: pointer;
   }
 `;

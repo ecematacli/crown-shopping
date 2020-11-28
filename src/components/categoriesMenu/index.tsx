@@ -15,21 +15,25 @@ const CategoriesMenu: React.FC = () => {
       return (
         <li
           key={category.id}
-          onMouseEnter={() => handleOpenedCategory(category)}
-          onMouseLeave={() => handleOpenedCategory(null)}
+          onMouseOver={() => handleOpenedCategory(category)}
           onClick={() => history.push(`${category.slug}`)}
-          className="menu-item">
+          className='menu-item'>
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
         </li>
-      )
-    })
+      );
+    });
 
   return (
-    <MenuContainer>
-      <AppLayout className="layout">
+    <MenuContainer onMouseLeave={() => handleOpenedCategory(null)}>
+      <AppLayout className='layout'>
         <MenuNavbar>{data && renderMainCategories()}</MenuNavbar>
       </AppLayout>
-      {openedCategory && <Subcategories subcategories={openedCategory.children} />}
+      {openedCategory && (
+        <Subcategories
+          subcategories={openedCategory.children}
+          handleOpenedCategory={handleOpenedCategory}
+        />
+      )}
     </MenuContainer>
   );
 };
