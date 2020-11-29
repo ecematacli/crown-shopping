@@ -8,17 +8,18 @@ import history from '../../../history';
 interface Props {
   subcategories: Subcategory[];
   handleOpenedCategory: any;
+  onCategoryItemClick: (categorySlug: string, categoryId: string) => void;
 }
 
 const Subcategories: React.FC<Props> = ({
   subcategories,
-  handleOpenedCategory,
+  onCategoryItemClick,
 }) => {
   const renderSecondLevelSubcategory = (subcategory: Subcategory) => {
     return subcategory.children.map(s => (
       <div key={s.id} className='second-level-subcategory'>
         <span
-          onClick={() => history.push(`/products/${s.slug}-${s.id}`)}
+          onClick={() => onCategoryItemClick(s.id, s.slug)}
           className='level2-subcategory-title'
         >
           {s.name}
@@ -27,13 +28,13 @@ const Subcategories: React.FC<Props> = ({
     ));
   };
   return (
-    <SubcategoryContainer onMouseLeave={() => handleOpenedCategory(null)}>
+    <SubcategoryContainer>
       <AppLayout>
         <div className='subcategories'>
           {subcategories.map(subcategory => (
             <div key={subcategory.id}>
               <span
-                onClick={() => history.push(`/products/${subcategory.slug}-${subcategory.id}`)}
+                onClick={() => onCategoryItemClick(subcategory.id, subcategory.slug)}
                 className='subcategory-title'>
                 {subcategory.name}
               </span>

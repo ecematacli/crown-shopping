@@ -5,6 +5,7 @@ import { GET_CATEGORIES } from '../../graphql/queries/category';
 import { categories } from '../../graphql/queries/types/categories';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
+import history from '../../history';
 interface Category {
   slug: string;
   name: string;
@@ -30,14 +31,21 @@ export default () => {
     variables,
   });
 
-  const handleOpenedCategory = (category: OpenedCategories) => {
+  const handleOpenedCategory = (category: OpenedCategories | null) => {
     setOpenedCategory(category);
     category ? setIsMenuOpened(true) : setIsMenuOpened(false);
+  };
+
+  const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
+    history.push(`/products/${categoryId}/${categorySlug}`);
+    setOpenedCategory(null);
+    setIsMenuOpened(false);
   };
 
   return {
     data,
     openedCategory,
     handleOpenedCategory,
+    onCategoryItemClick,
   };
 };

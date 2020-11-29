@@ -2,9 +2,21 @@ import axios from 'axios';
 
 import config from '../../config';
 import store from '../../store/store';
-
+interface Product {
+  categories: { id: string; typeId: string }[];
+  createdAt: Date;
+  lastModifiedAt: Date;
+  id: string;
+  masterVariant: {
+    id: number;
+    images: { url: string; dimensions: { w: number; h: number } }[];
+  };
+}
 interface ProductsResponse {
-  results: [];
+  results: Product[];
+  limit: number;
+  total: number;
+  count: number;
   offset: number;
 }
 
@@ -17,7 +29,7 @@ export const getProducts = async (filters: { [key: string]: string }) => {
     .map(key => `${key}=${filters[key]}`)
     .join('&');
 
-  const URL = `${baseURL}?limit=75&${objToUrl}`;
+  const URL = `${baseURL}?limit=20&${objToUrl}`;
   const response = await axios.get<ProductsResponse>(`${URL}`, {
     headers: { Authorization: headerConfig },
   });

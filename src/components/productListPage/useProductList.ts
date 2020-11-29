@@ -6,6 +6,7 @@ export default (id: string) => {
   const { country } = useContext(LocaleContext);
   const [products, setProducts] = useState([]);
 
+  console.log('id', id);
   const getProductList = async () => {
     const { data } = await getProducts({
       filter: `categories.id: subtree("${id}")`,
@@ -17,7 +18,7 @@ export default (id: string) => {
 
   useEffect(() => {
     getProductList();
-  }, []);
+  }, [id]);
 
   return {
     products,

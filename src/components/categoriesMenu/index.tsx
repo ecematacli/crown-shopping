@@ -5,10 +5,9 @@ import useCategoriesMenu from './useCategoriesMenu';
 import AppLayout from '../../common/components/appLayout/AppLayout';
 import { MenuContainer, MenuNavbar } from './index.styles';
 import Subcategories from './subcategories/Subcategories';
-import history from '../../history';
 
 const CategoriesMenu: React.FC = () => {
-  const { data, openedCategory, handleOpenedCategory } = useCategoriesMenu();
+  const { data, openedCategory, handleOpenedCategory, onCategoryItemClick } = useCategoriesMenu();
 
   const renderMainCategories = () =>
     data.categories.results.map(category => {
@@ -16,7 +15,7 @@ const CategoriesMenu: React.FC = () => {
         <li
           key={category.id}
           onMouseOver={() => handleOpenedCategory(category)}
-          onClick={() => history.push(`/products/${category.slug}-${category.id}`)}
+          onClick={() => onCategoryItemClick(category.id, category.slug)}
           className='menu-item'>
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
         </li>
@@ -32,6 +31,7 @@ const CategoriesMenu: React.FC = () => {
         <Subcategories
           subcategories={openedCategory.children}
           handleOpenedCategory={handleOpenedCategory}
+          onCategoryItemClick={onCategoryItemClick}
         />
       )}
     </MenuContainer>
