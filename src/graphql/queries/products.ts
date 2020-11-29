@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_PRODUCTS = gql`
   query products($locale: Locale!, $where: String) {
-    products {
+    products(where: $where) {
       ...StagedProduct
       ...CurrentProduct
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { capitalizeFirstLetter } from '../../utils';
+import { capitalizeFirstLetter } from '../../common/utils';
 import useCategoriesMenu from './useCategoriesMenu';
 import AppLayout from '../../common/components/appLayout/AppLayout';
 import { MenuContainer, MenuNavbar } from './index.styles';
@@ -16,7 +16,7 @@ const CategoriesMenu: React.FC = () => {
         <li
           key={category.id}
           onMouseOver={() => handleOpenedCategory(category)}
-          onClick={() => history.push(`${category.slug}`)}
+          onClick={() => history.push(`/products/${category.slug}-${category.id}`)}
           className='menu-item'>
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
         </li>

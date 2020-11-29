@@ -17,6 +17,7 @@
     "@types/styled-components": "^5.1.4",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "graphql": "^15.3.0",
     "i18next": "^19.8.3",

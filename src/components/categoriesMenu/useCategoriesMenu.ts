@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../graphql/queries/category';
-import { GET_PRODUCTS } from '../../graphql/queries/products';
 import { categories } from '../../graphql/queries/types/categories';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
@@ -35,11 +34,6 @@ export default () => {
     setOpenedCategory(category);
     category ? setIsMenuOpened(true) : setIsMenuOpened(false);
   };
-
-  const categorySlug = 'new-women';
-  const { data: products } = useQuery<categories>(GET_PRODUCTS, {
-    variables: { locale },
-  });
 
   return {
     data,

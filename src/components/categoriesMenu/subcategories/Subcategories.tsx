@@ -16,11 +16,11 @@ const Subcategories: React.FC<Props> = ({
 }) => {
   const renderSecondLevelSubcategory = (subcategory: Subcategory) => {
     return subcategory.children.map(s => (
-      <div className='second-level-subcategory'>
+      <div key={s.id} className='second-level-subcategory'>
         <span
-          onClick={() => history.push(`/${s.slug}`)}
+          onClick={() => history.push(`/products/${s.slug}-${s.id}`)}
           className='level2-subcategory-title'
-          key={s.id}>
+        >
           {s.name}
         </span>
       </div>
@@ -33,7 +33,7 @@ const Subcategories: React.FC<Props> = ({
           {subcategories.map(subcategory => (
             <div key={subcategory.id}>
               <span
-                onClick={() => history.push(`/${subcategory.slug}`)}
+                onClick={() => history.push(`/products/${subcategory.slug}-${subcategory.id}`)}
                 className='subcategory-title'>
                 {subcategory.name}
               </span>
