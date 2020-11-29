@@ -38,3 +38,9 @@ export const MenuNavbar = styled.ul`
     }
   }
 `;
+
+export const HamburgerMenu = styled.div`
+  text-align: right;
+  margin-top: -2.4rem;
+  cursor: pointer;
+`;

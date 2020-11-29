@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../graphql/queries/category';
@@ -22,6 +22,8 @@ interface OpenedCategories extends Category {
 }
 
 export default () => {
+  const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(0);
   const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
   const { locale } = useContext(LocaleContext);
   const { setIsMenuOpened } = useContext(OpenedMenuContext);
@@ -42,7 +44,16 @@ export default () => {
     setIsMenuOpened(false);
   };
 
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setScreenWidth(window.innerWidth);
+    });
+  }, [screenWidth]);
+
   return {
+    isPhoneMenuOpen,
+    setIsPhoneMenuOpen,
+    screenWidth,
     data,
     openedCategory,
     handleOpenedCategory,
