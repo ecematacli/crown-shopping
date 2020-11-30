@@ -28,6 +28,7 @@ export default () => {
   const { locale } = useContext(LocaleContext);
   const { setIsMenuOpened } = useContext(OpenedMenuContext);
   const variables = { locale, where: 'parent is not defined' };
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { data } = useQuery<categories>(GET_CATEGORIES, {
     variables,
@@ -58,5 +59,7 @@ export default () => {
     openedCategory,
     handleOpenedCategory,
     onCategoryItemClick,
+    searchTerm,
+    setSearchTerm,
   };
 };

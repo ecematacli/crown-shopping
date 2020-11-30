@@ -3,8 +3,9 @@ import React, { Fragment } from 'react';
 import { capitalizeFirstLetter } from '../../common/utils';
 import useCategoriesMenu from './useCategoriesMenu';
 import AppLayout from '../../common/components/appLayout/AppLayout';
-import { MenuContainer, MenuNavbar, HamburgerMenu } from './index.styles';
+import { MenuContainer, MenuNavbar, MobileWrapper, HamburgerMenu } from './index.styles';
 import Subcategories from './subcategories/Subcategories';
+import Input from '../../common/components/input/Input';
 
 const CategoriesMenu: React.FC = () => {
   const {
@@ -15,6 +16,8 @@ const CategoriesMenu: React.FC = () => {
     openedCategory,
     handleOpenedCategory,
     onCategoryItemClick,
+    searchTerm,
+    setSearchTerm
   } = useCategoriesMenu();
 
   const renderMainCategories = () =>
@@ -33,17 +36,26 @@ const CategoriesMenu: React.FC = () => {
   const renderMobileMenu = () => {
     return (
       <AppLayout>
-        <HamburgerMenu>
-          {!isPhoneMenuOpen ? (
-            <i
-              onClick={() => setIsPhoneMenuOpen(true)}
-              className='fas fa-bars fa-3x'></i>
-          ) : (
-              <i
-                onClick={() => setIsPhoneMenuOpen(false)}
-                className='fas fa-times fa-3x'></i>
-            )}
-        </HamburgerMenu>
+        <MobileWrapper>
+          <Input
+            value={searchTerm}
+            onInputChange={(e) => setSearchTerm(e.target.value)}
+            width={250}
+          />
+          <HamburgerMenu>
+            <span>
+              {!isPhoneMenuOpen ? (
+                <i
+                  onClick={() => setIsPhoneMenuOpen(true)}
+                  className='fas fa-bars fa-3x'></i>
+              ) : (
+                  <i
+                    onClick={() => setIsPhoneMenuOpen(false)}
+                    className='fas fa-times fa-3x'></i>
+                )}
+            </span>
+          </HamburgerMenu>
+        </MobileWrapper>
       </AppLayout>
     );
   };

@@ -39,8 +39,16 @@ export const MenuNavbar = styled.ul`
   }
 `;
 
+export const MobileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -2.4rem;
+`;
+
 export const HamburgerMenu = styled.div`
   text-align: right;
-  margin-top: -2.4rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
