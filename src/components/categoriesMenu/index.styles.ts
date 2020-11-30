@@ -47,8 +47,11 @@ export const MobileWrapper = styled.div`
 `;
 
 export const HamburgerMenu = styled.div`
-  text-align: right;
   cursor: pointer;
   display: flex;
   align-items: center;
+
+  .menu-icon {
+    padding-top: 0.4rem;
+  }
 `;

@@ -35,29 +35,36 @@ const CategoriesMenu: React.FC = () => {
 
   const renderMobileMenu = () => {
     return (
-      <AppLayout>
-        <MobileWrapper>
-          <Input
-            isSearchBar
-            value={searchTerm}
-            onInputChange={(e) => setSearchTerm(e.target.value)}
-            width={250}
-          />
-          <HamburgerMenu>
-            <span>
-              {!isPhoneMenuOpen ? (
-                <i
-                  onClick={() => setIsPhoneMenuOpen(true)}
-                  className='fas fa-bars fa-3x'></i>
-              ) : (
+      <div>
+        <AppLayout>
+          <MobileWrapper>
+            <HamburgerMenu>
+              <span className="menu-icon">
+                {!isPhoneMenuOpen ? (
                   <i
-                    onClick={() => setIsPhoneMenuOpen(false)}
-                    className='fas fa-times fa-3x'></i>
-                )}
-            </span>
-          </HamburgerMenu>
-        </MobileWrapper>
-      </AppLayout>
+                    onClick={() => setIsPhoneMenuOpen(true)}
+                    className='fas fa-bars fa-3x'></i>
+                ) : (
+                    <i
+                      onClick={() => setIsPhoneMenuOpen(false)}
+                      className='fas fa-times fa-3x'></i>
+                  )}
+              </span>
+            </HamburgerMenu>
+            <Input
+              isSearchBar
+              value={searchTerm}
+              onInputChange={(e) => setSearchTerm(e.target.value)}
+              width={250}
+            />
+          </MobileWrapper>
+        </AppLayout>
+        {isPhoneMenuOpen && (
+          <div style={{ background: 'white', height: '100px', marginTop: -24 }}>
+            This is menu!!
+          </div>
+        )}
+      </div>
     );
   };
 
