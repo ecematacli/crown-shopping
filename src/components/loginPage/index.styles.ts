@@ -6,11 +6,8 @@ export const FormContainer = styled.div`
   font-size: 14px;
   .form-group {
     margin-bottom: 2rem;
-    > input {
-      outline: none;
-      font-size: 14px;
-    }
   }
+
   .submit-btn {
     background-color: ${({ theme: { colors } }) => colors.blacks[0]};
     border-color: transparent;

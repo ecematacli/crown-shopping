@@ -38,6 +38,7 @@ const CategoriesMenu: React.FC = () => {
       <AppLayout>
         <MobileWrapper>
           <Input
+            isSearchBar
             value={searchTerm}
             onInputChange={(e) => setSearchTerm(e.target.value)}
             width={250}

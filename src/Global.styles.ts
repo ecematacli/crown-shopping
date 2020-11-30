@@ -7,12 +7,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, a,  em
 }
 
 body {
-  /* background-color: #F6F6F6; */
   font-family: 'Lato', sans-serif;
 }
 
 html {
   font-size: 10px;
+}
+
+input:focus,
+input:hover,
+button:focus,
+button:active,
+button:hover {
+  outline:0px !important;
+  -webkit-appearance:none;
+  box-shadow: none !important;
+  border-color: transparent;
 }
 `;
 

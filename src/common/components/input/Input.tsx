@@ -1,8 +1,7 @@
 import React from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import { FormGroup } from './Input.styles';
-
 interface Props {
   value: any;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -10,16 +9,25 @@ interface Props {
   label?: string;
   placeholder?: string;
   width?: number;
+  isSearchBar?: boolean;
 }
 
-const Input: React.FC<Props> = ({ label, placeholder, value, onInputChange, width }) => (
+const Input: React.FC<Props> = ({ label, placeholder, value, onInputChange, isSearchBar, width }) => (
   <FormGroup className="form-group" width={width}>
     <Form.Label>{label}</Form.Label>
-    <Form.Control
-      placeholder={placeholder}
-      value={value}
-      onChange={onInputChange}
-    />
+    <div className="input-wrapper">
+      <Form.Control
+        placeholder={placeholder}
+        value={value}
+        onChange={onInputChange}
+        className="input"
+      />
+      {isSearchBar && (
+        <span className="icon-wrapper">
+          <i className="fas fa-search"></i>
+        </span>
+      )}
+    </div>
   </FormGroup>
 );
 
