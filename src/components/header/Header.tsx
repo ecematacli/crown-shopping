@@ -24,9 +24,9 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
               className='fas fa-times menu-icon'></i>
           )}
-        <IconWrapper>
-          <i className="fas fa-search"></i>
-        </IconWrapper>
+      </IconWrapper>
+      <IconWrapper>
+        <i className="fas fa-search"></i>
       </IconWrapper>
     </AlignedDiv>
   );
@@ -42,11 +42,11 @@ const Header = () => {
           <AlignedDiv>
             <IconWrapper onClick={() => history.push('/login')}>
               <i className='far fa-user'></i>
-              {!isSmallScreen && <span className='sign-in-text'>{t('header:signIn')}</span>}
+              {!isSmallScreen && <span className='sign-in icon-text'>{t('header:signIn')}</span>}
             </IconWrapper>
             <IconWrapper>
               <i className='fas fa-shopping-basket cart-icon'></i>
-              {!isSmallScreen && <span>{t('header:cart')}</span>}
+              {!isSmallScreen && <span className='icon-text'>{t('header:cart')}</span>}
             </IconWrapper>
           </AlignedDiv>
         </StyledHeader>
