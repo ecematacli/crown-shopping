@@ -3,7 +3,6 @@ import React from 'react';
 import { Subcategory } from '../useCategoriesMenu';
 import AppLayout from '../../../common/components/appLayout/AppLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
-import history from '../../../history';
 
 interface Props {
   subcategories: Subcategory[];

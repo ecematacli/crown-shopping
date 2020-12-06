@@ -45,13 +45,3 @@ export const MobileWrapper = styled.div`
   justify-content: space-between;
   margin-top: -2.4rem;
 `;
-
-export const HamburgerMenu = styled.div`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-
-  .menu-icon {
-    padding-top: 0.4rem;
-  }
-`;

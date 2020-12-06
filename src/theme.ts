@@ -1,6 +1,6 @@
 export default {
   colors: {
-    grays: ['#f9f9f9', '#adadad', '#d6d6d6'],
+    grays: ['#f9f9f9', '#adadad', '#d6d6d6', '#f1f1f1'],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],
     white: ['#fff'],

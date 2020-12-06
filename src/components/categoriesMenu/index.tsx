@@ -3,15 +3,16 @@ import React, { Fragment } from 'react';
 import { capitalizeFirstLetter } from '../../common/utils';
 import useCategoriesMenu from './useCategoriesMenu';
 import AppLayout from '../../common/components/appLayout/AppLayout';
-import { MenuContainer, MenuNavbar, MobileWrapper, HamburgerMenu } from './index.styles';
+import useScreenWidth from '../../common/hooks/useScreenWidth';
+import { MenuContainer, MenuNavbar, MobileWrapper } from './index.styles';
 import Subcategories from './subcategories/Subcategories';
 import Input from '../../common/components/input/Input';
 
 const CategoriesMenu: React.FC = () => {
+  const { isSmallScreen } = useScreenWidth();
+
   const {
     isPhoneMenuOpen,
-    setIsPhoneMenuOpen,
-    screenWidth,
     data,
     openedCategory,
     handleOpenedCategory,
@@ -38,7 +39,7 @@ const CategoriesMenu: React.FC = () => {
       <div>
         <AppLayout>
           <MobileWrapper>
-            <HamburgerMenu>
+            {/* <HamburgerMenu>
               <span className="menu-icon">
                 {!isPhoneMenuOpen ? (
                   <i
@@ -50,7 +51,7 @@ const CategoriesMenu: React.FC = () => {
                       className='fas fa-times fa-3x'></i>
                   )}
               </span>
-            </HamburgerMenu>
+            </HamburgerMenu> */}
             <Input
               isSearchBar
               value={searchTerm}
@@ -85,7 +86,7 @@ const CategoriesMenu: React.FC = () => {
 
   return (
     <Fragment>
-      {screenWidth < 768 ? renderMobileMenu() : renderBiggerScreensMenu()}
+      {isSmallScreen ? renderMobileMenu() : renderBiggerScreensMenu()}
     </Fragment>
 
   );
