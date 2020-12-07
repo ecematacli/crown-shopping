@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface StyledProps {
+interface StyleProps {
   isSmallScreen: boolean;
 }
 
@@ -10,9 +10,9 @@ export const AlignedDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const HeaderContainer = styled.div<StyledProps>`
+export const HeaderContainer = styled.div<StyleProps>`
   border-bottom: ${({ theme: { colors }, isSmallScreen }) =>
-    isSmallScreen ? `1px solid ${colors.grays[2]}` : 'unset'};
+    isSmallScreen ? `1px solid ${colors.grays[4]}` : 'unset'};
 `;
 
 export const StyledHeader = styled(AlignedDiv)`
@@ -43,5 +43,15 @@ export const IconWrapper = styled(AlignedDiv)`
 
   .sign-in {
     margin-right: 2rem;
+  }
+`;
+
+export const MenuContainer = styled.div`
+  .mobile-menu {
+    background: red;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateY(-200vw, 0, 0);
   }
 `;

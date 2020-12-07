@@ -6,6 +6,8 @@ import { categories } from '../../graphql/queries/types/categories';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
 import history from '../../history';
+import useScreenWidth from '../../common/hooks/useScreenWidth';
+
 interface Category {
   slug: string;
   name: string;
@@ -15,13 +17,16 @@ interface Category {
 export interface Subcategory extends Category {
   children: SecondLevelSubcategory[];
 }
+
 interface SecondLevelSubcategory extends Category {}
 
-interface OpenedCategories extends Category {
+export interface OpenedCategories extends Category {
   children: Subcategory[];
 }
 
 export default () => {
+  const { isSmallScreen } = useScreenWidth();
+
   const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
   const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
   const { locale } = useContext(LocaleContext);

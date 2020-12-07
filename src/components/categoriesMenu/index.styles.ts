@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface StyleProps {
+  isSmallScreen?: boolean;
+}
+
 export const MenuContainer = styled.div`
   border-top: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
   border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
@@ -8,14 +12,14 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const MenuNavbar = styled.ul`
+export const MenuNavbar = styled.ul<StyleProps>`
   cursor: pointer;
   list-style-type: none;
   font-size: 14px;
-  display: flex;
+  display: ${({ isSmallScreen }) => !isSmallScreen && 'flex'};
   justify-content: space-between;
 
-  li {
+  .menu-item {
     position: relative;
     span {
       &::after {

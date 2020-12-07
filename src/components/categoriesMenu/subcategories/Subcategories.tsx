@@ -1,19 +1,22 @@
 import React from 'react';
 
-import { Subcategory } from '../useCategoriesMenu';
+import { Subcategory, OpenedCategories } from '../useCategoriesMenu';
 import AppLayout from '../../../common/components/appLayout/AppLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 
 interface Props {
   subcategories: Subcategory[];
-  handleOpenedCategory: any;
   onCategoryItemClick: (categorySlug: string, categoryId: string) => void;
+  handleOpenedCategory?: (category: OpenedCategories) => void;
 }
 
 const Subcategories: React.FC<Props> = ({
   subcategories,
   onCategoryItemClick,
 }) => {
+  const { isSmallScreen } = useScreenWidth();
+
   const renderSecondLevelSubcategory = (subcategory: Subcategory) => {
     return subcategory.children.map(s => (
       <div key={s.id} className='second-level-subcategory'>
@@ -27,7 +30,7 @@ const Subcategories: React.FC<Props> = ({
     ));
   };
   return (
-    <SubcategoryContainer>
+    <SubcategoryContainer isSmallScreen={isSmallScreen}>
       <AppLayout>
         <div className='subcategories'>
           {subcategories.map(subcategory => (

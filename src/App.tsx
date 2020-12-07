@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import AppRouter from './routers/AppRouter';
 import Header from './components/header/Header';
 import { OpenedMenuContext } from './contexts/OpenedMenuContext';
-import CategoriesMenu from './components/categoriesMenu';
 import { StyledApp } from './App.styles';
 
 const App: React.FC = () => {
@@ -13,7 +12,6 @@ const App: React.FC = () => {
   return (
     <Fragment>
       <Header />
-      <CategoriesMenu />
       <StyledApp isMenuOpened={isMenuOpened}>
         <AppRouter />
       </StyledApp>

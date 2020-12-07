@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface StyledProps {
+interface StyleProps {
   padding?: { top?: string; bottom?: string };
 }
 
-export const AppContainer = styled.div<StyledProps>`
+export const AppContainer = styled.div<StyleProps>`
   padding: ${({ padding }) => {
     if (padding?.top && padding?.bottom) {
       return `${padding.top} 2.4rem ${padding.bottom}rem 2.4rem`;

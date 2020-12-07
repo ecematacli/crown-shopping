@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-export const SubcategoryContainer = styled.div`
+interface StyleProps {
+  isSmallScreen: boolean;
+}
+
+export const SubcategoryContainer = styled.div<StyleProps>`
   width: 100%;
-  height: 35.3rem;
+  height: ${({ isSmallScreen }) => (!isSmallScreen ? '35.3rem' : 'unset')};
   font-size: 15px;
 
   .subcategories {
