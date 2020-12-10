@@ -18,6 +18,8 @@ export const MenuNavbar = styled.ul<StyleProps>`
   font-size: 14px;
   display: ${({ isSmallScreen }) => !isSmallScreen && 'flex'};
   justify-content: space-between;
+  /* padding-top: 81px; */
+  /* background-color: black; */
 
   .menu-item {
     position: relative;
@@ -40,6 +42,11 @@ export const MenuNavbar = styled.ul<StyleProps>`
         width: 100%;
       }
     }
+  }
+
+  .small-menu-item {
+    /* margin-top: 81px; */
+    /* padding: 18px; */
   }
 `;
 

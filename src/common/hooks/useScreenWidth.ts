@@ -9,9 +9,7 @@ export default () => {
     });
   }, [screenWidth]);
 
-  const isSmallScreen = screenWidth < 768;
-
   return {
-    isSmallScreen,
+    isSmallScreen: screenWidth < 768,
   };
 };

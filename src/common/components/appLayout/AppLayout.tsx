@@ -8,10 +8,10 @@ interface Props {
   padding?: { top?: string; bottom?: string; }
 }
 
-const App: React.FC<Props> = ({ children, ...rest }) => (
+const AppLayout: React.FC<Props> = ({ children, ...rest }) => (
   <AppContainer {...rest}>
     <AppWrapper>{children}</AppWrapper>
   </AppContainer>
 )
 
-export default App
+export default AppLayout

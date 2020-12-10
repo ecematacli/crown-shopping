@@ -1,6 +1,9 @@
 import React, { useState, Fragment } from 'react'
-import classNames from 'classnames';
+import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
+import { BsList, BsSearch, BsPerson } from 'react-icons/bs'
+import { BiBasket } from 'react-icons/bi'
+import { MdClose } from 'react-icons/md'
 
 import history from '../../history'
 import logo from '../../assets/img/logo.svg'
@@ -14,30 +17,21 @@ const Header = () => {
   const { isSmallScreen } = useScreenWidth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isDisplayingMenu = !isSmallScreen || (isMobileMenuOpen && isSmallScreen);
-
-  const menuClassNames = classNames({ 'mobile-menu': isSmallScreen })
+  const isDisplayingMobileMenu = !isSmallScreen || (isMobileMenuOpen && isSmallScreen);
 
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
       <IconWrapper className="menu-icon">
-        {!isMobileMenuOpen ? (
-          <i
-            onClick={() => setIsMobileMenuOpen(true)}
-            className='fas fa-bars menu-icon'></i>
-        ) : (
-            <i
-              onClick={() => setIsMobileMenuOpen(false)}
-              className='fas fa-times menu-icon'></i>
-          )}
+        {!isMobileMenuOpen && (
+          <BsList size={20} className="icon" onClick={() => setIsMobileMenuOpen(true)} />
+        )}
       </IconWrapper>
       <IconWrapper>
-        <i className="fas fa-search"></i>
+        <BsSearch />
       </IconWrapper>
     </AlignedDiv>
   );
 
-  console.log('>', menuClassNames)
   return (
     <Fragment>
       <HeaderContainer isSmallScreen={isSmallScreen}>
@@ -48,21 +42,27 @@ const Header = () => {
               <img src={logo} alt='logo' className='logo-image' />
             </div>
             <AlignedDiv>
+              <IconWrapper>
+                {isSmallScreen && isMobileMenuOpen && (
+                  <div onClick={() => setIsMobileMenuOpen(false)}>
+                    <MdClose size={23} className={classNames('icon', 'close')} />
+                  </div>)}
+              </IconWrapper>
               <IconWrapper onClick={() => history.push('/login')}>
-                <i className='far fa-user'></i>
+                <BsPerson size={20} />
                 {!isSmallScreen && <span className='sign-in icon-text'>{t('header:signIn')}</span>}
               </IconWrapper>
               <IconWrapper>
-                <i className='fas fa-shopping-basket cart-icon'></i>
+                <BiBasket className='cart-icon' size={20} />
                 {!isSmallScreen && <span className='icon-text'>{t('header:cart')}</span>}
               </IconWrapper>
             </AlignedDiv>
           </StyledHeader>
         </AppLayout>
       </HeaderContainer>
-      {isDisplayingMenu && (
-        <MenuContainer>
-          <div className={menuClassNames}>
+      {isDisplayingMobileMenu && (
+        <MenuContainer open={isMobileMenuOpen}>
+          <div className={classNames({ 'mobile-menu': isSmallScreen })}>
             <CategoriesMenu />
           </div>
         </MenuContainer>

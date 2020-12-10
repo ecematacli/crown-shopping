@@ -24,7 +24,7 @@ const CategoriesMenu: React.FC = () => {
           key={category.id}
           onMouseOver={() => handleOpenedCategory(category)}
           onClick={() => onCategoryItemClick(category.id, category.slug)}
-          className={!isSmallScreen ? 'menu-item' : ''}>
+          className={!isSmallScreen ? 'menu-item' : 'small-menu-item'}>
           <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
           {isSmallScreen && openedCategory && (
             <Subcategories
@@ -40,7 +40,7 @@ const CategoriesMenu: React.FC = () => {
   return (
     <Fragment>
       <MenuContainer onMouseLeave={() => handleOpenedCategory(null)}>
-        <AppLayout className='layout'>
+        <AppLayout padding={{ top: '0' }} className='layout'>
           <MenuNavbar isSmallScreen={isSmallScreen}>{data && renderMainCategories()}</MenuNavbar>
         </AppLayout>
         {!isSmallScreen && openedCategory && (
