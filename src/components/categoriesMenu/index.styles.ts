@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
-interface StyleProps {
-  isSmallScreen?: boolean;
-}
-
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
   border-top: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
-  border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
+  border-bottom: ${({ theme: { colors }, isSmallScreen }) =>
+    !isSmallScreen ? `1px solid ${colors.grays[2]}` : 'unset'};
   .layout {
-    padding: 0.8rem 2.4rem;
+    /* padding: 0.8rem 2.4rem; */
   }
 `;
 
-export const MenuNavbar = styled.ul<StyleProps>`
+export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
   cursor: pointer;
   list-style-type: none;
   font-size: 14px;
@@ -44,10 +41,24 @@ export const MenuNavbar = styled.ul<StyleProps>`
     }
   }
 
-  .small-menu-item {
-    /* margin-top: 81px; */
-    /* padding: 18px; */
+  .sm-menu-item {
+    padding: 1.5rem 0;
+    border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.grays[5]}`};
   }
+
+  .sm-menu-wrapper {
+    padding: 0 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+export const MobileLogo = styled.div`
+  height: 8.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const MobileWrapper = styled.div`

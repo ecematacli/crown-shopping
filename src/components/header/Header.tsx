@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs'
 import { BiBasket } from 'react-icons/bi'
-import { MdClose } from 'react-icons/md'
 
 import history from '../../history'
 import logo from '../../assets/img/logo.svg'
@@ -17,11 +16,11 @@ const Header = () => {
   const { isSmallScreen } = useScreenWidth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isDisplayingMobileMenu = !isSmallScreen || (isMobileMenuOpen && isSmallScreen);
+  const isDisplayingMobileMenu = isSmallScreen && isMobileMenuOpen;
 
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
-      <IconWrapper className="menu-icon">
+      <IconWrapper className="icon">
         {!isMobileMenuOpen && (
           <BsList size={20} className="icon" onClick={() => setIsMobileMenuOpen(true)} />
         )}
@@ -42,12 +41,6 @@ const Header = () => {
               <img src={logo} alt='logo' className='logo-image' />
             </div>
             <AlignedDiv>
-              <IconWrapper>
-                {isSmallScreen && isMobileMenuOpen && (
-                  <div onClick={() => setIsMobileMenuOpen(false)}>
-                    <MdClose size={23} className={classNames('icon', 'close')} />
-                  </div>)}
-              </IconWrapper>
               <IconWrapper onClick={() => history.push('/login')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && <span className='sign-in icon-text'>{t('header:signIn')}</span>}
@@ -60,10 +53,10 @@ const Header = () => {
           </StyledHeader>
         </AppLayout>
       </HeaderContainer>
-      {isDisplayingMobileMenu && (
+      {(!isSmallScreen || isDisplayingMobileMenu) && (
         <MenuContainer open={isMobileMenuOpen}>
-          <div className={classNames({ 'mobile-menu': isSmallScreen })}>
-            <CategoriesMenu />
+          <div className={classNames({ 'mobile-sidebar': isDisplayingMobileMenu })}>
+            <CategoriesMenu isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
           </div>
         </MenuContainer>
       )}

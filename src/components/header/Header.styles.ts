@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
 
 export const AlignedDiv = styled.div`
   display: flex;
@@ -13,6 +12,8 @@ export const HeaderContainer = styled.div<{ isSmallScreen: boolean }>`
 `;
 
 export const StyledHeader = styled(AlignedDiv)`
+  position: relative;
+
   .logo-image {
     cursor: pointer;
   }
@@ -24,18 +25,8 @@ export const IconWrapper = styled(AlignedDiv)`
 
   cursor: pointer;
 
-  .menu-icon {
-    /* width: 1.5rem; */
-    margin-right: 1.5rem;
-  }
-
   .icon {
     margin-right: 1.5rem;
-  }
-
-  .close {
-    margin-top: 0.2rem;
-    margin-left: 0.3rem;
   }
 
   .cart-icon {
@@ -53,17 +44,15 @@ export const IconWrapper = styled(AlignedDiv)`
 `;
 
 export const MenuContainer = styled.div<{ open: boolean }>`
-  .mobile-menu {
+  .mobile-sidebar {
     position: fixed;
     left: 0;
     top: 0;
-    /* transform: translateY(-200%); */
-    background: gray;
-    height: 100%;
-    width: 250px;
-    /* z-index: 100; */
-    /* ${props => props.open && 'transform: translateY(0)'}; */
-    transform: translate3d(100vw);
-    transition: all 0.9s;
+    background-color: white;
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    transition: 0.8s ease;
   }
 `;

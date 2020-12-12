@@ -24,7 +24,9 @@ export interface OpenedCategories extends Category {
   children: Subcategory[];
 }
 
-export default () => {
+type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
+
+export default (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const { isSmallScreen } = useScreenWidth();
 
   const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
@@ -39,11 +41,14 @@ export default () => {
   });
 
   const handleOpenedCategory = (category: OpenedCategories | null) => {
+    // console.log('called', category);
     setOpenedCategory(category);
-    category ? setIsMenuOpened(true) : setIsMenuOpened(false);
+    category && isSmallScreen && setIsMobileMenuOpen(false);
+    category && !isSmallScreen ? setIsMenuOpened(true) : setIsMenuOpened(false);
   };
 
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
+    console.log('runs2');
     history.push(`/products/${categoryId}/${categorySlug}`);
     setOpenedCategory(null);
     setIsMenuOpened(false);
