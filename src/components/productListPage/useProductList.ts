@@ -6,7 +6,6 @@ export default (id: string) => {
   const { country } = useContext(CountryContext);
   const [products, setProducts] = useState([]);
 
-  console.log('id', id);
   const getProductList = async () => {
     const { data } = await getProducts({
       filter: `categories.id: subtree("${id}")`,

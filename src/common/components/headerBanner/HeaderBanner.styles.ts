@@ -31,6 +31,10 @@ export const StyledHeaderBanner = styled.div`
     font-size: 2rem !important;
   }
 
+  .flag-icon {
+    cursor: pointer;
+  }
+
   .country-name {
     color: ${({ theme: { colors } }) => `${colors.grays[6]}`};
     padding: 0 0.8rem 0 1rem;
