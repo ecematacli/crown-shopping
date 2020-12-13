@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { getProducts } from '../../common/utils/getProducts';
-import { LocaleContext } from '../../contexts/LocaleContext';
+import { CountryContext } from '../../contexts/CountryContext';
 
 export default (id: string) => {
-  const { country } = useContext(LocaleContext);
+  const { country } = useContext(CountryContext);
   const [products, setProducts] = useState([]);
 
   console.log('id', id);

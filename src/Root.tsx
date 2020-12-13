@@ -6,7 +6,7 @@ import apolloClient from './apollo';
 import store from './store/store';
 import GlobalStyles from './Global.styles';
 import theme from './theme';
-import { LocaleContextProvider } from './contexts/LocaleContext';
+import { CountryContextProvider } from './contexts/CountryContext';
 import { OpenedMenuContextProvider } from './contexts/OpenedMenuContext';
 
 import { ThemeProvider } from 'styled-components';
@@ -16,12 +16,12 @@ const Root: React.FC = () => (
   <ApolloProvider client={apolloClient}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <LocaleContextProvider>
+        <CountryContextProvider>
           <OpenedMenuContextProvider>
             <GlobalStyles />
             <App />
           </OpenedMenuContextProvider>
-        </LocaleContextProvider>
+        </CountryContextProvider>
       </ThemeProvider>
     </Provider>
   </ApolloProvider>

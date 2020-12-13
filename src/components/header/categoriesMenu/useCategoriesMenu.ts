@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { GET_CATEGORIES } from '../../graphql/queries/category';
-import { categories } from '../../graphql/queries/types/categories';
-import { LocaleContext } from '../../contexts/LocaleContext';
-import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
-import history from '../../history';
-import useScreenWidth from '../../common/hooks/useScreenWidth';
+import { GET_CATEGORIES } from '../../../graphql/queries/category';
+import { categories } from '../../../graphql/queries/types/categories';
+import { CountryContext } from '../../../contexts/CountryContext';
+import { OpenedMenuContext } from '../../../contexts/OpenedMenuContext';
+import history from '../../../history';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 
 interface Category {
   slug: string;
@@ -29,9 +29,11 @@ type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 export default (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const { isSmallScreen } = useScreenWidth();
 
+  const {
+    country: { locale },
+  } = useContext(CountryContext);
   const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
   const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
-  const { locale } = useContext(LocaleContext);
   const { setIsMenuOpened } = useContext(OpenedMenuContext);
   const variables = { locale, where: 'parent is not defined' };
   const [searchTerm, setSearchTerm] = useState('');

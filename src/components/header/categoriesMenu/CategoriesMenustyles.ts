@@ -1,12 +1,29 @@
 import styled from 'styled-components';
 
+export const StyledCategoryMenu = styled.div<{ open: boolean }>`
+  .mobile-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
+    height: 90%;
+    width: 100vw;
+    /* z-index: 100; */
+    /* transition: 99s ease; */
+  }
+`;
+
 export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
+  /* background-color: blue; */
+  height: 100%;
   border-top: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
   border-bottom: ${({ theme: { colors }, isSmallScreen }) =>
     !isSmallScreen ? `1px solid ${colors.grays[2]}` : 'unset'};
-  .layout {
-    /* padding: 0.8rem 2.4rem; */
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: 90%; */
 `;
 
 export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
@@ -15,6 +32,7 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
   font-size: 14px;
   display: ${({ isSmallScreen }) => !isSmallScreen && 'flex'};
   justify-content: space-between;
+  align-items: center;
   /* padding-top: 81px; */
   /* background-color: black; */
 

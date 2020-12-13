@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Subcategory, OpenedCategories } from '../useCategoriesMenu';
-import AppLayout from '../../../common/components/appLayout/AppLayout';
+import AppLayout from '../../../../common/components/appLayout/AppLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
-import useScreenWidth from '../../../common/hooks/useScreenWidth';
+import useScreenWidth from '../../../../common/hooks/useScreenWidth';
 
 interface Props {
   subcategories: Subcategory[];

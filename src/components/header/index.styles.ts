@@ -42,17 +42,3 @@ export const IconWrapper = styled(AlignedDiv)`
     margin-right: 2rem;
   }
 `;
-
-export const MenuContainer = styled.div<{ open: boolean }>`
-  .mobile-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    background-color: white;
-    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
-    height: 100vh;
-    width: 100vw;
-    z-index: 100;
-    transition: 0.8s ease;
-  }
-`;
