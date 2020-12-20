@@ -16,7 +16,7 @@ import {
 import Subcategories from './subcategories/Subcategories';
 import logo from '../../../assets/img/logo.svg';
 import history from '../../../history';
-import HeaderBanner from '../../../common/components/headerBanner/HeaderBanner';
+import HeaderBanner from '../headerBanner/HeaderBanner';
 
 interface Props {
   isMobileMenuOpen: boolean;

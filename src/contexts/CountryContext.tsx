@@ -5,6 +5,7 @@ interface Country {
   code: string;
   currency: string;
   locale: string;
+  language: string;
 }
 
 
@@ -15,13 +16,12 @@ export interface CountryContextInt {
 
 export const CountryContext = createContext<CountryContextInt>(null);
 
-const initialValue = { code: 'US', currency: 'USD', name: 'United States', locale: 'en' };
+const initialValue = { code: 'US', currency: 'USD', name: 'United States', locale: 'en', language: 'English' };
 
 export const CountryContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [country, setCountry] = useState<Country>(initialValue);
-  console.log('country', country)
 
   return (
     <CountryContext.Provider

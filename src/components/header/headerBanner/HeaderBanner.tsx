@@ -4,16 +4,16 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { StyledHeaderBanner } from './HeaderBanner.styles';
 import { CountryContext } from '../../../contexts/CountryContext';
-import AppLayout from '../appLayout/AppLayout';
+import AppLayout from '../../../common/components/appLayout/AppLayout';
 import { useTranslation } from 'react-i18next';
-import languageOptions from './languageSelectorOptions'
+import languageOptions from '../../../common/const/languages'
 
 const HeaderBanner = () => {
-  const { country, setCountry } = useContext(CountryContext);
+  const { country: { locale, code, language }, setCountry } = useContext(CountryContext);
   const { t, i18n } = useTranslation('header');
 
   const changeLanguage = () => {
-    if (country.locale === 'en') {
+    if (locale === 'en') {
       i18n.changeLanguage('de')
       setCountry(languageOptions.de)
     } else {
@@ -35,9 +35,9 @@ const HeaderBanner = () => {
           <div className='flag-wrapper-div'>
             <ReactCountryFlag
               className='country-flag'
-              countryCode={country.code}
+              countryCode={code}
             />
-            <span className='country-name'>{country.name}</span>
+            <span className='country-name'>{language}</span>
             <span onClick={changeLanguage} className="flag-icon">
               <MdKeyboardArrowDown size={18} />
             </span>

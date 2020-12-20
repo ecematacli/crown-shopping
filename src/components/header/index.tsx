@@ -14,7 +14,7 @@ import {
 } from './index.styles';
 import useScreenWidth from '../../common/hooks/useScreenWidth';
 import CategoriesMenu from './categoriesMenu/CategoriesMenu';
-import HeaderBanner from '../../common/components/headerBanner/HeaderBanner';
+import HeaderBanner from './headerBanner/HeaderBanner';
 
 const Header = () => {
   const { t } = useTranslation('header');
