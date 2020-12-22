@@ -23,7 +23,6 @@ export const getStoredToken = () => {
 };
 
 export const setStoredToken = (token: Token) => {
-  console.log(token, 'tok');
   try {
     localStorage.setItem('auth', JSON.stringify(token));
   } catch (err) {
@@ -84,9 +83,8 @@ const buildAuthorizationHeader = async () => {
   return `${tokenInfo.token_type} ${tokenInfo.access_token}`;
 };
 
-export const getAuthToken = () => {
-  console.log('get auth token runs!!!');
-  return buildAuthorizationHeader().catch(error => {
+export const getAuthToken = () =>
+  buildAuthorizationHeader().catch(error => {
     // eslint-disable-next-line no-console
     console.warn(
       'Could not connect to commercetools, cleaning up session...',
@@ -95,4 +93,3 @@ export const getAuthToken = () => {
     cleanUpSession();
     return buildAuthorizationHeader();
   });
-};
