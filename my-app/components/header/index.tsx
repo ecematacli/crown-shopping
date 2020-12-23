@@ -1,12 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import { useRouter } from 'next/router'
+import { useState, Fragment } from 'react';
 
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
-// import history from '../../history';
 // import logo from '../../assets/img/logo.svg';
-//@ts-ignore
-import { nextI18next } from '../../i18n'
+import { useTranslation } from '../../i18n'
 import AppLayout from '../../components/appLayout/AppLayout';
 import {
   AlignedDiv,
@@ -19,7 +18,8 @@ import CategoriesMenu from './categoriesMenu/CategoriesMenu';
 import HeaderBanner from './headerBanner/HeaderBanner';
 
 const Header = () => {
-  const { t } = nextI18next.useTranslation('header');
+  const router = useRouter();
+  const { t } = useTranslation('header');
   const { isSmallScreen } = useScreenWidth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -48,13 +48,13 @@ const Header = () => {
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
             <div
-            // onClick={() => history.push('/')}
+              onClick={() => router.push('/')}
             >
               {/* <img src={logo} alt='logo' className='logo-image' /> */}
             </div>
             <AlignedDiv>
               <IconWrapper
-              // onClick={() => history.push('/login')}
+                onClick={() => router.push('/login')}
               >
                 <BsPerson size={20} />
                 {!isSmallScreen && (

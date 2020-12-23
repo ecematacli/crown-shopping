@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
@@ -5,7 +6,6 @@ import { GET_CATEGORIES } from '../../../graphql/queries/category';
 import { categories } from '../../../graphql/queries/types/categories';
 import { CountryContext } from '../../../contexts/CountryContext';
 import { OpenedMenuContext } from '../../../contexts/OpenedMenuContext';
-// import history from '../../../history';
 import useScreenWidth from '../../../hooks/useScreenWidth';
 
 interface Category {
@@ -27,6 +27,7 @@ export interface OpenedCategories extends Category {
 type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 
 const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
+  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
 
   const {
@@ -51,7 +52,7 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
 
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
     console.log('runs2');
-    // history.push(`/products/${categoryId}/${categorySlug}`);
+    router.push(`/products/${categoryId}/${categorySlug}`);
     setOpenedCategory(null);
     setIsMenuOpened(false);
   };

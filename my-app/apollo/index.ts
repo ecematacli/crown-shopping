@@ -60,14 +60,13 @@ const defaultOptions = {
   },
 };
 
-const createApolloClient = () => {
-  return new ApolloClient({
+export const createApolloClient = () =>
+  new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: from([errorLink, authLink, httpLink]),
     cache: new InMemoryCache(),
     defaultOptions,
   });
-};
 
 export const initializeApollo = (initialState: any = null) => {
   const _apolloClient = apolloClient ?? createApolloClient();

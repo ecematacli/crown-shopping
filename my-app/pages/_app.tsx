@@ -28,8 +28,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={theme}>
         <CountryContextProvider>
           <OpenedMenuContextProvider>
-            <GlobalStyles />
             <StyledApp isMenuOpened={isMenuOpened}>
+              <GlobalStyles />
               <Header />
               <div className='app'>
                 <Component {...pageProps} />

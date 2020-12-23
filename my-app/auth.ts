@@ -53,7 +53,7 @@ export const cleanUpSession = () => {
 };
 
 export const clientLogin = async (
-  apolloClient: ApolloClientType,
+  apolloClient: ApolloClient<NormalizedCacheObject>,
   credentials: { username: string; password: string }
 ) => {
   clearStoredToken();

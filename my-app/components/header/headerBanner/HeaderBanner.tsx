@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { StyledHeaderBanner } from './HeaderBanner.styles';
 import { CountryContext } from '../../../contexts/CountryContext';
 import AppLayout from '../../appLayout/AppLayout';
-import { useTranslation } from 'react-i18next';
 import languageOptions from '../../../const/languages'
+import { useTranslation } from '../../../i18n';
 
 const HeaderBanner = () => {
   const { country: { locale, code, language }, setCountry } = useContext(CountryContext);
@@ -21,6 +21,7 @@ const HeaderBanner = () => {
       setCountry(languageOptions.en)
     }
   };
+  console.log('lang', locale)
 
   return (
     <StyledHeaderBanner>

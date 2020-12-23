@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { AppContainer, AppWrapper } from './AppLayout.styles'
 
 interface Props {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRouter } from 'next/router'
 import { MdClose } from 'react-icons/md';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import classNames from 'classnames';
@@ -15,7 +15,6 @@ import {
 } from './CategoriesMenustyles';
 import Subcategories from './subcategories/Subcategories';
 // import logo from '../../../assets/img/logo.svg';
-// import history from '../../../history';
 import HeaderBanner from '../headerBanner/HeaderBanner';
 
 interface Props {
@@ -27,8 +26,8 @@ const CategoriesMenu: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
+  const router = useRouter()
   const { isSmallScreen } = useScreenWidth();
-
   const isDisplayingMobileMenu = isSmallScreen && isMobileMenuOpen;
 
   const {
@@ -74,7 +73,7 @@ const CategoriesMenu: React.FC<Props> = ({
         {isDisplayingMobileMenu && (
           <AppLayout padding={{ top: '0', bottom: '0' }}>
             <MobileLogo
-            // onClick={() => history.push('/')}
+              onClick={() => router.push('/')}
             >
               {/* <img src={logo} alt='logo' /> */}
               <div onClick={() => setIsMobileMenuOpen(false)}>

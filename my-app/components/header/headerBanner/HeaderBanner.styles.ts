@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHeaderBanner = styled.div`
-  background-color: ${({ theme: { colors, breakpoints } }) =>
-    `${colors.grays[7]}`};
+  background-color: ${({ theme: { colors } }) => `${colors.grays[7]}`};
   font-size: 14px;
 
   .banner-content {
