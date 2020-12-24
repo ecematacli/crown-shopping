@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHeaderBanner = styled.div`
-  background-color: ${({ theme: { colors } }) => `${colors.grays[7]}`};
+  background-color: ${({ theme: { palette } }) => `${palette.grays[7]}`};
   font-size: 14px;
 
   .banner-content {
@@ -11,12 +11,12 @@ export const StyledHeaderBanner = styled.div`
     > span {
       cursor: pointer;
       padding: 1.4rem 0;
-      color: ${({ theme: { colors } }) => `${colors.grays[6]}`};
+      color: ${({ theme: { palette } }) => `${palette.grays[6]}`};
     }
   }
 
   .flag-container {
-    border-top: ${({ theme: { colors } }) => `1px solid ${colors.grays[1]}`};
+    border-top: ${({ theme: { palette } }) => `1px solid ${palette.grays[1]}`};
   }
 
   .flag-wrapper-div {
@@ -35,7 +35,7 @@ export const StyledHeaderBanner = styled.div`
   }
 
   .country-name {
-    color: ${({ theme: { colors } }) => `${colors.grays[6]}`};
+    color: ${({ theme: { palette } }) => `${palette.grays[6]}`};
     padding: 0 0.8rem 0 1rem;
   }
 `;

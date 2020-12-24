@@ -3,10 +3,10 @@ import ReactCountryFlag from 'react-country-flag';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { StyledHeaderBanner } from './HeaderBanner.styles';
-import { CountryContext } from '../../../contexts/CountryContext';
-import AppLayout from '../../appLayout/AppLayout';
-import languageOptions from '../../../const/languages'
-import { useTranslation } from '../../../i18n';
+import { CountryContext } from '../../../../contexts/CountryContext';
+import AppLayout from '../../../appLayout/AppLayout';
+import languageOptions from '../../../../const/languages'
+import { useTranslation } from '../../../../i18n';
 
 const HeaderBanner = () => {
   const { country: { locale, code, language }, setCountry } = useContext(CountryContext);

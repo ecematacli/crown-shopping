@@ -17,9 +17,9 @@ export const StyledCategoryMenu = styled.div<{ open: boolean }>`
 export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
   /* background-color: blue; */
   height: 100%;
-  border-top: ${({ theme: { colors } }) => `1px solid ${colors.grays[2]}`};
-  border-bottom: ${({ theme: { colors }, isSmallScreen }) =>
-    !isSmallScreen ? `1px solid ${colors.grays[2]}` : 'unset'};
+  border-top: ${({ theme: { palette } }) => `1px solid ${palette.grays[2]}`};
+  border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
+    !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'unset'};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
         left: 0;
         height: 9%;
         width: 0.9rem;
-        background-color: ${({ theme: { colors } }) => colors.blacks[0]};
+        background-color: ${({ theme: { palette } }) => palette.blacks[0]};
         transform: scaleX(0);
         transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
           background-color 0.1s;
@@ -61,7 +61,8 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
 
   .sm-menu-item {
     padding: 1.5rem 0;
-    border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.grays[5]}`};
+    border-bottom: ${({ theme: { palette } }) =>
+      `1px solid ${palette.grays[5]}`};
   }
 
   .sm-menu-wrapper {

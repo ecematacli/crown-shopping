@@ -7,8 +7,8 @@ export const AlignedDiv = styled.div`
 `;
 
 export const HeaderContainer = styled.div<{ isSmallScreen: boolean }>`
-  border-bottom: ${({ theme: { colors }, isSmallScreen }) =>
-    isSmallScreen ? `1px solid ${colors.grays[4]}` : 'unset'};
+  border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
+    isSmallScreen ? `1px solid ${palette.grays[4]}` : 'unset'};
 `;
 
 export const StyledHeader = styled(AlignedDiv)`

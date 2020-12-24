@@ -11,7 +11,7 @@ export const FormGroup = styled(Form.Group)`
 
   .input {
     font-size: 14px;
-    border-color: ${({ theme: { colors } }) => `${colors.grays[2]}`};
+    border-color: ${({ theme: { palette } }) => `${palette.grays[2]}`};
   }
 
   .icon-wrapper {

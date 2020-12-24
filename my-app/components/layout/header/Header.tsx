@@ -5,15 +5,15 @@ import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
 // import logo from '../../assets/img/logo.svg';
-import { useTranslation } from '../../i18n'
-import AppLayout from '../../components/appLayout/AppLayout';
+import { useTranslation } from '../../../i18n'
+import AppLayout from '../../appLayout/AppLayout';
 import {
   AlignedDiv,
   HeaderContainer,
   StyledHeader,
   IconWrapper,
-} from './index.styles';
-import useScreenWidth from '../../hooks/useScreenWidth';
+} from './Header.styles';
+import useScreenWidth from '../../../hooks/useScreenWidth';
 import CategoriesMenu from './categoriesMenu/CategoriesMenu';
 import HeaderBanner from './headerBanner/HeaderBanner';
 

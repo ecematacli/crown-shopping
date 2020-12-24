@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { GET_CATEGORIES } from '../../../graphql/queries/category';
-import { categories } from '../../../graphql/queries/types/categories';
-import { CountryContext } from '../../../contexts/CountryContext';
-import { OpenedMenuContext } from '../../../contexts/OpenedMenuContext';
-import useScreenWidth from '../../../hooks/useScreenWidth';
+import { GET_CATEGORIES } from '../../../../graphql/queries/category';
+import { categories } from '../../../../graphql/queries/types/categories';
+import { CountryContext } from '../../../../contexts/CountryContext';
+import { OpenedMenuContext } from '../../../../contexts/OpenedMenuContext';
+import useScreenWidth from '../../../../hooks/useScreenWidth';
 
 interface Category {
   slug: string;

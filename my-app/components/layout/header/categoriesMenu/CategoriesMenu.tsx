@@ -3,16 +3,16 @@ import { MdClose } from 'react-icons/md';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import classNames from 'classnames';
 
-import { capitalizeFirstLetter } from '../../../utils';
+import { capitalizeFirstLetter } from '../../../../utils';
 import useCategoriesMenu from './useCategoriesMenu';
-import AppLayout from '../../../components/appLayout/AppLayout';
-import useScreenWidth from '../../../hooks/useScreenWidth';
+import AppLayout from '../../../appLayout/AppLayout';
+import useScreenWidth from '../../../../hooks/useScreenWidth';
 import {
   StyledCategoryMenu,
   MenuContainer,
   MenuNavbar,
   MobileLogo,
-} from './CategoriesMenustyles';
+} from './CategoriesMenu.styles';
 import Subcategories from './subcategories/Subcategories';
 // import logo from '../../../assets/img/logo.svg';
 import HeaderBanner from '../headerBanner/HeaderBanner';

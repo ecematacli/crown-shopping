@@ -1,5 +1,5 @@
 export default {
-  colors: {
+  palette: {
     grays: [
       '#f9f9f9',
       '#adadad',
