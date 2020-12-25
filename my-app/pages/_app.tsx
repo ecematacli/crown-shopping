@@ -19,9 +19,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ApolloProvider client={apolloClient}>
+      <GlobalStyles />
       <ThemeProvider theme={theme}>
         <CountryContextProvider>
-          <GlobalStyles />
           <OpenedMenuContextProvider>
             <Component {...pageProps} />
           </OpenedMenuContextProvider>
