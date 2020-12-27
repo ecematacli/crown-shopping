@@ -26,8 +26,8 @@ const HeaderBanner = () => {
     <StyledHeaderBanner>
       <AppLayout padding={{ top: '0', bottom: '0' }} className='layout'>
         <div className='banner-content'>
-          <span>{t('header:help')}</span>
-          <span>{t('header:newsletter')}</span>
+          <span>{t('help')}</span>
+          <span>{t('newsletter')}</span>
         </div>
       </AppLayout>
       <div className="flag-container">

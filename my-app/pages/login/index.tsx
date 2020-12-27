@@ -1,16 +1,19 @@
-import { FormContainer, SignUpFormContainer } from './index.styles'
-import AppLayout from '../../components/appLayout/AppLayout'
-import LoginForm from './loginForm/LoginForm'
-import SignUpForm from './signupForm/SignUpForm'
-import { I18nPage, includeDefaultNamespaces } from '../../i18n'
-import Layout from '../../components/layout'
+import { FormContainer, SignUpFormContainer } from './index.styles';
+import AppLayout from '../../components/appLayout/AppLayout';
+import SignInForm from './signInForm/SignInForm';
+import SignUpForm from './signUpForm/SignUpForm';
+import {
+  I18nPage, includeDefaultNamespaces, useTranslation
+} from '../../i18n';
+import Layout from '../../components/layout';
 
 const LoginPage: I18nPage = () => {
+  const { t } = useTranslation('login')
   return (
-    <Layout title="Sign In">
+    <Layout title={t('login')}>
       <AppLayout>
         <FormContainer>
-          <LoginForm />
+          <SignInForm />
         </FormContainer>
         <SignUpFormContainer>
           <SignUpForm />

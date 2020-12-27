@@ -4,6 +4,7 @@ export const FormContainer = styled.div`
   background-color: ${({ theme: { palette } }) => palette.grays[0]};
   padding: 3.5rem 2rem;
   font-size: 14px;
+
   .form-group {
     margin-bottom: 2rem;
   }
@@ -11,6 +12,7 @@ export const FormContainer = styled.div`
   .submit-btn {
     background-color: ${({ theme: { palette } }) => palette.blacks[0]};
     border-color: transparent;
+    color: ${({ theme: { palette } }) => palette.whites[0]};
     font-weight: bold;
     margin-top: 2rem;
   }

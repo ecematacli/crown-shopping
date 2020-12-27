@@ -16,7 +16,6 @@ const Input: React.FC<Props> = ({
   placeholder,
   value,
   onInputChange,
-  isSearchBar,
   width,
 }) => (
     <FormGroup className='form-group' width={width}>
@@ -28,11 +27,6 @@ const Input: React.FC<Props> = ({
           onChange={onInputChange}
           className='input'
         />
-        {isSearchBar && (
-          <span className='icon-wrapper'>
-            <i className='fas fa-search'></i>
-          </span>
-        )}
       </div>
     </FormGroup>
   );

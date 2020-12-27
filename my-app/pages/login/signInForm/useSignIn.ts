@@ -7,7 +7,7 @@ import { clientLogin } from '../../../auth';
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
-const useLogin = () => {
+const useSignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signIn] = useMutation(SIGN_IN);
@@ -39,4 +39,4 @@ const useLogin = () => {
   };
 };
 
-export default useLogin;
+export default useSignIn;

@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { MdClose } from 'react-icons/md';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import classNames from 'classnames';
@@ -14,7 +15,6 @@ import {
   MobileLogo,
 } from './CategoriesMenu.styles';
 import Subcategories from './subcategories/Subcategories';
-// import logo from '../../../assets/img/logo.svg';
 import HeaderBanner from '../headerBanner/HeaderBanner';
 
 interface Props {
@@ -75,7 +75,13 @@ const CategoriesMenu: React.FC<Props> = ({
             <MobileLogo
               onClick={() => router.push('/')}
             >
-              {/* <img src={logo} alt='logo' /> */}
+              <Image
+                src='/logo.svg'
+                alt='logo'
+                width='50'
+                height='50'
+                className='logo-image'
+              />
               <div onClick={() => setIsMobileMenuOpen(false)}>
                 <MdClose size={32} />
               </div>

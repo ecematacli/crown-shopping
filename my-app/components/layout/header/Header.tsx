@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useState, Fragment } from 'react';
-
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
-import { useTranslation } from '../../../i18n'
+import { useTranslation } from '../../../i18n';
 import AppLayout from '../../appLayout/AppLayout';
 import {
   AlignedDiv,
@@ -47,26 +46,26 @@ const Header = () => {
         <AppLayout padding={{ bottom: '1.8' }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
-            <div
-              onClick={() => router.push('/')}
-            >
-              <Image src='/logo.svg' alt='logo' width='50' height='50' className='logo-image' />
+            <div onClick={() => router.push('/')}>
+              <Image
+                src='/logo.svg'
+                alt='logo'
+                width='50'
+                height='50'
+                className='logo-image'
+              />
             </div>
             <AlignedDiv>
-              <IconWrapper
-                onClick={() => router.push('/login')}
-              >
+              <IconWrapper onClick={() => router.push('/login')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
-                  <span className='sign-in icon-text'>
-                    {t('header:signIn')}
-                  </span>
+                  <span className='sign-in icon-text'>{t('signIn')}</span>
                 )}
               </IconWrapper>
               <IconWrapper>
                 <BiBasket className='cart-icon' size={20} />
                 {!isSmallScreen && (
-                  <span className='icon-text'>{t('header:cart')}</span>
+                  <span className='icon-text'>{t('cart')}</span>
                 )}
               </IconWrapper>
             </AlignedDiv>

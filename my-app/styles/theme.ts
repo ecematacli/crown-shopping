@@ -12,7 +12,7 @@ export default {
     ],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],
-    white: ['#fff'],
+    whites: ['#fff'],
     blacks: ['#1F1F1F'],
   },
   breakpoints: {

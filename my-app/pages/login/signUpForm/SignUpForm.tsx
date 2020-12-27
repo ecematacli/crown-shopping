@@ -5,7 +5,8 @@ import useSignUp from './useSignUp';
 import Input from '../../../components/input/Input';
 
 const LoginForm = () => {
-  const { t } = useTranslation('signup');
+  const { t } = useTranslation('login');
+
   const {
     firstName,
     onFirstNameChange,
@@ -21,33 +22,33 @@ const LoginForm = () => {
   return (
     <Form onSubmit={onFormSubmit}>
       <Input
-        label={t('signup:firstName')}
-        placeholder={t('signup:namePlaceholder')}
+        label={t('firstName')}
+        placeholder={t('namePlaceholder')}
         value={firstName}
         onInputChange={onFirstNameChange}
       />
       <Input
-        label={t('signup:lastName')}
-        placeholder={t('signup:lastNamePlaceholder')}
+        label={t('lastName')}
+        placeholder={t('lastNamePlaceholder')}
         value={lastName}
         onInputChange={onLastNameChange}
       />
       <Input
         type="email"
-        label={t('signup:email')}
-        placeholder={t('signup:emailPlaceholder')}
+        label={t('email')}
+        placeholder={t('emailPlaceholder')}
         value={email}
         onInputChange={onEmailChange}
       />
       <Input
         type="password"
-        label={t('signup:password')}
-        placeholder={t('signup:passwordPlaceholder')}
+        label={t('password')}
+        placeholder={t('passwordPlaceholder')}
         value={password}
         onInputChange={onPasswordChange}
       />
       <Button size='lg' type='submit' block className='submit-btn'>
-        {t('signup:signup').toUpperCase()}
+        {t('signup').toUpperCase()}
       </Button>
     </Form>
   );

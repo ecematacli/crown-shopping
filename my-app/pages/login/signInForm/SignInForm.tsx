@@ -1,34 +1,34 @@
 import { Button, Form } from 'react-bootstrap';
 
-import useLogin from './useLogin';
+import useLogin from './useSignIn';
 import Input from '../../../components/input/Input';
 import { useTranslation } from '../../../i18n';
 
-const LoginForm = () => {
+const SignInForm = () => {
   const { t } = useTranslation('login')
-  const { email, onEmailChange, password, onPasswordChange, onFormSubmit } = useLogin()
+  const { email, onEmailChange, password, onPasswordChange, onFormSubmit } = useLogin();
 
   return (
     <Form onSubmit={onFormSubmit}>
       <Input
         type="email"
-        label={t('login:email')}
-        placeholder={t('login:emailPlaceholder')}
+        label={t('email')}
+        placeholder={t('emailPlaceholder')}
         value={email}
         onInputChange={onEmailChange}
       />
       <Input
         type="password"
-        label={t('login:password')}
-        placeholder={t('login:passwordPlaceholder')}
+        label={t('password')}
+        placeholder={t('passwordPlaceholder')}
         value={password}
         onInputChange={onPasswordChange}
       />
       <Button size="lg" type="submit" block className='submit-btn'>
-        {t('login:login').toUpperCase()}
+        {t('login').toUpperCase()}
       </Button>
     </Form>
   )
 }
 
-export default LoginForm;
+export default SignInForm;

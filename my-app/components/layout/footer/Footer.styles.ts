@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 export const FooterStyles = Styled.div`
   display: flex;
   background: ${({ theme }) => theme.palette.grays[0]};
-  color: white;
+  color: ${({ theme: { palette } }) => palette.whites[0]};
   flex-wrap: wrap;
   .footer-top {
     width: 100%;

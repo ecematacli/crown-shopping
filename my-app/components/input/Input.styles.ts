@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Form } from 'react-bootstrap';
 
 export const FormGroup = styled(Form.Group)`
-  width: ${({ width }) => `${width}px` || 'unset'};
+  width: ${({ width }) => (width ? `${width}rem` : 'unset')};
 
   .input-wrapper {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
   }
 
   .input {

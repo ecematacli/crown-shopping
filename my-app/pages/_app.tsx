@@ -4,6 +4,7 @@ import { AppContextType } from 'next/dist/next-server/lib/utils';
 import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useApollo } from '../lib/apolloClient';
 import { appWithTranslation } from '../i18n';

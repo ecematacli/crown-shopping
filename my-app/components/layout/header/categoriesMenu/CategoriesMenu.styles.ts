@@ -5,7 +5,7 @@ export const StyledCategoryMenu = styled.div<{ open: boolean }>`
     position: fixed;
     left: 0;
     top: 0;
-    background-color: white;
+    background-color: ${({ theme: { palette } }) => palette.whites[0]};
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
     height: 90%;
     width: 100vw;

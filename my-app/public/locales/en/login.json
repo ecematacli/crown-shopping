@@ -1,8 +1,13 @@
 {
   "login": "Log in",
+  "signup": "Sign up",
   "email": "Email address",
   "emailPlaceholder": "Enter email",
+  "firstName": "First name",
+  "namePlaceholder": "Enter your name",
+  "lastName": "Last name",
+  "lastNamePlaceholder": "Enter your last name",
   "password": "Password",
   "passwordPlaceholder": "Enter password",
-  "submit": "Submit"
+  "confirmPassword": "Confirm password"
 }
