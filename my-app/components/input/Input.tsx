@@ -11,23 +11,30 @@ interface Props {
   isSearchBar?: boolean;
 }
 
-const Input: React.FC<Props> = ({ label, placeholder, value, onInputChange, isSearchBar, width }) => (
-  <FormGroup className="form-group" width={width}>
-    <Form.Label>{label}</Form.Label>
-    <div className="input-wrapper">
-      <Form.Control
-        placeholder={placeholder}
-        value={value}
-        onChange={onInputChange}
-        className="input"
-      />
-      {isSearchBar && (
-        <span className="icon-wrapper">
-          <i className="fas fa-search"></i>
-        </span>
-      )}
-    </div>
-  </FormGroup>
-);
+const Input: React.FC<Props> = ({
+  label,
+  placeholder,
+  value,
+  onInputChange,
+  isSearchBar,
+  width,
+}) => (
+    <FormGroup className='form-group' width={width}>
+      <Form.Label>{label}</Form.Label>
+      <div className='input-wrapper'>
+        <Form.Control
+          placeholder={placeholder}
+          value={value}
+          onChange={onInputChange}
+          className='input'
+        />
+        {isSearchBar && (
+          <span className='icon-wrapper'>
+            <i className='fas fa-search'></i>
+          </span>
+        )}
+      </div>
+    </FormGroup>
+  );
 
 export default Input;

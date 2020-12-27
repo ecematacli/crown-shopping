@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface StyleProps {
+interface Props {
   padding?: { top?: string; bottom?: string; rightLeft?: string };
 }
 
-export const AppContainer = styled.div<StyleProps>`
+export const AppContainer = styled.div<Props>`
   padding: ${({ padding }) => {
     const rightLeft = padding?.rightLeft ? `${padding.rightLeft}rem` : '2.4rem';
 

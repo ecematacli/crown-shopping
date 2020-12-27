@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useState, Fragment } from 'react';
 
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
-// import logo from '../../assets/img/logo.svg';
 import { useTranslation } from '../../../i18n'
 import AppLayout from '../../appLayout/AppLayout';
 import {
@@ -50,7 +50,7 @@ const Header = () => {
             <div
               onClick={() => router.push('/')}
             >
-              {/* <img src={logo} alt='logo' className='logo-image' /> */}
+              <Image src='/logo.svg' alt='logo' width='50' height='50' className='logo-image' />
             </div>
             <AlignedDiv>
               <IconWrapper

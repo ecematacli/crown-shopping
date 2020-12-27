@@ -1,20 +1,18 @@
 import { NextComponentType, NextPageContext } from 'next';
 import NextI18next from 'next-i18next';
+import path from 'path';
 
 export const nextI18next = new NextI18next({
-  browserLanguageDetection: false,
   defaultLanguage: 'en',
   fallbackLng: 'en',
-  localePath: 'public/locales',
   otherLanguages: ['de'],
+  localePath: path.resolve('./public/locales'),
 });
 
 export const includeDefaultNamespaces = (namespaces: string[]) =>
   ['common', '_error'].concat(namespaces);
 
-export const appWithTranslation = nextI18next.appWithTranslation;
-export const Trans = nextI18next.Trans;
-export const useTranslation = nextI18next.useTranslation;
+export const { appWithTranslation, Trans, useTranslation } = nextI18next;
 
 export type I18nPage<P = {}> = NextComponentType<
   NextPageContext,

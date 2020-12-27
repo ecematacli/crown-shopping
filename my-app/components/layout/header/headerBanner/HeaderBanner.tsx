@@ -21,7 +21,6 @@ const HeaderBanner = () => {
       setCountry(languageOptions.en)
     }
   };
-  console.log('lang', locale)
 
   return (
     <StyledHeaderBanner>

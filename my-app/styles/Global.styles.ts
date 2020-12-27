@@ -19,8 +19,8 @@ input:hover,
 button:focus,
 button:active,
 button:hover {
-  outline:0px !important;
-  -webkit-appearance:none;
+  outline: 0px !important;
+  -webkit-appearance: none;
   box-shadow: none !important;
   border-color: transparent;
 }
