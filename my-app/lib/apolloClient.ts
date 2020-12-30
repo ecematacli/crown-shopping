@@ -15,7 +15,9 @@ import isEqual from 'lodash/isEqual';
 import config from '../config';
 import { getAuthToken, cleanUpSession } from '../auth';
 
-let apolloClient: ApolloClient<NormalizedCacheObject> | null;
+type Client = ApolloClient<NormalizedCacheObject>;
+
+let apolloClient: Client | null;
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
@@ -95,7 +97,7 @@ export const initializeApollo = (initialState: any = null) => {
   return _apolloClient;
 };
 
-export function addApolloState(client, pageProps) {
+export function addApolloState(client: Client, pageProps: any) {
   if (pageProps?.props) {
     pageProps.props[APOLLO_STATE_PROP_NAME] = client.cache.extract();
   }

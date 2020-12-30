@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { StyledHeaderBanner } from './HeaderBanner.styles';
 import { CountryContext } from '../../../../contexts/CountryContext';
 import AppLayout from '../../../appLayout/AppLayout';
-import languageOptions from '../../../../const/languages'
+import languageOptions from '../../../../consts/languages'
 import { useTranslation } from '../../../../i18n';
 
 const HeaderBanner = () => {

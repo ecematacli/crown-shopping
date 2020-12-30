@@ -2,7 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import useSignUp from './useSignUp';
-import Input from '../../../components/input/Input';
+import Input from '../../../../components/input/Input';
 
 const LoginForm = () => {
   const { t } = useTranslation('login');

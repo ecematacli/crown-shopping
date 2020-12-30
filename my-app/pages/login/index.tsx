@@ -1,7 +1,7 @@
 import { FormContainer, SignUpFormContainer } from './index.styles';
 import AppLayout from '../../components/appLayout/AppLayout';
-import SignInForm from './signInForm/SignInForm';
-import SignUpForm from './signUpForm/SignUpForm';
+import SignInForm from './components/signInForm/SignInForm';
+import SignUpForm from './components/signUpForm/SignUpForm';
 import {
   I18nPage, includeDefaultNamespaces, useTranslation
 } from '../../i18n';
@@ -23,9 +23,11 @@ const LoginPage: I18nPage = () => {
   )
 }
 
-LoginPage.getInitialProps = () => {
+export const getStaticProps = () => {
   return {
-    namespacesRequired: includeDefaultNamespaces(["login"]),
+    props: {
+      namespacesRequired: includeDefaultNamespaces(["login"]),
+    }
   };
 };
 export default LoginPage;

@@ -11,8 +11,10 @@ const IndexPage = () => {
   )
 }
 
-IndexPage.getInitialProps = async () => ({
-  namespacesRequired: includeDefaultNamespaces(['index'])
+export const getStaticProps = async () => ({
+  props: {
+    namespacesRequired: includeDefaultNamespaces(['index'])
+  }
 });
 
 export default IndexPage;

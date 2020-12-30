@@ -37,8 +37,6 @@ const CategoriesMenu: React.FC<Props> = ({
     onCategoryItemClick,
   } = useCategoriesMenu(setIsMobileMenuOpen);
 
-  // console.log('category', openedCategory);
-
   const renderMainCategories = () =>
     data.categories.results.map(category => {
       return (

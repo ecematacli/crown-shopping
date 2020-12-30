@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
-import { SIGN_IN } from '../../../graphql/mutations/login';
-import { createApolloClient } from '../../../lib/apolloClient';
-import { clientLogin } from '../../../auth';
+import { SIGN_IN } from '../../../../graphql/mutations/login';
+import { createApolloClient } from '../../../../lib/apolloClient';
+import { clientLogin } from '../../../../auth';
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
