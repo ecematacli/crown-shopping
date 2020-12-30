@@ -1,5 +1,6 @@
 import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import cookie from 'js-cookie';
 
 import config from './config';
 
@@ -16,7 +17,7 @@ export interface Token {
 
 export const getStoredToken = () => {
   try {
-    return JSON.parse(localStorage.getItem('auth'));
+    return cookie.getJSON('auth');
   } catch (err) {
     return undefined;
   }
@@ -24,7 +25,7 @@ export const getStoredToken = () => {
 
 export const setStoredToken = (token: Token) => {
   try {
-    localStorage.setItem('auth', JSON.stringify(token));
+    cookie.set('auth', token);
   } catch (err) {
     // Don't do anything
   }
@@ -32,7 +33,7 @@ export const setStoredToken = (token: Token) => {
 
 export const clearStoredToken = () => {
   try {
-    localStorage.removeItem('auth');
+    cookie.remove('auth');
   } catch (err) {
     // Don't do anything
   }
@@ -75,6 +76,11 @@ export const clientLogin = async (
 export const clientLogout = (apolloClient: ApolloClientType, redirect) => {
   cleanUpSession();
   return redirect().then(() => apolloClient.resetStore());
+};
+
+export const getTokenInfo = async () => {
+  await tokenProvider.getTokenInfo();
+  return tokenProvider.getTokenInfo();
 };
 
 const buildAuthorizationHeader = async () => {

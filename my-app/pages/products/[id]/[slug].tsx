@@ -1,20 +1,23 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useContext } from 'react';
 
 import { useTranslation, includeDefaultNamespaces } from '../../../i18n';
-import { getProducts } from '../../../utils/getProducts';
+import { getProducts } from '../../../api/products';
 import useProductList from '../useProductList';
 import ProductThumbnail from '../components/productThumbnail/ProductThumbnail';
 import Layout from '../../../components/layout';
 import { CountryContext } from '../../../contexts/CountryContext';
 import { initializeApollo } from '../../../lib/apolloClient';
 import { GET_CATEGORIES } from '../../../graphql/queries/category';
-
-// interface Props extends RouteComponentProps<{ id: string }> { }
-// const { country } = useContext(CountryContext);
+import { useRouter } from 'next/router';
 
 const ProductsPage = () => {
   const { t } = useTranslation('products');
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   return (
     <Layout title={t('products')}>
       <div>
@@ -42,21 +45,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log('params in static props!!!!!!!!!!!!!!!!!!!!!!!!', params)
+export const getStaticProps = async ({ params, ...rest }) => {
   // console.log('country', country)
-
-  const { data } = await getProducts({
-    filter: `categories.id: subtree("${params.id}")`,
-    // priceCurrency: country.currency,
-    // priceCountry: country.name,
-  });
+  console.log(rest)
+  // const { data } = await getProducts({
+  //   filter: `categories.id: subtree("${params.id}")`,
+  //   // priceCurrency: country.currency,
+  //   // priceCountry: country.name,
+  // });
 
   return {
     props: {
       namespacesRequired: includeDefaultNamespaces(['products']),
-    }
-
+      // data
+    },
+    revalidate: 1,
   }
 };
 

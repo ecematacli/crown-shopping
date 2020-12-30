@@ -22,6 +22,7 @@ interface ProductsResponse {
 }
 
 export const getProducts = async (filters: { [key: string]: string }) => {
+  console.log('TOKEN Y!!!!!!!!!!!!!!!!!!!!!1', getStoredToken());
   const baseURL = `${config.ct.api}/${config.ct.auth.projectKey}/product-projections/search`;
   const headerConfig = `Bearer ${getStoredToken().access_token}`;
 

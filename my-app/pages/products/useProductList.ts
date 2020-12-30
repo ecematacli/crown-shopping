@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { getProducts } from '../../utils/getProducts';
+import { getProducts } from '../../api/products';
 import { CountryContext } from '../../contexts/CountryContext';
 
 export default (id: string) => {
