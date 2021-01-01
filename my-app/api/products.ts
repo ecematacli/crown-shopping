@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 import config from '../config';
-import { getStoredToken } from '../auth';
-// import store from '../../store/store';
 interface Product {
   categories: { id: string; typeId: string }[];
   createdAt: Date;
@@ -21,10 +19,12 @@ interface ProductsResponse {
   offset: number;
 }
 
-export const getProducts = async (filters: { [key: string]: string }) => {
-  console.log('TOKEN Y!!!!!!!!!!!!!!!!!!!!!1', getStoredToken());
+export const getProducts = async (
+  token: string,
+  filters: { [key: string]: string }
+) => {
   const baseURL = `${config.ct.api}/${config.ct.auth.projectKey}/product-projections/search`;
-  const headerConfig = `Bearer ${getStoredToken().access_token}`;
+  const headerConfig = `Bearer ${token}`;
 
   const objToUrl = Object.keys(filters)
     .map(key => `${key}=${filters[key]}`)

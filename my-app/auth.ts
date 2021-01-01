@@ -5,7 +5,6 @@ import cookie from 'js-cookie';
 import config from './config';
 
 type ApolloClientType = ApolloClient<NormalizedCacheObject>;
-
 export interface Token {
   access_token: string;
   expires_at: number;
@@ -79,8 +78,8 @@ export const clientLogout = (apolloClient: ApolloClientType, redirect) => {
 };
 
 export const getTokenInfo = async () => {
-  await tokenProvider.getTokenInfo();
-  return tokenProvider.getTokenInfo();
+  const token = await tokenProvider.getTokenInfo();
+  return token.access_token;
 };
 
 const buildAuthorizationHeader = async () => {
