@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Subcategory, OpenedCategories } from '../useCategoriesMenu';
-import AppLayout from '../../../../appLayout/AppLayout';
+import PaddedLayout from '../../../../paddedLayout/PaddedLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
 import useScreenWidth from '../../../../../hooks/useScreenWidth';
 
@@ -31,10 +31,10 @@ const Subcategories: React.FC<Props> = ({
   };
   return (
     <SubcategoryContainer isSmallScreen={isSmallScreen}>
-      <AppLayout>
+      <PaddedLayout padding={{ bottom: '0' }}>
         <div className='subcategories'>
           {subcategories.map(subcategory => (
-            <div key={subcategory.id}>
+            <div key={subcategory.id} className="subcategory">
               <span
                 onClick={() => onCategoryItemClick(subcategory.id, subcategory.slug)}
                 className='subcategory-title'>
@@ -44,7 +44,7 @@ const Subcategories: React.FC<Props> = ({
             </div>
           ))}
         </div>
-      </AppLayout>
+      </PaddedLayout>
     </SubcategoryContainer>
   );
 };

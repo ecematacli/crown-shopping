@@ -16,15 +16,10 @@ const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
-
   return (
     <Layout title={t('title')}>
       <div>
-        PRODUCTS PAGE!!!
-      {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
+        {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
       </div>)
     </Layout>
   )

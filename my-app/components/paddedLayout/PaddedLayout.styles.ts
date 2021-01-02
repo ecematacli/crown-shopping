@@ -4,7 +4,7 @@ interface Props {
   padding?: { top?: string; bottom?: string; rightLeft?: string };
 }
 
-export const AppContainer = styled.div<Props>`
+export const Container = styled.div<Props>`
   padding: ${({ padding }) => {
     const rightLeft = padding?.rightLeft ? `${padding.rightLeft}rem` : '2.4rem';
 
@@ -19,7 +19,7 @@ export const AppContainer = styled.div<Props>`
   }};
 `;
 
-export const AppWrapper = styled.div`
+export const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 109rem;
 `;

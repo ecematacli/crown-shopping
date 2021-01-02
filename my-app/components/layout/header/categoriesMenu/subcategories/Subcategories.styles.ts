@@ -10,7 +10,14 @@ export const SubcategoryContainer = styled.div<StyleProps>`
   font-size: 15px;
 
   .subcategories {
-    display: flex;
+    display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
+  }
+
+  .subcategory {
+    margin-bottom: 1rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .subcategory-title {

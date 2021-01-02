@@ -1,29 +1,36 @@
 import styled from 'styled-components';
 
 export const StyledCategoryMenu = styled.div<{ open: boolean }>`
+  ul {
+    list-style-type: none;
+  }
   .mobile-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     background-color: ${({ theme: { palette } }) => palette.whites[0]};
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
-    height: 90%;
+    height: 100%;
     width: 100vw;
-    /* z-index: 100; */
-    /* transition: 99s ease; */
+    z-index: 100;
+    /* transition: transform 99s; */
   }
 `;
 
 export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
-  /* background-color: blue; */
   height: 100%;
-  border-top: ${({ theme: { palette } }) => `1px solid ${palette.grays[2]}`};
+  border-top: ${({ theme: { palette }, isSmallScreen }) =>
+    !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'none'};
   border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
     !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'unset'};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* height: 90%; */
+
+  .mobile-header {
+    border-bottom: ${({ theme: { palette } }) =>
+      `1px solid ${palette.grays[2]}`};
+  }
 `;
 
 export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
@@ -33,8 +40,6 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
   display: ${({ isSmallScreen }) => !isSmallScreen && 'flex'};
   justify-content: space-between;
   align-items: center;
-  /* padding-top: 81px; */
-  /* background-color: black; */
 
   .menu-item {
     position: relative;

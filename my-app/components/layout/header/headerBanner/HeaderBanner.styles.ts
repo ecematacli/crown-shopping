@@ -23,7 +23,6 @@ export const StyledHeaderBanner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
   }
 
   .country-flag {

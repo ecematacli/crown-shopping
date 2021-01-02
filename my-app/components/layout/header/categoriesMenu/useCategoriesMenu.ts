@@ -29,40 +29,52 @@ type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
-
+  const { setIsMenuOpened } = useContext(OpenedMenuContext);
   const {
     countryInfo: { locale },
   } = useContext(CountryInfoContext);
-  const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
-  const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
-  const { setIsMenuOpened } = useContext(OpenedMenuContext);
   const variables = { locale, where: 'parent is not defined' };
-  const [searchTerm, setSearchTerm] = useState('');
 
   const { data } = useQuery<categories>(GET_CATEGORIES, {
     variables,
   });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
+  const [openedMobileCategory, setOpenedMobileCategory] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const handleOpenedCategory = (category: OpenedCategories | null) => {
-    // console.log('called', category);
-    setOpenedCategory(category);
-    category && isSmallScreen && setIsMobileMenuOpen(false);
+    !isSmallScreen && setOpenedCategory(category);
     category && !isSmallScreen ? setIsMenuOpened(true) : setIsMenuOpened(false);
   };
 
+  const handleOpenMobileCatClick = (category: OpenedCategories) => {
+    setOpenedMobileCategory({
+      ...openedMobileCategory,
+      [category.name]: !openedMobileCategory[category.name],
+    });
+
+    console.log('?openedCategory', openedMobileCategory[category.name]);
+
+    openedMobileCategory[category.name]
+      ? setOpenedCategory(null)
+      : setOpenedCategory(category);
+    // setOpenedCategory(category);
+  };
+
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
-    console.log('runs2');
-    router.push(`/products/${categoryId}/${categorySlug}`);
-    setOpenedCategory(null);
-    setIsMenuOpened(false);
+    !isSmallScreen && router.push(`/products/${categoryId}/${categorySlug}`);
+    !isSmallScreen && setOpenedCategory(null);
+    !isSmallScreen && setIsMenuOpened(false);
   };
 
   return {
-    isPhoneMenuOpen,
-    setIsPhoneMenuOpen,
     data,
+    openedMobileCategory,
     openedCategory,
     handleOpenedCategory,
+    handleOpenMobileCatClick,
     onCategoryItemClick,
     searchTerm,
     setSearchTerm,

@@ -5,7 +5,7 @@ import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
 import { useTranslation } from '../../../i18n';
-import AppLayout from '../../appLayout/AppLayout';
+import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import {
   AlignedDiv,
   HeaderContainer,
@@ -43,7 +43,7 @@ const Header = () => {
     <Fragment>
       <HeaderContainer isSmallScreen={isSmallScreen}>
         {!isSmallScreen && <HeaderBanner />}
-        <AppLayout padding={{ bottom: '1.8' }}>
+        <PaddedLayout padding={{ bottom: '1.8' }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
             <div onClick={() => router.push('/')}>
@@ -70,7 +70,7 @@ const Header = () => {
               </IconWrapper>
             </AlignedDiv>
           </StyledHeader>
-        </AppLayout>
+        </PaddedLayout>
       </HeaderContainer>
       {(!isSmallScreen || (isSmallScreen && isMobileMenuOpen)) && (
         <CategoriesMenu

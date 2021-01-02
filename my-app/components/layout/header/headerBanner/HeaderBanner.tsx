@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { StyledHeaderBanner } from './HeaderBanner.styles';
 import { CountryInfoContext } from '../../../../contexts/CountryInfoContext';
-import AppLayout from '../../../appLayout/AppLayout';
+import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import languageOptions from '../../../../consts/languages';
 import { useTranslation } from '../../../../i18n';
 
@@ -28,14 +28,14 @@ const HeaderBanner = () => {
 
   return (
     <StyledHeaderBanner>
-      <AppLayout padding={{ top: '0', bottom: '0' }} className='layout'>
+      <PaddedLayout padding={{ top: '0', bottom: '0' }} className='layout'>
         <div className='banner-content'>
           <span>{t('help')}</span>
           <span>{t('newsletter')}</span>
         </div>
-      </AppLayout>
+      </PaddedLayout>
       <div className='flag-container'>
-        <AppLayout>
+        <PaddedLayout>
           <div className='flag-wrapper-div'>
             <ReactCountryFlag className='country-flag' countryCode={code} />
             <span className='country-name'>{language}</span>
@@ -43,7 +43,7 @@ const HeaderBanner = () => {
               <MdKeyboardArrowDown size={18} />
             </span>
           </div>
-        </AppLayout>
+        </PaddedLayout>
       </div>
     </StyledHeaderBanner>
   );

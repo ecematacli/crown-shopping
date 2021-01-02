@@ -1,5 +1,5 @@
 import { FormContainer, SignUpFormContainer } from './index.styles';
-import AppLayout from '../../components/appLayout/AppLayout';
+import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
 import SignInForm from './components/signInForm/SignInForm';
 import SignUpForm from './components/signUpForm/SignUpForm';
 import {
@@ -11,14 +11,14 @@ const LoginPage: I18nPage = () => {
   const { t } = useTranslation('login')
   return (
     <Layout title={t('login')}>
-      <AppLayout>
+      <PaddedLayout>
         <FormContainer>
           <SignInForm />
         </FormContainer>
         <SignUpFormContainer>
           <SignUpForm />
         </SignUpFormContainer>
-      </AppLayout>
+      </PaddedLayout>
     </Layout>
   )
 }

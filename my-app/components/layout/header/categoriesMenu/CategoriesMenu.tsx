@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { Fragment } from 'react';
 import { MdClose } from 'react-icons/md';
-import { RiArrowRightSLine } from 'react-icons/ri';
+import { RiArrowRightSLine, RiArrowDownSLine } from 'react-icons/ri';
 import classNames from 'classnames';
 
 import { capitalizeFirstLetter } from '../../../../utils';
 import useCategoriesMenu from './useCategoriesMenu';
-import AppLayout from '../../../appLayout/AppLayout';
+import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
 import {
   StyledCategoryMenu,
@@ -26,70 +27,85 @@ const CategoriesMenu: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
+
   const isDisplayingMobileMenu = isSmallScreen && isMobileMenuOpen;
 
   const {
     data,
+    openedMobileCategory,
     openedCategory,
     handleOpenedCategory,
+    handleOpenMobileCatClick,
     onCategoryItemClick,
   } = useCategoriesMenu(setIsMobileMenuOpen);
 
-  const renderMainCategories = () =>
-    data.categories.results.map(category => {
-      return (
-        <li
-          key={category.id}
-          onMouseOver={() => handleOpenedCategory(category)}
-          onClick={() => onCategoryItemClick(category.id, category.slug)}
-          className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}>
-          <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
-            <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
-            {isSmallScreen && (
-              <RiArrowRightSLine
-                onClick={() => handleOpenedCategory(category)}
-                className='arrow-icon'
+  console.log(openedCategory);
+
+  const renderMobileMenuHeader = () => (
+    <PaddedLayout padding={{ top: '0', bottom: '0' }} className="mobile-header">
+      <MobileLogo onClick={() => router.push('/')}>
+        <Image
+          src='/logo.svg'
+          alt='logo'
+          width='50'
+          height='50'
+          className='logo-image'
+        />
+        <div onClick={() => setIsMobileMenuOpen(false)}>
+          <MdClose size={32} />
+        </div>
+      </MobileLogo>
+    </PaddedLayout>
+  );
+
+  const renderMainCategories = () => (
+    <Fragment>
+      {isDisplayingMobileMenu && renderMobileMenuHeader()}
+      {data.categories.results.map(category => {
+        return (
+          <li
+            key={category.id}
+            onMouseOver={() => handleOpenedCategory(category)}
+            onClick={() => onCategoryItemClick(category.id, category.slug)}
+            className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}>
+            <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
+              <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
+              {isSmallScreen &&
+                openedCategory &&
+                openedMobileCategory[category.name] && (
+                  <RiArrowDownSLine
+                    onClick={() => handleOpenMobileCatClick(category)}
+                  />
+                )}
+              {isSmallScreen && !openedCategory && (
+                <RiArrowRightSLine
+                  onClick={() => handleOpenMobileCatClick(category)}
+                  className='arrow-icon'
+                />
+              )}
+            </div>
+            {isSmallScreen && openedCategory?.name === category.name && (
+              <Subcategories
+                subcategories={category.children}
+                handleOpenedCategory={handleOpenedCategory}
+                onCategoryItemClick={onCategoryItemClick}
               />
             )}
-          </div>
-          {/* {isSmallScreen && openedCategory && (
-            <Subcategories
-              subcategories={category.children}
-              handleOpenedCategory={handleOpenedCategory}
-              onCategoryItemClick={onCategoryItemClick}
-            />
-          )} */}
-        </li>
-      );
-    });
+          </li>
+        );
+      })}
+    </Fragment>
+  );
 
   return (
     <StyledCategoryMenu open={isMobileMenuOpen}>
       <div className={classNames({ 'mobile-sidebar': isDisplayingMobileMenu })}>
-        {isDisplayingMobileMenu && (
-          <AppLayout padding={{ top: '0', bottom: '0' }}>
-            <MobileLogo
-              onClick={() => router.push('/')}
-            >
-              <Image
-                src='/logo.svg'
-                alt='logo'
-                width='50'
-                height='50'
-                className='logo-image'
-              />
-              <div onClick={() => setIsMobileMenuOpen(false)}>
-                <MdClose size={32} />
-              </div>
-            </MobileLogo>
-          </AppLayout>
-        )}
         <MenuContainer
           onMouseLeave={() => handleOpenedCategory(null)}
           isSmallScreen={isSmallScreen}>
-          <AppLayout
+          <PaddedLayout
             padding={{
               top: '0.8',
               bottom: '0.8',
@@ -98,7 +114,7 @@ const CategoriesMenu: React.FC<Props> = ({
             <MenuNavbar isSmallScreen={isSmallScreen}>
               {data && renderMainCategories()}
             </MenuNavbar>
-          </AppLayout>
+          </PaddedLayout>
           {isSmallScreen && (
             <div>
               <HeaderBanner />
