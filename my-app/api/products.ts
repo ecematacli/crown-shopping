@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import config from '../config';
-interface Product {
+
+export interface Product {
   categories: { id: string; typeId: string }[];
   createdAt: Date;
   lastModifiedAt: Date;
@@ -11,7 +12,7 @@ interface Product {
     images: { url: string; dimensions: { w: number; h: number } }[];
   };
 }
-interface ProductsResponse {
+export interface ProductsResponse {
   results: Product[];
   limit: number;
   total: number;

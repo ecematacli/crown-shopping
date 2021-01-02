@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext } from 'react';
 import { getProducts } from '../../api/products';
-import { CountryContext } from '../../contexts/CountryContext';
+import { CountryInfoContext } from '../../contexts/CountryInfoContext';
 
 export default (id: string) => {
-  const { country } = useContext(CountryContext);
+  const { countryInfo } = useContext(CountryInfoContext);
   const [products, setProducts] = useState([]);
 
   const getProductList = async () => {
-    const { data } = await getProducts({
-      filter: `categories.id: subtree("${id}")`,
-      priceCurrency: country.currency,
-      priceCountry: country.name,
-    });
-    setProducts(data.results);
+    // const { data } = await getProducts({
+    //   filter: `categories.id: subtree("${id}")`,
+    //   priceCurrency: country.currency,
+    //   priceCountry: country.name,
+    // });
+    // setProducts(data.results);
   };
 
   useEffect(() => {

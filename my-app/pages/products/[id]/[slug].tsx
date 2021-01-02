@@ -2,19 +2,19 @@ import { GetServerSideProps } from 'next';
 import cookie from 'cookie';
 
 import { useTranslation, includeDefaultNamespaces } from '../../../i18n';
-import { getProducts } from '../../../api/products';
-import useProductList from '../useProductList';
+import { getProducts, Product, ProductsResponse } from '../../../api/products';
 import ProductThumbnail from '../components/productThumbnail/ProductThumbnail';
 import Layout from '../../../components/layout';
-import { CountryContext } from '../../../contexts/CountryContext';
 import { useRouter } from 'next/router';
 import { getTokenInfo } from '../../../auth';
 
-const ProductsPage = ({ products }) => {
+interface Props {
+  products: ProductsResponse;
+}
+
+const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
   const router = useRouter();
-
-  console.log('products in product cmp', products)
 
   if (router.isFallback) {
     return <div>Loading...</div>
@@ -24,7 +24,7 @@ const ProductsPage = ({ products }) => {
     <Layout title={t('title')}>
       <div>
         PRODUCTS PAGE!!!
-      {products.results.map(pr => <ProductThumbnail product={pr} key={pr.id} />)}
+      {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
       </div>)
     </Layout>
   )
@@ -32,12 +32,15 @@ const ProductsPage = ({ products }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
   const auth = cookie.parse(req ? req.headers.cookie || '' : document.cookie)?.auth;
-  const session = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
+  const token = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
 
-  const { data } = await getProducts(session, {
+  const country = cookie.parse(req ? req.headers.cookie : '')?.country;
+  const countryInfo = JSON.parse(country);
+
+  const { data } = await getProducts(token, {
     filter: `categories.id: subtree("${params.id}")`,
-    priceCurrency: 'EUR',
-    priceCountry: 'US'
+    priceCurrency: countryInfo ? countryInfo.currency : 'EUR',
+    priceCountry: countryInfo ? countryInfo.code : 'US'
   });
 
   return {

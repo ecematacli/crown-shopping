@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../../../graphql/queries/category';
 import { categories } from '../../../../graphql/queries/types/categories';
-import { CountryContext } from '../../../../contexts/CountryContext';
+import { CountryInfoContext } from '../../../../contexts/CountryInfoContext';
 import { OpenedMenuContext } from '../../../../contexts/OpenedMenuContext';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
 
@@ -31,8 +31,8 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const { isSmallScreen } = useScreenWidth();
 
   const {
-    country: { locale },
-  } = useContext(CountryContext);
+    countryInfo: { locale },
+  } = useContext(CountryInfoContext);
   const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
   const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
   const { setIsMenuOpened } = useContext(OpenedMenuContext);

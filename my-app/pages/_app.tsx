@@ -7,7 +7,7 @@ import { useApollo } from '../lib/apolloClient';
 import { appWithTranslation } from '../i18n';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/Global.styles';
-import { CountryContextProvider } from '../contexts/CountryContext';
+import { CountryInfoContextProvider } from '../contexts/CountryInfoContext';
 import {
   OpenedMenuContextProvider
 } from '../contexts/OpenedMenuContext';
@@ -19,11 +19,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ApolloProvider client={apolloClient}>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <CountryContextProvider>
+        <CountryInfoContextProvider>
           <OpenedMenuContextProvider>
             <Component {...pageProps} />
           </OpenedMenuContextProvider>
-        </CountryContextProvider>
+        </CountryInfoContextProvider>
       </ThemeProvider>
     </ApolloProvider>
   );
