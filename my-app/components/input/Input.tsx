@@ -13,6 +13,7 @@ interface Props {
 
 const Input: React.FC<Props> = ({
   label,
+  type,
   placeholder,
   value,
   onInputChange,
@@ -23,6 +24,7 @@ const Input: React.FC<Props> = ({
       <div className='input-wrapper'>
         <Form.Control
           placeholder={placeholder}
+          type={type}
           value={value}
           onChange={onInputChange}
           className='input'

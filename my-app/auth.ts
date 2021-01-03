@@ -1,8 +1,8 @@
 import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import cookie from 'js-cookie';
 
 import config from './config';
+import { getCookie, clearCookie, setCookie } from './utils/cookie';
 
 type ApolloClientType = ApolloClient<NormalizedCacheObject>;
 export interface Token {
@@ -14,62 +14,60 @@ export interface Token {
   token_type: 'Bearer';
 }
 
-export const getStoredToken = () => {
-  try {
-    return cookie.getJSON('auth');
-  } catch (err) {
-    return undefined;
-  }
-};
+// const getStoredToken = () => {
+//   try {
+//     return cookie.getJSON('auth');
+//   } catch (err) {
+//     return undefined;
+//   }
+// };
 
-export const setStoredToken = (token: Token) => {
-  try {
-    cookie.set('auth', token);
-  } catch (err) {
-    // Don't do anything
-  }
-};
+// const setStoredToken = (token: Token) => {
+//   try {
+//     cookie.set('auth', token);
+//   } catch (err) {
+//     // Don't do anything
+//   }
+// };
 
-export const clearStoredToken = () => {
-  try {
-    cookie.remove('auth');
-  } catch (err) {
-    // Don't do anything
-  }
-};
+// const clearStoredToken = () => {
+//   try {
+//     cookie.remove('auth');
+//   } catch (err) {
+//     // Don't do anything
+//   }
+// };
 
 const tokenProvider = new TokenProvider(
   {
     sdkAuth: new SdkAuth(config.ct.auth),
-    fetchTokenInfo: sdkAuth => sdkAuth.anonymousFlow(),
-    onTokenInfoChanged: tokenInfo => setStoredToken(tokenInfo),
+    fetchTokenInfo: (sdkAuth: any) => sdkAuth.anonymousFlow(),
+    onTokenInfoChanged: (tokenInfo: any) => setCookie('auth', tokenInfo),
   },
-  getStoredToken()
+  getCookie('auth')
 );
 
 export const cleanUpSession = () => {
   tokenProvider.invalidateTokenInfo();
-  return clearStoredToken();
+  return clearCookie('auth');
 };
 
 export const clientLogin = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   credentials: { username: string; password: string }
 ) => {
-  clearStoredToken();
-  tokenProvider.fetchTokenInfo = sdkAuth =>
+  clearCookie('auth');
+  tokenProvider.fetchTokenInfo = (sdkAuth: any) =>
     sdkAuth.customerPasswordFlow(credentials);
   await tokenProvider.invalidateTokenInfo();
-  return (
-    apolloClient
-      .resetStore()
-      // .then(() => store.dispatch(setAuthenticated(true)))
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.error('Error on cache reset during login', error);
-        return cleanUpSession();
-      })
-  );
+  return apolloClient
+    .resetStore()
+    .then(() => setCookie('isAuthenticated', true))
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.error('Error on cache reset during login', error);
+      return cleanUpSession();
+    });
 };
 
 export const clientLogout = (apolloClient: ApolloClientType, redirect) => {

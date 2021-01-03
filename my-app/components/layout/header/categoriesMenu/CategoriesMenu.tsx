@@ -6,14 +6,14 @@ import { RiArrowRightSLine, RiArrowDownSLine } from 'react-icons/ri';
 import classNames from 'classnames';
 
 import { capitalizeFirstLetter } from '../../../../utils';
-import useCategoriesMenu from './useCategoriesMenu';
+import useCategoriesMenu, { OpenedCategory } from './useCategoriesMenu';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
 import {
   StyledCategoryMenu,
   MenuContainer,
   MenuNavbar,
-  MobileLogo,
+  MobileHead,
 } from './CategoriesMenu.styles';
 import Subcategories from './subcategories/Subcategories';
 import HeaderBanner from '../headerBanner/HeaderBanner';
@@ -34,67 +34,79 @@ const CategoriesMenu: React.FC<Props> = ({
 
   const {
     data,
-    openedMobileCategory,
     openedCategory,
-    handleOpenedCategory,
+    toggleOpenCategory,
     handleOpenMobileCatClick,
     onCategoryItemClick,
   } = useCategoriesMenu(setIsMobileMenuOpen);
 
-  console.log(openedCategory);
+  const listItemBlockClickOnMobile = (category: OpenedCategory) => {
+    isSmallScreen && handleOpenMobileCatClick(category);
+  }
 
-  const renderMobileMenuHeader = () => (
-    <PaddedLayout padding={{ top: '0', bottom: '0' }} className="mobile-header">
-      <MobileLogo onClick={() => router.push('/')}>
-        <Image
-          src='/logo.svg'
-          alt='logo'
-          width='50'
-          height='50'
-          className='logo-image'
-        />
-        <div onClick={() => setIsMobileMenuOpen(false)}>
-          <MdClose size={32} />
-        </div>
-      </MobileLogo>
-    </PaddedLayout>
+  const listItemNameClick = (id: string, slug: string) => {
+    !isSmallScreen && onCategoryItemClick(id, slug);
+  }
+
+  const displayMobileMenuHead = () => (
+    <li>
+      <PaddedLayout
+        padding={{ top: '0', bottom: '0' }}
+        className='mobile-header'>
+        <MobileHead>
+          <Image
+            src='/logo.svg'
+            alt='logo'
+            width='50'
+            height='50'
+            className='logo-image'
+            onClick={() => router.push('/')}
+          />
+          <div onClick={() => setIsMobileMenuOpen(false)}>
+            <MdClose size={32} />
+          </div>
+        </MobileHead>
+      </PaddedLayout>
+    </li>
   );
 
-  const renderMainCategories = () => (
+  const displayCategories = () => (
     <Fragment>
-      {isDisplayingMobileMenu && renderMobileMenuHeader()}
+      {isDisplayingMobileMenu && displayMobileMenuHead()}
       {data.categories.results.map(category => {
+        const isMyCatOpened = openedCategory?.name === category.name;
+
         return (
           <li
             key={category.id}
-            onMouseOver={() => handleOpenedCategory(category)}
-            onClick={() => onCategoryItemClick(category.id, category.slug)}
-            className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}>
+            className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}
+            onClick={() => listItemBlockClickOnMobile(category)}>
             <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
-              <span>{capitalizeFirstLetter(category.name.toUpperCase())}</span>
+              <span
+                onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
+                onClick={() => listItemNameClick(category.id, category.slug)}>
+                {capitalizeFirstLetter(category.name.toUpperCase())}
+              </span>
               {isSmallScreen &&
-                openedCategory &&
-                openedMobileCategory[category.name] && (
+                (isMyCatOpened ? (
                   <RiArrowDownSLine
-                    onClick={() => handleOpenMobileCatClick(category)}
+                    onClick={() => handleOpenMobileCatClick(null)}
                   />
-                )}
-              {isSmallScreen && !openedCategory && (
-                <RiArrowRightSLine
-                  onClick={() => handleOpenMobileCatClick(category)}
-                  className='arrow-icon'
-                />
-              )}
+                ) : (
+                    <RiArrowRightSLine
+                      onClick={() => handleOpenMobileCatClick(category)}
+                      className='arrow-icon'
+                    />
+                  ))}
             </div>
-            {isSmallScreen && openedCategory?.name === category.name && (
+            {isSmallScreen && isMyCatOpened && (
               <Subcategories
                 subcategories={category.children}
-                handleOpenedCategory={handleOpenedCategory}
                 onCategoryItemClick={onCategoryItemClick}
               />
             )}
           </li>
-        );
+        )
       })}
     </Fragment>
   );
@@ -103,7 +115,7 @@ const CategoriesMenu: React.FC<Props> = ({
     <StyledCategoryMenu open={isMobileMenuOpen}>
       <div className={classNames({ 'mobile-sidebar': isDisplayingMobileMenu })}>
         <MenuContainer
-          onMouseLeave={() => handleOpenedCategory(null)}
+          onMouseLeave={() => toggleOpenCategory(null)}
           isSmallScreen={isSmallScreen}>
           <PaddedLayout
             padding={{
@@ -111,19 +123,16 @@ const CategoriesMenu: React.FC<Props> = ({
               bottom: '0.8',
               rightLeft: isSmallScreen && '0',
             }}>
-            <MenuNavbar isSmallScreen={isSmallScreen}>
-              {data && renderMainCategories()}
+            <MenuNavbar
+              isSmallScreen={isSmallScreen}
+              isThereOpenedCat={!!openedCategory}>
+              {data && displayCategories()}
             </MenuNavbar>
           </PaddedLayout>
-          {isSmallScreen && (
-            <div>
-              <HeaderBanner />
-            </div>
-          )}
+          {isSmallScreen && <HeaderBanner />}
           {!isSmallScreen && openedCategory && (
             <Subcategories
               subcategories={openedCategory.children}
-              handleOpenedCategory={handleOpenedCategory}
               onCategoryItemClick={onCategoryItemClick}
             />
           )}

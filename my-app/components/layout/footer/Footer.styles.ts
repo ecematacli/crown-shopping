@@ -2,7 +2,7 @@ import Styled from 'styled-components';
 
 export const FooterStyles = Styled.div`
   display: flex;
-  background: ${({ theme }) => theme.palette.grays[0]};
+  background: ${({ theme }) => theme.palette.grays[2]};
   color: ${({ theme: { palette } }) => palette.whites[0]};
   flex-wrap: wrap;
   .footer-top {

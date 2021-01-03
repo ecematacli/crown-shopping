@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface MenuNavbarProps {
+  isSmallScreen: boolean;
+  isThereOpenedCat: boolean;
+}
+
 export const StyledCategoryMenu = styled.div<{ open: boolean }>`
   ul {
     list-style-type: none;
@@ -18,6 +23,7 @@ export const StyledCategoryMenu = styled.div<{ open: boolean }>`
 `;
 
 export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
+  overflow: ${({ isSmallScreen }) => (isSmallScreen ? 'auto' : 'unset')};
   height: 100%;
   border-top: ${({ theme: { palette }, isSmallScreen }) =>
     !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'none'};
@@ -33,7 +39,7 @@ export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
   }
 `;
 
-export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
+export const MenuNavbar = styled.ul<MenuNavbarProps>`
   cursor: pointer;
   list-style-type: none;
   font-size: 14px;
@@ -68,6 +74,10 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
     padding: 1.5rem 0;
     border-bottom: ${({ theme: { palette } }) =>
       `1px solid ${palette.grays[5]}`};
+    &:last-child {
+      border-bottom: ${({ theme: { palette }, isThereOpenedCat }) =>
+        !isThereOpenedCat ? `1px solid ${palette.grays[5]}` : 'none'};
+    }
   }
 
   .sm-menu-wrapper {
@@ -75,10 +85,14 @@ export const MenuNavbar = styled.ul<{ isSmallScreen: boolean }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .isMyCatOpen {
+      border-bottom: 1px solid red;
+    }
   }
 `;
 
-export const MobileLogo = styled.div`
+export const MobileHead = styled.div`
   height: 8.1rem;
   display: flex;
   justify-content: space-between;

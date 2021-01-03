@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
-import cookie from 'js-cookie';
 
 import languageOptions from '../consts/languages';
+import { getCookie, setCookie } from '../utils/cookie';
 
 interface Country {
   name: string;
@@ -18,7 +18,7 @@ export interface CountryInfoContextInt {
 
 export const CountryInfoContext = createContext<CountryInfoContextInt>(null);
 
-const getInitialValue = (): Country => cookie.getJSON('country') || languageOptions.en;
+const getInitialValue = (): Country => getCookie('country') || languageOptions.en;
 
 export const CountryInfoContextProvider: React.FC<{
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export const CountryInfoContextProvider: React.FC<{
   );
 
   const handleCountryChange = (country: Country) => {
-    cookie.set('country', country);
+    setCookie('country', country);
     setCountryInfo(country);
   };
 

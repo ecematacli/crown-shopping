@@ -4,9 +4,9 @@ export const StyledContent = styled.div<{ isMenuOpened: boolean }>`
   height: 100vh;
 
   .app {
-    height: 80%;
-    background-color: ${({ isMenuOpened }) =>
-    isMenuOpened ? 'rgba(0, 0, 0, 0.3)' : 'white'};
+    height: 100%;
+    background-color: ${({ theme: { palette }, isMenuOpened }) =>
+    isMenuOpened ? 'rgba(0, 0, 0, 0.3)' : `${palette.whites[0]}`};
     opacity: ${({ isMenuOpened }) => (isMenuOpened ? 0.4 : 1)};
   }
 `;

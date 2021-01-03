@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Subcategory, OpenedCategories } from '../useCategoriesMenu';
+import { Subcategory } from '../useCategoriesMenu';
 import PaddedLayout from '../../../../paddedLayout/PaddedLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
 import useScreenWidth from '../../../../../hooks/useScreenWidth';
@@ -8,7 +6,6 @@ import useScreenWidth from '../../../../../hooks/useScreenWidth';
 interface Props {
   subcategories: Subcategory[];
   onCategoryItemClick: (categorySlug: string, categoryId: string) => void;
-  handleOpenedCategory?: (category: OpenedCategories) => void;
 }
 
 const Subcategories: React.FC<Props> = ({

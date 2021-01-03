@@ -20,7 +20,7 @@ export interface Subcategory extends Category {
 
 interface SecondLevelSubcategory extends Category {}
 
-export interface OpenedCategories extends Category {
+export interface OpenedCategory extends Category {
   children: Subcategory[];
 }
 
@@ -38,46 +38,31 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const { data } = useQuery<categories>(GET_CATEGORIES, {
     variables,
   });
-  const [searchTerm, setSearchTerm] = useState('');
-  const [openedCategory, setOpenedCategory] = useState<OpenedCategories>(null);
-  const [openedMobileCategory, setOpenedMobileCategory] = useState<{
-    [key: string]: boolean;
-  }>({});
+  const [openedCategory, setOpenedCategory] = useState<OpenedCategory>(null);
 
-  const handleOpenedCategory = (category: OpenedCategories | null) => {
-    !isSmallScreen && setOpenedCategory(category);
-    category && !isSmallScreen ? setIsMenuOpened(true) : setIsMenuOpened(false);
+  const toggleOpenCategory = (category: OpenedCategory | null) => {
+    setOpenedCategory(category);
+    category ? setIsMenuOpened(true) : setIsMenuOpened(false);
   };
 
-  const handleOpenMobileCatClick = (category: OpenedCategories) => {
-    setOpenedMobileCategory({
-      ...openedMobileCategory,
-      [category.name]: !openedMobileCategory[category.name],
-    });
-
-    console.log('?openedCategory', openedMobileCategory[category.name]);
-
-    openedMobileCategory[category.name]
+  const handleOpenMobileCatClick = (category: OpenedCategory) => {
+    category?.name === openedCategory?.name
       ? setOpenedCategory(null)
       : setOpenedCategory(category);
-    // setOpenedCategory(category);
   };
 
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
-    !isSmallScreen && router.push(`/products/${categoryId}/${categorySlug}`);
-    !isSmallScreen && setOpenedCategory(null);
-    !isSmallScreen && setIsMenuOpened(false);
+    router.push(`/products/${categorySlug}/${categoryId}`);
+    setOpenedCategory(null);
+    !isSmallScreen ? setIsMenuOpened(false) : setIsMobileMenuOpen(false);
   };
 
   return {
     data,
-    openedMobileCategory,
     openedCategory,
-    handleOpenedCategory,
+    toggleOpenCategory,
     handleOpenMobileCatClick,
     onCategoryItemClick,
-    searchTerm,
-    setSearchTerm,
   };
 };
 
