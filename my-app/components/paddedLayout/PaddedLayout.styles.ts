@@ -9,13 +9,13 @@ export const Container = styled.div<Props>`
     const rightLeft = padding?.rightLeft ? `${padding.rightLeft}rem` : '2.4rem';
 
     if (padding?.top && padding?.bottom) {
-      return `${padding.top}rem ${rightLeft} ${padding.bottom}rem ${rightLeft}`;
+      return `${padding.top}rem ${rightLeft} ${padding.bottom}rem`;
     } else if (padding?.top) {
-      return `${padding.top}rem ${rightLeft}  ${rightLeft}`;
+      return `${padding.top}rem ${rightLeft}  0`;
     } else if (padding?.bottom) {
-      return `${rightLeft} ${rightLeft} ${padding.bottom}rem`;
+      return `0 ${rightLeft} ${padding.bottom}rem`;
     }
-    return `${rightLeft}`;
+    return `0 ${rightLeft}`;
   }};
 `;
 

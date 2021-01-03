@@ -14,35 +14,14 @@ export interface Token {
   token_type: 'Bearer';
 }
 
-// const getStoredToken = () => {
-//   try {
-//     return cookie.getJSON('auth');
-//   } catch (err) {
-//     return undefined;
-//   }
-// };
-
-// const setStoredToken = (token: Token) => {
-//   try {
-//     cookie.set('auth', token);
-//   } catch (err) {
-//     // Don't do anything
-//   }
-// };
-
-// const clearStoredToken = () => {
-//   try {
-//     cookie.remove('auth');
-//   } catch (err) {
-//     // Don't do anything
-//   }
-// };
-
 const tokenProvider = new TokenProvider(
   {
     sdkAuth: new SdkAuth(config.ct.auth),
     fetchTokenInfo: (sdkAuth: any) => sdkAuth.anonymousFlow(),
-    onTokenInfoChanged: (tokenInfo: any) => setCookie('auth', tokenInfo),
+    onTokenInfoChanged: (tokenInfo: any) => {
+      console.log('called!!', tokenInfo);
+      setCookie('auth', tokenInfo);
+    },
   },
   getCookie('auth')
 );

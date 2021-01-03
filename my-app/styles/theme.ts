@@ -9,6 +9,7 @@ export default {
       '#eef0ed',
       '#444',
       '#ebebeb',
+      '#ccc',
     ],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],

@@ -22,6 +22,8 @@ const Header = () => {
   const { isSmallScreen } = useScreenWidth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
+
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
       <IconWrapper className='icon'>
@@ -43,7 +45,7 @@ const Header = () => {
     <Fragment>
       <HeaderContainer isSmallScreen={isSmallScreen}>
         {!isSmallScreen && <HeaderBanner />}
-        <PaddedLayout padding={{ bottom: '1.8' }}>
+        <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
             <div onClick={() => router.push('/')}>
