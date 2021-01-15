@@ -23,7 +23,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
           isMenuOpen={isMenuOpen}
           isMobileMenuOpen={isMobileMenuOpen}
           isSmallScreen={isSmallScreen}>
-          <div className='app'>{children}</div>
+          {children}
         </StyledContent>
         <Footer />
       </div>

@@ -12,4 +12,18 @@ export const StyledContent = styled.div<StyledProps>`
   overflow: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? 'hidden' : 'auto')};
   background-color: ${({ theme: { palette }, isMenuOpen }) =>
     isMenuOpen ? 'rgba(0, 0, 0, 0.2)' : `${palette.whites[0]}`};
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+ 
+::-webkit-scrollbar-track {
+  background-color: ${({ theme: { palette } }) => `${palette.grays[9]}`};
+  border-radius: 4px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: ${({ theme: { palette } }) => `${palette.grays[10]}`};
+}
 `;
