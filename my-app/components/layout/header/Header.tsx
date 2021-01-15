@@ -1,28 +1,32 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { useState, Fragment } from 'react';
+import { useContext } from 'react';
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
 import { useTranslation } from '../../../i18n';
+import { OpenedMenuContext } from '../../../contexts/OpenedMenuContext';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import {
-  AlignedDiv,
   HeaderContainer,
+  HeaderBar,
+  AlignedDiv,
   StyledHeader,
   IconWrapper,
 } from './Header.styles';
 import useScreenWidth from '../../../hooks/useScreenWidth';
 import CategoriesMenu from './categoriesMenu/CategoriesMenu';
 import HeaderBanner from './headerBanner/HeaderBanner';
+import useHeader from './useHeader';
 
 const Header = () => {
   const router = useRouter();
   const { t } = useTranslation('header');
   const { isSmallScreen } = useScreenWidth();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(OpenedMenuContext);
 
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
+  const { data } = useHeader();
 
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
@@ -42,8 +46,8 @@ const Header = () => {
   );
 
   return (
-    <Fragment>
-      <HeaderContainer isSmallScreen={isSmallScreen}>
+    <HeaderContainer isSmallScreen={isSmallScreen}>
+      <HeaderBar isSmallScreen={isSmallScreen}>
         {!isSmallScreen && <HeaderBanner />}
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
@@ -61,7 +65,9 @@ const Header = () => {
               <IconWrapper onClick={() => router.push('/login')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
-                  <span className='sign-in icon-text'>{t('signIn')}</span>
+                  <span className='sign-in icon-text'>
+                    {data ? data.me.customer.firstName : t('signIn')}
+                  </span>
                 )}
               </IconWrapper>
               <IconWrapper>
@@ -73,14 +79,14 @@ const Header = () => {
             </AlignedDiv>
           </StyledHeader>
         </PaddedLayout>
-      </HeaderContainer>
+      </HeaderBar>
       {(!isSmallScreen || (isSmallScreen && isMobileMenuOpen)) && (
         <CategoriesMenu
           isMobileMenuOpen={isMobileMenuOpen}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
       )}
-    </Fragment>
+    </HeaderContainer>
   );
 };
 

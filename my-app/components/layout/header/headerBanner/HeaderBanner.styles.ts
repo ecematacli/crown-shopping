@@ -47,7 +47,8 @@ export const StyledContent = styled.div<{ isSmallScreen: boolean }>`
 
   > span {
     cursor: pointer;
-    padding: ${({ isSmallScreen }) => (!isSmallScreen ? '1rem' : '1.4rem 0')};
+    padding: ${({ isSmallScreen }) =>
+      !isSmallScreen ? '0.70rem 1rem' : '1.4rem 0'};
     color: ${({ theme: { palette } }) => `${palette.grays[6]}`};
     border-right: ${({ isSmallScreen, theme: { palette } }) =>
       !isSmallScreen ? `0.1rem solid ${palette.grays[8]}` : 'none'};

@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { SIGN_IN } from '../../../../graphql/mutations/login';
 import { createApolloClient } from '../../../../lib/apolloClient';
 import { clientLogin } from '../../../../auth';
+import { useRouter } from 'next/router';
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -11,6 +12,7 @@ const useSignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signIn] = useMutation(SIGN_IN);
+  const router = useRouter();
 
   const onEmailChange = (e: InputEvent) => setEmail(e.target.value);
 
@@ -23,7 +25,8 @@ const useSignIn = () => {
         variables: { draft: { email, password } },
       });
       if (data) {
-        clientLogin(createApolloClient(), { username: email, password });
+        await clientLogin(createApolloClient(), { username: email, password });
+        router.push('/');
       }
     } catch (e) {
       console.log('error while logging in: ', e);

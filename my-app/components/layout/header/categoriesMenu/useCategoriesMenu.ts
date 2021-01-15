@@ -29,7 +29,7 @@ type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
-  const { setIsMenuOpened } = useContext(OpenedMenuContext);
+  const { setIsMenuOpen } = useContext(OpenedMenuContext);
   const {
     countryInfo: { locale },
   } = useContext(CountryInfoContext);
@@ -42,7 +42,7 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
 
   const toggleOpenCategory = (category: OpenedCategory | null) => {
     setOpenedCategory(category);
-    category ? setIsMenuOpened(true) : setIsMenuOpened(false);
+    category ? setIsMenuOpen(true) : setIsMenuOpen(false);
   };
 
   const handleOpenMobileCatClick = (category: OpenedCategory) => {
@@ -54,7 +54,7 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
     router.push(`/products/${categorySlug}/${categoryId}`);
     setOpenedCategory(null);
-    !isSmallScreen ? setIsMenuOpened(false) : setIsMobileMenuOpen(false);
+    !isSmallScreen ? setIsMenuOpen(false) : setIsMobileMenuOpen(false);
   };
 
   return {

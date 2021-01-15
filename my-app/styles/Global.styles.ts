@@ -8,6 +8,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, a,  em
 
 body {
   font-family: 'Lato', sans-serif;
+  overflow: hidden;
 }
 
 html {
@@ -19,10 +20,9 @@ input:hover,
 button:focus,
 button:active,
 button:hover {
-   outline: 0px !important;
   -webkit-appearance: none;
+  outline: 0px !important;
   box-shadow: none !important;
-  /* border-color: transparent;  */
 }
 `;
 

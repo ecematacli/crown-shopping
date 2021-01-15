@@ -7,13 +7,19 @@ export const AlignedDiv = styled.div`
 `;
 
 export const HeaderContainer = styled.div<{ isSmallScreen: boolean }>`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: ${({ theme: { palette } }) => palette.whites[0]};
+`;
+
+export const HeaderBar = styled.div<{ isSmallScreen: boolean }>`
   border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
     isSmallScreen ? `1px solid ${palette.grays[4]}` : 'unset'};
 `;
 
 export const StyledHeader = styled(AlignedDiv)`
-  position: relative;
-
   .logo-image {
     cursor: pointer;
   }

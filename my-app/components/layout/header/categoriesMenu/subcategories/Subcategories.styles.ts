@@ -6,6 +6,7 @@ interface StyleProps {
 
 export const SubcategoryContainer = styled.div<StyleProps>`
   width: 100%;
+  margin-top: 0.75rem;
   height: ${({ isSmallScreen }) => (!isSmallScreen ? '35.3rem' : 'unset')};
   font-size: 15px;
 

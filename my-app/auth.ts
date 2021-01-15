@@ -18,10 +18,7 @@ const tokenProvider = new TokenProvider(
   {
     sdkAuth: new SdkAuth(config.ct.auth),
     fetchTokenInfo: (sdkAuth: any) => sdkAuth.anonymousFlow(),
-    onTokenInfoChanged: (tokenInfo: any) => {
-      console.log('called!!', tokenInfo);
-      setCookie('auth', tokenInfo);
-    },
+    onTokenInfoChanged: (tokenInfo: any) => setCookie('auth', tokenInfo),
   },
   getCookie('auth')
 );
@@ -33,11 +30,14 @@ export const cleanUpSession = () => {
 
 export const clientLogin = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
-  credentials: { username: string; password: string }
+  { username, password }: { username: string; password: string }
 ) => {
   clearCookie('auth');
-  tokenProvider.fetchTokenInfo = (sdkAuth: any) =>
-    sdkAuth.customerPasswordFlow(credentials);
+
+  tokenProvider.fetchTokenInfo = sdkAuth =>
+    sdkAuth.customerPasswordFlow({ username, password });
+  tokenProvider.invalidateTokenInfo();
+
   await tokenProvider.invalidateTokenInfo();
   return apolloClient
     .resetStore()
@@ -60,8 +60,8 @@ export const getTokenInfo = async () => {
 };
 
 const buildAuthorizationHeader = async () => {
-  await tokenProvider.getTokenInfo();
   const tokenInfo = await tokenProvider.getTokenInfo();
+  setCookie('auth', tokenInfo);
   return `${tokenInfo.token_type} ${tokenInfo.access_token}`;
 };
 

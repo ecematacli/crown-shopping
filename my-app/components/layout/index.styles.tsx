@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-export const StyledContent = styled.div<{ isMenuOpened: boolean }>`
-  height: 100vh;
+interface StyledProps {
+  isMenuOpen: boolean;
+  isMobileMenuOpen: boolean;
+  isSmallScreen: boolean;
+}
 
-  .app {
-    height: 100%;
-    background-color: ${({ theme: { palette }, isMenuOpened }) =>
-    isMenuOpened ? 'rgba(0, 0, 0, 0.3)' : `${palette.whites[0]}`};
-    opacity: ${({ isMenuOpened }) => (isMenuOpened ? 0.4 : 1)};
-  }
+export const StyledContent = styled.div<StyledProps>`
+  height: 100vh;
+  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.4rem')};
+  overflow: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? 'hidden' : 'auto')};
+  background-color: ${({ theme: { palette }, isMenuOpen }) =>
+    isMenuOpen ? 'rgba(0, 0, 0, 0.2)' : `${palette.whites[0]}`};
 `;

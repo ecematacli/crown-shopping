@@ -6,6 +6,8 @@ interface MenuNavbarProps {
 }
 
 export const StyledCategoryMenu = styled.div<{ open: boolean }>`
+  background-color: ${({ theme: { palette } }) => palette.whites[0]};
+
   ul {
     list-style-type: none;
   }

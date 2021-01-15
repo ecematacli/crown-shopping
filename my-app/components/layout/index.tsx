@@ -5,12 +5,11 @@ import { StyledContent } from './index.styles';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
+import useScreenWidth from '../../hooks/useScreenWidth';
 
-const Layout: React.FC<{ title: string }> = ({
-  children,
-  title = 'EA',
-}) => {
-  const { isMenuOpened } = useContext(OpenedMenuContext);
+const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
+  const { isMenuOpen, isMobileMenuOpen } = useContext(OpenedMenuContext);
+  const { isSmallScreen } = useScreenWidth();
   return (
     <Fragment>
       <Head>
@@ -20,7 +19,10 @@ const Layout: React.FC<{ title: string }> = ({
       </Head>
       <div>
         <Header />
-        <StyledContent isMenuOpened={isMenuOpened}>
+        <StyledContent
+          isMenuOpen={isMenuOpen}
+          isMobileMenuOpen={isMobileMenuOpen}
+          isSmallScreen={isSmallScreen}>
           <div className='app'>{children}</div>
         </StyledContent>
         <Footer />
