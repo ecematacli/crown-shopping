@@ -1,11 +1,12 @@
+import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 import cookie from 'cookie';
 
 import { useTranslation, includeDefaultNamespaces } from '../../../i18n';
 import { getProducts, Product, ProductsResponse } from '../../../api/products';
 import ProductThumbnail from '../components/productThumbnail/ProductThumbnail';
-import Layout from '../../../components/layout';
-import { useRouter } from 'next/router';
+import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
+import Layout from '../../../components/layout/Layout';
 import { getTokenInfo } from '../../../auth';
 
 interface Props {
@@ -14,13 +15,14 @@ interface Props {
 
 const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
-  const router = useRouter();
 
   return (
     <Layout title={t('title')}>
-      <div>
-        {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
-      </div>)
+      <PaddedLayout>
+        <div>
+          {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
+        </div>
+      </PaddedLayout>
     </Layout>
   )
 }

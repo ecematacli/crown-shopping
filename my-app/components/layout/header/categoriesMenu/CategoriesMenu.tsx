@@ -111,38 +111,6 @@ const CategoriesMenu: React.FC<Props> = ({
     </Fragment>
   );
 
-  const some = {
-    id: "d3f8c9f8-1800-48f8-9650-1cd03abd2998",
-    name: "Women",
-    slug: "women",
-    children: [{
-      id: "4fd3f902-9f2e-4071-9a42-04ab2a9b5f4d",
-      name: "Bags",
-      slug: "women-bags",
-      children: [
-        {
-          id: "1d0c66ff-9943-4f56-a985-649a183ff53e",
-          name: "Handbag",
-          slug: "women-bags-handbag"
-        },
-        {
-          id: "b1c6a310-ae00-4dfc-8660-8deb7c42d0af",
-          name: "Men",
-          slug: "accessories-men",
-        }
-      ]
-    }, {
-      id: "b22448bf-bd17-45c7-bb84-2d7b355df63b",
-      name: "Women",
-      slug: "accessories-women",
-      children: [{
-        id: "d3e04368-85cf-4427-b288-3a4ea67ed632",
-        name: "Sunglasses",
-        slug: "accessories-women-sunglasses"
-      }]
-    }]
-  }
-
   return (
     <StyledCategoryMenu open={isMobileMenuOpen}>
       <div className={classNames({ 'mobile-sidebar': isDisplayingMobileMenu })}>

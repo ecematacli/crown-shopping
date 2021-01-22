@@ -1,6 +1,6 @@
 import { useTranslation, includeDefaultNamespaces } from '../i18n';
 import Home from '../components/home/Home';
-import Layout from '../components/layout';
+import Layout from '../components/layout/Layout';
 
 const IndexPage = () => {
   const { t } = useTranslation('index');

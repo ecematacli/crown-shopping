@@ -6,7 +6,7 @@ export const AlignedDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const HeaderContainer = styled.div<{ isSmallScreen: boolean }>`
+export const HeaderContainer = styled.header<{ isSmallScreen: boolean }>`
   position: fixed;
   top: 0;
   width: 100%;

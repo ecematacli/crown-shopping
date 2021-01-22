@@ -7,23 +7,12 @@ interface StyledProps {
 }
 
 export const StyledContent = styled.div<StyledProps>`
-  height: 100vh;
-  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.4rem')};
+  height: ${({ isSmallScreen }) => (isSmallScreen ? 'calc(100vh - 10rem)' : 'calc(100vh - 15.5rem)')}; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '10rem' : '15.5rem')};
   overflow: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? 'hidden' : 'auto')};
   background-color: ${({ theme: { palette }, isMenuOpen }) =>
     isMenuOpen ? 'rgba(0, 0, 0, 0.2)' : `${palette.whites[0]}`};
-
-::-webkit-scrollbar {
-  width: 4px;
-}
- 
-::-webkit-scrollbar-track {
-  background-color: ${({ theme: { palette } }) => `${palette.grays[9]}`};
-  border-radius: 4px;
-}
- 
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: ${({ theme: { palette } }) => `${palette.grays[10]}`};
-}
 `;

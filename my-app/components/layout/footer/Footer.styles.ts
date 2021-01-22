@@ -1,22 +1,20 @@
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
-export const FooterStyles = Styled.div`
-  display: flex;
-  background: ${({ theme }) => theme.palette.grays[2]};
-  color: ${({ theme: { palette } }) => palette.whites[0]};
-  flex-wrap: wrap;
-  .footer-top {
-    width: 100%;
-    padding: 1em 2em;
+export const FooterContainer = styled.footer<{ isSmallScreen: boolean }>`
+  /* display: flex; */
+
+  ul {
+    list-style-type: none;
+  }
+
+  .footer-item-wrapper {
+    border: ${({ theme: { palette } }) => `1px solid ${palette.grays[5]}`};
+    /* padding: 1.5rem 0; */
+  }
+
+  .title-section {
     display: flex;
-    height: 1em;
-    font-size: .8em;
-    list-style: none;
-    margin: 0;
-    
-    li {
-      cursor: pointer;
-      margin-right: 1em;
-    }
+    justify-content: space-between;
+    align-items: center;
   }
 `;
