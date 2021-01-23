@@ -8,21 +8,6 @@ export const FormContainer = styled.div`
   .form-group {
     margin-bottom: 2rem;
   }
-
-  .submit-btn {
-    background-color: ${({ theme: { palette } }) => palette.blacks[0]};
-    border-color: transparent;
-    color: ${({ theme: { palette } }) => palette.whites[0]};
-    font-weight: bold;
-    margin-top: 2rem;
-  }
-
-  .btn-primary:focus,
-  .btn-primary:not(:disabled):not(.disabled):active {
-    background-color: ${({ theme: { palette } }) => palette.blacks[0]};
-    border-color: ${({ theme: { palette } }) => palette.blacks[0]};
-    box-shadow: none;
-  }
 `;
 
 export const SignUpFormContainer = styled(FormContainer)`

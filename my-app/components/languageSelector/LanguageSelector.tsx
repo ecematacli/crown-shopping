@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
+import BaseModal from '../baseModal/BaseModal';
 import { LanguageSelectorContainer } from './LanguageSelector.styles';
 import { CountryInfoContext } from '../../contexts/CountryInfoContext';
 import languageOptions from '../../consts/languages';
@@ -14,6 +15,7 @@ const LanguageSelector = () => {
     handleCountryChange,
   } = useContext(CountryInfoContext);
 
+  const [openModal, setOpenModal] = useState(false);
   const { isSmallScreen } = useScreenWidth();
   const { i18n } = useTranslation();
 
@@ -28,15 +30,18 @@ const LanguageSelector = () => {
   };
 
   return (
-    <LanguageSelectorContainer isSmallScreen={isSmallScreen}>
-      <div className='flag-wrapper-div'>
-        <ReactCountryFlag className='country-flag' countryCode={code} />
-        <span className='country-name'>{language}</span>
-        <span onClick={changeLanguage} className='flag-icon'>
-          <MdKeyboardArrowDown size={18} />
-        </span>
-      </div>
-    </LanguageSelectorContainer>
+    <div>
+      <LanguageSelectorContainer isSmallScreen={isSmallScreen}>
+        <div className='flag-wrapper-div'>
+          <ReactCountryFlag className='country-flag' countryCode={code} />
+          <span className='country-name'>{language}</span>
+          <span onClick={changeLanguage} className='flag-icon'>
+            <MdKeyboardArrowDown size={18} />
+          </span>
+        </div>
+      </LanguageSelectorContainer>
+      <BaseModal show={openModal} onHide={() => setOpenModal(false)} />
+    </div>
   );
 };
 

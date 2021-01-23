@@ -1,8 +1,9 @@
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import useLogin from './useSignIn';
 import Input from '../../../../components/input/Input';
 import { useTranslation } from '../../../../i18n';
+import BaseButton from '../../../../components/baseButton/BaseButton';
 
 const SignInForm = () => {
   const { t } = useTranslation('login')
@@ -24,9 +25,7 @@ const SignInForm = () => {
         value={password}
         onInputChange={onPasswordChange}
       />
-      <Button size="lg" type="submit" block className='submit-btn'>
-        {t('login').toUpperCase()}
-      </Button>
+      <BaseButton size="lg" type="submit" text={t('login').toUpperCase()} />
     </Form>
   )
 }

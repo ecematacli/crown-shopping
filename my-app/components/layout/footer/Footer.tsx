@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
           <ul>
             {f.subtitles.map(listItem => (
-              <Collapse in={f.title === openedFooterItem} key={listItem}>
+              <Collapse in={f.title === openedFooterItem} key={listItem} timeout={200}>
                 <li className='footer-list-item'>{t(`${listItem}`)}</li>
               </Collapse>
             ))}
