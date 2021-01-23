@@ -18,7 +18,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <div style={{ position: 'relative', height: '100vh' }}>
+      <div>
         <Header />
         <StyledContent
           isMenuOpen={isMenuOpen}

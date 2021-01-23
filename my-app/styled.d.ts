@@ -4,7 +4,8 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     palette: {
-      grays: string[];
+      lightGrays: string[];
+      darkGrays: string[];
       greens: string[];
       purples: string[];
       whites: string[];

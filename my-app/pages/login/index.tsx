@@ -5,7 +5,7 @@ import SignUpForm from './components/signUpForm/SignUpForm';
 import {
   I18nPage, includeDefaultNamespaces, useTranslation
 } from '../../i18n';
-import Layout from '../../components/layout';
+import Layout from '../../components/layout/Layout';
 
 const LoginPage: I18nPage = () => {
   const { t } = useTranslation('login')

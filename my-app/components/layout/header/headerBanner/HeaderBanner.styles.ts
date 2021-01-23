@@ -1,40 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledHeaderBanner = styled.div<{ isSmallScreen: boolean }>`
-  background-color: ${({ theme: { palette } }) => `${palette.grays[7]}`};
+  background-color: ${({ theme: { palette } }) => `${palette.lightGrays[5]}`};
   font-size: 14px;
+
+  .language-selector {
+    border-top: ${({ theme: { palette }, isSmallScreen }) =>
+      !isSmallScreen ? 'none' : `1px solid ${palette.darkGrays[1]}`};
+  }
 
   .wrapper {
     display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
     align-items: center;
     justify-content: flex-end;
     height: ${({ isSmallScreen }) => (!isSmallScreen ? '3.5rem' : 'unset')};
-  }
-
-  .flag-container {
-    border-top: ${({ theme: { palette }, isSmallScreen }) =>
-      !isSmallScreen ? 'none' : `1px solid ${palette.grays[1]}`};
-    padding: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '0 0 0 1rem' : '2.4rem 0'};
-  }
-
-  .flag-wrapper-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .country-flag {
-    font-size: 2rem !important;
-  }
-
-  .flag-icon {
-    cursor: pointer;
-  }
-
-  .country-name {
-    color: ${({ theme: { palette } }) => `${palette.grays[6]}`};
-    padding: 0 0.8rem 0 1rem;
   }
 `;
 
@@ -49,8 +28,8 @@ export const StyledContent = styled.div<{ isSmallScreen: boolean }>`
     cursor: pointer;
     padding: ${({ isSmallScreen }) =>
       !isSmallScreen ? '0.70rem 1rem' : '1.4rem 0'};
-    color: ${({ theme: { palette } }) => `${palette.grays[6]}`};
+    color: ${({ theme: { palette } }) => `${palette.darkGrays[0]}`};
     border-right: ${({ isSmallScreen, theme: { palette } }) =>
-      !isSmallScreen ? `0.1rem solid ${palette.grays[8]}` : 'none'};
+      !isSmallScreen ? `0.1rem solid ${palette.lightGrays[6]}` : 'none'};
   }
 `;

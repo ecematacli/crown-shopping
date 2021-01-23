@@ -4,6 +4,7 @@ interface Props {
   children: React.ReactNode;
   className?: string;
   padding?: { top?: string; bottom?: string; rightLeft?: string }
+  onClick?: () => void;
 }
 
 const PaddedLayout: React.FC<Props> = ({ children, ...rest }) => (

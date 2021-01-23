@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-  background-color: ${({ theme: { palette } }) => palette.grays[0]};
+  background-color: ${({ theme: { palette } }) => palette.lightGrays[0]};
   padding: 3.5rem 2rem;
   font-size: 14px;
 

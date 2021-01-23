@@ -1,7 +1,7 @@
 const footerContent = [
   {
     title: 'titleOne',
-    subtitles: ['faq', 'deliveryAndReturn', 'requestReturn', 'orders'],
+    subtitles: ['deliveryAndReturn', 'requestReturn', 'orders', 'faq'],
   },
   {
     title: 'titleTwo',

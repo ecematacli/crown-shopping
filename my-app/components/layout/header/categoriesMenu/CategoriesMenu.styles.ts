@@ -28,16 +28,16 @@ export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
   overflow: ${({ isSmallScreen }) => (isSmallScreen ? 'auto' : 'unset')};
   height: 100%;
   border-top: ${({ theme: { palette }, isSmallScreen }) =>
-    !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'none'};
+    !isSmallScreen ? `1px solid ${palette.lightGrays[1]}` : 'none'};
   border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
-    !isSmallScreen ? `1px solid ${palette.grays[2]}` : 'unset'};
+    !isSmallScreen ? `1px solid ${palette.lightGrays[1]}` : 'unset'};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .mobile-header {
     border-bottom: ${({ theme: { palette } }) =>
-      `1px solid ${palette.grays[2]}`};
+      `1px solid ${palette.lightGrays[1]}`};
   }
 `;
 
@@ -75,10 +75,10 @@ export const MenuNavbar = styled.ul<MenuNavbarProps>`
   .sm-menu-item {
     padding: 1.5rem 0;
     border-bottom: ${({ theme: { palette } }) =>
-      `1px solid ${palette.grays[5]}`};
+      `1px solid ${palette.lightGrays[4]}`};
     &:last-child {
       border-bottom: ${({ theme: { palette }, isThereOpenedCat }) =>
-        !isThereOpenedCat ? `1px solid ${palette.grays[5]}` : 'none'};
+        !isThereOpenedCat ? `1px solid ${palette.lightGrays[4]}` : 'none'};
     }
   }
 
