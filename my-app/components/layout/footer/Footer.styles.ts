@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer<{ isSmallScreen: boolean }>`
-  margin-bottom: 1.4rem;
+  /* padding-bottom: 1.4rem; */
   font-size: 14px;
   color: ${({ theme: { palette } }) => palette.darkGrays[3]};
 
@@ -36,8 +36,8 @@ export const FooterContainer = styled.footer<{ isSmallScreen: boolean }>`
     margin-top: 1.5rem;
 
     & > * {
-      height: 2.4rem;
-      width: 2.4rem;
+      height: 2rem;
+      width: 2rem;
       cursor: pointer;
     }
   }
@@ -48,8 +48,8 @@ export const FooterContainer = styled.footer<{ isSmallScreen: boolean }>`
     margin: 1.5rem 2.3rem 0;
 
     & > * {
-      height: 2.5rem;
-      width: 4.15rem;
+      height: 2.4rem;
+      width: 4.14rem;
     }
   }
 
@@ -71,9 +71,13 @@ export const FooterContainer = styled.footer<{ isSmallScreen: boolean }>`
       `1px solid ${palette.lightGrays[8]}`};
 
     .company-info {
-      margin: 1.3rem 0 1rem;
       display: flex;
       align-items: center;
+      justify-content: center;
+    }
+
+    .layout {
+      margin: 2rem 0 2rem;
     }
   }
 `;

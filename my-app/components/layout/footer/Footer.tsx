@@ -18,7 +18,7 @@ import Ideal from '../../../public/images/ideal.svg';
 import Paypal from '../../../public/images/paypal.svg';
 import Visa from '../../../public/images/visa.svg';
 import Ipay from '../../../public/images/ipay.svg';
-
+import Linkedin from '../../../public/images/linkedin.svg';
 import LanguageSelector from '../../languageSelector/LanguageSelector';
 
 const Footer = () => {
@@ -45,7 +45,10 @@ const Footer = () => {
           </div>
           <ul>
             {f.subtitles.map(listItem => (
-              <Collapse in={f.title === openedFooterItem} key={listItem} timeout={200}>
+              <Collapse
+                in={f.title === openedFooterItem}
+                key={listItem}
+                timeout={200}>
                 <li className='footer-list-item'>{t(`${listItem}`)}</li>
               </Collapse>
             ))}
@@ -63,11 +66,12 @@ const Footer = () => {
       <Pinterest />
       <TikTok />
       <Youtube />
+      <Linkedin />
     </div>
   );
 
   const displayPaymentMethodIcons = () => (
-    <div className="payment-method-icons">
+    <div className='payment-method-icons'>
       <Master />
       <Ideal />
       <Ipay />
@@ -77,14 +81,13 @@ const Footer = () => {
   );
 
   const displayLegalSection = () => (
-    <ul className="legal-terms">
+    <ul className='legal-terms'>
       <li>{t('requirements')}</li>
       <li>{t('termsOfUse')}</li>
       <li>{t('privacyDeclaration')}</li>
       <li>{t('cookiePolicy')}</li>
     </ul>
   );
-
 
   return (
     <FooterContainer isSmallScreen={isSmallScreen}>
@@ -98,8 +101,10 @@ const Footer = () => {
         {displayPaymentMethodIcons()}
       </PaddedLayout>
       <div className='footer-bottom-section'>
-        <PaddedLayout className='company-info'>
-          <span>© {t('year')} {t('crown')} | {t('rightsReserved')}</span>
+        <PaddedLayout className='layout'>
+          <span className='company-info'>
+            © {t('year')} {t('crown')} | {t('rightsReserved')}
+          </span>
         </PaddedLayout>
       </div>
     </FooterContainer>
