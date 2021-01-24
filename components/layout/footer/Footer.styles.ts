@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+export const StyledFooterBottom = styled.div`
+  font-size: 12px;
+  /* margin-top: 1.8rem; */
+  border-top: ${({ theme: { palette } }) =>
+    `1px solid ${palette.lightGrays[8]}`};
+
+  .company-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottom-layout {
+    margin: 2rem 0 2rem;
+  }
+`;
+
 export const SmFooterContainer = styled.footer`
   font-size: 14px;
   color: ${({ theme: { palette } }) => palette.darkGrays[3]};
@@ -26,23 +43,6 @@ export const SmFooterContainer = styled.footer`
 
     h5 {
       font-weight: bold;
-    }
-  }
-
-  .footer-bottom-section {
-    font-size: 12px;
-    margin-top: 1.8rem;
-    border-top: ${({ theme: { palette } }) =>
-      `1px solid ${palette.lightGrays[8]}`};
-
-    .company-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bottom-layout {
-      margin: 2rem 0 2rem;
     }
   }
 `;
@@ -76,12 +76,7 @@ export const BgFooterContainer = styled.footer`
   .newsletter-section {
     display: flex;
     align-items: center;
-  }
-
-  .newsletter-input {
-    margin: -1rem 0 2.5rem;
-  }
-
-  .last-column {
+    height: 30.5px;
+    margin: 0.7rem 0 3rem;
   }
 `;

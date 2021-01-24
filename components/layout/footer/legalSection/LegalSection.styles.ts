@@ -13,6 +13,6 @@ export const StyledLegalSection = styled.ul<{ isSmallScreen: boolean }>`
   .title {
     text-transform: uppercase;
     font-weight: bold;
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
   }
 `;

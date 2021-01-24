@@ -4,7 +4,7 @@ export const StyledPaymentMethodIcons = styled.div<{ isSmallScreen: boolean }>`
   display: ${({ isSmallScreen }) => (!isSmallScreen ? 'block' : 'flex')};
   justify-content: space-around;
   margin: ${({ isSmallScreen }) =>
-    !isSmallScreen ? '1.5rem 0 0' : '1.5rem 2.3rem 0'};
+    !isSmallScreen ? '1.5rem 0 0' : '1.8rem 2.3rem 1.8rem'};
 
   & > * {
     height: 2.4rem;

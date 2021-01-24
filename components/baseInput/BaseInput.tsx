@@ -14,13 +14,13 @@ interface Props {
   className?: string;
 }
 
-const Input: React.FC<Props> = ({ label, id, ...rest }) => (
+const BaseInput: React.FC<Props> = ({ label, id, width, ...rest }) => (
   <Fragment>
-    <label htmlFor={id}>{label}</label>
-    <StyledInputGroup className='mb-3'>
+    {label && <label htmlFor={id}>{label}</label>}
+    <StyledInputGroup width={width}>
       <FormControl id={id} {...rest} />
     </StyledInputGroup>
   </Fragment>
 );
 
-export default Input;
+export default BaseInput;

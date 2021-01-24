@@ -5,4 +5,5 @@ export const StyledButton = styled(Button)`
   border-color: transparent;
   font-weight: bold;
   width: ${({ width }) => (width ? `${width}rem` : '100%')};
+  height: ${({ height }) => (height ? `${height}rem` : '100%')};
 `;

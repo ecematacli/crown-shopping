@@ -3,7 +3,7 @@ import { Collapse } from 'react-bootstrap';
 import { BsPlus } from 'react-icons/bs';
 
 import { useTranslation } from '../../../i18n';
-import { SmFooterContainer, BgFooterContainer } from './Footer.styles';
+import { SmFooterContainer, BgFooterContainer, StyledFooterBottom } from './Footer.styles';
 import footerContent from './footerContent';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import useScreenWidth from '../../../hooks/useScreenWidth';
@@ -22,6 +22,16 @@ const Footer = () => {
 
   const handleOpenedItem = (item: string) =>
     openedItem === item ? setOpenedItem(null) : setOpenedItem(item);
+
+  const displayBottomSection = () => (
+    <StyledFooterBottom>
+      <PaddedLayout className='bottom-layout'>
+        <span className='company-info'>
+          © {t('year')} {t('crown')} | {t('rightsReserved')}
+        </span>
+      </PaddedLayout>
+    </StyledFooterBottom>
+  );
 
   const displaySmFooterList = () => (
     <Fragment>
@@ -57,15 +67,12 @@ const Footer = () => {
       <h5 className='title'>{t('newsletter')}</h5>
       <div className='newsletter-section'>
         <BaseInput
-          className='newsletter-input'
-          placeholder='Email'
+          placeholder={t('email')}
           value={inputValue}
           onChange={({ target }) => setInputValue(target.value)}
-          width={6}
+          width={10}
         />
-        <div>
-          <BaseButton text='Submit' width={6.8} />
-        </div>
+        <BaseButton text={t('subscribe').toUpperCase()} width={9} />
       </div>
       <SocialMediaIcons />
     </div>
@@ -80,13 +87,7 @@ const Footer = () => {
         <LegalSection />
         <PaymentMethodIcons />
       </PaddedLayout>
-      <div className='footer-bottom-section'>
-        <PaddedLayout className='bottom-layout'>
-          <span className='company-info'>
-            © {t('year')} {t('crown')} | {t('rightsReserved')}
-          </span>
-        </PaddedLayout>
-      </div>
+      {displayBottomSection()}
     </SmFooterContainer>
   );
 
@@ -111,6 +112,7 @@ const Footer = () => {
         </div>
         <PaymentMethodIcons />
       </PaddedLayout>
+      {displayBottomSection()}
     </BgFooterContainer>
   );
 
