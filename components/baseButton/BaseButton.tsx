@@ -4,6 +4,7 @@ interface Props {
   text: string;
   type?: string;
   size?: string;
+  width?: number;
   variant?: string;
   className?: string;
   onClick?: () => void;
@@ -14,8 +15,9 @@ const BaseButton: React.FC<Props> = ({
   type = 'button',
   size,
   variant = 'dark',
+  ...rest
 }) => (
-    <StyledButton size={size} type={type} block variant={variant}>
+    <StyledButton size={size} type={type} variant={variant} {...rest}>
       {text}
     </StyledButton>
   );

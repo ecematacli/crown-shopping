@@ -1,4 +1,4 @@
-import { FormContainer, SignUpFormContainer } from './index.styles';
+import { StyledLoginPage } from './index.styles';
 import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
 import SignInForm from './components/signInForm/SignInForm';
 import SignUpForm from './components/signUpForm/SignUpForm';
@@ -12,12 +12,14 @@ const LoginPage: I18nPage = () => {
   return (
     <Layout title={t('login')}>
       <PaddedLayout>
-        <FormContainer>
-          <SignInForm />
-        </FormContainer>
-        <SignUpFormContainer>
-          <SignUpForm />
-        </SignUpFormContainer>
+        <StyledLoginPage>
+          <div className='form-container'>
+            <SignInForm />
+          </div>
+          <div className='form-container sign-up'>
+            <SignUpForm />
+          </div>
+        </StyledLoginPage>
       </PaddedLayout>
     </Layout>
   )

@@ -3,112 +3,118 @@ import { Collapse } from 'react-bootstrap';
 import { BsPlus } from 'react-icons/bs';
 
 import { useTranslation } from '../../../i18n';
-import { FooterContainer } from './Footer.styles';
+import { SmFooterContainer, BgFooterContainer } from './Footer.styles';
 import footerContent from './footerContent';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import useScreenWidth from '../../../hooks/useScreenWidth';
-import Facebook from '../../../public/images/facebook.svg';
-import Instagram from '../../../public/images/instagram.svg';
-import Twitter from '../../../public/images/twitter.svg';
-import Youtube from '../../../public/images/youtube.svg';
-import Pinterest from '../../../public/images/pinterest.svg';
-import TikTok from '../../../public/images/tiktok.svg';
-import Master from '../../../public/images/master.svg';
-import Ideal from '../../../public/images/ideal.svg';
-import Paypal from '../../../public/images/paypal.svg';
-import Visa from '../../../public/images/visa.svg';
-import Ipay from '../../../public/images/ipay.svg';
-import Linkedin from '../../../public/images/linkedin.svg';
 import LanguageSelector from '../../languageSelector/LanguageSelector';
+import LegalSection from './legalSection/LegalSection';
+import PaymentMethodIcons from './paymentMethodIcons/PaymentMethodIcons';
+import SocialMediaIcons from './socialMediaIcons/SocialMediaIcons';
+import BaseInput from '../../baseInput/BaseInput';
+import BaseButton from '../../baseButton/BaseButton';
 
 const Footer = () => {
   const { t } = useTranslation('footer');
-  const [openedFooterItem, setOpenedFooterItem] = useState<string>(null);
+  const [openedItem, setOpenedItem] = useState<string>(null);
+  const [inputValue, setInputValue] = useState('');
   const { isSmallScreen } = useScreenWidth();
 
   const handleOpenedItem = (item: string) =>
-    openedFooterItem === item
-      ? setOpenedFooterItem(null)
-      : setOpenedFooterItem(item);
+    openedItem === item ? setOpenedItem(null) : setOpenedItem(item);
 
-  const displayFooterList = () => (
+  const displaySmFooterList = () => (
     <Fragment>
       {footerContent.map(f => (
         <PaddedLayout
           padding={{ top: '1', bottom: '1' }}
-          className='footer-item-wrapper'
+          className='sm-layout'
           onClick={() => handleOpenedItem(f.title)}
           key={f.title}>
-          <div className='title-section'>
-            <h5>{t(`${f.title}`)}</h5>
-            <BsPlus size={20} />
+          <div className='footer-item-wrapper'>
+            <div className='title-section'>
+              <h5>{t(`${f.title}`)}</h5>
+              <BsPlus size={20} />
+            </div>
+            <ul>
+              {f.subtitles.map(listItem => (
+                <Collapse
+                  in={f.title === openedItem}
+                  key={listItem}
+                  timeout={200}>
+                  <li className='footer-list-item'>{t(`${listItem}`)}</li>
+                </Collapse>
+              ))}
+            </ul>
           </div>
-          <ul>
-            {f.subtitles.map(listItem => (
-              <Collapse
-                in={f.title === openedFooterItem}
-                key={listItem}
-                timeout={200}>
-                <li className='footer-list-item'>{t(`${listItem}`)}</li>
-              </Collapse>
-            ))}
-          </ul>
         </PaddedLayout>
       ))}
     </Fragment>
   );
 
-  const displaySocialMediaIcons = () => (
-    <div className='social-media-icons'>
-      <Facebook />
-      <Instagram />
-      <Twitter />
-      <Pinterest />
-      <TikTok />
-      <Youtube />
-      <Linkedin />
+  const displayBgFooterLastColumn = () => (
+    <div className='last-column'>
+      <h5 className='title'>{t('newsletter')}</h5>
+      <div className='newsletter-section'>
+        <BaseInput
+          className='newsletter-input'
+          placeholder='Email'
+          value={inputValue}
+          onChange={({ target }) => setInputValue(target.value)}
+          width={6}
+        />
+        <div>
+          <BaseButton text='Submit' width={6.8} />
+        </div>
+      </div>
+      <SocialMediaIcons />
     </div>
   );
 
-  const displayPaymentMethodIcons = () => (
-    <div className='payment-method-icons'>
-      <Master />
-      <Ideal />
-      <Ipay />
-      <Paypal />
-      <Visa />
-    </div>
-  );
-
-  const displayLegalSection = () => (
-    <ul className='legal-terms'>
-      <li>{t('requirements')}</li>
-      <li>{t('termsOfUse')}</li>
-      <li>{t('privacyDeclaration')}</li>
-      <li>{t('cookiePolicy')}</li>
-    </ul>
-  );
-
-  return (
-    <FooterContainer isSmallScreen={isSmallScreen}>
-      {displayFooterList()}
-      <PaddedLayout padding={{ top: '1', bottom: '1', rightLeft: '10' }}>
-        {displaySocialMediaIcons()}
-      </PaddedLayout>
+  const displaySmScreenFooter = () => (
+    <SmFooterContainer>
+      {displaySmFooterList()}
+      <SocialMediaIcons />
       <LanguageSelector />
       <PaddedLayout>
-        {displayLegalSection()}
-        {displayPaymentMethodIcons()}
+        <LegalSection />
+        <PaymentMethodIcons />
       </PaddedLayout>
       <div className='footer-bottom-section'>
-        <PaddedLayout className='layout'>
+        <PaddedLayout className='bottom-layout'>
           <span className='company-info'>
             © {t('year')} {t('crown')} | {t('rightsReserved')}
           </span>
         </PaddedLayout>
       </div>
-    </FooterContainer>
+    </SmFooterContainer>
   );
+
+  const displayBgScreenFooter = () => (
+    <BgFooterContainer>
+      <PaddedLayout padding={{ top: '2.4', bottom: '2.4' }}>
+        <div className='footer-item-wrapper'>
+          {footerContent.map(f => (
+            <div key={f.title}>
+              <h5 className='title'>{t(`${f.title}`)}</h5>
+              <ul className='big-screen-footer-list'>
+                {f.subtitles.map(listItem => (
+                  <li className='footer-list-item' key={listItem}>
+                    {t(`${listItem}`)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <LegalSection />
+          {displayBgFooterLastColumn()}
+        </div>
+        <PaymentMethodIcons />
+      </PaddedLayout>
+    </BgFooterContainer>
+  );
+
+  return isSmallScreen ? displaySmScreenFooter() : displayBgScreenFooter();
 };
 
 export default Footer;

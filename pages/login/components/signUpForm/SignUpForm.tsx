@@ -2,7 +2,7 @@ import { Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import useSignUp from './useSignUp';
-import Input from '../../../../components/input/Input';
+import BaseInput from '../../../../components/baseInput/BaseInput';
 import BaseButton from '../../../../components/baseButton/BaseButton';
 
 const LoginForm = () => {
@@ -21,34 +21,39 @@ const LoginForm = () => {
   } = useSignUp();
 
   return (
-    <Form onSubmit={onFormSubmit}>
-      <Input
+    <Form onSubmit={onFormSubmit} className='form'>
+      <BaseInput
         label={t('firstName')}
         placeholder={t('namePlaceholder')}
         value={firstName}
-        onInputChange={onFirstNameChange}
+        onChange={onFirstNameChange}
       />
-      <Input
+      <BaseInput
         label={t('lastName')}
         placeholder={t('lastNamePlaceholder')}
         value={lastName}
-        onInputChange={onLastNameChange}
+        onChange={onLastNameChange}
       />
-      <Input
-        type="email"
+      <BaseInput
+        type='email'
         label={t('email')}
         placeholder={t('emailPlaceholder')}
         value={email}
-        onInputChange={onEmailChange}
+        onChange={onEmailChange}
       />
-      <Input
-        type="password"
+      <BaseInput
+        type='password'
         label={t('password')}
         placeholder={t('passwordPlaceholder')}
         value={password}
-        onInputChange={onPasswordChange}
+        onChange={onPasswordChange}
       />
-      <BaseButton size='lg' type='submit' text={t('signup').toUpperCase()} />
+      <BaseButton
+        size='lg'
+        type='submit'
+        text={t('signup').toUpperCase()}
+        className='submit-btn'
+      />
     </Form>
   );
 };
