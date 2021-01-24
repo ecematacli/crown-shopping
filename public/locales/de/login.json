@@ -1,8 +1,14 @@
 {
   "login": "Einloggen",
+  "signup": "Anmelden",
   "email": "E-Mail-Addresse",
   "emailPlaceholder": "Email eingeben",
+  "firstName": "Vorname",
+  "namePlaceholder": "Gib deinen Namen ein",
+  "lastName": "Nachname",
+  "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
   "password": "Passwort",
-  "enterPassword": "Passwort eingeben",
+  "passwordPlaceholder": "Passwort eingeben",
+  "confirmPassword": "Kennwort bestätigen",
   "submit": "Einreichen"
 }
