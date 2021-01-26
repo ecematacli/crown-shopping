@@ -19,7 +19,7 @@ export const StyledCategoryMenu = styled.div<{ open: boolean }>`
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
     height: 100%;
     width: 100vw;
-    z-index: 100;
+    z-index: 15 !important;
     /* transition: transform 99s; */
   }
 `;

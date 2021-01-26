@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import { useContext } from 'react';
 
-import { StyledContent } from './Layout.styles';
+import {
+  HeaderContainer,
+  StyledContent,
+  LayoutContentContainer,
+  BodyLayout,
+} from './Layout.styles';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
@@ -19,14 +24,19 @@ const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <div>
-        <Header />
-        <StyledContent
-          isMenuOpen={isMenuOpen}
-          isMobileMenuOpen={isMobileMenuOpen}
-          isSmallScreen={isSmallScreen}>
-          {children}
-          <Footer />
-        </StyledContent>
+        <HeaderContainer>
+          <Header />
+        </HeaderContainer>
+        <LayoutContentContainer>
+          <StyledContent
+            isMenuOpen={isMenuOpen}
+            isMobileMenuOpen={isMobileMenuOpen}
+            isSmallScreen={isSmallScreen}>
+            {children}
+            <Footer />
+          </StyledContent>
+          {isMenuOpen && <BodyLayout isMenuOpen={isMenuOpen}></BodyLayout>}
+        </LayoutContentContainer>
       </div>
     </div>
   );

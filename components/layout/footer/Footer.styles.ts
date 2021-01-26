@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledFooterBottom = styled.div`
+export const StyledFooterBottom = styled.div<{ isSmallScreen: boolean }>`
   font-size: 12px;
-  /* margin-top: 1.8rem; */
   border-top: ${({ theme: { palette } }) =>
     `1px solid ${palette.lightGrays[8]}`};
+  letter-spacing: ${({ isSmallScreen }) =>
+    !isSmallScreen ? '0.2rem' : '0.1rem'};
 
   .company-info {
     display: flex;
