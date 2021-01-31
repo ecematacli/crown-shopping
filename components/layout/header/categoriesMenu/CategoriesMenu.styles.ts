@@ -5,22 +5,26 @@ interface MenuNavbarProps {
   isThereOpenedCat: boolean;
 }
 
-export const StyledCategoryMenu = styled.div<{ open: boolean }>`
+export const StyledCategoryMenu = styled.div`
   background-color: ${({ theme: { palette } }) => palette.whites[0]};
 
   ul {
     list-style-type: none;
   }
+
   .mobile-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     background-color: ${({ theme: { palette } }) => palette.whites[0]};
-    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200px)')};
     height: 100%;
     width: 100vw;
     z-index: 15 !important;
-    /* transition: transform 99s; */
+    transition: all 0.5s ease-in;
+  }
+
+  .closed-sidebar {
+    left: -500px;
   }
 `;
 

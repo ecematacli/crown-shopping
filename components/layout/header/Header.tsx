@@ -31,13 +31,11 @@ const Header = () => {
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
       <IconWrapper className='icon'>
-        {!isMobileMenuOpen && (
-          <BsList
-            size={20}
-            className='icon'
-            onClick={() => setIsMobileMenuOpen(true)}
-          />
-        )}
+        <BsList
+          size={20}
+          className='icon'
+          onClick={() => setIsMobileMenuOpen(true)}
+        />
       </IconWrapper>
       <IconWrapper>
         <BsSearch />
@@ -80,12 +78,10 @@ const Header = () => {
           </StyledHeader>
         </PaddedLayout>
       </HeaderBar>
-      {(!isSmallScreen || (isSmallScreen && isMobileMenuOpen)) && (
-        <CategoriesMenu
-          isMobileMenuOpen={isMobileMenuOpen}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-        />
-      )}
+      <CategoriesMenu
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
     </HeaderContainer>
   );
 };

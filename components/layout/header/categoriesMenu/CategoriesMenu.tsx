@@ -30,8 +30,6 @@ const CategoriesMenu: React.FC<Props> = ({
   const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
 
-  const isDisplayingMobileMenu = isSmallScreen && isMobileMenuOpen;
-
   const {
     data,
     openedCategory,
@@ -42,11 +40,11 @@ const CategoriesMenu: React.FC<Props> = ({
 
   const listItemBlockClickOnMobile = (category: OpenedCategory) => {
     isSmallScreen && handleOpenMobileCatClick(category);
-  }
+  };
 
   const listItemNameClick = (id: string, slug: string) => {
     !isSmallScreen && onCategoryItemClick(id, slug);
-  }
+  };
 
   const displayMobileMenuHead = () => (
     <li>
@@ -72,10 +70,9 @@ const CategoriesMenu: React.FC<Props> = ({
 
   const displayCategories = () => (
     <Fragment>
-      {isDisplayingMobileMenu && displayMobileMenuHead()}
+      {isSmallScreen && displayMobileMenuHead()}
       {data.categories.results.map(category => {
         const isMyCatOpened = openedCategory?.name === category.name;
-
         return (
           <li
             key={category.id}
@@ -83,7 +80,9 @@ const CategoriesMenu: React.FC<Props> = ({
             onClick={() => listItemBlockClickOnMobile(category)}>
             <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
               <span
-                onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
+                onMouseOver={() =>
+                  !isSmallScreen && toggleOpenCategory(category)
+                }
                 onClick={() => listItemNameClick(category.id, category.slug)}>
                 {capitalizeFirstLetter(category.name.toUpperCase())}
               </span>
@@ -106,14 +105,18 @@ const CategoriesMenu: React.FC<Props> = ({
               />
             )}
           </li>
-        )
+        );
       })}
     </Fragment>
   );
 
   return (
-    <StyledCategoryMenu open={isMobileMenuOpen}>
-      <div className={classNames({ 'mobile-sidebar': isDisplayingMobileMenu })}>
+    <StyledCategoryMenu>
+      <div
+        className={classNames({
+          'mobile-sidebar': isSmallScreen,
+          'closed-sidebar': isSmallScreen && !isMobileMenuOpen,
+        })}>
         <MenuContainer
           onMouseLeave={() => toggleOpenCategory(null)}
           isSmallScreen={isSmallScreen}>
