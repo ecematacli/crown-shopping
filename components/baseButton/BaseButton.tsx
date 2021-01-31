@@ -5,6 +5,7 @@ interface Props {
   type?: string;
   size?: string;
   width?: number;
+  height?: string;
   variant?: string;
   className?: string;
   onClick?: () => void;

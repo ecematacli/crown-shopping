@@ -72,7 +72,7 @@ const Footer = () => {
           onChange={({ target }) => setInputValue(target.value)}
           width={10}
         />
-        <BaseButton text={t('subscribe').toUpperCase()} width={9} />
+        <BaseButton text={t('subscribe').toUpperCase()} width={9} height={'100%'} />
       </div>
       <SocialMediaIcons />
     </div>

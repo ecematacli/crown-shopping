@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useQuery } from '@apollo/client';
 import { useContext } from 'react';
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
+import { ME } from '../../../graphql/queries/customer';
+import { me } from '../../../graphql/queries/types/me';
 import { useTranslation } from '../../../i18n';
 import { OpenedMenuContext } from '../../../contexts/OpenedMenuContext';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
@@ -17,7 +20,6 @@ import {
 import useScreenWidth from '../../../hooks/useScreenWidth';
 import CategoriesMenu from './categoriesMenu/CategoriesMenu';
 import HeaderBanner from './headerBanner/HeaderBanner';
-import useHeader from './useHeader';
 
 const Header = () => {
   const router = useRouter();
@@ -26,7 +28,9 @@ const Header = () => {
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(OpenedMenuContext);
 
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
-  const { data } = useHeader();
+  const { data } = useQuery<me>(ME);
+
+  const customer = data?.me.customer;
 
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
@@ -46,7 +50,7 @@ const Header = () => {
   return (
     <HeaderContainer isSmallScreen={isSmallScreen}>
       <HeaderBar isSmallScreen={isSmallScreen}>
-        {!isSmallScreen && <HeaderBanner />}
+        {!isSmallScreen && <HeaderBanner customerName={customer?.firstName} />}
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
@@ -60,11 +64,11 @@ const Header = () => {
               />
             </div>
             <AlignedDiv>
-              <IconWrapper onClick={() => router.push('/login')}>
+              <IconWrapper onClick={() => router.push('/signin')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
                   <span className='sign-in icon-text'>
-                    {data ? data.me.customer.firstName : t('signIn')}
+                    {customer ? customer.firstName : t('signIn')}
                   </span>
                 )}
               </IconWrapper>
@@ -83,7 +87,7 @@ const Header = () => {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
     </HeaderContainer>
-  );
+  )
 };
 
 export default Header;

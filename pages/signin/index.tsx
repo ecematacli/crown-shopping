@@ -2,17 +2,18 @@ import { StyledLoginPage } from './index.styles';
 import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
 import SignInForm from './components/signInForm/SignInForm';
 import SignUpForm from './components/signUpForm/SignUpForm';
-import {
-  I18nPage, includeDefaultNamespaces, useTranslation
-} from '../../i18n';
+import { I18nPage, includeDefaultNamespaces, useTranslation } from '../../i18n';
 import Layout from '../../components/layout/Layout';
+import useScreenWidth from '../../hooks/useScreenWidth';
 
 const LoginPage: I18nPage = () => {
-  const { t } = useTranslation('login')
+  const { t } = useTranslation('signin');
+  const { isSmallScreen } = useScreenWidth();
+
   return (
-    <Layout title={t('login')}>
+    <Layout title={t('signin')}>
       <PaddedLayout>
-        <StyledLoginPage>
+        <StyledLoginPage isSmallScreen={isSmallScreen}>
           <div className='form-container'>
             <SignInForm />
           </div>
@@ -22,14 +23,13 @@ const LoginPage: I18nPage = () => {
         </StyledLoginPage>
       </PaddedLayout>
     </Layout>
-  )
-}
-
-export const getStaticProps = () => {
-  return {
-    props: {
-      namespacesRequired: includeDefaultNamespaces(["login"]),
-    }
-  };
+  );
 };
+
+export const getStaticProps = () => ({
+  props: {
+    namespacesRequired: includeDefaultNamespaces(['login']),
+  },
+});
+
 export default LoginPage;

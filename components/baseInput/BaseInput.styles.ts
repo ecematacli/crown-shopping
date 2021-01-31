@@ -2,7 +2,12 @@ import styled from 'styled-components';
 import { InputGroup } from 'react-bootstrap';
 
 export const StyledInputGroup = styled(InputGroup)`
-  width: ${({ width }) => (width ? `${width}rem` : 'unset')};
+  width: ${({ width }) => (width ? `${width}rem` : '100%')};
+
+  .input-wrapper {
+    margin-bottom: 2rem;
+    background-color: red !important;
+  }
 
   .form-control {
     font-size: 14px;

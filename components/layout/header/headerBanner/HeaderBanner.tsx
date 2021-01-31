@@ -1,25 +1,34 @@
+import { useRouter } from 'next/router';
+
 import { StyledHeaderBanner, StyledContent } from './HeaderBanner.styles';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import { useTranslation } from '../../../../i18n';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
 import LanguageSelector from '../../../languageSelector/LanguageSelector';
 
-const HeaderBanner = () => {
+interface Props {
+  customerName?: string;
+}
+
+const HeaderBanner: React.FC<Props> = ({ customerName }) => {
+  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
   const { t } = useTranslation('header');
 
-  const leftRightPads = isSmallScreen && '0';
-
   return (
     <StyledHeaderBanner isSmallScreen={isSmallScreen}>
-      <PaddedLayout padding={{ rightLeft: leftRightPads }}>
-        <div className="wrapper">
+      <PaddedLayout padding={{ rightLeft: isSmallScreen && '0' }}>
+        <div className='wrapper'>
           <StyledContent isSmallScreen={isSmallScreen}>
-            {!isSmallScreen && <span>Welcome [name]</span>}
+            {!isSmallScreen && (
+              <span onClick={() => router.push('/signin')}>
+                {customerName ? `${t('welcome')} ${customerName}` : `${t('myAccount')}`}
+              </span>
+            )}
             <span>{t('help')}</span>
             <span>{t('newsletter')}</span>
           </StyledContent>
-          <div className="language-selector">
+          <div className='language-selector'>
             <LanguageSelector />
           </div>
         </div>
