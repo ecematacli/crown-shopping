@@ -1,19 +1,21 @@
-import React from 'react'
-import { Carousel } from 'react-bootstrap'
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
 
-import carouselData from './carouselData'
-import { StyledCarousel } from './Carousel.styles'
+import carouselData from './carouselData';
+import { StyledCarousel } from './Carousel.styles';
 
-const HomePageCarousel = () => {
-  return (
-    <StyledCarousel>
-      {carouselData.map(({ alt, imageSrc }) => (
-        <Carousel.Item key={alt}>
-          <img className='d-block w-100' src={imageSrc} alt={alt} />
-        </Carousel.Item>
-      ))}
-    </StyledCarousel>
-  )
-}
+const HomePageCarousel = () => (
+  <StyledCarousel>
+    {carouselData.map(({ id, alt }) => (
+      <Carousel.Item key={alt} className='x'>
+        <img
+          className='carousel-image'
+          alt={alt}
+          src={`/images/carousel-${id}.jpeg`}
+        />
+      </Carousel.Item>
+    ))}
+  </StyledCarousel>
+);
 
-export default HomePageCarousel
+export default HomePageCarousel;

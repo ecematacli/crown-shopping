@@ -1,6 +1,8 @@
-import styled from 'styled-components'
-import { Carousel } from 'react-bootstrap'
+import styled from 'styled-components';
+import { Carousel } from 'react-bootstrap';
 
 export const StyledCarousel = styled(Carousel)`
-  margin-top: 1rem;
-`
+  .carousel-image {
+    width: 100%;
+  }
+`;
