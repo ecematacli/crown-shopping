@@ -16,11 +16,11 @@ export const HeaderContainer = styled.div`
 
 export const StyledContent = styled.div<StyledProps>`
   height: ${({ isSmallScreen }) =>
-    isSmallScreen ? 'calc(100vh - 9rem)' : 'calc(100vh - 15.5rem)'};
+    isSmallScreen ? 'calc(100vh - 9rem)' : 'calc(100vh - 15.3rem)'};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.5rem')};
+  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.3rem')};
   overflow: ${({ isMobileMenuOpen, isMenuOpen }) =>
     isMobileMenuOpen || isMenuOpen ? 'hidden' : 'auto'};
 `;

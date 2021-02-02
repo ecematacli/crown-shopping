@@ -1,13 +1,14 @@
 import Carousel from './Carousel/Carousel';
-import DeliveryBanner from './DeliveryBanner/DeliveryBanner';
+import HomeContent from './HomeContent/HomeContent';
 
 const Home = () => {
   return (
     <div>
-      <DeliveryBanner />
       <Carousel />
+      <HomeContent />
     </div>
   );
 };
 
 export default Home;
+
