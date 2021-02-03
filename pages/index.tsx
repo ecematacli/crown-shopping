@@ -15,8 +15,8 @@ const IndexPage = () => {
 };
 
 export const getServerSideProps = withAuthServerSideProps(
-  null,
-  'index'
+  'index',
+  true
 );
 
 export default IndexPage;

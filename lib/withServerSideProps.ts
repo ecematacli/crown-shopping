@@ -1,17 +1,18 @@
+import { ApolloQueryResult } from '@apollo/client';
 import cookie from 'cookie';
+
 import { getTokenInfo } from '../auth';
 import { getProducts } from '../api/products';
 import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
-
-import { GET_CATEGORY_ID } from '../graphql/queries/categoryId';
-import { ApolloQueryResult } from '@apollo/client';
+import { GET_CATEGORY_ID } from '../graphql/queries/category';
+import { categoryId } from '../graphql/queries/types/categoryId';
 
 export const withAuthServerSideProps = (
-  categoryId: string | null,
-  nameSpace: string
+  nameSpace: string,
+  shouldFetchCategoryId?: boolean
 ) => {
-  return async ({ req }) => {
+  return async ({ req, params }) => {
     const auth = cookie.parse(req ? req.headers.cookie || '' : document.cookie)
       ?.auth;
     const token = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
@@ -20,19 +21,23 @@ export const withAuthServerSideProps = (
     const countryInfo = country ? JSON.parse(country) : null;
 
     const getCategoryId = async () => {
-      const category: ApolloQueryResult<any> = await initializeApollo().query({
-        query: GET_CATEGORY_ID,
-        variables: { where: 'slug(en ="new")' },
-      });
+      const locale = countryInfo ? countryInfo.locale : 'en';
+      // Get new collection id
+      const category: ApolloQueryResult<categoryId> = await initializeApollo().query(
+        {
+          query: GET_CATEGORY_ID,
+          variables: { where: `slug(${locale} ="new")` },
+        }
+      );
 
       return category.data.categories.results[0]?.id;
     };
 
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
-        categoryId ? categoryId : await getCategoryId()
+        !shouldFetchCategoryId ? params.id : await getCategoryId()
       }")`,
-      priceCurrency: countryInfo ? countryInfo.currency : 'EUR',
+      priceCurrency: countryInfo ? countryInfo.currency : 'USD',
       priceCountry: countryInfo ? countryInfo.code : 'US',
     });
 
