@@ -1,12 +1,12 @@
 import { useTranslation } from '../../../i18n';
-import { Product, ProductsResponse } from '../../../api/products';
-import ProductThumbnail from '../components/productThumbnail/ProductThumbnail';
+import ProductThumbnail from '../../../components/productThumbnail/ProductThumbnail';
 import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
 import Layout from '../../../components/layout/Layout';
 import { withAuthServerSideProps } from '../../../lib/withServerSideProps';
+import { Product, ProductsAPIResponse } from '../../../types/productsApi';
 
 interface Props {
-  products: ProductsResponse;
+  products: ProductsAPIResponse;
 }
 
 const ProductsPage = ({ products }: Props) => {
@@ -20,7 +20,7 @@ const ProductsPage = ({ products }: Props) => {
         </div>
       </PaddedLayout>
     </Layout>
-  )
+  );
 }
 
 export const getServerSideProps = withAuthServerSideProps(

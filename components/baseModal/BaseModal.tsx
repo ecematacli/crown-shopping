@@ -1,7 +1,6 @@
 import { Modal } from 'react-bootstrap';
 
 import BaseButton from '../baseButton/BaseButton';
-
 interface Props {
   show: boolean;
   onHide: () => void;

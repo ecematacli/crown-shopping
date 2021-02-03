@@ -1,9 +1,9 @@
 import { Form } from 'react-bootstrap';
 
 import useLogin from './useSignIn';
-import BaseInput from '../../../../components/baseInput/BaseInput';
-import { useTranslation } from '../../../../i18n';
-import BaseButton from '../../../../components/baseButton/BaseButton';
+import BaseInput from '../baseInput/BaseInput';
+import { useTranslation } from '../../i18n';
+import BaseButton from '../baseButton/BaseButton';
 
 const SignInForm = () => {
   const { t } = useTranslation('signin');

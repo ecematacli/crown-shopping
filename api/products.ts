@@ -1,24 +1,7 @@
 import axios from 'axios';
 
+import { ProductsAPIResponse } from '../types/productsApi';
 import config from '../config';
-
-export interface Product {
-  categories: { id: string; typeId: string }[];
-  createdAt: Date;
-  lastModifiedAt: Date;
-  id: string;
-  masterVariant: {
-    id: number;
-    images: { url: string; dimensions: { w: number; h: number } }[];
-  };
-}
-export interface ProductsResponse {
-  results: Product[];
-  limit: number;
-  total: number;
-  count: number;
-  offset: number;
-}
 
 export const getProducts = async (
   token: string,
@@ -32,7 +15,7 @@ export const getProducts = async (
     .join('&');
 
   const URL = `${baseURL}?limit=20&${objToUrl}`;
-  const response = await axios.get<ProductsResponse>(`${URL}`, {
+  const response = await axios.get<ProductsAPIResponse>(`${URL}`, {
     headers: { Authorization: headerConfig },
   });
   return response;

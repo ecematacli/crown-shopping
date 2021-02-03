@@ -1,11 +1,16 @@
-import Carousel from './Carousel/Carousel';
-import HomeContent from './HomeContent/HomeContent';
+import Carousel from './carousel/Carousel';
+import HomeContent from './homeContent/HomeContent';
+import { ProductsAPIResponse } from '../../types/productsApi';
 
-const Home = () => {
+interface Props {
+  products: ProductsAPIResponse;
+}
+
+const Home = ({ products }: Props) => {
   return (
     <div>
       <Carousel />
-      <HomeContent />
+      <HomeContent products={products} />
     </div>
   );
 };
