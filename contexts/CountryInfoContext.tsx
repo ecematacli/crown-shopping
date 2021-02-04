@@ -18,14 +18,13 @@ export interface CountryInfoContextInt {
 
 export const CountryInfoContext = createContext<CountryInfoContextInt>(null);
 
-const getInitialValue = (): Country => getCookie('country') || languageOptions.en;
+const getInitialValue = (): Country =>
+  languageOptions[getCookie('next-i18next')] || languageOptions.en;
 
 export const CountryInfoContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [countryInfo, setCountryInfo] = useState<Country>(() =>
-    getInitialValue()
-  );
+  const [countryInfo, setCountryInfo] = useState<Country>(getInitialValue);
 
   const handleCountryChange = (country: Country) => {
     setCookie('country', country);

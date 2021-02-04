@@ -18,6 +18,7 @@ export const withAuthServerSideProps = (
     const token = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
 
     const country = cookie.parse(req ? req.headers.cookie : '')?.country;
+
     const countryInfo = country ? JSON.parse(country) : null;
 
     const getCategoryId = async () => {

@@ -1,51 +1,24 @@
 import styled from 'styled-components';
 
-export const StyledDeliveryBanner = styled.div`
-  width: 100%;
-  border-bottom: ${({ theme: { palette } }) =>
-    `1px solid ${palette.lightGrays[3]}`};
+export const StyledProductTiles = styled.div`
+  padding: 4rem 0;
+  background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
 
-  .wrapper {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    border: none;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    text-align: center;
-
-    & > * {
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      transition: all 0.2s;
+  .product-carousel {
+    .react-multiple-carousel__arrow--left {
+      left: 0px;
     }
 
-    &:hover,
-    .text-visible {
-      background-color: red;
-      transform: translateY(100%);
+    .react-multiple-carousel__arrow--right {
+      right: 0;
     }
 
-    &:hover,
-    .text-invisible {
-      top: 0;
+    &:first-child {
+      padding-left: 8px;
     }
   }
 
-  .text-visible {
-    padding: 1.5rem 0;
-  }
-
-  .text-invisible {
-    position: absolute;
-    padding: 2rem 0 1rem;
-    left: 0;
-    top: -100%;
-  }
-
-  &:hover {
-    background-color: red;
-    transform: translateY(100%);
+  .product-carousel-item {
+    padding-right: 15px;
   }
 `;

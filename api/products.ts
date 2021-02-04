@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ProductsAPIResponse } from '../types/productsApi';
+import { ProductsAPIResponse } from '../types/products';
 import config from '../config';
 
 export const getProducts = async (

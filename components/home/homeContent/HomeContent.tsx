@@ -1,5 +1,5 @@
 import ProductTiles from '../productTiles/ProductTiles';
-import { ProductsAPIResponse } from '../../../types/productsApi';
+import { ProductsAPIResponse } from '../../../types/products';
 
 interface Props {
   products: ProductsAPIResponse;

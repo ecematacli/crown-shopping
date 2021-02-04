@@ -2,7 +2,7 @@ import Home from '../components/home/Home';
 import Layout from '../components/layout/Layout';
 import { useTranslation } from '../i18n';
 import { withAuthServerSideProps } from '../lib/withServerSideProps';
-import { ProductsAPIResponse } from '../types/productsApi';
+import { ProductsAPIResponse } from '../types/products';
 
 interface Props {
   products: ProductsAPIResponse;

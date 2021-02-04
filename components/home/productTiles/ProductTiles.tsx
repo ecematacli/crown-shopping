@@ -1,7 +1,9 @@
 import Carousel from "react-multi-carousel";
 
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
-import { ProductsAPIResponse } from '../../../types/productsApi';
+import { ProductsAPIResponse } from '../../../types/products';
+import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
+import { StyledProductTiles } from './ProductTiles.styles';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -9,6 +11,7 @@ interface Props {
 
 
 const ProductTiles = ({ products }: Props) => {
+  const productsData = [...products?.results].reverse().slice(0, 12);
 
   const responsive = {
     desktop: {
@@ -38,36 +41,33 @@ const ProductTiles = ({ products }: Props) => {
   }
 
   return (
-    <PaddedLayout>
-      <Carousel
-        additionalTransfrom={0}
-        arrows
-        centerMode={false}
-        className=""
-        containerClass="container-with-dots"
-        dotListClass=""
-        draggable
-        focusOnSelect={false}
-        infinite
-        itemClass=""
-        keyBoardControl
-        minimumTouchDrag={80}
-        renderButtonGroupOutside={false}
-        renderDotsOutside={false}
-        responsive={responsive}
-        showDots={false}
-        sliderClass=""
-        slidesToSlide={2}
-        swipeable
-      >
-        {products.results.map(p => (
+    <StyledProductTiles>
+      <PaddedLayout>
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          centerMode={false}
+          className="product-carousel"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass="product-carousel-item"
+          renderButtonGroupOutside={true}
+          keyBoardControl
+          minimumTouchDrag={80}
+          responsive={responsive}
+          sliderClass=""
+          slidesToSlide={2}
+          swipeable
+        >
+          {productsData.map(product => (
+            <ProductThumbnail product={product} key={product.id} />
+          ))}
 
-          <img key={p.id} src={p.masterVariant.images[0].url} width={309} height={500} />
-        ))}
-
-
-      </Carousel>
-    </PaddedLayout>
+        </Carousel>
+      </PaddedLayout>
+    </StyledProductTiles>
   );
 };
 

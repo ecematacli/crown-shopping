@@ -3,7 +3,7 @@ import ProductThumbnail from '../../../components/productThumbnail/ProductThumbn
 import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
 import Layout from '../../../components/layout/Layout';
 import { withAuthServerSideProps } from '../../../lib/withServerSideProps';
-import { Product, ProductsAPIResponse } from '../../../types/productsApi';
+import { Product, ProductsAPIResponse } from '../../../types/products';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -16,15 +16,15 @@ const ProductsPage = ({ products }: Props) => {
     <Layout title={t('title')}>
       <PaddedLayout>
         <div>
-          {products.results.map((pr: Product) => <ProductThumbnail product={pr} key={pr.id} />)}
+          {products.results.map((pr: Product) => (
+            <ProductThumbnail product={pr} key={pr.id} width={30.9} />
+          ))}
         </div>
       </PaddedLayout>
     </Layout>
   );
-}
+};
 
-export const getServerSideProps = withAuthServerSideProps(
-  'products'
-);
+export const getServerSideProps = withAuthServerSideProps('products');
 
 export default ProductsPage;

@@ -11,6 +11,7 @@ export default {
       '#ccc',
       '#f2f5f8',
       '#E7E7E7',
+      '#f4f4f4',
     ],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],

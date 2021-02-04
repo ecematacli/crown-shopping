@@ -34,7 +34,7 @@ export const clientLogin = async (
 ) => {
   clearCookie('auth');
 
-  tokenProvider.fetchTokenInfo = sdkAuth =>
+  tokenProvider.fetchTokenInfo = (sdkAuth: any) =>
     sdkAuth.customerPasswordFlow({ username, password });
   tokenProvider.invalidateTokenInfo();
 

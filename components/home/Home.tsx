@@ -1,6 +1,6 @@
 import Carousel from './carousel/Carousel';
 import HomeContent from './homeContent/HomeContent';
-import { ProductsAPIResponse } from '../../types/productsApi';
+import { ProductsAPIResponse } from '../../types/products';
 
 interface Props {
   products: ProductsAPIResponse;
