@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledProductTiles = styled.div`
+export const StyledProductCarousel = styled.div`
   padding: 4rem 0;
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
 

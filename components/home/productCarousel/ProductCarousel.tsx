@@ -3,14 +3,13 @@ import Carousel from "react-multi-carousel";
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import { ProductsAPIResponse } from '../../../types/products';
 import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
-import { StyledProductTiles } from './ProductTiles.styles';
+import { StyledProductCarousel } from './ProductCarousel.styles';
 
 interface Props {
   products: ProductsAPIResponse;
 }
 
-
-const ProductTiles = ({ products }: Props) => {
+const ProductCarousel = ({ products }: Props) => {
   const productsData = [...products?.results].reverse().slice(0, 12);
 
   const responsive = {
@@ -41,7 +40,7 @@ const ProductTiles = ({ products }: Props) => {
   }
 
   return (
-    <StyledProductTiles>
+    <StyledProductCarousel>
       <PaddedLayout>
         <Carousel
           additionalTransfrom={0}
@@ -64,11 +63,10 @@ const ProductTiles = ({ products }: Props) => {
           {productsData.map(product => (
             <ProductThumbnail product={product} key={product.id} />
           ))}
-
         </Carousel>
       </PaddedLayout>
-    </StyledProductTiles>
+    </StyledProductCarousel>
   );
 };
 
-export default ProductTiles;
+export default ProductCarousel;
