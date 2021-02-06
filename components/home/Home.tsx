@@ -1,28 +1,21 @@
-import Carousel from './carousel/Carousel';
+import { Fragment } from 'react';
+
 import { ProductsAPIResponse } from '../../types/products';
+import Carousel from './carousel/Carousel';
 import ProductCarousel from './productCarousel/ProductCarousel';
-import ProductBanner from './productBanner/ProductBanner';
-import PaddedLayout from '../paddedLayout/PaddedLayout';
-import { BannerContainer } from './Home.styles';
-import useScreenWidth from '../../hooks/useScreenWidth';
+import ProductBanners from './productBanners/ProductBanners';
 
 interface Props {
   products: ProductsAPIResponse;
 }
 
 const Home = ({ products }: Props) => {
-  const { isSmallScreen } = useScreenWidth();
-
   return (
-    <div>
+    <Fragment>
       <Carousel />
       <ProductCarousel products={products} />
-      <PaddedLayout>
-        <BannerContainer>
-          <ProductBanner location='row1' height={!isSmallScreen ? 42 : 19.8} />
-        </BannerContainer>
-      </PaddedLayout>
-    </div>
+      <ProductBanners />
+    </Fragment>
   );
 };
 

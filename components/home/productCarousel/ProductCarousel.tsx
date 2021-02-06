@@ -4,12 +4,14 @@ import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import { ProductsAPIResponse } from '../../../types/products';
 import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
 import { StyledProductCarousel } from './ProductCarousel.styles';
+import useScreenWidth from '../../../hooks/useScreenWidth';
 
 interface Props {
   products: ProductsAPIResponse;
 }
 
 const ProductCarousel = ({ products }: Props) => {
+  const { isSmallScreen } = useScreenWidth();
   const productsData = [...products?.results].reverse().slice(0, 12);
 
   const responsive = {
@@ -40,7 +42,7 @@ const ProductCarousel = ({ products }: Props) => {
   }
 
   return (
-    <StyledProductCarousel>
+    <StyledProductCarousel isSmallScreen={isSmallScreen}>
       <PaddedLayout>
         <Carousel
           additionalTransfrom={0}

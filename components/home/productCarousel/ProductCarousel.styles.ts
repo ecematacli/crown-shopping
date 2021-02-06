@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledProductCarousel = styled.div`
-  padding: 4rem 0;
+export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
+  padding: ${({ isSmallScreen }) => (!isSmallScreen ? '4em 0' : '3rem 0')};
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
 
   .product-carousel {
