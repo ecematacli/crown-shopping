@@ -18,7 +18,11 @@ const ProductBanners = () => {
         <Container>
           <Row>
             <Col>
-              <ProductBanner location='row1' height={height} />
+              <ProductBanner
+                location='row1'
+                height={height}
+                collection={{ title: t('bannerOne'), subtitle: t('shopNow') }}
+              />
             </Col>
           </Row>
           <Row>
@@ -26,14 +30,14 @@ const ProductBanners = () => {
               <ProductBanner
                 location='row2-left'
                 height={height}
-                collection={{ title: t('bannerOne'), subtitle: t('shopNow') }}
+                collection={{ title: t('bannerTwo'), subtitle: t('shopNow') }}
               />
             </Col>
             <Col xs={12} sm={12} md={5} lg={5} className='pad-left'>
               <ProductBanner
                 location='row2-right'
                 height={height}
-                collection={{ title: t('bannerTwo'), subtitle: t('shopNow') }}
+                collection={{ title: t('bannerThree'), subtitle: t('shopNow') }}
               />
             </Col>
           </Row>
@@ -42,14 +46,14 @@ const ProductBanners = () => {
               <ProductBanner
                 location='row3-left'
                 height={height}
-                collection={{ title: t('bannerThree'), subtitle: t('shopNow') }}
+                collection={{ title: t('bannerFour'), subtitle: t('shopNow') }}
               />
             </Col>
             <Col xs={12} sm={12} md={7} lg={7} className='pad-left'>
               <ProductBanner
                 location='row3-right'
                 height={height}
-                collection={{ title: t('bannerFour'), subtitle: t('shopNow') }}
+                collection={{ title: t('bannerFive'), subtitle: t('shopNow') }}
               />
             </Col>
           </Row>

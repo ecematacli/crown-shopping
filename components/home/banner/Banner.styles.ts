@@ -12,7 +12,6 @@ export const BannerContainer = styled.div<StyledProps>`
   height: ${({ height }) => (height ? `${height}rem` : 'auto')};
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
   justify-content: center;
   overflow: hidden;
 
@@ -49,18 +48,18 @@ export const BannerContainer = styled.div<StyledProps>`
     background-color: white;
     opacity: 0.7;
     position: absolute;
+    bottom: 2rem;
+    text-transform: uppercase;
 
     .title {
       font-weight: bold;
       margin: 0 0.6rem 0;
       font-size: 2.2rem;
-      text-transform: uppercase;
     }
 
     .subtitle {
       font-weight: lighter;
       font-size: 16px;
-      text-transform: uppercase;
     }
   }
 `;
