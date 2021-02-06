@@ -52,7 +52,6 @@ const ProductCarousel = ({ products }: Props) => {
           arrows
           centerMode={false}
           className='product-carousel'
-          dotListClass=''
           draggable
           focusOnSelect={false}
           infinite
@@ -61,8 +60,8 @@ const ProductCarousel = ({ products }: Props) => {
           keyBoardControl
           minimumTouchDrag={80}
           responsive={responsive}
-          sliderClass=''
           slidesToSlide={2}
+          customTransition={isSmallScreen && '950ms'}
           swipeable>
           {productsData.map((product: Product) => (
             <ProductThumbnail product={product} key={product.id}>

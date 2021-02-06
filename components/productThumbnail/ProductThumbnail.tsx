@@ -1,17 +1,20 @@
+import { useContext } from 'react';
 import { Card } from 'react-bootstrap';
+
 import { StyledCard } from './ProductThumbnail.styles';
 import { Product } from '../../types/products';
 import { CountryInfoContext } from '../../contexts/CountryInfoContext';
-import { useContext } from 'react';
+import useScreenWidth from '../../hooks/useScreenWidth';
 
 interface Props {
   product: Product;
-  children?: React.ReactNode
+  children?: React.ReactNode;
   width?: number;
 }
 
 const ProductThumbnail = ({ product, children, width }: Props) => {
   const { countryInfo: { locale } } = useContext(CountryInfoContext);
+  const { isSmallScreen } = useScreenWidth();
 
   const name: string = product.name[locale];
   const imageSrc = product.masterVariant.images[0].url;
@@ -21,7 +24,7 @@ const ProductThumbnail = ({ product, children, width }: Props) => {
   console.log('PRODUCT...', product)
 
   return (
-    <StyledCard width={width}>
+    <StyledCard width={width} isSmallScreen={isSmallScreen}>
       <Card.Img variant='top' src={imageSrc} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

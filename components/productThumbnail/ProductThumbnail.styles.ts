@@ -3,11 +3,12 @@ import { Card } from 'react-bootstrap';
 
 interface StyledProps {
   width: number;
+  isSmallScreen: boolean;
 }
 
 export const StyledCard = styled(Card)`
   width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
-  padding: 1.6rem 1rem;
+  padding: ${({ isSmallScreen }) => `1.6rem ${!isSmallScreen ? '1rem' : '0'}`};
   font-weight: 16px;
 
   .card-title {
