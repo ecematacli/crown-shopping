@@ -1,7 +1,9 @@
+import { GetServerSideProps } from 'next';
+
 import Home from '../components/home/Home';
 import Layout from '../components/layout/Layout';
 import { useTranslation } from '../i18n';
-import { withAuthServerSideProps } from '../lib/withServerSideProps';
+import { withServerSideProps } from '../lib/withServerSideProps';
 import { ProductsAPIResponse } from '../types/products';
 
 interface Props {
@@ -18,7 +20,7 @@ const IndexPage = ({ products }: Props) => {
   );
 };
 
-export const getServerSideProps = withAuthServerSideProps(
+export const getServerSideProps: GetServerSideProps = withServerSideProps(
   'index',
   true
 );

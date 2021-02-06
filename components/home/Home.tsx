@@ -1,6 +1,6 @@
 import Carousel from './carousel/Carousel';
 import { ProductsAPIResponse } from '../../types/products';
-import ProductTiles from './productCarousel/ProductCarousel';
+import ProductCarousel from './productCarousel/ProductCarousel';
 import ProductBanner from './productBanner/ProductBanner';
 import PaddedLayout from '../paddedLayout/PaddedLayout';
 import { BannerContainer } from './Home.styles';
@@ -12,13 +12,14 @@ interface Props {
 
 const Home = ({ products }: Props) => {
   const { isSmallScreen } = useScreenWidth();
+
   return (
     <div>
       <Carousel />
-      <ProductTiles products={products} />
+      <ProductCarousel products={products} />
       <PaddedLayout>
         <BannerContainer>
-          <ProductBanner location='row1' height={!isSmallScreen ? 40 : 19.8} />
+          <ProductBanner location='row1' height={!isSmallScreen ? 42 : 19.8} />
         </BannerContainer>
       </PaddedLayout>
     </div>

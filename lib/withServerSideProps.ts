@@ -7,14 +7,15 @@ import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
+import { GetServerSidePropsContext } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
-export const withAuthServerSideProps = (
+export const withServerSideProps = (
   nameSpace: string,
   shouldFetchCategoryId?: boolean
 ) => {
-  return async ({ req, params }) => {
-    const auth = cookie.parse(req ? req.headers.cookie || '' : document.cookie)
-      ?.auth;
+  return async ({ req, params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
+    const auth = cookie.parse(req ? req.headers.cookie : '')?.auth;
     const token = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
 
     const country = cookie.parse(req ? req.headers.cookie : '')?.country;
