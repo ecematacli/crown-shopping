@@ -16,7 +16,7 @@ export default {
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],
     whites: ['#fff'],
-    blacks: ['#1F1F1F', 'rgba(0, 0, 0, 0.5)'],
+    blacks: ['#1F1F1F', 'rgba(0, 0, 0, 0.5)', '#343a40'],
   },
   breakpoints: {
     md: '768px',

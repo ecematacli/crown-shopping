@@ -23,7 +23,7 @@ export interface Product {
   masterVariant: {
     id: number;
     images: { url: string; dimensions: { w: number; h: number } }[];
-    price: { country: string };
+    price: { country: string; value: PriceValues };
     prices: ProductPrice[];
   };
   slug: { en: string; de: string };

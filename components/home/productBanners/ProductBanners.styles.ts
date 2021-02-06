@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-export const BannerContainer = styled.div<{ isSmallScreen }>`
+export const BannerContainer = styled.div<{ isSmallScreen: boolean }>`
   padding: ${({ isSmallScreen }) =>
     !isSmallScreen ? '4em 0 6rem' : '2rem 0 4rem'};
-  width: 100%;
-  max-width: 100%;
 
   .col,
   .col-md-6,

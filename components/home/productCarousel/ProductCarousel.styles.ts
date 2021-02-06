@@ -21,4 +21,16 @@ export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
   .product-carousel-item {
     padding-right: 15px;
   }
+
+  .btn {
+    margin-top: 0.7rem;
+    border-color: ${({ theme: { palette } }) => palette.blacks[2]};
+    color: ${({ theme: { palette } }) => palette.blacks[2]};
+    padding: 1rem;
+
+    &:hover {
+      background-color: ${({ theme: { palette } }) => palette.blacks[2]};
+      color: ${({ theme: { palette } }) => palette.whites[0]};
+    }
+  }
 `;

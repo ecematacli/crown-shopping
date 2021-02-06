@@ -1,23 +1,32 @@
 import { Card } from 'react-bootstrap';
 import { StyledCard } from './ProductThumbnail.styles';
+import { Product } from '../../types/products';
+import { CountryInfoContext } from '../../contexts/CountryInfoContext';
+import { useContext } from 'react';
 
 interface Props {
-  product: any;
+  product: Product;
   children?: React.ReactNode
   width?: number;
 }
 
-const ProductThumbnail: React.FC<Props> = ({ product, children, width }) => {
+const ProductThumbnail = ({ product, children, width }: Props) => {
+  const { countryInfo: { locale } } = useContext(CountryInfoContext);
+
+  const name: string = product.name[locale];
   const imageSrc = product.masterVariant.images[0].url;
+  const price = product.masterVariant.price.value.centAmount;
+
+
+  console.log('PRODUCT...', product)
 
   return (
     <StyledCard width={width}>
       <Card.Img variant='top' src={imageSrc} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{name}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {price}
         </Card.Text>
         {children && children}
       </Card.Body>
