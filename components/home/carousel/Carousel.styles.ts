@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Carousel } from 'react-bootstrap';
 
-export const StyledCarousel = styled(Carousel)`
+export const StyledCarousel = styled.div<{ isSmallScreen: boolean }>`
   .carousel-image {
     width: 100%;
+    height: ${({ isSmallScreen }) => (isSmallScreen ? '18rem' : 'unset')};
   }
 `;

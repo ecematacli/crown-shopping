@@ -43,6 +43,7 @@ export const withServerSideProps = (
       priceCountry: countryInfo ? countryInfo.code : 'US',
     });
 
+    console.log('CALLEDDDDDDDD', data);
     return {
       props: {
         namespacesRequired: includeDefaultNamespaces([`${nameSpace}`]),

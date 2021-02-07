@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 interface StyledProps {
   isMenuOpen: boolean;
-  isMobileMenuOpen: boolean;
   isSmallScreen: boolean;
 }
 
@@ -21,8 +20,7 @@ export const StyledContent = styled.div<StyledProps>`
   flex-direction: column;
   justify-content: space-between;
   margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.3rem')};
-  overflow: ${({ isMobileMenuOpen, isMenuOpen }) =>
-    isMobileMenuOpen || isMenuOpen ? 'hidden' : 'auto'};
+  overflow: auto;
 `;
 
 export const BodyLayout = styled.div<{ isMenuOpen: boolean; }>`

@@ -20,8 +20,6 @@ const ProductBanner = ({ width, height, location, content, category }: Props) =>
 
   const { data } = useQuery(GET_CATEGORY_ID, { variables });
 
-  console.log('is data coming in here?????', data)
-  // const { } = useRouter();
   return (
     <BannerContainer width={width} height={height} location={location}>
       <div className='banner-image' />

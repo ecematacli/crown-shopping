@@ -13,7 +13,7 @@ import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
 import useScreenWidth from '../../hooks/useScreenWidth';
 
 const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
-  const { isMenuOpen, isMobileMenuOpen } = useContext(OpenedMenuContext);
+  const { isMenuOpen } = useContext(OpenedMenuContext);
   const { isSmallScreen } = useScreenWidth();
 
   return (
@@ -30,7 +30,6 @@ const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
         <LayoutContentContainer>
           <StyledContent
             isMenuOpen={isMenuOpen}
-            isMobileMenuOpen={isMobileMenuOpen}
             isSmallScreen={isSmallScreen}>
             {children}
             <Footer />
