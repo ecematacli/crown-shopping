@@ -20,7 +20,7 @@ export const withServerSideProps = (
 
     const country = cookie.parse(req ? req.headers.cookie : '')?.country;
 
-    const countryInfo = country ? JSON.parse(country) : null;
+    const countryInfo = country ? JSON.parse(country) : '';
 
     const getCategoryId = async () => {
       const locale = countryInfo ? countryInfo.locale : 'en';

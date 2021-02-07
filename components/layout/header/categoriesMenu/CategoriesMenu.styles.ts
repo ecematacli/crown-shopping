@@ -20,10 +20,11 @@ export const StyledCategoryMenu = styled.div`
     height: 100%;
     width: 100vw;
     z-index: 15 !important;
-    transition: all 0.5s ease-in;
+    transition: all 0.5s cubic-bezier(0.4, 0.48, 0.45, 0.4);
   }
 
   .closed-sidebar {
+    visibility: hidden;
     left: -500px;
   }
 `;

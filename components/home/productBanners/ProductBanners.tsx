@@ -57,6 +57,15 @@ const ProductBanners = () => {
               />
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <ProductBanner
+                location='row4'
+                height={height}
+                collection={{ title: t('bannerSix'), subtitle: t('shopNow') }}
+              />
+            </Col>
+          </Row>
         </Container>
       </BannerContainer>
     </PaddedLayout>

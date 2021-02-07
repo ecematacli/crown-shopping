@@ -5,6 +5,10 @@ export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
 
   .product-carousel {
+    .react-multiple-carousel__arrow {
+      z-index: 1 !important;
+    }
+
     .react-multiple-carousel__arrow--left {
       left: 0px;
     }
