@@ -32,12 +32,10 @@ const LanguageSelector = () => {
   return (
     <div>
       <LanguageSelectorContainer isSmallScreen={isSmallScreen}>
-        <div className='flag-wrapper-div'>
+        <div className='flag-wrapper-div' onClick={changeLanguage}>
           <ReactCountryFlag className='country-flag' countryCode={code} />
           <span className='country-name'>{language}</span>
-          <span onClick={changeLanguage} className='flag-icon'>
-            <MdKeyboardArrowDown size={18} />
-          </span>
+          <MdKeyboardArrowDown size={18} />
         </div>
       </LanguageSelectorContainer>
       <BaseModal show={openModal} onHide={() => setOpenModal(false)} />

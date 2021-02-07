@@ -16,14 +16,11 @@ export const LanguageSelectorContainer = styled.div<{ isSmallScreen: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 
   .country-flag {
     font-size: 2rem !important;
-  }
-
-  .flag-icon {
-    cursor: pointer;
   }
 
   .country-name {
