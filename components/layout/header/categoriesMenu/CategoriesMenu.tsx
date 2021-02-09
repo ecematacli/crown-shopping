@@ -5,7 +5,6 @@ import { MdClose } from 'react-icons/md';
 import { RiArrowRightSLine, RiArrowDownSLine } from 'react-icons/ri';
 import classNames from 'classnames';
 
-import { capitalizeFirstLetter } from '../../../../utils';
 import useCategoriesMenu, { OpenedCategory } from './useCategoriesMenu';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
@@ -84,7 +83,7 @@ const CategoriesMenu: React.FC<Props> = ({
                   !isSmallScreen && toggleOpenCategory(category)
                 }
                 onClick={() => listItemNameClick(category.id, category.slug)}>
-                {capitalizeFirstLetter(category.name.toUpperCase())}
+                {category.name.toUpperCase()}
               </span>
               {isSmallScreen &&
                 (isMyCatOpened ? (

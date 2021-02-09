@@ -5,6 +5,7 @@ import { StyledProductThumbnail } from './ProductThumbnail.styles';
 import { Product } from '../../types/products';
 import { CountryInfoContext } from '../../contexts/CountryInfoContext';
 import useScreenWidth from '../../hooks/useScreenWidth';
+import { formatCurrency } from '../../utils/helpers';
 
 interface Props {
   product: Product;
@@ -14,21 +15,24 @@ interface Props {
 
 const ProductThumbnail = ({ product, children, width }: Props) => {
   const {
-    countryInfo: { locale },
+    countryInfo: { locale, code, currency },
   } = useContext(CountryInfoContext);
   const { isSmallScreen } = useScreenWidth();
+
+  const countryCode = `${locale}-${code}`;
 
   const name: string = product.name[locale];
   const imageSrc = product.masterVariant.images[0].url;
   const price = product.masterVariant.price.value.centAmount;
+  const fractionDigits = product.masterVariant.price.value.fractionDigits;
 
   return (
     <StyledProductThumbnail width={width} isSmallScreen={isSmallScreen}>
-      <Card className='card'>
+      <Card>
         <Card.Img variant='top' src={imageSrc} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>{price}</Card.Text>
+          <Card.Text>{formatCurrency(price, countryCode, currency, fractionDigits)}</Card.Text>
           {children && children}
         </Card.Body>
       </Card>

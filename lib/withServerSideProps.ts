@@ -1,3 +1,4 @@
+import { GetServerSidePropsContext } from 'next';
 import { ApolloQueryResult } from '@apollo/client';
 import cookie from 'cookie';
 
@@ -7,7 +8,6 @@ import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
-import { GetServerSidePropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 export const withServerSideProps = (
@@ -35,6 +35,7 @@ export const withServerSideProps = (
       return category.data.categories.results[0]?.id;
     };
 
+    console.log('token???', token);
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
         !shouldFetchCategoryId ? params.id : await getCategoryId()
@@ -43,7 +44,6 @@ export const withServerSideProps = (
       priceCountry: countryInfo ? countryInfo.code : 'US',
     });
 
-    console.log('CALLEDDDDDDDD', data);
     return {
       props: {
         namespacesRequired: includeDefaultNamespaces([`${nameSpace}`]),
