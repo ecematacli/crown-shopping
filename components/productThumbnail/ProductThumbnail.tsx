@@ -21,10 +21,14 @@ const ProductThumbnail = ({ product, children, width }: Props) => {
 
   const countryCode = `${locale}-${code}`;
 
+  const findProductPrice = () => {
+    // return product.prices.find(price =>)
+  }
+
   const name: string = product.name[locale];
   const imageSrc = product.masterVariant.images[0].url;
-  const price = product.masterVariant.price.value.centAmount;
-  const fractionDigits = product.masterVariant.price.value.fractionDigits;
+  const price = product.masterVariant?.price.value.centAmount;
+  const fractionDigits = product.masterVariant?.price.value.fractionDigits;
 
   return (
     <StyledProductThumbnail width={width} isSmallScreen={isSmallScreen}>

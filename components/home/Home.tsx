@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { ProductsAPIResponse } from '../../types/products';
 import Carousel from './carousel/Carousel';
 import ProductCarousel from './productCarousel/ProductCarousel';
-import ProductBanners from './homeBanners/HomeBanners';
+import ProductBanners from './categoryBanners/CategoryBanners';
 
 interface Props {
   products: ProductsAPIResponse;

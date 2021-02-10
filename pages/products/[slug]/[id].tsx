@@ -18,8 +18,8 @@ const ProductsPage = ({ products }: Props) => {
     <Layout title={t('title')}>
       <PaddedLayout>
         <div>
-          {products.results.map((pr: Product) => (
-            <ProductThumbnail product={pr} key={pr.id} width={30.9} />
+          {products.results.map((product: Product) => (
+            <ProductThumbnail product={product} key={product.id} width={30.9} />
           ))}
         </div>
       </PaddedLayout>

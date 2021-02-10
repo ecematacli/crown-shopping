@@ -35,7 +35,6 @@ export const withServerSideProps = (
       return category.data.categories.results[0]?.id;
     };
 
-    console.log('token???', token);
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
         !shouldFetchCategoryId ? params.id : await getCategoryId()

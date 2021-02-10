@@ -1,8 +1,8 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
-import ProductBanner from '../productBanner/ProductBanner';
+import ProductBanner from '../categoryBanner/CategoryBanner';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
-import { BannerContainer } from './HomeBanners.styles';
+import { BannerContainer } from './CategoryBanners.styles';
 import useScreenWidth from '../../../hooks/useScreenWidth';
 import { useTranslation } from '../../../i18n';
 

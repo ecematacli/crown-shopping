@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 
-import { BannerContainer } from './ProductBanner.styles';
+import { BannerContainer } from './CategoryBanner.styles';
 import { GET_CATEGORY_ID } from '../../../graphql/queries/category';
 import { CountryInfoContext } from '../../../contexts/CountryInfoContext';
 import { useContext } from 'react';
