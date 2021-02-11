@@ -21,14 +21,16 @@ const ProductThumbnail = ({ product, children, width }: Props) => {
 
   const countryCode = `${locale}-${code}`;
 
-  const findProductPrice = () => {
-    // return product.prices.find(price =>)
-  }
+  const { masterVariant } = product;
 
   const name: string = product.name[locale];
-  const imageSrc = product.masterVariant.images[0].url;
-  const price = product.masterVariant?.price.value.centAmount;
-  const fractionDigits = product.masterVariant?.price.value.fractionDigits;
+  const imageSrc = masterVariant.images[0].url;
+  const price =
+    masterVariant.price?.value.centAmount ||
+    masterVariant.prices[0].value.centAmount;
+  const fractionDigits =
+    masterVariant.price?.value.fractionDigits |
+    masterVariant.prices[0].value.fractionDigits;
 
   return (
     <StyledProductThumbnail width={width} isSmallScreen={isSmallScreen}>
@@ -36,7 +38,9 @@ const ProductThumbnail = ({ product, children, width }: Props) => {
         <Card.Img variant='top' src={imageSrc} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>{formatCurrency(price, countryCode, currency, fractionDigits)}</Card.Text>
+          <Card.Text>
+            {formatCurrency(price, countryCode, currency, fractionDigits)}
+          </Card.Text>
           {children && children}
         </Card.Body>
       </Card>

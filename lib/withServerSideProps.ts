@@ -2,7 +2,6 @@ import { GetServerSidePropsContext } from 'next';
 import { ApolloQueryResult } from '@apollo/client';
 import cookie from 'cookie';
 
-import { getTokenInfo } from '../auth';
 import { getProducts } from '../api/products';
 import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
@@ -16,7 +15,7 @@ export const withServerSideProps = (
 ) => {
   return async ({ req, params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
     const auth = cookie.parse(req ? req.headers.cookie : '')?.auth;
-    const token = auth ? JSON.parse(auth)?.access_token : await getTokenInfo();
+    const token = auth ? JSON.parse(auth)?.access_token : '';
 
     const country = cookie.parse(req ? req.headers.cookie : '')?.country;
 
