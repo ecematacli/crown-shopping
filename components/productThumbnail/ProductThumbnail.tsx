@@ -11,9 +11,10 @@ interface Props {
   product: Product;
   children?: React.ReactNode;
   width?: number;
+  className?: string;
 }
 
-const ProductThumbnail = ({ product, children, width }: Props) => {
+const ProductThumbnail = ({ product, width, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
   } = useContext(CountryInfoContext);
@@ -37,10 +38,12 @@ const ProductThumbnail = ({ product, children, width }: Props) => {
       <Card>
         <Card.Img variant='top' src={imageSrc} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {formatCurrency(price, countryCode, currency, fractionDigits)}
-          </Card.Text>
+          <div className='card-body-wrapper'>
+            <Card.Title>{name}</Card.Title>
+            <Card.Text>
+              {formatCurrency(price, countryCode, currency, fractionDigits)}
+            </Card.Text>
+          </div>
           {children && children}
         </Card.Body>
       </Card>

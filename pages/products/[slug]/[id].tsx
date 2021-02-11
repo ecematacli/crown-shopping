@@ -6,6 +6,8 @@ import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
 import Layout from '../../../components/layout/Layout';
 import { withServerSideProps } from '../../../lib/withServerSideProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
+import useScreenWidth from '../../../hooks/useScreenWidth';
+import { ProductListContainer } from './Products.styles';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -13,15 +15,18 @@ interface Props {
 
 const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
+  const { isSmallScreen } = useScreenWidth();
 
   return (
     <Layout title={t('title')}>
       <PaddedLayout>
-        <div>
+        <ProductListContainer isSmallScreen={isSmallScreen}>
           {products.results.map((product: Product) => (
-            <ProductThumbnail product={product} key={product.id} width={30.9} />
+            <div className='product-thumbnail'>
+              <ProductThumbnail product={product} key={product.id} />
+            </div>
           ))}
-        </div>
+        </ProductListContainer>
       </PaddedLayout>
     </Layout>
   );

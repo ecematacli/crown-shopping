@@ -6,28 +6,42 @@ interface StyledProps {
 }
 
 export const StyledProductThumbnail = styled.div`
+  cursor: pointer;
+
   .card {
     width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
     padding: ${({ isSmallScreen }: StyledProps) =>
-      `1.6rem ${!isSmallScreen ? '1rem' : '0'}`};
-    font-size: 16px;
+      !isSmallScreen ? '1.6rem 1rem 2rem' : '1.6rem 0'};
+  }
+
+  .card-body-wrapper {
+    display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-body {
+    padding-bottom: 0;
+    margin-top: ${({ isSmallScreen }) => (!isSmallScreen ? '1rem' : 'unset')};
   }
 
   .card-title {
     text-transform: uppercase;
     font-weight: bold;
-  }
-
-  .card-body {
-    padding-bottom: 0;
+    margin-bottom: ${({ isSmallScreen }) => (!isSmallScreen ? 0 : '0.5rem')};
+    flex-basis: 65%;
+    font-size: ${({ isSmallScreen }) => (!isSmallScreen ? '14px' : '12px')};
   }
 
   .card-text {
-    margin-bottom: 0.5rem;
+    margin-bottom: ${({ isSmallScreen }) => (!isSmallScreen ? 0 : '0.5rem')};
+    flex-basis: 35%;
+    text-align: ${({ isSmallScreen }) => (!isSmallScreen ? 'right' : 'left')};
+    font-size: ${({ isSmallScreen }) => (!isSmallScreen ? '16px' : '14px')};
   }
 
   .card-img-top {
     height: ${({ isSmallScreen }: StyledProps) =>
-      `${!isSmallScreen ? 'unset' : '35rem'}`};
+      `${!isSmallScreen ? 'unset' : '26rem'}`};
   }
 `;

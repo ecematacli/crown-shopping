@@ -20,16 +20,17 @@ import {
 import useScreenWidth from '../../../hooks/useScreenWidth';
 import CategoriesMenu from './categoriesMenu/CategoriesMenu';
 import HeaderBanner from './headerBanner/HeaderBanner';
+import { getCookie } from '../../../utils/cookie';
 
 const Header = () => {
   const router = useRouter();
   const { t } = useTranslation('header');
+  const { data } = useQuery<me>(ME);
   const { isSmallScreen } = useScreenWidth();
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(OpenedMenuContext);
 
+  const isAuthenticated = getCookie('isAuthenticated');
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
-  const { data } = useQuery<me>(ME);
-
   const customer = data?.me.customer;
 
   const renderSmallScreenHeader = () => (
@@ -64,7 +65,7 @@ const Header = () => {
               />
             </div>
             <AlignedDiv>
-              <IconWrapper onClick={() => router.push('/signin')}>
+              <IconWrapper onClick={() => !isAuthenticated && router.push('/signin')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
                   <span className='sign-in icon-text'>

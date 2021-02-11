@@ -15,7 +15,7 @@ interface Props {
 const ProductCarousel = ({ products }: Props) => {
   const { t } = useTranslation('index');
   const { isSmallScreen } = useScreenWidth();
-  const productsData = [...products?.results].reverse().slice(0, 12);
+  const productsData = [...products?.results].slice(0, 12);
 
   const responsive = {
     desktop: {

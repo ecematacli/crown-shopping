@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
-  padding: ${({ isSmallScreen }) => (!isSmallScreen ? '4em 0' : '3rem 0')};
+  padding: ${({ isSmallScreen }) => (!isSmallScreen ? '4em 0' : '2.5rem 0')};
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
 
   .product-carousel {
@@ -27,7 +27,8 @@ export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
   }
 
   .btn {
-    margin-top: 0.7rem;
+    margin-top: ${({ isSmallScreen }) =>
+      !isSmallScreen ? '1.3rem' : '0.6rem'};
     border-color: ${({ theme: { palette } }) => palette.blacks[2]};
     color: ${({ theme: { palette } }) => palette.blacks[2]};
     padding: 1rem;
