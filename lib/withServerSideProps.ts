@@ -21,9 +21,6 @@ export const withServerSideProps = (
 
     const countryInfo = country ? JSON.parse(country) : '';
 
-    console.log('HEADERS.COOKIE', req.headers.cookie);
-    console.log('?<S', typeof req.headers.cookie);
-
     const getCategoryId = async () => {
       const locale = countryInfo ? countryInfo.locale : 'en';
       // Get new collection id

@@ -20,6 +20,7 @@ axiosInstance.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const accessToken = await getTokenInfo();
+      console.log('RETRYING.....', accessToken);
       error.config.headers['Authorization'] = `Bearer ${accessToken}`;
       return axiosInstance(originalRequest);
     }

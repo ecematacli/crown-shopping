@@ -10,10 +10,10 @@ export const StyledProductThumbnail = styled.div`
 
   .card {
     width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
-    padding: 1.6rem 0;
+    padding: 1.5rem 0 0.3rem;
 
     @media (${breakPoints('md')}) {
-      padding: 1.6rem 1rem 2rem;
+      padding: 1.6rem 1rem 1rem;
     }
   }
 
@@ -26,8 +26,6 @@ export const StyledProductThumbnail = styled.div`
   }
 
   .card-body {
-    padding-bottom: 0;
-
     @media (${breakPoints('md')}) {
       margin-top: 1rem;
     }

@@ -27,7 +27,7 @@ const HomeBanners = () => {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} sm={12} md={7} lg={7}>
+            <Col xs={12} sm={12} md={12} lg={7}>
               <ProductBanner
                 location='row2-left'
                 height={height}
@@ -35,7 +35,7 @@ const HomeBanners = () => {
                 category={t('bannerTwo')}
               />
             </Col>
-            <Col xs={12} sm={12} md={5} lg={5} className='pad-left'>
+            <Col xs={12} sm={12} md={12} lg={5} className='pad-left'>
               <ProductBanner
                 location='row2-right'
                 height={height}
@@ -45,7 +45,7 @@ const HomeBanners = () => {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} sm={12} md={5} lg={5}>
+            <Col xs={12} sm={12} md={12} lg={5}>
               <ProductBanner
                 location='row3-left'
                 height={height}
@@ -53,7 +53,7 @@ const HomeBanners = () => {
                 category={t('bannerThree')}
               />
             </Col>
-            <Col xs={12} sm={12} md={7} lg={7} className='pad-left'>
+            <Col xs={12} sm={12} md={12} lg={7} className='pad-left'>
               <ProductBanner
                 location='row3-right'
                 height={height}

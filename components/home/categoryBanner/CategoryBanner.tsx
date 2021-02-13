@@ -1,10 +1,4 @@
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
-
 import { BannerContainer } from './CategoryBanner.styles';
-import { GET_CATEGORY_ID } from '../../../graphql/queries/category';
-import { CountryInfoContext } from '../../../contexts/CountryInfoContext';
-import { useContext } from 'react';
 
 interface Props {
   location: string;
@@ -14,12 +8,7 @@ interface Props {
   category: string;
 }
 
-const ProductBanner = ({ width, height, location, content, category }: Props) => {
-  const { countryInfo: { locale } } = useContext(CountryInfoContext);
-  const variables = { where: `slug(${locale}="${category.toLowerCase()}")` };
-
-  const { data } = useQuery(GET_CATEGORY_ID, { variables });
-
+const ProductBanner = ({ width, height, location, content }: Props) => {
   return (
     <BannerContainer width={width} height={height} location={location}>
       <div className='banner-image' />

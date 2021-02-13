@@ -8,6 +8,10 @@ export const BannerContainer = styled.div`
     padding: 4em 0 6rem;
   }
 
+  .container {
+    max-width: 100%;
+  }
+
   .col,
   .col-md-6,
   .col-sm-12,
@@ -18,8 +22,8 @@ export const BannerContainer = styled.div`
   .pad-left {
     padding-left: 0;
 
-    @media (${breakPoints('md')}) {
-      padding: 1.5rem;
+    @media (${breakPoints('lg')}) {
+      padding-left: 1.5rem;
     }
   }
 `;

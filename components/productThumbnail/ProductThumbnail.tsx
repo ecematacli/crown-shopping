@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Card } from 'react-bootstrap';
 
 import { StyledProductThumbnail } from './ProductThumbnail.styles';
@@ -18,6 +18,7 @@ const ProductThumbnail = ({ product, width, children }: Props) => {
     countryInfo: { locale, code, currency },
   } = useContext(CountryInfoContext);
 
+  const [isDisplayingDefaultImg, setIsDisplayingDefaultImg] = useState(false);
   const countryCode = `${locale}-${code}`;
 
   const { masterVariant } = product;
@@ -31,10 +32,24 @@ const ProductThumbnail = ({ product, width, children }: Props) => {
     masterVariant.price?.value.fractionDigits |
     masterVariant.prices[0].value.fractionDigits;
 
+  const handleErrorImg = (e) => {
+    e.target.onerror = null;
+    e.target.src = '/images/no-image.png';
+
+    // setIsDisplayingDefaultImg(true)
+  };
+
   return (
     <StyledProductThumbnail width={width}>
       <Card>
-        <Card.Img variant='top' src={imageSrc} />
+
+        <Card.Img
+          // variant='top'
+          className="card-img-top"
+          src={imageSrc}
+          onError={handleErrorImg}
+        />
+
         <Card.Body>
           <div className='card-body-wrapper'>
             <Card.Title>{name}</Card.Title>
