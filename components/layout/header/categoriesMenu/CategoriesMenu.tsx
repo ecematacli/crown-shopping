@@ -117,17 +117,14 @@ const CategoriesMenu: React.FC<Props> = ({
           'closed-sidebar': isSmallScreen && !isMobileMenuOpen,
         })}>
         <MenuContainer
-          onMouseLeave={() => toggleOpenCategory(null)}
-          isSmallScreen={isSmallScreen}>
+          onMouseLeave={() => toggleOpenCategory(null)}>
           <PaddedLayout
             padding={{
               top: '0.8',
               bottom: '0.8',
               rightLeft: isSmallScreen && '0',
             }}>
-            <MenuNavbar
-              isSmallScreen={isSmallScreen}
-              isThereOpenedCat={!!openedCategory}>
+            <MenuNavbar isThereOpenedCat={!!openedCategory}>
               {data && displayCategories()}
             </MenuNavbar>
           </PaddedLayout>

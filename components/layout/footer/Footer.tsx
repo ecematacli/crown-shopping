@@ -24,7 +24,7 @@ const Footer = () => {
     openedItem === item ? setOpenedItem(null) : setOpenedItem(item);
 
   const displayBottomSection = () => (
-    <StyledFooterBottom isSmallScreen={isSmallScreen}>
+    <StyledFooterBottom>
       <PaddedLayout className='bottom-layout'>
         <span className='company-info'>
           © {t('year')} {t('crown')} | {t('rightsReserved')}

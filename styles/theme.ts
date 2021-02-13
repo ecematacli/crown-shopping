@@ -1,4 +1,4 @@
-export default {
+export const theme = {
   palette: {
     darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a'],
     lightGrays: [
@@ -19,8 +19,13 @@ export default {
     blacks: ['#1F1F1F', 'rgba(0, 0, 0, 0.5)', '#343a40'],
   },
   breakpoints: {
+    // Bootstrap 4 breakpoints
+    sm: '576px',
     md: '768px',
     lg: '992px',
     xl: '1200px',
   },
 };
+
+export const breakPoints = (key: keyof typeof theme.breakpoints) =>
+  `min-width: ${theme.breakpoints[key]}`;

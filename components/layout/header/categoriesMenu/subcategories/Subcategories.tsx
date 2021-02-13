@@ -32,7 +32,7 @@ const Subcategories: React.FC<Props> = ({
   };
 
   return (
-    <SubcategoryContainer isSmallScreen={isSmallScreen}>
+    <SubcategoryContainer>
       <PaddedLayout padding={{ bottom: '0' }}>
         <div className='subcategories'>
           <div className={classNames({ 'wrapper': !isSmallScreen })}>

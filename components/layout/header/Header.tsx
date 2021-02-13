@@ -49,8 +49,8 @@ const Header = () => {
   );
 
   return (
-    <HeaderContainer isSmallScreen={isSmallScreen}>
-      <HeaderBar isSmallScreen={isSmallScreen}>
+    <HeaderContainer>
+      <HeaderBar>
         {!isSmallScreen && <HeaderBanner customerName={customer?.firstName} />}
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>

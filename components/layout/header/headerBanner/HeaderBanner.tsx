@@ -16,10 +16,10 @@ const HeaderBanner: React.FC<Props> = ({ customerName }) => {
   const { t } = useTranslation('header');
 
   return (
-    <StyledHeaderBanner isSmallScreen={isSmallScreen}>
+    <StyledHeaderBanner>
       <PaddedLayout padding={{ rightLeft: isSmallScreen && '0' }}>
         <div className='wrapper'>
-          <StyledContent isSmallScreen={isSmallScreen}>
+          <StyledContent>
             {!isSmallScreen && (
               <span onClick={() => router.push('/signin')}>
                 {customerName ? `${t('welcome')} ${customerName}` : `${t('myAccount')}`}

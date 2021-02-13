@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../../styles/theme';
 
-export const StyledSocialMediaIcons = styled.div<{ isSmallScreen: boolean }>`
+export const StyledSocialMediaIcons = styled.div`
   .social-media-icons {
     display: flex;
     justify-content: space-between;
@@ -10,7 +11,11 @@ export const StyledSocialMediaIcons = styled.div<{ isSmallScreen: boolean }>`
       height: 2rem;
       width: 2rem;
       cursor: pointer;
-      margin: ${({ isSmallScreen }) => (!isSmallScreen ? '0 0.4rem' : 0)};
+      margin: 0;
+
+      @media (${breakPoints('md')}) {
+        margin: 0 0.4rem;
+      }
     }
   }
 `;

@@ -4,7 +4,6 @@ import { Card } from 'react-bootstrap';
 import { StyledProductThumbnail } from './ProductThumbnail.styles';
 import { Product } from '../../types/products';
 import { CountryInfoContext } from '../../contexts/CountryInfoContext';
-import useScreenWidth from '../../hooks/useScreenWidth';
 import { formatCurrency } from '../../utils/helpers';
 
 interface Props {
@@ -18,7 +17,6 @@ const ProductThumbnail = ({ product, width, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
   } = useContext(CountryInfoContext);
-  const { isSmallScreen } = useScreenWidth();
 
   const countryCode = `${locale}-${code}`;
 
@@ -34,7 +32,7 @@ const ProductThumbnail = ({ product, width, children }: Props) => {
     masterVariant.prices[0].value.fractionDigits;
 
   return (
-    <StyledProductThumbnail width={width} isSmallScreen={isSmallScreen}>
+    <StyledProductThumbnail width={width}>
       <Card>
         <Card.Img variant='top' src={imageSrc} />
         <Card.Body>

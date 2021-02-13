@@ -14,12 +14,15 @@ export const withServerSideProps = (
   shouldFetchCategoryId?: boolean
 ) => {
   return async ({ req, params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
-    const auth = cookie.parse(req ? req.headers.cookie : '')?.auth;
+    const auth = cookie.parse(req?.headers.cookie || '')?.auth;
     const token = auth ? JSON.parse(auth)?.access_token : '';
 
-    const country = cookie.parse(req ? req.headers.cookie : '')?.country;
+    const country = cookie.parse(req?.headers.cookie || '')?.country;
 
     const countryInfo = country ? JSON.parse(country) : '';
+
+    console.log('HEADERS.COOKIE', req.headers.cookie);
+    console.log('?<S', typeof req.headers.cookie);
 
     const getCategoryId = async () => {
       const locale = countryInfo ? countryInfo.locale : 'en';
@@ -34,6 +37,7 @@ export const withServerSideProps = (
       return category.data.categories.results[0]?.id;
     };
 
+    // 222lTXSzDESoTk00-0T8DrUtkFPKB3ybvp
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
         !shouldFetchCategoryId ? params.id : await getCategoryId()

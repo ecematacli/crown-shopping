@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../styles/theme';
 
-export const StyledFooterBottom = styled.div<{ isSmallScreen: boolean }>`
+export const StyledFooterBottom = styled.div`
   font-size: 12px;
   border-top: ${({ theme: { palette } }) =>
     `1px solid ${palette.lightGrays[8]}`};
-  letter-spacing: ${({ isSmallScreen }) =>
-    !isSmallScreen ? '0.2rem' : '0.1rem'};
+  letter-spacing: 0.1rem;
+
+  @media (${breakPoints('md')}) {
+    letter-spacing: 0.2rem;
+  }
 
   .company-info {
     display: flex;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../styles/theme';
 
 interface StyledProps {
   width: number;
-  isSmallScreen?: boolean;
 }
 
 export const StyledProductThumbnail = styled.div`
@@ -10,38 +10,60 @@ export const StyledProductThumbnail = styled.div`
 
   .card {
     width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
-    padding: ${({ isSmallScreen }: StyledProps) =>
-      !isSmallScreen ? '1.6rem 1rem 2rem' : '1.6rem 0'};
+    padding: 1.6rem 0;
+
+    @media (${breakPoints('md')}) {
+      padding: 1.6rem 1rem 2rem;
+    }
   }
 
   .card-body-wrapper {
-    display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
-    justify-content: space-between;
-    align-items: center;
+    @media (${breakPoints('md')}) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   .card-body {
     padding-bottom: 0;
-    margin-top: ${({ isSmallScreen }) => (!isSmallScreen ? '1rem' : 'unset')};
+
+    @media (${breakPoints('md')}) {
+      margin-top: 1rem;
+    }
   }
 
   .card-title {
     text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: ${({ isSmallScreen }) => (!isSmallScreen ? 0 : '0.5rem')};
+    margin-bottom: 0.5rem;
     flex-basis: 65%;
-    font-size: ${({ isSmallScreen }) => (!isSmallScreen ? '14px' : '12px')};
+    font-size: 12px;
+
+    @media (${breakPoints('md')}) {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
   }
 
   .card-text {
-    margin-bottom: ${({ isSmallScreen }) => (!isSmallScreen ? 0 : '0.5rem')};
+    margin-bottom: 0.5rem;
     flex-basis: 35%;
-    text-align: ${({ isSmallScreen }) => (!isSmallScreen ? 'right' : 'left')};
-    font-size: ${({ isSmallScreen }) => (!isSmallScreen ? '16px' : '14px')};
+    text-align: left;
+    font-size: 14px;
+
+    @media (${breakPoints('md')}) {
+      margin-bottom: 0;
+      text-align: right;
+      font-size: 16px;
+    }
   }
 
   .card-img-top {
-    height: ${({ isSmallScreen }: StyledProps) =>
-      `${!isSmallScreen ? 'unset' : '26rem'}`};
+    height: 26.5rem;
+
+    @media (${breakPoints('md')}) {
+      height: unset;
+    }
   }
 `;

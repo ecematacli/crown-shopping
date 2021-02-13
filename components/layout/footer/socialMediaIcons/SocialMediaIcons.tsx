@@ -17,7 +17,7 @@ const SocialMediaIcons = () => {
     : { rightLeft: '0' };
 
   return (
-    <StyledSocialMediaIcons isSmallScreen={isSmallScreen}>
+    <StyledSocialMediaIcons>
       <PaddedLayout padding={padding}>
         <div className='social-media-icons'>
           <Facebook />

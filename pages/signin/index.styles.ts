@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../styles/theme';
 
-interface StyledProps {
-  isSmallScreen: boolean;
-}
+export const StyledLoginPage = styled.div`
+  margin: 2.5rem 0;
 
-export const StyledLoginPage = styled.div<StyledProps>`
-  margin: ${({ isSmallScreen }) => (!isSmallScreen ? '6rem 0' : '2.5rem 0')};
-  display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
-  justify-content: space-between;
+  @media (${breakPoints('md')}) {
+    margin: 6rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
 
   .form-container {
     flex-basis: 48%;
@@ -16,7 +17,11 @@ export const StyledLoginPage = styled.div<StyledProps>`
   }
 
   .sign-up {
-    margin-top: ${({ isSmallScreen }) => (!isSmallScreen ? 0 : '4rem')};
+    margin-top: 4rem;
+
+    @media (${breakPoints('md')}) {
+      margin-top: 0;
+    }
   }
 
   .form-title {
@@ -29,12 +34,19 @@ export const StyledLoginPage = styled.div<StyledProps>`
   }
 
   .form {
-    padding: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '5.3rem 3rem' : '4rem 1.8rem'};
+    padding: 4rem 1.8rem;
+
+    @media (${breakPoints('md')}) {
+      padding: 5.3rem 3rem;
+    }
   }
 
   .sign-in-form {
-    margin-top: ${({ isSmallScreen }) => (!isSmallScreen ? '4.5rem' : 0)};
+    margin-top: 0;
+
+    @media (${breakPoints('md')}) {
+      margin-top: 4.5rem;
+    }
   }
 
   .input-wrapper {

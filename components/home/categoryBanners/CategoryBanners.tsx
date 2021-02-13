@@ -14,7 +14,7 @@ const HomeBanners = () => {
 
   return (
     <PaddedLayout>
-      <BannerContainer isSmallScreen={isSmallScreen}>
+      <BannerContainer>
         <Container>
           <Row>
             <Col>

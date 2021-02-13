@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../styles/theme';
 
 export const AlignedDiv = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const AlignedDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const HeaderContainer = styled.header<{ isSmallScreen: boolean }>`
+export const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
@@ -14,9 +15,13 @@ export const HeaderContainer = styled.header<{ isSmallScreen: boolean }>`
   background-color: ${({ theme: { palette } }) => palette.whites[0]};
 `;
 
-export const HeaderBar = styled.div<{ isSmallScreen: boolean }>`
-  border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
-    isSmallScreen ? `1px solid ${palette.lightGrays[3]}` : 'unset'};
+export const HeaderBar = styled.div`
+  border-bottom: ${({ theme: { palette } }) =>
+    `1px solid ${palette.lightGrays[3]}`};
+
+  @media (${breakPoints('md')}) {
+    border-bottom: unset;
+  }
 `;
 
 export const StyledHeader = styled(AlignedDiv)`

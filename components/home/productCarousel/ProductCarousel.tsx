@@ -45,7 +45,7 @@ const ProductCarousel = ({ products }: Props) => {
   };
 
   return (
-    <StyledProductCarousel isSmallScreen={isSmallScreen}>
+    <StyledProductCarousel>
       <PaddedLayout>
         <Carousel
           additionalTransfrom={0}

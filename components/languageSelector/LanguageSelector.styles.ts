@@ -1,15 +1,23 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../styles/theme';
 
-export const LanguageSelectorContainer = styled.div<{ isSmallScreen: boolean }>`
+export const LanguageSelectorContainer = styled.div`
   font-size: 14px;
-  padding: ${({ isSmallScreen }) =>
-    !isSmallScreen ? '0 0 0 1rem' : '2.4rem 0'};
+  padding: 2.4rem 0;
+
+  @media (${breakPoints('md')}) {
+    padding: 0 0 0 1rem;
+  }
 
   .flag-container {
-    border-top: ${({ theme: { palette }, isSmallScreen }) =>
-      !isSmallScreen ? 'none' : `1px solid ${palette.darkGrays[1]}`};
-    padding: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '0 0 0 1rem' : '2.4rem 0'};
+    border-top: ${({ theme: { palette } }) =>
+      `1px solid ${palette.darkGrays[1]}`};
+    padding: 2.4rem 0;
+
+    @media (${breakPoints('md')}) {
+      border-top: none;
+      padding: 0 0 0 1rem;
+    }
   }
 
   .flag-wrapper-div {

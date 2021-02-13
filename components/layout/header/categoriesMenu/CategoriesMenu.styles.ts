@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-
-interface MenuNavbarProps {
-  isSmallScreen: boolean;
-  isThereOpenedCat: boolean;
-}
+import { breakPoints } from '../../../../styles/theme';
 
 export const StyledCategoryMenu = styled.div`
   background-color: ${({ theme: { palette } }) => palette.whites[0]};
@@ -29,16 +25,22 @@ export const StyledCategoryMenu = styled.div`
   }
 `;
 
-export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
-  overflow: ${({ isSmallScreen }) => (isSmallScreen ? 'auto' : 'unset')};
+export const MenuContainer = styled.div`
+  overflow: auto;
   height: 100%;
-  border-top: ${({ theme: { palette }, isSmallScreen }) =>
-    !isSmallScreen ? `1px solid ${palette.lightGrays[1]}` : 'none'};
-  border-bottom: ${({ theme: { palette }, isSmallScreen }) =>
-    !isSmallScreen ? `1px solid ${palette.lightGrays[1]}` : 'unset'};
+  border-top: none;
+  border-bottom: unset;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (${breakPoints('md')}) {
+    overflow: unset;
+    border-top: ${({ theme: { palette } }) =>
+      `1px solid ${palette.lightGrays[1]}`};
+    border-bottom: ${({ theme: { palette } }) =>
+      `1px solid ${palette.lightGrays[1]}`};
+  }
 
   .mobile-header {
     border-bottom: ${({ theme: { palette } }) =>
@@ -46,13 +48,16 @@ export const MenuContainer = styled.div<{ isSmallScreen: boolean }>`
   }
 `;
 
-export const MenuNavbar = styled.ul<MenuNavbarProps>`
+export const MenuNavbar = styled.ul<{ isThereOpenedCat: boolean }>`
   cursor: pointer;
   list-style-type: none;
   font-size: 14px;
-  display: ${({ isSmallScreen }) => !isSmallScreen && 'flex'};
-  justify-content: space-between;
-  align-items: center;
+
+  @media (${breakPoints('md')}) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .menu-item {
     position: relative;

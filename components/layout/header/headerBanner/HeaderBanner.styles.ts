@@ -1,35 +1,51 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../../styles/theme';
 
-export const StyledHeaderBanner = styled.div<{ isSmallScreen: boolean }>`
+export const StyledHeaderBanner = styled.div`
   background-color: ${({ theme: { palette } }) => `${palette.lightGrays[5]}`};
   font-size: 14px;
 
   .language-selector {
-    border-top: ${({ theme: { palette }, isSmallScreen }) =>
-      !isSmallScreen ? 'none' : `1px solid ${palette.darkGrays[1]}`};
+    border-top: ${({ theme: { palette } }) =>
+      `1px solid ${palette.darkGrays[1]}`};
+
+    @media (${breakPoints('md')}) {
+      border-top: none;
+    }
   }
 
   .wrapper {
-    display: ${({ isSmallScreen }) => (!isSmallScreen ? 'flex' : 'block')};
-    align-items: center;
-    justify-content: flex-end;
-    height: ${({ isSmallScreen }) => (!isSmallScreen ? '3.5rem' : 'unset')};
+    height: unset;
+
+    @media (${breakPoints('md')}) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 3.5rem;
+    }
   }
 `;
 
-export const StyledContent = styled.div<{ isSmallScreen: boolean }>`
+export const StyledContent = styled.div`
   display: flex;
-  flex-direction: ${({ isSmallScreen }) => (!isSmallScreen ? 'row' : 'column')};
-  justify-content: ${({ isSmallScreen }) =>
-    !isSmallScreen ? 'flex-end' : 'unset'};
-  padding: ${({ isSmallScreen }) => (!isSmallScreen ? 'unset' : '0 2.4rem')};
+  flex-direction: column;
+  padding: 0 2.4rem;
+
+  @media (${breakPoints('md')}) {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: unset;
+  }
 
   > span {
     cursor: pointer;
-    padding: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '0.7rem 1rem' : '1.4rem 0'};
+    padding: 1.4rem 0;
     color: ${({ theme: { palette } }) => `${palette.darkGrays[0]}`};
-    border-right: ${({ isSmallScreen, theme: { palette } }) =>
-      !isSmallScreen ? `0.1rem solid ${palette.lightGrays[6]}` : 'none'};
+
+    @media (${breakPoints('md')}) {
+      padding: 0.7rem 1rem;
+      border-right: ${({ theme: { palette } }) =>
+        `0.1rem solid ${palette.lightGrays[6]}`};
+    }
   }
 `;

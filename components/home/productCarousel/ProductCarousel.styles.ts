@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../styles/theme';
 
-export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
-  padding: ${({ isSmallScreen }) => (!isSmallScreen ? '4em 0' : '2.5rem 0')};
+export const StyledProductCarousel = styled.div`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
+  padding: 2.5rem 0;
+
+  @media (${breakPoints('md')}) {
+    padding: 4rem 0;
+  }
 
   .product-carousel {
     .react-multiple-carousel__arrow {
@@ -27,11 +32,14 @@ export const StyledProductCarousel = styled.div<{ isSmallScreen: boolean }>`
   }
 
   .btn {
-    margin-top: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '1.3rem' : '0.6rem'};
     border-color: ${({ theme: { palette } }) => palette.blacks[2]};
     color: ${({ theme: { palette } }) => palette.blacks[2]};
     padding: 1rem;
+    margin-top: 0.6rem;
+
+    @media (${breakPoints('md')}) {
+      margin-top: 1.3rem;
+    }
 
     &:hover {
       background-color: ${({ theme: { palette } }) => palette.blacks[2]};

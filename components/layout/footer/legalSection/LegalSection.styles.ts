@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLegalSection = styled.ul<{ isSmallScreen: boolean }>`
+export const StyledLegalSection = styled.ul`
   cursor: pointer;
   display: flex;
   flex-direction: column;

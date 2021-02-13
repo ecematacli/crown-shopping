@@ -12,6 +12,7 @@ declare module 'styled-components' {
       blacks: string[];
     };
     breakpoints: {
+      sm: string;
       md: string;
       lg: string;
       xl: string;

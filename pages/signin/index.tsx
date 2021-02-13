@@ -4,16 +4,14 @@ import SignInForm from '../../components/signInForm/SignInForm';
 import SignUpForm from '../../components/signUpForm/SignUpForm';
 import { includeDefaultNamespaces, useTranslation } from '../../i18n';
 import Layout from '../../components/layout/Layout';
-import useScreenWidth from '../../hooks/useScreenWidth';
 
 const LoginPage = () => {
   const { t } = useTranslation('signin');
-  const { isSmallScreen } = useScreenWidth();
 
   return (
     <Layout title={t('signin')}>
       <PaddedLayout>
-        <StyledLoginPage isSmallScreen={isSmallScreen}>
+        <StyledLoginPage>
           <div className='form-container'>
             <SignInForm />
           </div>

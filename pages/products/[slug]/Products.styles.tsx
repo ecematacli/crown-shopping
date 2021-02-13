@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../styles/theme';
 
-
-export const ProductListContainer = styled.div<{ isSmallScreen: boolean }>`
-  display: ${({ isSmallScreen }) => !isSmallScreen ? 'flex' : 'block'};
-  flex-wrap: wrap;
-  justify-content: space-between;
+export const ProductListContainer = styled.div`
+  @media (${breakPoints('md')}) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   .product-thumbnail {
     flex-basis: 32%;

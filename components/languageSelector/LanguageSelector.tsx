@@ -7,7 +7,6 @@ import { LanguageSelectorContainer } from './LanguageSelector.styles';
 import { CountryInfoContext } from '../../contexts/CountryInfoContext';
 import languageOptions from '../../consts/languages';
 import { useTranslation } from '../../i18n';
-import useScreenWidth from '../../hooks/useScreenWidth';
 
 const LanguageSelector = () => {
   const {
@@ -16,7 +15,6 @@ const LanguageSelector = () => {
   } = useContext(CountryInfoContext);
 
   const [openModal, setOpenModal] = useState(false);
-  const { isSmallScreen } = useScreenWidth();
   const { i18n } = useTranslation();
 
   const changeLanguage = () => {
@@ -31,7 +29,7 @@ const LanguageSelector = () => {
 
   return (
     <div>
-      <LanguageSelectorContainer isSmallScreen={isSmallScreen}>
+      <LanguageSelectorContainer>
         <div className='flag-wrapper-div' onClick={changeLanguage}>
           <ReactCountryFlag className='country-flag' countryCode={code} />
           <span className='country-name'>{language}</span>

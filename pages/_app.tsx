@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 import { useApollo } from '../lib/apolloClient';
 import { appWithTranslation } from '../i18n';
-import theme from '../styles/theme';
+import { theme } from '../styles/theme';
 import GlobalStyles from '../styles/Global.styles';
 import { CountryInfoContextProvider } from '../contexts/CountryInfoContext';
 import {

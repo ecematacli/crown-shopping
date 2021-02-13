@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-interface StyledProps {
-  isMenuOpen: boolean;
-  isSmallScreen: boolean;
-}
+import { breakPoints } from '../../styles/theme';
 
 export const LayoutContentContainer = styled.div`
   position: relative;
@@ -13,14 +10,18 @@ export const HeaderContainer = styled.div`
   z-index: 20 !important;
 `;
 
-export const StyledContent = styled.div<StyledProps>`
-  height: ${({ isSmallScreen }) =>
-    isSmallScreen ? 'calc(100vh - 9rem)' : 'calc(100vh - 15.3rem)'};
+export const StyledContent = styled.div<{ isMenuOpen: boolean; }>`
+  height: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? '9rem' : '15.3rem')};
+  margin-top: 9rem; 
   overflow: auto;
+
+  @media (${breakPoints('md')}) {
+    height: calc(100vh - 15.3rem);
+    margin-top: 15.3rem;
+  }
 `;
 
 export const BodyLayout = styled.div<{ isMenuOpen: boolean; }>`

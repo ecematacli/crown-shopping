@@ -8,7 +8,7 @@ const LegalSection = () => {
   const { isSmallScreen } = useScreenWidth();
 
   return (
-    <StyledLegalSection isSmallScreen={isSmallScreen}>
+    <StyledLegalSection>
       {!isSmallScreen && <h5 className='title'>{t('legal')}</h5>}
       <li>{t('requirements')}</li>
       <li>{t('termsOfUse')}</li>

@@ -1,21 +1,27 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../../../styles/theme';
 
-interface StyleProps {
-  isSmallScreen: boolean;
-}
-
-export const SubcategoryContainer = styled.div<StyleProps>`
+export const SubcategoryContainer = styled.div`
   width: 100%;
   margin-top: 0.75rem;
-  height: ${({ isSmallScreen }) => (!isSmallScreen ? '42rem' : 'unset')};
+  height: unset;
   font-size: 15px;
 
+  @media (${breakPoints('md')}) {
+    height: 42rem;
+  }
+
   .subcategories {
-    height: ${({ isSmallScreen }) => (!isSmallScreen ? '42rem' : 'unset')};
-    margin-top: ${({ isSmallScreen }) => (!isSmallScreen ? '0.75rem' : '2rem')};
-    display: ${({ isSmallScreen }) =>
-      !isSmallScreen ? 'flex' : 'inline-block'};
-    justify-content: space-between;
+    height: unset;
+    margin-top: 2rem;
+    display: inline-block;
+
+    @media (${breakPoints('md')}) {
+      height: 42rem;
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
 
     .wrapper {
       display: flex;
@@ -35,10 +41,13 @@ export const SubcategoryContainer = styled.div<StyleProps>`
   }
 
   .subcategory-title {
-    margin-right: ${({ isSmallScreen }) =>
-      !isSmallScreen ? '20rem' : 'unset'};
+    margin-right: unset;
     font-weight: bold;
     cursor: pointer;
+
+    @media (${breakPoints('md')}) {
+      margin-right: 20rem;
+    }
   }
 
   .second-level-subcategory {
