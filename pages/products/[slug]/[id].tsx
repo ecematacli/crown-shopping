@@ -21,7 +21,7 @@ const ProductsPage = ({ products }: Props) => {
         <ProductListContainer>
           {products.results.map((product: Product) => (
             <div key={product.id} className='product-thumbnail'>
-              <ProductThumbnail product={product} />
+              <ProductThumbnail product={product} height={44.5} />
             </div>
           ))}
         </ProductListContainer>

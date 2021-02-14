@@ -4,7 +4,7 @@ import { breakPoints } from '../../../styles/theme';
 export const StyledCarousel = styled.div`
   .carousel-image {
     width: 100%;
-    height: 16rem;
+    height: 15rem;
 
     @media (${breakPoints('md')}) {
       height: unset;

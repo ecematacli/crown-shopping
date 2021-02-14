@@ -6,6 +6,11 @@ export const ProductListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    &::after {
+      content: "";
+      width: 32%;
+    }
   }
 
   .product-thumbnail {

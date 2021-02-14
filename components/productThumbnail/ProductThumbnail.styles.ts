@@ -3,6 +3,7 @@ import { breakPoints } from '../../styles/theme';
 
 interface StyledProps {
   width: number;
+  height: number;
 }
 
 export const StyledProductThumbnail = styled.div`
@@ -10,10 +11,12 @@ export const StyledProductThumbnail = styled.div`
 
   .card {
     width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
-    padding: 1.5rem 0 0.3rem;
+    padding: 1.5rem 0.2rem 0.3rem;
+    border-radius: 0.1rem;
 
     @media (${breakPoints('md')}) {
-      padding: 1.6rem 1rem 1rem;
+      padding: 1.6rem 1rem 1.5rem;
+      height: ${({ height }) => height && `${height}rem`};
     }
   }
 
@@ -26,7 +29,13 @@ export const StyledProductThumbnail = styled.div`
   }
 
   .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     @media (${breakPoints('md')}) {
+      padding-bottom: 0;
+      padding-top: 1.3rem;
       margin-top: 1rem;
     }
   }
@@ -58,10 +67,6 @@ export const StyledProductThumbnail = styled.div`
   }
 
   .card-img-top {
-    height: 26.5rem;
-
-    @media (${breakPoints('md')}) {
-      height: unset;
-    }
+    height: 35rem;
   }
 `;

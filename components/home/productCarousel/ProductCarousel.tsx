@@ -64,7 +64,7 @@ const ProductCarousel = ({ products }: Props) => {
           customTransition={isSmallScreen && '950ms'}
           swipeable>
           {productsData.map((product: Product) => (
-            <ProductThumbnail product={product} key={product.id}>
+            <ProductThumbnail product={product} key={product.id} height={50}>
               <BaseButton
                 text={t('addToCart').toUpperCase()}
                 variant='outline-secondary'
