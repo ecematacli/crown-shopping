@@ -3,13 +3,19 @@ import { breakPoints } from '../../../styles/theme';
 
 export const StyledProductCarousel = styled.div`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
-  padding: 2.2rem 0 2rem;
+  padding: 4rem 0 5rem;
 
   @media (${breakPoints('md')}) {
-    padding: 4rem 0;
+    padding-top: 5rem;
   }
 
   .product-carousel {
+    margin-top: 1rem;
+
+    @media (${breakPoints('md')}) {
+      margin-top: 0;
+    }
+
     .react-multiple-carousel__arrow {
       z-index: 1 !important;
     }

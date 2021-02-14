@@ -10,7 +10,7 @@ const HomeBanners = () => {
   const { isSmallScreen } = useScreenWidth();
   const { t } = useTranslation('index');
 
-  const height = !isSmallScreen ? 45 : 19.8;
+  const height = !isSmallScreen ? 45 : 19.7;
 
   return (
     <PaddedLayout>

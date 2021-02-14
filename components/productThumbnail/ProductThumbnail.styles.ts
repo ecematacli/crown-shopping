@@ -11,12 +11,12 @@ export const StyledProductThumbnail = styled.div`
 
   .card {
     width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
-    padding: 1.5rem 0.2rem 0.3rem;
+    padding: 1.5rem 0.2rem 0;
     border-radius: 0.1rem;
+    height: ${({ height }) => height && `${height}rem`};
 
     @media (${breakPoints('md')}) {
       padding: 1.6rem 1rem 1.5rem;
-      height: ${({ height }) => height && `${height}rem`};
     }
   }
 

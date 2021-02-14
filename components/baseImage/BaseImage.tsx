@@ -11,7 +11,7 @@ const BaseImage = ({ src, fallbackSrc, ...rest }: Props) => {
   const imgEl = useRef(null);
 
   const isImageSrcValid = async (src: string) => new Promise(resolve => {
-    let img = document.createElement("img");
+    let img = document.createElement('img');
     img.onerror = () => resolve(false);
     img.onload = () => resolve(true);
     img.src = src;
