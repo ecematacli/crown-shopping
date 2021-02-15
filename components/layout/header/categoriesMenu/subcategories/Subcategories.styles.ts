@@ -35,6 +35,7 @@ export const SubcategoryContainer = styled.div`
 
   .subcategory {
     margin-bottom: 1rem;
+    
     &:last-child {
       margin-bottom: 0;
     }

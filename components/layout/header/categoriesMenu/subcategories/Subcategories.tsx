@@ -54,8 +54,8 @@ const Subcategories: React.FC<Props> = ({
             <div className='image-wrapper'>
               <Image
                 src={`/images/category-${openedCategory}.jpg`}
-                width='289'
-                height='181'
+                width='390'
+                height='260'
               />
             </div>
           }
