@@ -1,16 +1,6 @@
-
-
-interface Props {
-  children?: React.ReactNode;
-  width?: number;
-  className?: string;
-}
-
 const ProductListFilters = () => {
-
-
   return (
-    <div></div>
+    <div>Product List Filters Component!</div>
   );
 };
 
