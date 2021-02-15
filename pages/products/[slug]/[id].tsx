@@ -6,7 +6,7 @@ import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
 import Layout from '../../../components/layout/Layout';
 import { withServerSideProps } from '../../../lib/withServerSideProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
-import { ProductListContainer } from './index.styles';
+import ProductListContainer from './index.styles';
 
 interface Props {
   products: ProductsAPIResponse;

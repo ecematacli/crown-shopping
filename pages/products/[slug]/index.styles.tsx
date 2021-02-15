@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../../styles/theme';
 
-export const ProductListContainer = styled.div`
+const ProductListContainer = styled.div`
   @media (${breakPoints('md')}) {
     display: flex;
     flex-wrap: wrap;
@@ -18,3 +18,5 @@ export const ProductListContainer = styled.div`
     margin: 2rem 0;
   }
 `;
+
+export default ProductListContainer;

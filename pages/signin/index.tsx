@@ -1,4 +1,4 @@
-import { StyledLoginPage } from './index.styles';
+import StyledLoginPage from './index.styles';
 import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
 import SignInForm from '../../components/signInForm/SignInForm';
 import SignUpForm from '../../components/signUpForm/SignUpForm';

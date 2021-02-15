@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../styles/theme';
 
-export const StyledLoginPage = styled.div`
+const StyledLoginPage = styled.div`
   margin: 2.5rem 0;
 
   @media (${breakPoints('md')}) {
@@ -66,3 +66,5 @@ export const StyledLoginPage = styled.div`
     margin-top: 1rem;
   }
 `;
+
+export default StyledLoginPage;
