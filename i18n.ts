@@ -7,7 +7,13 @@ export const nextI18next = new NextI18next({
   fallbackLng: 'en',
   otherLanguages: ['de'],
   localePath: path.resolve('./public/locales'),
+  localeSubpaths: {
+    en: 'en',
+    de: 'de',
+  },
   strictMode: false,
+  browserLanguageDetection: false,
+  serverLanguageDetection: false,
 });
 
 export const includeDefaultNamespaces = (namespaces: string[]) =>

@@ -34,7 +34,6 @@ export const withServerSideProps = (
       return category.data.categories.results[0]?.id;
     };
 
-    // 222lTXSzDESoTk00-0T8DrUtkFPKB3ybvp
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
         !shouldFetchCategoryId ? params.id : await getCategoryId()
