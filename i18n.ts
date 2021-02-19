@@ -8,18 +8,21 @@ export const nextI18next = new NextI18next({
   otherLanguages: ['de'],
   localePath: path.resolve('./public/locales'),
   localeSubpaths: {
-    en: 'en',
     de: 'de',
   },
   strictMode: false,
-  browserLanguageDetection: false,
-  serverLanguageDetection: false,
 });
 
 export const includeDefaultNamespaces = (namespaces: string[]) =>
   ['common', '_error'].concat(namespaces);
 
-export const { appWithTranslation, Trans, useTranslation } = nextI18next;
+export const {
+  appWithTranslation,
+  Trans,
+  useTranslation,
+  Router,
+  Link,
+} = nextI18next;
 
 export type I18nPage<P = {}> = NextComponentType<
   NextPageContext,

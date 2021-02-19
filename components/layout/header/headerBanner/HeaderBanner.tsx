@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
 
 import { StyledHeaderBanner, StyledContent } from './HeaderBanner.styles';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
-import { useTranslation } from '../../../../i18n';
+import { useTranslation, Router } from '../../../../i18n';
 import useScreenWidth from '../../../../hooks/useScreenWidth';
 import LanguageSelector from '../../../languageSelector/LanguageSelector';
 
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const HeaderBanner: React.FC<Props> = ({ customerName }) => {
-  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
   const { t } = useTranslation('header');
 
@@ -21,7 +19,7 @@ const HeaderBanner: React.FC<Props> = ({ customerName }) => {
         <div className='wrapper'>
           <StyledContent>
             {!isSmallScreen && (
-              <span onClick={() => router.push('/signin')}>
+              <span onClick={() => Router.push('/signin')}>
                 {customerName ? `${t('welcome')} ${customerName}` : `${t('myAccount')}`}
               </span>
             )}

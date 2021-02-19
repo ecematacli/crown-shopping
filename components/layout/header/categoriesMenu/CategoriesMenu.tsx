@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { MdClose } from 'react-icons/md';
@@ -16,6 +15,7 @@ import {
 } from './CategoriesMenu.styles';
 import Subcategories from './subcategories/Subcategories';
 import HeaderBanner from '../headerBanner/HeaderBanner';
+import { Router } from '../../../../i18n';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -26,7 +26,6 @@ const CategoriesMenu: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
 
   const {
@@ -57,7 +56,7 @@ const CategoriesMenu: React.FC<Props> = ({
             width='50'
             height='50'
             className='logo-image'
-            onClick={() => router.push('/')}
+            onClick={() => Router.push('/')}
           />
           <div onClick={() => setIsMobileMenuOpen(false)}>
             <MdClose size={32} />

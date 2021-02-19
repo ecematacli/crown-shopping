@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { Router } from '../../../i18n';
 import Image from 'next/image';
 import { useQuery } from '@apollo/client';
 import { useContext } from 'react';
@@ -23,7 +23,6 @@ import HeaderBanner from './headerBanner/HeaderBanner';
 import { getCookie } from '../../../utils/cookie';
 
 const Header = () => {
-  const router = useRouter();
   const { t } = useTranslation('header');
   const { data } = useQuery<me>(ME);
   const { isSmallScreen } = useScreenWidth();
@@ -55,7 +54,7 @@ const Header = () => {
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
-            <div onClick={() => router.push('/')}>
+            <div onClick={() => Router.push('/')}>
               <Image
                 src='/logo.svg'
                 alt='logo'
@@ -65,7 +64,7 @@ const Header = () => {
               />
             </div>
             <AlignedDiv>
-              <IconWrapper onClick={() => !isAuthenticated && router.push('/signin')}>
+              <IconWrapper onClick={() => !isAuthenticated && Router.push('/signin')}>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
                   <span className='sign-in icon-text'>

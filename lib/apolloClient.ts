@@ -42,10 +42,7 @@ const errorLink = onError(
         cleanUpSession();
         //@ts-ignore
         return fromPromise(getAuthToken).flatMap(authorization => {
-          console.log(
-            'authorization in apollo onError.........',
-            authorization
-          );
+          console.log('Apollo onError.........', authorization);
           operation.setContext({ headers: { ...headers, authorization } });
           return forward(operation);
         });
