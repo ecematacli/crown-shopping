@@ -18,14 +18,6 @@ const ProductCarousel = ({ products }: Props) => {
   const productsData = [...products?.results].slice(0, 12);
 
   const responsive = {
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024,
-      },
-      items: 3,
-      partialVisibilityGutter: 40,
-    },
     mobile: {
       breakpoint: {
         max: 464,
@@ -41,6 +33,14 @@ const ProductCarousel = ({ products }: Props) => {
       },
       items: 2,
       partialVisibilityGutter: 30,
+    },
+    desktop: {
+      breakpoint: {
+        max: 4000,
+        min: 1024,
+      },
+      items: 3,
+      partialVisibilityGutter: 40,
     },
   };
 
