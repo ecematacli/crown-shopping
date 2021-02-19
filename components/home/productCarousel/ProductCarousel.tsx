@@ -4,7 +4,6 @@ import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import { ProductsAPIResponse, Product } from '../../../types/products';
 import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
 import { StyledProductCarousel } from './ProductCarousel.styles';
-import useScreenWidth from '../../../hooks/useScreenWidth';
 import BaseButton from '../../baseButton/BaseButton';
 import { useTranslation } from '../../../i18n';
 
@@ -14,7 +13,6 @@ interface Props {
 
 const ProductCarousel = ({ products }: Props) => {
   const { t } = useTranslation('index');
-  const { isSmallScreen } = useScreenWidth();
   const productsData = [...products?.results].slice(0, 12);
 
   const responsive = {
@@ -61,7 +59,7 @@ const ProductCarousel = ({ products }: Props) => {
           minimumTouchDrag={80}
           responsive={responsive}
           slidesToSlide={2}
-          customTransition={isSmallScreen && '950ms'}
+          customTransition='900ms'
           swipeable>
           {productsData.map((product: Product) => (
             <ProductThumbnail product={product} key={product.id} height={50}>
