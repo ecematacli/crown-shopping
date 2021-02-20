@@ -26,11 +26,14 @@ const Header = () => {
   const { t } = useTranslation('header');
   const { data } = useQuery<me>(ME);
   const { isSmallScreen } = useScreenWidth();
-  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(OpenedMenuContext);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(
+    OpenedMenuContext
+  );
 
   const isAuthenticated = getCookie('isAuthenticated');
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
   const customer = data?.me.customer;
+  const navigateUser = (path: string) => Router.push(path);
 
   const renderSmallScreenHeader = () => (
     <AlignedDiv>
@@ -54,7 +57,7 @@ const Header = () => {
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
             {isSmallScreen && renderSmallScreenHeader()}
-            <div onClick={() => Router.push('/')}>
+            <div onClick={() => navigateUser('/')}>
               <Image
                 src='/logo.svg'
                 alt='logo'
@@ -64,7 +67,10 @@ const Header = () => {
               />
             </div>
             <AlignedDiv>
-              <IconWrapper onClick={() => !isAuthenticated && Router.push('/signin')}>
+              <IconWrapper
+                onClick={() =>
+                  navigateUser(`/${!isAuthenticated ? 'signin' : 'my-account'}`)
+                }>
                 <BsPerson size={20} />
                 {!isSmallScreen && (
                   <span className='sign-in icon-text'>
@@ -87,7 +93,7 @@ const Header = () => {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
     </HeaderContainer>
-  )
+  );
 };
 
 export default Header;

@@ -1,7 +1,7 @@
 {
   "myAccount": "Mein Konto",
-  "itemOne": "Instrumententafel",
-  "itemTwo": "Meine Bestellungen",
-  "itemThree": "Meine Adressen",
-  "itemFour": "Ausloggen"
+  "dashboard": "Instrumententafel",
+  "myOrders": "Meine Bestellungen",
+  "myAddresses": "Meine Adressen",
+  "signOut": "Ausloggen"
 }
