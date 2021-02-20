@@ -1,14 +1,13 @@
-
 import { includeDefaultNamespaces, useTranslation } from '../../i18n';
 import Layout from '../../components/layout/Layout';
-import AccountNavMenu from '../../components/accountNavMenu/AccountNavMenu';
+import AccountNavigation from '../../components/accountNavigation/AccountNavigation';
 
 const LoginPage = () => {
   const { t } = useTranslation('account');
 
   return (
     <Layout title={t('myAccount')}>
-      <AccountNavMenu />
+      <AccountNavigation />
     </Layout>
   );
 };

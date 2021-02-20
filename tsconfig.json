@@ -29,7 +29,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "pages/index/index.jsx", "next.config.js", "components/accountNavMenu/AccountNavMenu.styles.ts"
+    "**/*.tsx", "pages/index/index.jsx", "next.config.js", "components/accountNavigation/AccountNavMenu.styles.ts.ts"
   ],
   "exclude": [
     "types/graphql-global-types.ts",

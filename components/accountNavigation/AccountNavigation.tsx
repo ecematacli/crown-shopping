@@ -5,20 +5,20 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { FaRegAddressBook } from 'react-icons/fa';
 
 import { useTranslation } from '../../i18n';
-import { StyledAccountNavMenu } from './AccountNavMenu.styles';
+import { StyledAccountNavMenu } from './AccountNavigation.styles';
 import { useState } from 'react';
 
-const AccountNavMenu = () => {
+const AccountNavigation = () => {
   const { t } = useTranslation('account');
 
-  const menuItems = [
+  const navigationItems = [
     { item: 'dashboard', iconType: RiDashboardLine, Icon: <RiDashboardLine /> },
     { item: 'myOrders', iconType: FiShoppingCart, Icon: <FiShoppingCart /> },
     { item: 'myAddresses', iconType: FaRegAddressBook, Icon: <FaRegAddressBook /> },
     { item: 'signOut', iconType: CgLogOff, Icon: <CgLogOff /> },
   ];
 
-  const [activeItem, setActiveItem] = useState(menuItems[0]);
+  const activeItem = navigationItems[0];
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
   const displayActiveItem = () => (
@@ -36,4 +36,4 @@ const AccountNavMenu = () => {
   return <StyledAccountNavMenu>{displayActiveItem()}</StyledAccountNavMenu>;
 };
 
-export default AccountNavMenu;
+export default AccountNavigation;
