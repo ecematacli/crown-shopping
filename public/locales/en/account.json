@@ -2,6 +2,8 @@
   "myAccount": "My Account",
   "dashboard": "Dashboard",
   "myOrders": "My Orders",
-  "myAddresses": "My Addresses",
+  "myAddressBook": "My Address Book",
+  "paymentMethods": "Payment Methods",
+  "wishlist": "Wishlist",
   "signOut": "Sign Out"
 }

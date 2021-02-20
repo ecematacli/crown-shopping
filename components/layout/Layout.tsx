@@ -26,7 +26,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
           <Header />
         </HeaderContainer>
         <LayoutContentContainer>
-          <StyledContent isMenuOpen={isMenuOpen}>
+          <StyledContent>
             {children}
             <Footer />
           </StyledContent>

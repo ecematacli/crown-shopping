@@ -5,11 +5,8 @@ export const ME = gql`
     me {
       customer {
         id
-        version
-        email
         firstName
         lastName
-        customerNumber
       }
     }
   }

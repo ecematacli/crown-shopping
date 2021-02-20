@@ -2,6 +2,8 @@
   "myAccount": "Mein Konto",
   "dashboard": "Instrumententafel",
   "myOrders": "Meine Bestellungen",
-  "myAddresses": "Meine Adressen",
+  "myAddressBook": "Mein Adressbuch",
+  "paymentMethods": "Zahlungsarten",
+  "wishlist": "Wunschzettel",
   "signOut": "Ausloggen"
 }

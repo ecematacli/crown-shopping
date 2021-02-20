@@ -8,11 +8,8 @@
 export interface me_me_customer {
   __typename: "Customer";
   id: string;
-  version: any;
-  email: string;
   firstName: string | null;
   lastName: string | null;
-  customerNumber: string | null;
 }
 
 export interface me_me {

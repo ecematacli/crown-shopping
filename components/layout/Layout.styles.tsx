@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   z-index: 20 !important;
 `;
 
-export const StyledContent = styled.div<{ isMenuOpen: boolean; }>`
+export const StyledContent = styled.div`
   height: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
