@@ -51,23 +51,6 @@ const AccountNavigation = () => {
       {displayActiveItem()}
       <div>
         {isNavMenuOpen && displayNavigationMenu()}
-        {/* <div>First</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div>
-        <div>yyyy</div> */}
       </div>
     </StyledAccountNavMenu>
   );

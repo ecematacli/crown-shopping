@@ -50,15 +50,13 @@ const Subcategories: React.FC<Props> = ({
               </div>
             ))}
           </div>
-          {!isSmallScreen &&
-            <div className='image-wrapper'>
-              <Image
-                src={`/images/category-${openedCategory}.jpg`}
-                width='390'
-                height='260'
-              />
-            </div>
-          }
+          <div className='image-wrapper'>
+            <Image
+              src={`/images/category-${openedCategory}.jpg`}
+              width='390'
+              height='260'
+            />
+          </div>
         </div>
       </PaddedLayout>
     </SubcategoryContainer>

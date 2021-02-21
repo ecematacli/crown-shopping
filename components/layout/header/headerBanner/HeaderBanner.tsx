@@ -18,11 +18,9 @@ const HeaderBanner: React.FC<Props> = ({ customerName }) => {
       <PaddedLayout padding={{ rightLeft: isSmallScreen && '0' }}>
         <div className='wrapper'>
           <StyledContent>
-            {!isSmallScreen && (
-              <span onClick={() => Router.push('/signin')}>
-                {customerName ? `${t('welcome')} ${customerName}` : `${t('myAccount')}`}
-              </span>
-            )}
+            <span className="customer-name" onClick={() => Router.push('/signin')}>
+              {customerName ? `${t('welcome')} ${customerName}` : `${t('myAccount')}`}
+            </span>
             <span>{t('help')}</span>
             <span>{t('newsletter')}</span>
           </StyledContent>

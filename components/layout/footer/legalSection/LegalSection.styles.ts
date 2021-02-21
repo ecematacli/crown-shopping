@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../../styles/theme';
 
 export const StyledLegalSection = styled.ul`
   cursor: pointer;
@@ -11,8 +12,13 @@ export const StyledLegalSection = styled.ul`
   }
 
   .title {
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 0.7rem 0;
+    display: none;
+
+    @media (${breakPoints('md')}) {
+      display: block;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 0.7rem 0;
+    }
   }
 `;

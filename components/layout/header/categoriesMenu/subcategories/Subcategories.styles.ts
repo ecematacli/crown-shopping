@@ -29,13 +29,17 @@ export const SubcategoryContainer = styled.div`
   }
 
   .image-wrapper {
-    display: flex;
-    align-items: center;
+    display: none;
+
+    @media (${breakPoints('md')}) {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .subcategory {
     margin-bottom: 1rem;
-    
+
     &:last-child {
       margin-bottom: 0;
     }

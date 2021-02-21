@@ -48,4 +48,12 @@ export const StyledContent = styled.div`
         `0.1rem solid ${palette.lightGrays[6]}`};
     }
   }
+
+  .customer-name {
+    display: none;
+
+    @media (${breakPoints('md')}) {
+      display: inline-block;
+    }
+  }
 `;

@@ -4,22 +4,18 @@ import throttle from 'lodash.throttle';
 const useScreenWidth = () => {
   const [screenWidth, setScreenWidth] = useState(null);
 
-  const throttled = throttle(f => f(), 2000, { leading: true });
+  const throttleResize = throttle(
+    () => setScreenWidth(window.innerWidth),
+    200,
+    { leading: true }
+  );
 
   useEffect(() => {
-    let isMounted = true;
-
-    const handleResize = () => {
-      if (isMounted) {
-        throttled(() => setScreenWidth(window.innerWidth));
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    throttleResize();
+    window.addEventListener('resize', throttleResize);
 
     return () => {
-      isMounted = false;
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', throttleResize);
     };
   }, [screenWidth]);
 
