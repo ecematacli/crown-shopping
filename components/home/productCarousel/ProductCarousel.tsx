@@ -9,9 +9,10 @@ import { useTranslation } from '../../../i18n';
 
 interface Props {
   products: ProductsAPIResponse;
+  deviceType: string;
 }
 
-const ProductCarousel = ({ products }: Props) => {
+const ProductCarousel = ({ products, deviceType }: Props) => {
   const { t } = useTranslation('index');
   const productsData = [...products?.results].slice(0, 12);
 
@@ -46,6 +47,9 @@ const ProductCarousel = ({ products }: Props) => {
     <StyledProductCarousel>
       <PaddedLayout>
         <Carousel
+          ssr
+          deviceType={deviceType}
+          responsive={responsive}
           additionalTransfrom={0}
           arrows
           centerMode={false}
@@ -57,7 +61,6 @@ const ProductCarousel = ({ products }: Props) => {
           renderButtonGroupOutside={true}
           keyBoardControl
           minimumTouchDrag={80}
-          responsive={responsive}
           slidesToSlide={2}
           customTransition='900ms'
           swipeable>

@@ -1,13 +1,14 @@
 import { GetServerSidePropsContext } from 'next';
 import { ApolloQueryResult } from '@apollo/client';
 import cookie from 'cookie';
+import { ParsedUrlQuery } from 'querystring';
 
 import { getProducts } from '../api/products';
 import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
-import { ParsedUrlQuery } from 'querystring';
+import getDeviceType from '../utils/deviceType';
 
 export const withServerSideProps = (
   nameSpace: string,
@@ -21,7 +22,7 @@ export const withServerSideProps = (
 
     const countryInfo = country ? JSON.parse(country) : '';
 
-    const getCategoryId = async () => {
+    const fetchCategoryId = async () => {
       const locale = countryInfo ? countryInfo.locale : 'en';
       // Get new collection id
       const category: ApolloQueryResult<categoryId> = await initializeApollo().query(
@@ -36,7 +37,7 @@ export const withServerSideProps = (
 
     const { data } = await getProducts(token, {
       filter: `categories.id: subtree("${
-        !shouldFetchCategoryId ? params.id : await getCategoryId()
+        !shouldFetchCategoryId ? params.id : await fetchCategoryId()
       }")`,
       priceCurrency: countryInfo ? countryInfo.currency : 'USD',
       priceCountry: countryInfo ? countryInfo.code : 'US',
@@ -45,6 +46,7 @@ export const withServerSideProps = (
     return {
       props: {
         namespacesRequired: includeDefaultNamespaces([`${nameSpace}`]),
+        deviceType: nameSpace === 'index' ? getDeviceType(req) : null, // for the home page
         products: data,
       },
     };

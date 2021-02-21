@@ -6,9 +6,10 @@ import { HomeContainer } from './Home.styles';
 
 interface Props {
   products: ProductsAPIResponse;
+  deviceType: string;
 }
 
-const Home = ({ products }: Props) => (
+const Home = ({ products, deviceType }: Props) => (
   <HomeContainer>
     <div className='carousel-wrapper'>
       <Carousel />
@@ -17,7 +18,7 @@ const Home = ({ products }: Props) => (
       <CategoryBanners />
     </div>
     <div className='product-carousel-wrapper'>
-      <ProductCarousel products={products} />
+      <ProductCarousel products={products} deviceType={deviceType} />
     </div>
   </HomeContainer>
 );

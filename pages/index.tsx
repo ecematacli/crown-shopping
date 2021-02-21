@@ -8,14 +8,15 @@ import { ProductsAPIResponse } from '../types/products';
 
 interface Props {
   products: ProductsAPIResponse;
+  deviceType: string;
 }
 
-const IndexPage = ({ products }: Props) => {
+const IndexPage = ({ products, deviceType }: Props) => {
   const { t } = useTranslation('index');
 
   return (
     <Layout title={t('homePage')}>
-      <Home products={products} />
+      <Home products={products} deviceType={deviceType} />
     </Layout>
   );
 };
