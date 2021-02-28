@@ -40,7 +40,7 @@ export const StyledAccountNavMenu = styled.div`
 
     @media (${breakPoints('md')}) {
       display: block;
-      padding: 2.3rem 0 2.3rem 2.4rem;
+      padding: 2.3rem 0 2.3rem 2.2rem;
 
       &:hover {
         color: ${({ theme: { palette } }) => palette.blacks[3]};

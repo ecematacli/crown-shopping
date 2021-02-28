@@ -15,7 +15,10 @@ const AccountNavigation = () => {
   const [isSmNavMenuOpen, setIsSmNavMenuOpen] = useState(false);
   const [activeNavItem, setActiveNavItem] = useState(navigationItems[0]);
 
-  const handleCurrentNavItemChange = (item: { name: string; Icon: IconType }) => {
+  const handleCurrentNavItemChange = (item: {
+    name: string;
+    Icon: IconType;
+  }) => {
     setActiveNavItem(item);
     setIsSmNavMenuOpen(false);
   };
