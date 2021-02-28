@@ -10,12 +10,6 @@ export const BannerContainer = styled.div`
 
   .container {
     max-width: 100%;
-  }
-
-  .col,
-  .col-md-6,
-  .col-sm-12,
-  .col-12 {
     padding: 0;
   }
 

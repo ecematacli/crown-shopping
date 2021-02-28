@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../styles/theme';
 
 export const StyledAccountNavMenu = styled.div`
   font-size: 14px;
@@ -19,7 +20,8 @@ export const StyledAccountNavMenu = styled.div`
     padding: 0 0.75rem;
   }
 
-  .navigation-menu {
+  .sm-screen-nav {
+    padding: 0 2.4rem;
     position: absolute;
     padding-top: 1.5rem;
     background-color: ${({ theme: { palette } }) => palette.lightGrays[10]};
@@ -32,20 +34,33 @@ export const StyledAccountNavMenu = styled.div`
     padding: 2rem 0;
     display: flex;
     align-items: center;
-    color: ${({ theme: { palette } }) => palette.darkGrays[3]};
+    color: ${({ theme: { palette } }) => palette.darkGrays[4]};
+    border-left: 4px solid transparent;
+    cursor: pointer;
+
+    @media (${breakPoints('md')}) {
+      display: block;
+      padding: 2.3rem 0 2.3rem 2.4rem;
+
+      &:hover {
+        color: ${({ theme: { palette } }) => palette.blacks[3]};
+        border-left: ${({ theme: { palette } }) =>
+          `4px solid ${palette.lightGrays[1]}`};
+      }
+    }
 
     .item-icon {
       margin-right: 1rem;
-      cursor: pointer;
-    }
-
-    .item-name {
-      cursor: pointer;
     }
   }
 
   .active {
     font-weight: bold;
-    cursor: zoom-in;
+    color: ${({ theme: { palette } }) => palette.darkGrays[3]};
+
+    @media (${breakPoints('md')}) {
+      font-weight: normal;
+      color: ${({ theme: { palette } }) => palette.blacks[3]};
+    }
   }
 `;

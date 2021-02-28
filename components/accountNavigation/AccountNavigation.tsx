@@ -1,25 +1,32 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
+import { IconType } from 'react-icons/lib/cjs';
 
 import { useTranslation } from '../../i18n';
 import { StyledAccountNavMenu } from './AccountNavigation.styles';
-import PaddedLayout from '../paddedLayout/PaddedLayout';
 import navigationItems from './navigationItems';
+import useScreenWidth from '../../hooks/useScreenWidth';
 
 const AccountNavigation = () => {
   const { t } = useTranslation('account');
+  const { isSmallScreen } = useScreenWidth();
 
-  const activeItem = navigationItems[0];
-  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+  const [isSmNavMenuOpen, setIsSmNavMenuOpen] = useState(false);
+  const [activeNavItem, setActiveNavItem] = useState(navigationItems[0]);
 
-  const displayActiveItem = () => (
+  const handleCurrentNavItemChange = (item: { name: string; Icon: IconType }) => {
+    setActiveNavItem(item);
+    setIsSmNavMenuOpen(false);
+  };
+
+  const displayCurrentNavItem = () => (
     <div
       className='active-item'
-      onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}>
-      <activeItem.Icon size={19} />
-      <span className='active-item-title'>{t(`${activeItem.name}`)}</span>
-      {!isNavMenuOpen ? (
+      onClick={() => setIsSmNavMenuOpen(!isSmNavMenuOpen)}>
+      <activeNavItem.Icon size={19} />
+      <span className='active-item-title'>{t(`${activeNavItem.name}`)}</span>
+      {!isSmNavMenuOpen ? (
         <RiArrowDownSLine size={22} />
       ) : (
           <RiArrowUpSLine size={22} />
@@ -28,30 +35,36 @@ const AccountNavigation = () => {
   );
 
   const displayNavigationMenu = () => (
-    <div className='navigation-menu'>
-      <PaddedLayout>
-        {navigationItems.map(({ name, Icon }) => (
+    <div className={classNames({ 'sm-screen-nav': isSmallScreen })}>
+      {navigationItems.map(item => {
+        const { name, Icon } = item;
+        const navItemClasses = classNames('nav-item-block', {
+          active: name === activeNavItem.name,
+        });
+
+        return (
           <div
             key={name}
-            className={classNames({
-              'nav-item-block': true,
-              'active': name === activeItem.name,
-            })}
-          >
+            className={navItemClasses}
+            onClick={() => handleCurrentNavItemChange(item)}>
             <Icon size={20} className='item-icon' />
-            <span className='item-name'>{t(`${name}`)}</span>
+            <span>{t(`${name}`)}</span>
           </div>
-        ))}
-      </PaddedLayout>
+        );
+      })}
     </div>
   );
 
   return (
     <StyledAccountNavMenu>
-      {displayActiveItem()}
-      <div>
-        {isNavMenuOpen && displayNavigationMenu()}
-      </div>
+      {isSmallScreen ? (
+        <Fragment>
+          {displayCurrentNavItem()}
+          {isSmNavMenuOpen && displayNavigationMenu()}
+        </Fragment>
+      ) : (
+          displayNavigationMenu()
+        )}
     </StyledAccountNavMenu>
   );
 };
