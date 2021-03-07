@@ -3,26 +3,35 @@ import { CgLogOff } from 'react-icons/cg';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FaRegAddressBook } from 'react-icons/fa';
 import { MdFavoriteBorder, MdPayment } from 'react-icons/md';
+import { IconType } from 'react-icons/lib/cjs';
 
-const navigationItems = [
+export const navigationItems = [
   {
     name: 'dashboard',
+    subpath: '',
     Icon: RiDashboardLine,
   },
-  { name: 'myOrders', Icon: FiShoppingCart },
+  {
+    name: 'myOrders',
+    subpath: 'my-orders',
+    Icon: FiShoppingCart,
+  },
   {
     name: 'myAddressBook',
+    subpath: 'my-address-book',
     Icon: FaRegAddressBook,
   },
   {
     name: 'paymentMethods',
+    subpath: 'payment-methods',
     Icon: MdPayment,
   },
   {
     name: 'wishlist',
+    subpath: 'wishlist',
     Icon: MdFavoriteBorder,
   },
-  { name: 'signOut', Icon: CgLogOff },
+  { name: 'signOut', subpath: '', Icon: CgLogOff },
 ];
 
 export default navigationItems;

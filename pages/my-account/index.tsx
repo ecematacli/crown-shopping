@@ -1,34 +1,18 @@
-import { includeDefaultNamespaces, useTranslation } from '../../i18n';
-import Layout from '../../components/layout/Layout';
-import AccountNavigation from '../../components/accountNavigation/AccountNavigation';
-import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
-import useScreenWidth from '../../hooks/useScreenWidth';
-import { AccountPageContainer, NavigationWrapper, ContentWrapper } from './index.styles';
+import { includeDefaultNamespaces } from '../../i18n';
+import AccountPageWrapper from '../../components/account/accountPageWrapper/AccountPageWrapper';
+import Dashboard from '../../components/account/dashboard/Dashboard';
 
-const LoginPage = () => {
-  const { t } = useTranslation('account');
-  const { isSmallScreen } = useScreenWidth();
+const AccountPage = () => (
+  <AccountPageWrapper subpath="dashboard">
+    <Dashboard />
+  </AccountPageWrapper>
+);
 
-  return (
-    <Layout title={t('myAccount')}>
-      <PaddedLayout padding={{ rightLeft: isSmallScreen ? '0' : '2.4' }}>
-        <AccountPageContainer>
-          <NavigationWrapper>
-            <AccountNavigation />
-          </NavigationWrapper>
-          <ContentWrapper>
-            THIS IS THE CONTENT OF ACCOUNT PAGE
-          </ContentWrapper>
-        </AccountPageContainer>
-      </PaddedLayout>
-    </Layout>
-  );
-};
 
 export const getStaticProps = () => ({
   props: {
-    namespacesRequired: includeDefaultNamespaces(['account']),
+    namespacesRequired: includeDefaultNamespaces(['my-account']),
   },
 });
 
-export default LoginPage;
+export default AccountPage;

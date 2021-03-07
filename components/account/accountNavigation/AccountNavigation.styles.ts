@@ -1,9 +1,17 @@
 import styled from 'styled-components';
-import { breakPoints } from '../../styles/theme';
+import { breakPoints } from '../../../styles/theme';
 
 export const StyledAccountNavMenu = styled.div`
   font-size: 14px;
   display: initial;
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-left: -1px;
+  }
 
   .active-item {
     position: sticky;

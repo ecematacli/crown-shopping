@@ -15,6 +15,10 @@ html {
   font-size: 10px;
 }
 
+a:hover {
+ text-decoration: none;
+}
+
 input:focus,
 input:hover,
 button:focus,

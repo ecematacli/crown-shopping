@@ -11,7 +11,12 @@ import Footer from './footer/Footer';
 import Header from './header/Header';
 import { OpenedMenuContext } from '../../contexts/OpenedMenuContext';
 
-const Layout: React.FC<{ title: string }> = ({ children, title = 'EA' }) => {
+interface Props {
+  title: string;
+  children: React.ReactNode;
+}
+
+const Layout = ({ children, title = 'EA' }: Props) => {
   const { isMenuOpen } = useContext(OpenedMenuContext);
 
   return (

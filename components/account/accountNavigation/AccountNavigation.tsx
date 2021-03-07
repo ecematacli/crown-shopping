@@ -1,27 +1,29 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
-import { IconType } from 'react-icons/lib/cjs';
 
-import { useTranslation } from '../../i18n';
+import { useTranslation } from '../../../i18n';
 import { StyledAccountNavMenu } from './AccountNavigation.styles';
 import navigationItems from './navigationItems';
-import useScreenWidth from '../../hooks/useScreenWidth';
+import useScreenWidth from '../../../hooks/useScreenWidth';
 
 const AccountNavigation = () => {
-  const { t } = useTranslation('account');
+  const { t } = useTranslation('my-account');
+  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
 
   const [isSmNavMenuOpen, setIsSmNavMenuOpen] = useState(false);
   const [activeNavItem, setActiveNavItem] = useState(navigationItems[0]);
 
-  const handleCurrentNavItemChange = (item: {
-    name: string;
-    Icon: IconType;
-  }) => {
-    setActiveNavItem(item);
-    setIsSmNavMenuOpen(false);
-  };
+  const pathname = t('pathname');
+
+  // console.log(router, router.pathname)
+  // const handleCurrentNavItemChange = (item: NavigationItem) => {
+  //   setActiveNavItem(item);
+  //   setIsSmNavMenuOpen(false);
+  // };
 
   const displayCurrentNavItem = () => (
     <div
@@ -38,24 +40,25 @@ const AccountNavigation = () => {
   );
 
   const displayNavigationMenu = () => (
-    <div className={classNames({ 'sm-screen-nav': isSmallScreen })}>
+    <ul className={classNames({ 'sm-screen-nav': isSmallScreen })}>
       {navigationItems.map(item => {
-        const { name, Icon } = item;
+        const { name, subpath, Icon } = item;
         const navItemClasses = classNames('nav-item-block', {
           active: name === activeNavItem.name,
         });
 
         return (
-          <div
-            key={name}
-            className={navItemClasses}
-            onClick={() => handleCurrentNavItemChange(item)}>
-            <Icon size={20} className='item-icon' />
-            <span>{t(`${name}`)}</span>
-          </div>
+          <li key={name}>
+            <Link href={{ pathname: `${pathname}/${subpath}` }}>
+              <a className={navItemClasses}>
+                <Icon size={20} className='item-icon' />
+                <span>{t(`${name}`)}</span>
+              </a>
+            </Link>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 
   return (
