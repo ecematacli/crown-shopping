@@ -3,7 +3,6 @@ import { CgLogOff } from 'react-icons/cg';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FaRegAddressBook } from 'react-icons/fa';
 import { MdFavoriteBorder, MdPayment } from 'react-icons/md';
-import { IconType } from 'react-icons/lib/cjs';
 
 export const navigationItems = [
   {
