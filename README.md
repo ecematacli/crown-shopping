@@ -9,7 +9,7 @@
  yarn dev
 ```
 
-# Description
+## Description
 
 Please kindly note that the project is under-development. I am working on it on my spare time.
 
@@ -18,13 +18,13 @@ Please kindly note that the project is under-development. I am working on it on 
 - It uses GraphQL API of commercetools.
 - With sign in and sign up functionalities, it is possible to create an account with commercetools backend.
 
-# Tech Stack
+## Tech Stack
 
 - React, Typescript, Next.js, GraphQL, Apollo, Styled Components, React Bootstrap.
 
-# Demo
+## Demo
 
-## Mobile
+### Mobile
 
 <p float="left">
   <img src="./mobile-menu.png" height="800" />
@@ -41,7 +41,7 @@ Please kindly note that the project is under-development. I am working on it on 
   <img src="./account-signin-mobile.png"  width="500" height="800"/>
 </p>
 
-## Desktop
+### Desktop
 
 <p>
   <img src="./desktop-menu.png" height="800" width="1020"/>
