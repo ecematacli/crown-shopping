@@ -2,8 +2,6 @@
 
 _Responsive, multi-language e-commerce web app_
 
-<br />
-
 ## How to Run
 
 ```sh
