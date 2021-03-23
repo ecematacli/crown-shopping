@@ -1,6 +1,8 @@
 # CROWN Shopping
 
-## _Responsive, multi-language e-commerce web app_
+_Responsive, multi-language e-commerce web app_
+
+<br />
 
 ## How to Run
 
