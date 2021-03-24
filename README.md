@@ -2,6 +2,8 @@
 
 _Responsive, multi-language e-commerce web app_
 
+https://crwn-crown.herokuapp.com/
+
 ## How to Run
 
 ```sh
@@ -34,7 +36,6 @@ Please kindly note that the project is currently under-development. I am working
   <img src="./home-page-mobile.png" height="700" />
   <img src="./account-signin-mobile.png" height="700"/>
 </p>
-<br/>
 
 ## Desktop
 
