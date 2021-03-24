@@ -11,54 +11,45 @@ _Responsive, multi-language e-commerce web app_
 
 ## Description
 
-Please kindly note that the project is under-development. I am working on it on my spare time.
+Please kindly note that the project is currently under-development. I am working on it on my spare time.
 
 - It has mobile-first approach.
-- It has English and German languages which gives the ability to switch between these languages easily.
+- It has English and German languages which give the user the ability to switch between these languages and continue shopping journey with that language.
 - It uses GraphQL API of commercetools.
-- With sign in and sign up functionalities, it is possible to create an account with commercetools backend.
+- With sign in and sign up functionalities, it is possible to create an account with the back-end of commercetoools.
 
 ## Tech Stack
 
 - React, Typescript, Next.js, GraphQL, Apollo, Styled Components, React Bootstrap.
 
-## Demo
 
-### Mobile
+## Mobile
 
 <p float="left">
-  <img src="./mobile-menu.png" height="800" />
-  <img src="./mobile-footer.png" height="800" /> 
+  <img src="./mobile-menu.png" height="700" />
+  <img src="./mobile-footer.png" height="700" /> 
 </p>
 <br/>
 <p float="left">
-  <img src="./home-page-mobile.png" height="800" />
-  <img src="./product-list-mobile.png"  height="800" width="485"/> 
+  <img src="./home-page-mobile.png" height="700" />
+  <img src="./account-signin-mobile.png" height="700"/>
 </p>
 <br/>
-<p float="left">
-  <img src="./account-page-mobile.png" width="510" height="800"/> 
-  <img src="./account-signin-mobile.png"  width="500" height="800"/>
-</p>
 
-### Desktop
+## Desktop
 
 <p>
-  <img src="./desktop-menu.png" height="800" width="1020"/>
+  <img src="./desktop-menu.png" height="700" />
 </p>
 <br/>
 <p>
-  <img src="./desktop-footer.png" height="800" width="1020"/>
+  <img src="./desktop-footer.png" height="700" />
 </p>
 <br />
 <p>
-  <img src="./home-page-desktop-de.png" height="800" width="1020"/>
+  <img src="./home-page-desktop-de.png" height="700" />
 </p>
 <br />
 <p>
-  <img src="./product-list-desktop.png" height="800" width="1020"/>
-</p>
-<br />
-<p>
-  <img src="./account-signin-desktop.png" height="800" width="1020" />
+  <img src="./product-list-desktop.png" height="700" />
 </p>
