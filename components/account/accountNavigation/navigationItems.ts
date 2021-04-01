@@ -3,6 +3,13 @@ import { CgLogOff } from 'react-icons/cg';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FaRegAddressBook } from 'react-icons/fa';
 import { MdFavoriteBorder, MdPayment } from 'react-icons/md';
+import { IconType } from 'react-icons/lib/cjs';
+
+export interface NavigationItem {
+  name: string;
+  subpath: string;
+  Icon: IconType;
+}
 
 export const navigationItems = [
   {
@@ -30,7 +37,5 @@ export const navigationItems = [
     subpath: 'wishlist',
     Icon: MdFavoriteBorder,
   },
-  { name: 'signOut', subpath: '', Icon: CgLogOff },
+  { name: 'signOut', subpath: 'sign-out', Icon: CgLogOff },
 ];
-
-export default navigationItems;

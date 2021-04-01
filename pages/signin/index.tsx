@@ -1,9 +1,9 @@
 import StyledLoginPage from './index.styles';
-import PaddedLayout from '../../components/paddedLayout/PaddedLayout';
+import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout';
 import SignInForm from '../../components/signInForm/SignInForm';
 import SignUpForm from '../../components/signUpForm/SignUpForm';
 import { includeDefaultNamespaces, useTranslation } from '../../i18n';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layouts/appLayout/Layout';
 
 const LoginPage = () => {
   const { t } = useTranslation('signin');

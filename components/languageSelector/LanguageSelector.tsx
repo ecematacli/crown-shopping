@@ -4,8 +4,8 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import BaseModal from '../baseModal/BaseModal';
 import { LanguageSelectorContainer } from './LanguageSelector.styles';
-import { CountryInfoContext } from '../../contexts/CountryInfoContext';
-import languageOptions from '../../consts/languages';
+import { CountryInfoContext } from '../../common/contexts/CountryInfoContext';
+import languageOptions from '../../common/consts/languages';
 import { useTranslation } from '../../i18n';
 
 const LanguageSelector = () => {

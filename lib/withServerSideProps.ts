@@ -8,7 +8,7 @@ import { includeDefaultNamespaces } from '../i18n';
 import { initializeApollo } from './apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
-import getDeviceType from '../utils/deviceType';
+import getDeviceType from '../common/utils/deviceType';
 
 export const withServerSideProps = (
   nameSpace: string,

@@ -8,10 +8,10 @@ import { useApollo } from '../lib/apolloClient';
 import { appWithTranslation } from '../i18n';
 import { theme } from '../styles/theme';
 import GlobalStyles from '../styles/Global.styles';
-import { CountryInfoContextProvider } from '../contexts/CountryInfoContext';
+import { CountryInfoContextProvider } from '../common/contexts/CountryInfoContext';
 import {
   OpenedMenuContextProvider
-} from '../contexts/OpenedMenuContext';
+} from '../common/contexts/OpenedMenuContext';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps);

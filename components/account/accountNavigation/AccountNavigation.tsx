@@ -1,36 +1,30 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 
-import { useTranslation } from '../../../i18n';
+import { useTranslation, Link } from '../../../i18n';
 import { StyledAccountNavMenu } from './AccountNavigation.styles';
-import navigationItems from './navigationItems';
-import useScreenWidth from '../../../hooks/useScreenWidth';
+import { navigationItems, NavigationItem } from './navigationItems';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 
 const AccountNavigation = () => {
   const { t } = useTranslation('my-account');
-  const router = useRouter();
   const { isSmallScreen } = useScreenWidth();
 
   const [isSmNavMenuOpen, setIsSmNavMenuOpen] = useState(false);
-  const [activeNavItem, setActiveNavItem] = useState(navigationItems[0]);
+  const [activeNavItem, setActiveNavItem] = useState<NavigationItem>(navigationItems[0]);
 
-  const pathname = t('pathname');
-
-  // console.log(router, router.pathname)
-  // const handleCurrentNavItemChange = (item: NavigationItem) => {
-  //   setActiveNavItem(item);
-  //   setIsSmNavMenuOpen(false);
-  // };
+  const onListItemClick = (item: NavigationItem) => {
+    setActiveNavItem(item);
+    return name === 'signOut';
+  }
 
   const displayCurrentNavItem = () => (
     <div
-      className='active-item'
+      className='active-item-sm'
       onClick={() => setIsSmNavMenuOpen(!isSmNavMenuOpen)}>
       <activeNavItem.Icon size={19} />
-      <span className='active-item-title'>{t(`${activeNavItem.name}`)}</span>
+      <span className='active-item-title-sm'>{t(`${activeNavItem.name}`)}</span>
       {!isSmNavMenuOpen ? (
         <RiArrowDownSLine size={22} />
       ) : (
@@ -40,16 +34,16 @@ const AccountNavigation = () => {
   );
 
   const displayNavigationMenu = () => (
-    <ul className={classNames({ 'sm-screen-nav': isSmallScreen })}>
-      {navigationItems.map(item => {
+    <ul className={classNames('nav-list', { 'sm-screen-nav': isSmallScreen })}>
+      {navigationItems.map((item: NavigationItem) => {
         const { name, subpath, Icon } = item;
         const navItemClasses = classNames('nav-item-block', {
           active: name === activeNavItem.name,
         });
 
         return (
-          <li key={name}>
-            <Link href={{ pathname: `${pathname}/${subpath}` }}>
+          <li key={name} onClick={() => onListItemClick(item)}>
+            <Link href={{ pathname: t('pathname'), query: { subpath } }}>
               <a className={navItemClasses}>
                 <Icon size={20} className='item-icon' />
                 <span>{t(`${name}`)}</span>

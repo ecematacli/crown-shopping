@@ -3,8 +3,8 @@ import { Card } from 'react-bootstrap';
 
 import { StyledProductThumbnail } from './ProductThumbnail.styles';
 import { Product } from '../../types/products';
-import { CountryInfoContext } from '../../contexts/CountryInfoContext';
-import { formatCurrency } from '../../utils/helpers';
+import { CountryInfoContext } from '../../common/contexts/CountryInfoContext';
+import { formatCurrency } from '../../common/utils/helpers';
 import BaseImage from '../../components/baseImage/BaseImage';
 
 interface Props {

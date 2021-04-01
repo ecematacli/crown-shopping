@@ -2,7 +2,7 @@ import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 import config from './config';
-import { getCookie, clearCookie, setCookie } from './utils/cookie';
+import { getCookie, clearCookie, setCookie } from './common/utils/cookie';
 
 type ApolloClientType = ApolloClient<NormalizedCacheObject>;
 export interface Token {

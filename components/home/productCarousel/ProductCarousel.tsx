@@ -1,6 +1,6 @@
 import Carousel from 'react-multi-carousel';
 
-import PaddedLayout from '../../paddedLayout/PaddedLayout';
+import PaddedLayout from '../../layouts/paddedLayout/PaddedLayout';
 import { ProductsAPIResponse, Product } from '../../../types/products';
 import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
 import { StyledProductCarousel } from './ProductCarousel.styles';
