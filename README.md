@@ -1,30 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CROWN Shopping
 
-## Getting Started
+_Responsive, multi-language e-commerce web app_
 
-First, run the development server:
+https://crwn-crown.herokuapp.com/
 
-```bash
-npm run dev
-# or
-yarn dev
+## How to Run
+
+```sh
+ yarn install
+ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Description
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Please kindly note that the project is currently under-development. I am working on it on my spare time.
 
-## Learn More
+- It has mobile-first approach.
+- It has English and German languages which give the user the ability to switch between these languages and continue shopping journey with that language.
+- It uses GraphQL API of commercetools.
+- With sign in and sign up functionalities, it is possible to create an account with the back-end of commercetoools.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- React, Typescript, Next.js, GraphQL, Apollo, Styled Components, React Bootstrap.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Mobile
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p float="left">
+  <img src="./mobile-menu.png" height="700" />
+  <img src="./mobile-footer.png" height="700" /> 
+</p>
+<br/>
+<p float="left">
+  <img src="./home-page-mobile.png" height="700" />
+  <img src="./account-signin-mobile.png" height="700"/>
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Desktop
+
+<p>
+  <img src="./desktop-menu.png" height="700" />
+</p>
+<br/>
+<p>
+  <img src="./desktop-footer.png" height="700" />
+</p>
+<br />
+<p>
+  <img src="./home-page-desktop-de.png" height="700" />
+</p>
+<br />
+<p>
+  <img src="./product-list-desktop.png" height="700" />
+</p>
