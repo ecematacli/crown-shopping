@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import Home from '../components/home/Home';
 import Layout from '../components/layouts/appLayout/Layout';
 import { useTranslation } from '../i18n';
-import { withServerSideProps } from '../lib/withServerSideProps';
+import { getServerSideProductProps } from '../common/getServerSideProductProps';
 import { ProductsAPIResponse } from '../types/products';
 
 interface Props {
@@ -21,7 +21,7 @@ const IndexPage = ({ products, deviceType }: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = withServerSideProps(
+export const getServerSideProps: GetServerSideProps = getServerSideProductProps(
   'index',
   true
 );

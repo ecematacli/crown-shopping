@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakPoints } from '../../../../../../styles/theme';
+import { breakPoints } from '../../../../../styles/theme';
 
 export const SubcategoryContainer = styled.div`
   width: 100%;

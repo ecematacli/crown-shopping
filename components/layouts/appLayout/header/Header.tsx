@@ -30,7 +30,7 @@ const Header = () => {
     OpenedMenuContext
   );
 
-  const isAuthenticated = getCookie('isAuthenticated');
+  const isAuth = getCookie('isAuth');
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
   const customer = data?.me.customer;
   const navigateUser = (path: string) => Router.push(path);
@@ -69,7 +69,7 @@ const Header = () => {
             <AlignedDiv>
               <IconWrapper
                 onClick={() =>
-                  navigateUser(`/${!isAuthenticated ? 'signin' : 'my-account'}`)
+                  navigateUser(`/${!isAuth ? 'signin' : 'my-account'}`)
                 }>
                 <BsPerson size={20} />
                 {!isSmallScreen && (

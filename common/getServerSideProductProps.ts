@@ -5,12 +5,12 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { getProducts } from '../api/products';
 import { includeDefaultNamespaces } from '../i18n';
-import { initializeApollo } from './apolloClient';
+import { initializeApollo } from '../lib/apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
-import getDeviceType from '../common/utils/deviceType';
+import getDeviceType from './utils/deviceType';
 
-export const withServerSideProps = (
+export const getServerSideProductProps = (
   nameSpace: string,
   shouldFetchCategoryId?: boolean
 ) => {

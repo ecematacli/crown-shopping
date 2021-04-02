@@ -13,7 +13,7 @@ import {
   MenuNavbar,
   MobileHead,
 } from './CategoriesMenu.styles';
-import Subcategories from './subcategories/Subcategories';
+import Subcategories from '../subcategories/Subcategories';
 import HeaderBanner from '../headerBanner/HeaderBanner';
 import { Router } from '../../../../../i18n';
 

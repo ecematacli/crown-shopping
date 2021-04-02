@@ -4,7 +4,7 @@ import { useTranslation } from '../../../i18n';
 import ProductThumbnail from '../../../components/productThumbnail/ProductThumbnail';
 import PaddedLayout from '../../../components/layouts/paddedLayout/PaddedLayout';
 import Layout from '../../../components/layouts/appLayout/Layout';
-import { withServerSideProps } from '../../../lib/withServerSideProps';
+import { getServerSideProductProps } from '../../../common/getServerSideProductProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
 import ProductListContainer from './index.styles';
 
@@ -30,7 +30,7 @@ const ProductsPage = ({ products }: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = withServerSideProps(
+export const getServerSideProps: GetServerSideProps = getServerSideProductProps(
   'products'
 );
 

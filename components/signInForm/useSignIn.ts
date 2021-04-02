@@ -25,7 +25,7 @@ const useSignIn = () => {
       });
       if (data) {
         await clientLogin(createApolloClient(), { username: email, password });
-        Router.push('/');
+        Router.push('/my-account');
       }
     } catch (e) {
       console.log('error while logging in: ', e);

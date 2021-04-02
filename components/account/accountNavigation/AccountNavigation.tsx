@@ -6,18 +6,27 @@ import { useTranslation, Link } from '../../../i18n';
 import { StyledAccountNavMenu } from './AccountNavigation.styles';
 import { navigationItems, NavigationItem } from './navigationItems';
 import useScreenWidth from '../../../common/hooks/useScreenWidth';
+import { createApolloClient } from '../../../lib/apolloClient';
+import { clientLogout } from '../../../auth';
+import { Router } from '../../../i18n';
 
 const AccountNavigation = () => {
   const { t } = useTranslation('my-account');
   const { isSmallScreen } = useScreenWidth();
 
   const [isSmNavMenuOpen, setIsSmNavMenuOpen] = useState(false);
-  const [activeNavItem, setActiveNavItem] = useState<NavigationItem>(navigationItems[0]);
+  const [activeNavItem, setActiveNavItem] = useState<NavigationItem>(
+    navigationItems[0]
+  );
+
+  const handleSignOut = () => {
+    clientLogout(createApolloClient(), () => Router.push('/'));
+  }
 
   const onListItemClick = (item: NavigationItem) => {
     setActiveNavItem(item);
-    return name === 'signOut';
-  }
+    item.name === 'signOut' && handleSignOut();
+  };
 
   const displayCurrentNavItem = () => (
     <div

@@ -11,7 +11,6 @@ import {
 import useScreenWidth from '../../common/hooks/useScreenWidth';
 import AccountNavigation from '../../components/account/accountNavigation/AccountNavigation';
 import AccountContent from '../../components/account/accountContent/AccountContent';
-
 interface Props {
   subpath: { name: string };
 }
@@ -39,7 +38,7 @@ const AccountPage = ({ subpath }: Props) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => ({
   props: {
     namespacesRequired: includeDefaultNamespaces(['my-account']),
-    subpath: { name: query.subpath },
+    subpath: { name: query.subpath || '' },
   }
 });
 

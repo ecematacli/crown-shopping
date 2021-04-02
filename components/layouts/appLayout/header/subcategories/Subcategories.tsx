@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 
-import { Subcategory } from '../useCategoriesMenu';
-import PaddedLayout from '../../../../paddedLayout/PaddedLayout';
+import { Subcategory } from '../categoriesMenu/useCategoriesMenu';
+import PaddedLayout from '../../../paddedLayout/PaddedLayout';
 import { SubcategoryContainer } from './Subcategories.styles';
-import useScreenWidth from '../../../../../../common/hooks/useScreenWidth';
+import useScreenWidth from '../../../../../common/hooks/useScreenWidth';
 import Image from 'next/image';
 
 interface Props {
