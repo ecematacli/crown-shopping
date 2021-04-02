@@ -3,7 +3,7 @@ import { breakPoints } from '../../styles/theme';
 
 export const AccountPageContainer = styled.div`
   @media (${breakPoints('md')}) {
-    height: 55vh;
+    height: 85rem;
     margin-top: 3rem;
     border: ${({ theme: { palette } }) => `1px solid ${palette.lightGrays[1]}`};
     display: flex;

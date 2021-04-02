@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import { useTranslation } from '../../../i18n';
 import ProductThumbnail from '../../../components/productThumbnail/ProductThumbnail';
 import PaddedLayout from '../../../components/layouts/paddedLayout/PaddedLayout';
-import Layout from '../../../components/layouts/appLayout/Layout';
+import Layout from '../../../components/layouts/pageLayout/Layout';
 import { getServerSideProductProps } from '../../../common/getServerSideProductProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
 import ProductListContainer from './index.styles';

@@ -16,7 +16,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Layout = ({ children, title = 'EA' }: Props) => {
+const Layout = ({ children, title = 'Crown' }: Props) => {
   const { isMenuOpen } = useContext(OpenedMenuContext);
 
   return (

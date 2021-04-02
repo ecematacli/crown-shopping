@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 
 import { includeDefaultNamespaces, useTranslation } from '../../i18n';
-import Layout from '../../components/layouts/appLayout/Layout';
+import Layout from '../../components/layouts/pageLayout/Layout';
 import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout';
 import {
   AccountPageContainer,
