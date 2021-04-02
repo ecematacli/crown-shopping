@@ -2,13 +2,12 @@ import { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 
-import { useTranslation, Link } from '../../../i18n';
+import { useTranslation, Link, Router } from '../../../i18n';
 import { StyledAccountNavMenu } from './AccountNavigation.styles';
 import { navigationItems, NavigationItem } from './navigationItems';
 import useScreenWidth from '../../../common/hooks/useScreenWidth';
 import { createApolloClient } from '../../../lib/apolloClient';
 import { clientLogout } from '../../../auth';
-import { Router } from '../../../i18n';
 
 const AccountNavigation = () => {
   const { t } = useTranslation('my-account');
@@ -21,10 +20,11 @@ const AccountNavigation = () => {
 
   const handleSignOut = () => {
     clientLogout(createApolloClient(), () => Router.push('/'));
-  }
+  };
 
   const onListItemClick = (item: NavigationItem) => {
     setActiveNavItem(item);
+    setIsSmNavMenuOpen(false);
     item.name === 'signOut' && handleSignOut();
   };
 
@@ -52,7 +52,11 @@ const AccountNavigation = () => {
 
         return (
           <li key={name} onClick={() => onListItemClick(item)}>
-            <Link href={{ pathname: t('pathname'), query: { subpath } }}>
+            <Link
+              href={{
+                pathname: `/${t('pathname')}`,
+                [subpath ? 'query' : '']: { subpath },
+              }}>
               <a className={navItemClasses}>
                 <Icon size={20} className='item-icon' />
                 <span>{t(`${name}`)}</span>
