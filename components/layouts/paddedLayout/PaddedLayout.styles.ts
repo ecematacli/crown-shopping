@@ -21,5 +21,5 @@ export const Container = styled.div<Props>`
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 109rem;
+  max-width: 120rem;
 `;

@@ -78,9 +78,7 @@ const CategoriesMenu: React.FC<Props> = ({
             onClick={() => listItemBlockClickOnMobile(category)}>
             <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
               <span
-                onMouseOver={() =>
-                  !isSmallScreen && toggleOpenCategory(category)
-                }
+                onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
                 onClick={() => listItemNameClick(category.id, category.slug)}>
                 {category.name.toUpperCase()}
               </span>
