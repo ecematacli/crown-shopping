@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useContext } from 'react';
 
 import {
   HeaderContainer,
@@ -9,7 +8,7 @@ import {
 } from './Layout.styles';
 import Footer from './footer/Footer';
 import Header from './header/Header';
-import { OpenedMenuContext } from '../../../common/contexts/OpenedMenuContext';
+import { useOpenedMenuContext } from '../../../common/contexts/OpenedMenuContext';
 
 interface Props {
   title: string;
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const Layout = ({ children, title = 'Crown' }: Props) => {
-  const { isMenuOpen } = useContext(OpenedMenuContext);
+  const { isMenuOpen } = useOpenedMenuContext();
 
   return (
     <div>

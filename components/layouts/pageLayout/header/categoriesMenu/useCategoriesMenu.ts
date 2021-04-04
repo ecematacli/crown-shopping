@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import { GET_CATEGORIES } from '../../../../../graphql/queries/category';
 import { categories } from '../../../../../graphql/queries/types/categories';
-import { CountryInfoContext } from '../../../../../common/contexts/CountryInfoContext';
-import { OpenedMenuContext } from '../../../../../common/contexts/OpenedMenuContext';
+import { useCountryInfoContext } from '../../../../../common/contexts/CountryInfoContext';
+import { useOpenedMenuContext } from '../../../../../common/contexts/OpenedMenuContext';
 import useScreenWidth from '../../../../../common/hooks/useScreenWidth';
 import { Router } from '../../../../../i18n';
 
@@ -28,10 +28,10 @@ type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 
 const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const { isSmallScreen } = useScreenWidth();
-  const { setIsMenuOpen } = useContext(OpenedMenuContext);
+  const { setIsMenuOpen } = useOpenedMenuContext();
   const {
     countryInfo: { locale },
-  } = useContext(CountryInfoContext);
+  } = useCountryInfoContext();
   const variables = { locale, where: 'parent is not defined' };
 
   const { data } = useQuery<categories>(GET_CATEGORIES, {

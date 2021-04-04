@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 import languageOptions from '../consts/languages';
 import { getCookie, setCookie } from '../utils/cookie';
@@ -37,3 +37,5 @@ export const CountryInfoContextProvider: React.FC<{
     </CountryInfoContext.Provider>
   );
 };
+
+export const useCountryInfoContext = () => useContext(CountryInfoContext);

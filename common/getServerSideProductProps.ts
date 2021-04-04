@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
 import { ApolloQueryResult } from '@apollo/client';
-import cookie from 'cookie';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getProducts } from '../api/products';
@@ -9,18 +8,15 @@ import { initializeApollo } from '../lib/apolloClient';
 import { GET_CATEGORY_ID } from '../graphql/queries/category';
 import { categoryId } from '../graphql/queries/types/categoryId';
 import getDeviceType from './utils/deviceType';
+import { getAuthCookie, getCountryCookie } from './utils/cookie';
 
 export const getServerSideProductProps = (
   nameSpace: string,
   shouldFetchCategoryId?: boolean
 ) => {
   return async ({ req, params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
-    const auth = cookie.parse(req?.headers.cookie || '')?.auth;
-    const token = auth ? JSON.parse(auth)?.access_token : '';
-
-    const country = cookie.parse(req?.headers.cookie || '')?.country;
-
-    const countryInfo = country ? JSON.parse(country) : '';
+    const accessToken = getAuthCookie(req?.headers);
+    const countryInfo = getCountryCookie(req?.headers);
 
     const fetchCategoryId = async () => {
       const locale = countryInfo ? countryInfo.locale : 'en';
@@ -35,7 +31,7 @@ export const getServerSideProductProps = (
       return category.data.categories.results[0]?.id;
     };
 
-    const { data } = await getProducts(token, {
+    const { data } = await getProducts(accessToken, {
       filter: `categories.id: subtree("${
         !shouldFetchCategoryId ? params.id : await fetchCategoryId()
       }")`,

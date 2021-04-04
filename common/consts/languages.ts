@@ -9,7 +9,7 @@ export default {
   de: {
     code: 'DE',
     currency: 'EUR',
-    name: 'Germany',
+    name: 'Deutschland',
     locale: 'de',
     language: 'Deutsch',
   },

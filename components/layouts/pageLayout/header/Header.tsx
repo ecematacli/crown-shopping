@@ -1,14 +1,13 @@
 import { Router } from '../../../../i18n';
 import Image from 'next/image';
 import { useQuery } from '@apollo/client';
-import { useContext } from 'react';
 import { BsList, BsSearch, BsPerson } from 'react-icons/bs';
 import { BiBasket } from 'react-icons/bi';
 
 import { ME } from '../../../../graphql/queries/customer';
 import { me } from '../../../../graphql/queries/types/me';
 import { useTranslation } from '../../../../i18n';
-import { OpenedMenuContext } from '../../../../common/contexts/OpenedMenuContext';
+import { useOpenedMenuContext } from '../../../../common/contexts/OpenedMenuContext';
 import PaddedLayout from '../../paddedLayout/PaddedLayout';
 import {
   HeaderContainer,
@@ -26,9 +25,7 @@ const Header = () => {
   const { t } = useTranslation('header');
   const { data } = useQuery<me>(ME);
   const { isSmallScreen } = useScreenWidth();
-  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(
-    OpenedMenuContext
-  );
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useOpenedMenuContext()
 
   const isAuth = getCookie('isAuth');
   const topBottomPads = !isSmallScreen ? '1.3' : '1.8';

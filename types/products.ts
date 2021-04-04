@@ -1,5 +1,4 @@
 interface PriceValues {
-  type: string;
   centAmount: number;
   currencyCode: string;
   fractionDigits: number;
@@ -7,11 +6,19 @@ interface PriceValues {
 
 export interface ProductPrice {
   id: string;
+  country: string;
   value: PriceValues;
   discounted: {
-    discount: { id: string };
     value: PriceValues;
   };
+}
+
+export interface ProductVariant {
+  id: number;
+  sku: string;
+  images: { url: string }[];
+  price: ProductPrice;
+  prices: ProductPrice[];
 }
 
 export interface Product {
@@ -20,12 +27,7 @@ export interface Product {
   categories: { id: string; typeId: string }[];
   createdAt: Date;
   lastModifiedAt: Date;
-  masterVariant: {
-    id: number;
-    images: { url: string; dimensions: { w: number; h: number } }[];
-    price: { country: string; value: PriceValues };
-    prices: ProductPrice[];
-  };
+  masterVariant: ProductVariant;
   slug: { en: string; de: string };
 }
 

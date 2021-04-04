@@ -1,36 +1,33 @@
-import { useContext } from 'react';
 import { Card } from 'react-bootstrap';
 
 import { StyledProductThumbnail } from './ProductThumbnail.styles';
-import { Product } from '../../types/products';
-import { CountryInfoContext } from '../../common/contexts/CountryInfoContext';
+import { ProductVariant } from '../../types/products';
+import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext';
 import { formatCurrency } from '../../common/utils/helpers';
 import BaseImage from '../../components/baseImage/BaseImage';
 
 interface Props {
-  product: Product;
+  productName: string;
+  product: ProductVariant;
   children?: React.ReactNode;
   width?: number;
   height?: number;
   className?: string;
 }
 
-const ProductThumbnail = ({ product, width, height, children }: Props) => {
+const ProductThumbnail = ({ productName, product, width, height, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
-  } = useContext(CountryInfoContext);
+  } = useCountryInfoContext();
   const countryCode = `${locale}-${code}`;
 
-  const { masterVariant } = product;
-
-  const name: string = product.name[locale];
-  const imageSrc = masterVariant.images[0].url;
+  const imageSrc = product.images[0].url;
   const price =
-    masterVariant.price?.value.centAmount ||
-    masterVariant.prices[0].value.centAmount;
+    product.price?.value.centAmount ||
+    product.prices[0].value.centAmount;
   const fractionDigits =
-    masterVariant.price?.value.fractionDigits |
-    masterVariant.prices[0].value.fractionDigits;
+    product.price?.value.fractionDigits |
+    product.prices[0].value.fractionDigits;
 
   const fallbackSrc = '/images/no-image.png';
 
@@ -45,7 +42,7 @@ const ProductThumbnail = ({ product, width, height, children }: Props) => {
         />
         <Card.Body>
           <div className='card-body-wrapper'>
-            <Card.Title>{name}</Card.Title>
+            <Card.Title>{productName}</Card.Title>
             <Card.Text>
               {formatCurrency(price, countryCode, currency, fractionDigits)}
             </Card.Text>

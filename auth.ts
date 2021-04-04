@@ -5,14 +5,6 @@ import config from './config';
 import { getCookie, clearCookie, setCookie } from './common/utils/cookie';
 
 type ApolloClientType = ApolloClient<NormalizedCacheObject>;
-export interface Token {
-  access_token: string;
-  expires_at: number;
-  expires_in: number;
-  refresh_token: number;
-  scope: string;
-  token_type: 'Bearer';
-}
 
 const tokenProvider = new TokenProvider(
   {

@@ -6,6 +6,7 @@ import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
 import { StyledProductCarousel } from './ProductCarousel.styles';
 import BaseButton from '../../baseButton/BaseButton';
 import { useTranslation } from '../../../i18n';
+import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -14,6 +15,8 @@ interface Props {
 
 const ProductCarousel = ({ products, deviceType }: Props) => {
   const { t } = useTranslation('index');
+  const { countryInfo } = useCountryInfoContext();
+
   const productsData = [...products?.results].slice(0, 12);
 
   const responsive = {
@@ -65,7 +68,11 @@ const ProductCarousel = ({ products, deviceType }: Props) => {
           customTransition='900ms'
           swipeable>
           {productsData.map((product: Product) => (
-            <ProductThumbnail product={product} key={product.id} height={50}>
+            <ProductThumbnail
+              productName={product.name[countryInfo.locale]}
+              product={product.masterVariant}
+              key={product.id}
+              height={50}>
               <BaseButton
                 text={t('addToCart').toUpperCase()}
                 variant='outline-secondary'

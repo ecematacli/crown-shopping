@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 export interface OpenedMenuContextInt {
   isMenuOpen: boolean,
@@ -23,3 +23,5 @@ export const OpenedMenuContextProvider: React.FC<{ children: React.ReactNode }> 
     </OpenedMenuContext.Provider>
   );
 };
+
+export const useOpenedMenuContext = () => useContext(OpenedMenuContext);
