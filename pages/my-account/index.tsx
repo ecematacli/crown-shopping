@@ -3,11 +3,7 @@ import { GetServerSideProps } from 'next';
 import { includeDefaultNamespaces, useTranslation } from '../../i18n';
 import Layout from '../../components/layouts/pageLayout/Layout';
 import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout';
-import {
-  AccountPageContainer,
-  NavigationWrapper,
-  ContentWrapper,
-} from './index.styles';
+import AccountPageContainer, { NavigationWrapper, ContentWrapper } from './index.styles';
 import useScreenWidth from '../../common/hooks/useScreenWidth';
 import AccountNavigation from '../../components/account/accountNavigation/AccountNavigation';
 import AccountContent from '../../components/account/accountContent/AccountContent';

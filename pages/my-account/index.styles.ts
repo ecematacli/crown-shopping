@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../styles/theme';
 
-export const AccountPageContainer = styled.div`
+const AccountPageContainer = styled.div`
   @media (${breakPoints('md')}) {
     height: 85rem;
     margin-top: 3rem;
@@ -18,3 +18,5 @@ export const NavigationWrapper = styled.div`
 export const ContentWrapper = styled.div`
   flex-basis: 80%;
 `;
+
+export default AccountPageContainer;
