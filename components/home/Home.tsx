@@ -1,4 +1,4 @@
-import { ProductsAPIResponse } from '../../common/types/products';
+import { ProductsAPIResponse } from '../../types/products';
 import Carousel from './carousel/Carousel';
 import ProductCarousel from './productCarousel/ProductCarousel';
 import CategoryBanners from './categoryBanners/CategoryBanners';
