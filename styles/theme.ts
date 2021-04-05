@@ -1,6 +1,6 @@
 export const theme = {
   palette: {
-    darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a'],
+    darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a', '#858585'],
     lightGrays: [
       '#f9f9f9',
       '#d6d6d6',
@@ -13,11 +13,12 @@ export const theme = {
       '#E7E7E7',
       '#f4f4f4',
       '#fafafa',
+      '#f5f5f5',
     ],
     greens: ['#89D2A0'],
     purples: ['#9E788F', '#714955'],
     whites: ['#fff'],
-    blacks: ['#1F1F1F', 'rgba(0, 0, 0, 0.5)', '#343a40'],
+    blacks: ['#1F1F1F', 'rgba(0, 0, 0, 0.5)', '#343a40', '#333'],
   },
   breakpoints: {
     // Bootstrap 4 breakpoints

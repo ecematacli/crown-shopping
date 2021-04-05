@@ -1,12 +1,14 @@
 import { GetServerSideProps } from 'next';
 
-import { useTranslation } from '../../../i18n';
+import { useTranslation, Router } from '../../../i18n';
 import ProductThumbnail from '../../../components/productThumbnail/ProductThumbnail';
-import PaddedLayout from '../../../components/paddedLayout/PaddedLayout';
-import Layout from '../../../components/layout/Layout';
-import { withServerSideProps } from '../../../lib/withServerSideProps';
+import PaddedLayout from '../../../components/layouts/paddedLayout/PaddedLayout';
+import Layout from '../../../components/layouts/pageLayout/Layout';
+import { getServerSideProductProps } from '../../../common/getServerSideProductProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
 import ProductListContainer from './index.styles';
+import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -14,23 +16,33 @@ interface Props {
 
 const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
+  const { countryInfo } = useCountryInfoContext();
+  const { isSmallScreen } = useScreenWidth();
+
+  const displayProductList = () =>
+    products.results.map((product: Product) => (
+      <div
+        key={product.id}
+        className='product-thumbnail'
+        onClick={() => Router.push(`/product/${product.masterVariant.sku}`)}>
+        <ProductThumbnail
+          productName={product.name[countryInfo.locale]}
+          product={product.masterVariant}
+          width={!isSmallScreen && 38}
+        />
+      </div>
+    ));
 
   return (
     <Layout title={t('title')}>
       <PaddedLayout>
-        <ProductListContainer>
-          {products.results.map((product: Product) => (
-            <div key={product.id} className='product-thumbnail'>
-              <ProductThumbnail product={product} height={44.5} />
-            </div>
-          ))}
-        </ProductListContainer>
+        <ProductListContainer>{displayProductList()}</ProductListContainer>
       </PaddedLayout>
     </Layout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = withServerSideProps(
+export const getServerSideProps: GetServerSideProps = getServerSideProductProps(
   'products'
 );
 

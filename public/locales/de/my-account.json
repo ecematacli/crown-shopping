@@ -1,0 +1,10 @@
+{
+  "myAccount": "Mein Konto",
+  "dashboard": "Instrumententafel",
+  "myOrders": "Meine Bestellungen",
+  "myAddressBook": "Mein Adressbuch",
+  "paymentMethods": "Zahlungsarten",
+  "wishlist": "Wunschzettel",
+  "signOut": "Ausloggen",
+  "pathname": "my-account"
+}

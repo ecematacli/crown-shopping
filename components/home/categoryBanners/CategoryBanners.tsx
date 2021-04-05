@@ -1,9 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
 import ProductBanner from '../categoryBanner/CategoryBanner';
-import PaddedLayout from '../../paddedLayout/PaddedLayout';
+import PaddedLayout from '../../layouts/paddedLayout/PaddedLayout';
 import { BannerContainer } from './CategoryBanners.styles';
-import useScreenWidth from '../../../hooks/useScreenWidth';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 import { useTranslation } from '../../../i18n';
 
 const HomeBanners = () => {

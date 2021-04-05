@@ -2,17 +2,9 @@ import SdkAuth, { TokenProvider } from '@commercetools/sdk-auth';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 import config from './config';
-import { getCookie, clearCookie, setCookie } from './utils/cookie';
+import { getCookie, clearCookie, setCookie } from './common/utils/cookie';
 
 type ApolloClientType = ApolloClient<NormalizedCacheObject>;
-export interface Token {
-  access_token: string;
-  expires_at: number;
-  expires_in: number;
-  refresh_token: number;
-  scope: string;
-  token_type: 'Bearer';
-}
 
 const tokenProvider = new TokenProvider(
   {
@@ -25,7 +17,8 @@ const tokenProvider = new TokenProvider(
 
 export const cleanUpSession = () => {
   tokenProvider.invalidateTokenInfo();
-  return clearCookie('auth');
+  clearCookie('auth');
+  clearCookie('isAuth');
 };
 
 export const clientLogin = async (
@@ -41,7 +34,7 @@ export const clientLogin = async (
   await tokenProvider.invalidateTokenInfo();
   return apolloClient
     .resetStore()
-    .then(() => setCookie('isAuthenticated', true))
+    .then(() => setCookie('isAuth', true))
     .catch(error => {
       // eslint-disable-next-line no-console
       console.error('Error on cache reset during login', error);
@@ -49,9 +42,13 @@ export const clientLogin = async (
     });
 };
 
-export const clientLogout = (apolloClient: ApolloClientType, redirect) => {
+export const clientLogout = (
+  apolloClient: ApolloClientType,
+  redirect: () => void
+) => {
   cleanUpSession();
-  return redirect().then(() => apolloClient.resetStore());
+  apolloClient.resetStore();
+  return redirect();
 };
 
 export const getTokenInfo = async () => {

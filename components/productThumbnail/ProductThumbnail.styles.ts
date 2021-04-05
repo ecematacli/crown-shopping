@@ -3,17 +3,15 @@ import { breakPoints } from '../../styles/theme';
 
 interface StyledProps {
   width: number;
-  height: number;
 }
 
-export const StyledProductThumbnail = styled.div`
+export const StyledProductThumbnail = styled.div<StyledProps>`
   cursor: pointer;
 
   .card {
-    width: ${({ width }: StyledProps) => (width ? `${width}rem` : 'unset')};
+    ${({ width }) => width && `max-width: ${width}rem`};
     padding: 1.5rem 0.2rem 0;
     border-radius: 0.1rem;
-    height: ${({ height }) => height && `${height}rem`};
 
     @media (${breakPoints('md')}) {
       padding: 1.6rem 1rem 1.5rem;
@@ -67,6 +65,7 @@ export const StyledProductThumbnail = styled.div`
   }
 
   .card-img-top {
-    height: 35rem;
+    width: 100%;
+    height: auto;
   }
 `;

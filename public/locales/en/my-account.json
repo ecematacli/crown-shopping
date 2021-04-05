@@ -1,0 +1,10 @@
+{
+  "myAccount": "My Account",
+  "dashboard": "Dashboard",
+  "myOrders": "My Orders",
+  "myAddressBook": "My Address Book",
+  "paymentMethods": "Payment Methods",
+  "wishlist": "Wishlist",
+  "signOut": "Sign Out",
+  "pathname": "my-account"
+}

@@ -1,18 +1,18 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import BaseModal from '../baseModal/BaseModal';
 import { LanguageSelectorContainer } from './LanguageSelector.styles';
-import { CountryInfoContext } from '../../contexts/CountryInfoContext';
-import languageOptions from '../../consts/languages';
+import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext';
+import languageOptions from '../../common/consts/languages';
 import { useTranslation } from '../../i18n';
 
 const LanguageSelector = () => {
   const {
     countryInfo: { locale, code, language },
     handleCountryChange,
-  } = useContext(CountryInfoContext);
+  } = useCountryInfoContext();
 
   const [openModal, setOpenModal] = useState(false);
   const { i18n } = useTranslation();
