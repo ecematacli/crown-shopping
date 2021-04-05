@@ -8,6 +8,7 @@ import { getServerSideProductProps } from '../../../common/getServerSideProductP
 import { Product, ProductsAPIResponse } from '../../../types/products';
 import ProductListContainer from './index.styles';
 import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext';
+import useScreenWidth from '../../../common/hooks/useScreenWidth';
 
 interface Props {
   products: ProductsAPIResponse;
@@ -16,6 +17,7 @@ interface Props {
 const ProductsPage = ({ products }: Props) => {
   const { t } = useTranslation('products');
   const { countryInfo } = useCountryInfoContext();
+  const { isSmallScreen } = useScreenWidth();
 
   const displayProductList = () =>
     products.results.map((product: Product) => (
@@ -26,7 +28,7 @@ const ProductsPage = ({ products }: Props) => {
         <ProductThumbnail
           productName={product.name[countryInfo.locale]}
           product={product.masterVariant}
-          height={44.5}
+          width={!isSmallScreen && 38}
         />
       </div>
     ));

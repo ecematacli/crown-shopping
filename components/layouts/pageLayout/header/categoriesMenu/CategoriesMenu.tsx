@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import { Fragment } from 'react';
+import classNames from 'classnames';
 import { MdClose } from 'react-icons/md';
 import { RiArrowRightSLine, RiArrowDownSLine } from 'react-icons/ri';
-import classNames from 'classnames';
 
 import useCategoriesMenu, { OpenedCategory } from './useCategoriesMenu';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
@@ -26,7 +25,7 @@ const CategoriesMenu: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
 
   const {
     data,
@@ -39,15 +38,15 @@ const CategoriesMenu: React.FC<Props> = ({
   const menuContainerPad = {
     top: '0.8',
     bottom: '0.8',
-    rightLeft: isSmallScreen && '0',
+    rightLeft: !isLargeScreen && '0',
   };
 
   const listItemBlockClick = (category: OpenedCategory) => {
-    isSmallScreen && handleOpenMobileCatClick(category);
+    !isLargeScreen && handleOpenMobileCatClick(category);
   };
 
   const listItemNameClick = (id: string, slug: string) => {
-    !isSmallScreen && onCategoryItemClick(id, slug);
+    isLargeScreen && onCategoryItemClick(id, slug);
   };
 
   const displayMobileMenuHead = () => (
@@ -78,16 +77,16 @@ const CategoriesMenu: React.FC<Props> = ({
       return (
         <li
           key={category.id}
-          className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}
+          className={isLargeScreen ? 'menu-item' : 'sm-menu-item'}
           onClick={() => listItemBlockClick(category)}>
-          <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
+          <div className={classNames({ 'sm-menu-wrapper': !isLargeScreen })}>
             <span
-              onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
+              onMouseOver={() => isLargeScreen && toggleOpenCategory(category)}
               onClick={() => listItemNameClick(category.id, category.slug)}
             >
               {category.name.toUpperCase()}
             </span>
-            {isSmallScreen &&
+            {!isLargeScreen &&
               (isMyCatOpened ? (
                 <RiArrowDownSLine
                   onClick={() => handleOpenMobileCatClick(null)}
@@ -100,7 +99,7 @@ const CategoriesMenu: React.FC<Props> = ({
                 ))}
           </div>
           <Subcategories
-            isDisplayingSubCat={isSmallScreen && isMyCatOpened}
+            isDisplayingSubCat={!isLargeScreen && isMyCatOpened}
             subcategories={category.children}
             onCategoryItemClick={onCategoryItemClick}
           />
@@ -112,21 +111,21 @@ const CategoriesMenu: React.FC<Props> = ({
   return (
     <StyledCategoryMenu>
       <div className={classNames({
-        'mobile-sidebar': isSmallScreen,
-        'closed-sidebar': isSmallScreen && !isMobileMenuOpen,
+        'mobile-sidebar': !isLargeScreen,
+        'closed-sidebar': !isLargeScreen && !isMobileMenuOpen,
       })}>
         <MenuContainer onMouseLeave={() => toggleOpenCategory(null)}>
           <PaddedLayout padding={menuContainerPad}>
             <MenuNavbar isThereOpenedCat={!!openedCategory}>
-              {isSmallScreen && displayMobileMenuHead()}
+              {!isLargeScreen && displayMobileMenuHead()}
               {data && displayCategories()}
             </MenuNavbar>
           </PaddedLayout>
-          {isSmallScreen ? (
+          {!isLargeScreen ? (
             <HeaderBanner />
           ) : (
               <Subcategories
-                isDisplayingSubCat={!isSmallScreen && Boolean(openedCategory)}
+                isDisplayingSubCat={isLargeScreen && Boolean(openedCategory)}
                 subcategories={openedCategory?.children}
                 onCategoryItemClick={onCategoryItemClick}
                 openedCategory={openedCategory}

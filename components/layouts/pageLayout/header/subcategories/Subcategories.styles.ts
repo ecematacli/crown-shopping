@@ -20,7 +20,7 @@ export const SubcategoryContainer = styled.div`
   width: 100%;
   font-size: 15px;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     margin-top: 1rem;
   }
 
@@ -28,7 +28,7 @@ export const SubcategoryContainer = styled.div`
     margin-top: 2rem;
     display: inline-block;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       height: 42rem;
       margin-top: 0.75rem;
       display: flex;
@@ -43,7 +43,7 @@ export const SubcategoryContainer = styled.div`
   .image-wrapper {
     display: none;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       display: flex;
       align-items: center;
     }
@@ -62,7 +62,7 @@ export const SubcategoryContainer = styled.div`
     font-weight: bold;
     cursor: pointer;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       margin-right: 20rem;
     }
   }

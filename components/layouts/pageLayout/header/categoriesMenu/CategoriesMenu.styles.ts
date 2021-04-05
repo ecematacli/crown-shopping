@@ -12,7 +12,7 @@ export const StyledCategoryMenu = styled.div`
     height: 100%;
     width: 100vw;
     z-index: 15 !important;
-    transition: all 0.5s cubic-bezier(0.4, 0.48, 0.45, 0.4);
+    transition: all 0.6s cubic-bezier(0.4, 0.48, 0.45, 0.4);
   }
 
   .closed-sidebar {
@@ -30,7 +30,7 @@ export const MenuContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     overflow: unset;
     border-top: ${({ theme: { palette } }) =>
       `1px solid ${palette.lightGrays[1]}`};
@@ -49,7 +49,7 @@ export const MenuNavbar = styled.ul<{ isThereOpenedCat: boolean }>`
   list-style-type: none;
   font-size: 14px;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,7 +61,7 @@ export const MenuNavbar = styled.ul<{ isThereOpenedCat: boolean }>`
       &::after {
         content: '';
         position: absolute;
-        margin-top: 3rem;
+        margin-top: 2.8rem;
         left: 0;
         height: 9%;
         width: 0.9rem;

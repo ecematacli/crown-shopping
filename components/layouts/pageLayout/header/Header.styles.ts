@@ -19,7 +19,7 @@ export const HeaderBar = styled.div`
   border-bottom: ${({ theme: { palette } }) =>
     `1px solid ${palette.lightGrays[3]}`};
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     border-bottom: unset;
   }
 `;

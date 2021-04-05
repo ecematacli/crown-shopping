@@ -11,16 +11,15 @@ interface Props {
   product: ProductVariant;
   children?: React.ReactNode;
   width?: number;
-  height?: number;
   className?: string;
 }
 
-const ProductThumbnail = ({ productName, product, width, height, children }: Props) => {
+const ProductThumbnail = ({ productName, product, width, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
   } = useCountryInfoContext();
-  const countryCode = `${locale}-${code}`;
 
+  const countryCode = `${locale}-${code}`;
   const imageSrc = product.images[0].url;
   const price =
     product.price?.value.centAmount ||
@@ -29,14 +28,12 @@ const ProductThumbnail = ({ productName, product, width, height, children }: Pro
     product.price?.value.fractionDigits |
     product.prices[0].value.fractionDigits;
 
-  const fallbackSrc = '/images/no-image.png';
-
   return (
-    <StyledProductThumbnail width={width} height={height}>
+    <StyledProductThumbnail width={width}>
       <Card>
         <BaseImage
           src={imageSrc}
-          fallbackSrc={fallbackSrc}
+          fallbackSrc='/images/no-image.png'
           alt='product thumbnail'
           className='card-img-top'
         />

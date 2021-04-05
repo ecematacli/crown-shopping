@@ -18,7 +18,7 @@ export const StyledContent = styled.div`
   margin-top: 9rem; 
   overflow: auto;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     height: calc(100vh - 15.3rem);
     margin-top: 15.3rem;
   }

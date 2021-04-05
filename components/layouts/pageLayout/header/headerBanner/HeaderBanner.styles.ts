@@ -10,6 +10,10 @@ export const StyledHeaderBanner = styled.div`
       `1px solid ${palette.darkGrays[1]}`};
 
     @media (${breakPoints('md')}) {
+      padding: 2rem;
+    }
+
+    @media (${breakPoints('lg')}) {
       border-top: none;
     }
   }
@@ -17,7 +21,7 @@ export const StyledHeaderBanner = styled.div`
   .wrapper {
     height: unset;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -31,7 +35,7 @@ export const StyledContent = styled.div`
   flex-direction: column;
   padding: 0 2.4rem;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     flex-direction: row;
     justify-content: flex-end;
     padding: unset;
@@ -42,7 +46,7 @@ export const StyledContent = styled.div`
     padding: 1.4rem 0;
     color: ${({ theme: { palette } }) => `${palette.darkGrays[0]}`};
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       padding: 0.7rem 1rem;
       border-right: ${({ theme: { palette } }) =>
         `0.1rem solid ${palette.lightGrays[6]}`};
@@ -52,7 +56,7 @@ export const StyledContent = styled.div`
   .customer-name {
     display: none;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       display: inline-block;
     }
   }

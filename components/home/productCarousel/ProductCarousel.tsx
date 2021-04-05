@@ -72,7 +72,7 @@ const ProductCarousel = ({ products, deviceType }: Props) => {
               productName={product.name[countryInfo.locale]}
               product={product.masterVariant}
               key={product.id}
-              height={50}>
+            >
               <BaseButton
                 text={t('addToCart').toUpperCase()}
                 variant='outline-secondary'

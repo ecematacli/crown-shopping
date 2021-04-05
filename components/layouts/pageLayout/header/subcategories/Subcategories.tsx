@@ -25,11 +25,11 @@ const Subcategories: React.FC<Props> = ({
   openedCategory,
   subcategories,
 }) => {
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
 
   const containerClass = classNames({
-    'open-lg-menu': !isSmallScreen && openedCategory,
-    'close-lg-menu': !isSmallScreen && !openedCategory,
+    'open-lg-menu': isLargeScreen && openedCategory,
+    'close-lg-menu': isLargeScreen && !openedCategory,
   });
 
   const handleCategoryItemClick = (subcategory: Subcategory) =>
@@ -50,7 +50,7 @@ const Subcategories: React.FC<Props> = ({
   );
 
   const displayFirstLevelSubcategory = () => (
-    <ul className={classNames({ wrapper: !isSmallScreen })}>
+    <ul className={classNames({ wrapper: isLargeScreen })}>
       {subcategories.map((subcategory: Subcategory) => (
         <li key={subcategory.id} className='subcategory'>
           <span

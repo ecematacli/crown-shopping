@@ -27,7 +27,7 @@ export interface OpenedCategory extends Category {
 type setIsMobileMenuOpen = React.Dispatch<React.SetStateAction<boolean>>;
 
 const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
   const { setIsMenuOpen } = useOpenedMenuContext();
   const {
     countryInfo: { locale },
@@ -53,7 +53,7 @@ const useCategoriesMenu = (setIsMobileMenuOpen: setIsMobileMenuOpen) => {
   const onCategoryItemClick = (categoryId: string, categorySlug: string) => {
     Router.push(`/products/${categorySlug}/${categoryId}`);
     setOpenedCategory(null);
-    !isSmallScreen ? setIsMenuOpen(false) : setIsMobileMenuOpen(false);
+    isLargeScreen ? setIsMenuOpen(false) : setIsMobileMenuOpen(false);
   };
 
   return {

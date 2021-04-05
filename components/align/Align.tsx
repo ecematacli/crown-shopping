@@ -20,7 +20,7 @@ export const Align = styled.div<Props>`
     `
     flex-direction: column;
   `}
-  ${({ width }) => width && `width: ${width}em`};
+  ${({ width }) => width && `width: ${width}rem`};
   ${({ fullWidth }) => fullWidth && `width: 100%`};
   ${({ height }) => height && `height: ${height}%`};
   ${({ padding }) => padding && `padding: ${merge(padding)}`};

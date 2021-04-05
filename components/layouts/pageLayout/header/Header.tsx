@@ -24,11 +24,11 @@ import { getCookie } from '../../../../common/utils/cookie';
 const Header = () => {
   const { t } = useTranslation('header');
   const { data } = useQuery<me>(ME);
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useOpenedMenuContext()
 
   const isAuth = getCookie('isAuth');
-  const topBottomPads = !isSmallScreen ? '1.3' : '1.8';
+  const topBottomPads = isLargeScreen ? '1.3' : '1.8';
   const customer = data?.me.customer;
   const navigateUser = (path: string) => Router.push(path);
 
@@ -50,14 +50,14 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderBar>
-        {!isSmallScreen && <HeaderBanner customerName={customer?.firstName} />}
+        {isLargeScreen && <HeaderBanner customerName={customer?.firstName} />}
         <PaddedLayout padding={{ bottom: topBottomPads, top: topBottomPads }}>
           <StyledHeader>
-            {isSmallScreen && renderSmallScreenHeader()}
+            {!isLargeScreen && renderSmallScreenHeader()}
             <div onClick={() => navigateUser('/')}>
               <Image
                 src='/logo.svg'
-                alt='logo'
+                alt={t('logo')}
                 width='50'
                 height='50'
                 className='logo-image'
@@ -65,11 +65,9 @@ const Header = () => {
             </div>
             <AlignedDiv>
               <IconWrapper
-                onClick={() =>
-                  navigateUser(`/${!isAuth ? 'signin' : 'my-account'}`)
-                }>
+                onClick={() => navigateUser(`/${!isAuth ? 'signin' : 'my-account'}`)}>
                 <BsPerson size={20} />
-                {!isSmallScreen && (
+                {isLargeScreen && (
                   <span className='sign-in icon-text'>
                     {customer ? customer.firstName : t('signIn')}
                   </span>
@@ -77,7 +75,7 @@ const Header = () => {
               </IconWrapper>
               <IconWrapper>
                 <BiBasket className='cart-icon' size={20} />
-                {!isSmallScreen && (
+                {isLargeScreen && (
                   <span className='icon-text'>{t('cart')}</span>
                 )}
               </IconWrapper>

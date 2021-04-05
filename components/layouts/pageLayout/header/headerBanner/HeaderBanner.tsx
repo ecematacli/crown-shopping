@@ -10,12 +10,12 @@ interface Props {
 }
 
 const HeaderBanner: React.FC<Props> = ({ customerName }) => {
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
   const { t } = useTranslation('header');
 
   return (
     <StyledHeaderBanner>
-      <PaddedLayout padding={{ rightLeft: isSmallScreen && '0' }}>
+      <PaddedLayout padding={{ rightLeft: !isLargeScreen && '0' }}>
         <div className='wrapper'>
           <StyledContent>
             <span className="customer-name" onClick={() => Router.push('/signin')}>

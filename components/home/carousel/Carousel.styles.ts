@@ -7,6 +7,10 @@ export const StyledCarousel = styled.div`
     height: 15rem;
 
     @media (${breakPoints('md')}) {
+      height: 25rem;
+    }
+
+    @media (${breakPoints('lg')}) {
       height: unset;
     }
   }

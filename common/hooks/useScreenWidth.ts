@@ -21,6 +21,8 @@ const useScreenWidth = () => {
 
   return {
     isSmallScreen: screenWidth < 768,
+    isMediumScreen: screenWidth >= 768 && screenWidth < 992,
+    isLargeScreen: screenWidth >= 992,
   };
 };
 
