@@ -1,5 +1,5 @@
-import { Product_product_masterData_current } from '../../../graphql/queries/types/Product';
 import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
+import { Product_product_masterData_current } from '../../../graphql/queries/types/Product';
 
 interface Props {
   product: Product_product_masterData_current;

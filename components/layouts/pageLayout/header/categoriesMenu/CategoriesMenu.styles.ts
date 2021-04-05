@@ -4,10 +4,6 @@ import { breakPoints } from '../../../../../styles/theme';
 export const StyledCategoryMenu = styled.div`
   background-color: ${({ theme: { palette } }) => palette.whites[0]};
 
-  ul {
-    list-style-type: none;
-  }
-
   .mobile-sidebar {
     position: fixed;
     left: 0;

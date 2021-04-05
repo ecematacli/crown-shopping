@@ -36,7 +36,13 @@ const CategoriesMenu: React.FC<Props> = ({
     onCategoryItemClick,
   } = useCategoriesMenu(setIsMobileMenuOpen);
 
-  const listItemBlockClickOnMobile = (category: OpenedCategory) => {
+  const menuContainerPad = {
+    top: '0.8',
+    bottom: '0.8',
+    rightLeft: isSmallScreen && '0',
+  };
+
+  const listItemBlockClick = (category: OpenedCategory) => {
     isSmallScreen && handleOpenMobileCatClick(category);
   };
 
@@ -67,72 +73,65 @@ const CategoriesMenu: React.FC<Props> = ({
   );
 
   const displayCategories = () => (
-    <Fragment>
-      {isSmallScreen && displayMobileMenuHead()}
-      {data.categories.results.map(category => {
-        const isMyCatOpened = openedCategory?.name === category.name;
-        return (
-          <li
-            key={category.id}
-            className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}
-            onClick={() => listItemBlockClickOnMobile(category)}>
-            <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
-              <span
-                onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
-                onClick={() => listItemNameClick(category.id, category.slug)}>
-                {category.name.toUpperCase()}
-              </span>
-              {isSmallScreen &&
-                (isMyCatOpened ? (
-                  <RiArrowDownSLine
-                    onClick={() => handleOpenMobileCatClick(null)}
+    data.categories.results.map(category => {
+      const isMyCatOpened = openedCategory?.name === category.name;
+      return (
+        <li
+          key={category.id}
+          className={!isSmallScreen ? 'menu-item' : 'sm-menu-item'}
+          onClick={() => listItemBlockClick(category)}>
+          <div className={classNames({ 'sm-menu-wrapper': isSmallScreen })}>
+            <span
+              onMouseOver={() => !isSmallScreen && toggleOpenCategory(category)}
+              onClick={() => listItemNameClick(category.id, category.slug)}
+            >
+              {category.name.toUpperCase()}
+            </span>
+            {isSmallScreen &&
+              (isMyCatOpened ? (
+                <RiArrowDownSLine
+                  onClick={() => handleOpenMobileCatClick(null)}
+                />
+              ) : (
+                  <RiArrowRightSLine
+                    onClick={() => handleOpenMobileCatClick(category)}
+                    className='arrow-icon'
                   />
-                ) : (
-                    <RiArrowRightSLine
-                      onClick={() => handleOpenMobileCatClick(category)}
-                      className='arrow-icon'
-                    />
-                  ))}
-            </div>
-            {isSmallScreen && isMyCatOpened && (
-              <Subcategories
-                subcategories={category.children}
-                onCategoryItemClick={onCategoryItemClick}
-              />
-            )}
-          </li>
-        );
-      })}
-    </Fragment>
+                ))}
+          </div>
+          <Subcategories
+            isDisplayingSubCat={isSmallScreen && isMyCatOpened}
+            subcategories={category.children}
+            onCategoryItemClick={onCategoryItemClick}
+          />
+        </li>
+      );
+    })
   );
 
   return (
     <StyledCategoryMenu>
-      <div
-        className={classNames({
-          'mobile-sidebar': isSmallScreen,
-          'closed-sidebar': isSmallScreen && !isMobileMenuOpen,
-        })}>
-        <MenuContainer
-          onMouseLeave={() => toggleOpenCategory(null)}>
-          <PaddedLayout
-            padding={{
-              top: '0.8',
-              bottom: '0.8',
-              rightLeft: isSmallScreen && '0',
-            }}>
+      <div className={classNames({
+        'mobile-sidebar': isSmallScreen,
+        'closed-sidebar': isSmallScreen && !isMobileMenuOpen,
+      })}>
+        <MenuContainer onMouseLeave={() => toggleOpenCategory(null)}>
+          <PaddedLayout padding={menuContainerPad}>
             <MenuNavbar isThereOpenedCat={!!openedCategory}>
+              {isSmallScreen && displayMobileMenuHead()}
               {data && displayCategories()}
             </MenuNavbar>
           </PaddedLayout>
-          {isSmallScreen && <HeaderBanner />}
-          {!isSmallScreen && openedCategory && (
-            <Subcategories
-              subcategories={openedCategory.children}
-              onCategoryItemClick={onCategoryItemClick}
-              openedCategory={openedCategory.slug}
-            />
-          )}
+          {isSmallScreen ? (
+            <HeaderBanner />
+          ) : (
+              <Subcategories
+                isDisplayingSubCat={!isSmallScreen && Boolean(openedCategory)}
+                subcategories={openedCategory?.children}
+                onCategoryItemClick={onCategoryItemClick}
+                openedCategory={openedCategory}
+              />
+            )}
         </MenuContainer>
       </div>
     </StyledCategoryMenu>

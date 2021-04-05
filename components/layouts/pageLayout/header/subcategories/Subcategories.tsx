@@ -1,65 +1,90 @@
+import Image from 'next/image';
 import classNames from 'classnames';
 
-import { Subcategory } from '../categoriesMenu/useCategoriesMenu';
+import {
+  Subcategory,
+  OpenedCategory,
+} from '../categoriesMenu/useCategoriesMenu';
 import PaddedLayout from '../../../paddedLayout/PaddedLayout';
-import { SubcategoryContainer } from './Subcategories.styles';
+import {
+  StyledSubcategories,
+  SubcategoryContainer
+} from './Subcategories.styles';
 import useScreenWidth from '../../../../../common/hooks/useScreenWidth';
-import Image from 'next/image';
 
 interface Props {
+  isDisplayingSubCat: boolean;
   subcategories: Subcategory[];
   onCategoryItemClick: (categorySlug: string, categoryId: string) => void;
-  openedCategory?: string;
+  openedCategory?: OpenedCategory;
 }
 
 const Subcategories: React.FC<Props> = ({
-  subcategories,
+  isDisplayingSubCat,
   onCategoryItemClick,
   openedCategory,
+  subcategories,
 }) => {
   const { isSmallScreen } = useScreenWidth();
 
-  const renderSecondLevelSubcategory = (subcategory: Subcategory) => {
-    return subcategory.children.map(s => (
-      <div key={s.id} className='second-level-subcategory'>
-        <span
-          onClick={() => onCategoryItemClick(s.id, s.slug)}
-          className='level2-subcategory-title'>
-          {s.name}
-        </span>
-      </div>
-    ));
-  };
+  const containerClass = classNames({
+    'open-lg-menu': !isSmallScreen && openedCategory,
+    'close-lg-menu': !isSmallScreen && !openedCategory,
+  });
+
+  const handleCategoryItemClick = (subcategory: Subcategory) =>
+    onCategoryItemClick(subcategory.id, subcategory.slug);
+
+  const displaySecondLevelSubcategory = (subcategory: Subcategory) => (
+    <ul>
+      {subcategory.children.map(s => (
+        <li key={s.id} className='second-level-subcategory'>
+          <span
+            onClick={() => onCategoryItemClick(s.id, s.slug)}
+            className='level2-subcategory-title'>
+            {s.name}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const displayFirstLevelSubcategory = () => (
+    <ul className={classNames({ wrapper: !isSmallScreen })}>
+      {subcategories.map((subcategory: Subcategory) => (
+        <li key={subcategory.id} className='subcategory'>
+          <span
+            className='subcategory-title'
+            onClick={() => handleCategoryItemClick(subcategory)}>
+            {subcategory.name}
+          </span>
+          {displaySecondLevelSubcategory(subcategory)}
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
-    <SubcategoryContainer>
-      <PaddedLayout padding={{ bottom: '0' }}>
-        <div className='subcategories'>
-          <div className={classNames({ 'wrapper': !isSmallScreen })}>
-            {subcategories.map(subcategory => (
-              <div key={subcategory.id} className='subcategory'>
-                <span
-                  className='subcategory-title'
-                  onClick={() =>
-                    onCategoryItemClick(subcategory.id, subcategory.slug)
-                  }
-                >
-                  {subcategory.name}
-                </span>
-                {renderSecondLevelSubcategory(subcategory)}
+    <StyledSubcategories>
+      <div className={containerClass}>
+        {isDisplayingSubCat && (
+          <SubcategoryContainer>
+            <PaddedLayout padding={{ bottom: '0' }}>
+              <div className='subcategories'>
+                {displayFirstLevelSubcategory()}
+                <div className='image-wrapper'>
+                  <Image
+                    src={`/images/category-${openedCategory?.slug}.jpg`}
+                    width='390'
+                    height='260'
+                  />
+                </div>
               </div>
-            ))}
-          </div>
-          <div className='image-wrapper'>
-            <Image
-              src={`/images/category-${openedCategory}.jpg`}
-              width='390'
-              height='260'
-            />
-          </div>
-        </div>
-      </PaddedLayout>
-    </SubcategoryContainer>
+            </PaddedLayout>
+          </SubcategoryContainer>
+        )}
+      </div>
+    </StyledSubcategories>
   );
 };
 

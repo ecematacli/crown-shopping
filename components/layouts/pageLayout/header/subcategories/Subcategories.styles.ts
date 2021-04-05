@@ -1,18 +1,30 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../../../../styles/theme';
 
-export const SubcategoryContainer = styled.div`
-  width: 100%;
-  margin-top: 0.75rem;
-  height: unset;
-  font-size: 15px;
-
-  @media (${breakPoints('md')}) {
+export const StyledSubcategories = styled.div`
+  .open-lg-menu {
     height: 42rem;
   }
 
+  .close-lg-menu {
+    height: 0;
+    transition: height 0.2s;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+`;
+
+export const SubcategoryContainer = styled.div`
+  width: 100%;
+  font-size: 15px;
+
+  @media (${breakPoints('md')}) {
+    margin-top: 1rem;
+  }
+
   .subcategories {
-    height: unset;
     margin-top: 2rem;
     display: inline-block;
 
