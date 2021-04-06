@@ -5,7 +5,7 @@ export const LanguageSelectorContainer = styled.div`
   font-size: 14px;
   padding: 2.4rem 0;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     padding: 0 0 0 1rem;
   }
 

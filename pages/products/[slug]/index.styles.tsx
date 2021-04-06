@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import { breakPoints } from '../../../styles/theme';
 
 const ProductListContainer = styled.div`
-  @media (${breakPoints('md')}) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    &::after {
-      content: "";
-      width: 32%;
-    }
+  .container {
+    padding: 0;
+    margin: 0;
+    max-width: unset;
+    padding-bottom: 3rem;
   }
+`;
 
-  .product-thumbnail {
-    flex-basis: 32%;
+export const ProductThumbnailContainer = styled.div`
+  margin: 0.5rem 0;
+
+  @media (${breakPoints('md')}) {
     margin: 2rem 0;
+    padding-right: .75rem;
   }
 `;
 

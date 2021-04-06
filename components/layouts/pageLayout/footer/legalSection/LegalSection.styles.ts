@@ -14,7 +14,7 @@ export const StyledLegalSection = styled.ul`
   .title {
     display: none;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       display: block;
       text-transform: uppercase;
       font-weight: bold;

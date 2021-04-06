@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 interface Props {
-  vertical?: boolean
-  width?: number
-  height?: number
-  align?: string
-  justify?: string
-  padding?: number[]
-  margin?: number[]
-  fullWidth?: boolean
+  vertical?: boolean;
+  width?: number;
+  height?: number;
+  align?: string;
+  justify?: string;
+  padding?: number[];
+  margin?: number[];
+  fullWidth?: boolean;
 }
 
 const merge = (a: number[]) => a.join('rem ') + 'rem'

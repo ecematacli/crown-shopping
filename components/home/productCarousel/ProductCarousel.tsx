@@ -69,9 +69,9 @@ const ProductCarousel = ({ products, deviceType }: Props) => {
           swipeable>
           {productsData.map((product: Product) => (
             <ProductThumbnail
+              key={product.id}
               productName={product.name[countryInfo.locale]}
               product={product.masterVariant}
-              key={product.id}
             >
               <BaseButton
                 text={t('addToCart').toUpperCase()}

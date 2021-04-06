@@ -5,12 +5,13 @@ import { ProductVariant } from '../../types/products';
 import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext';
 import { formatCurrency } from '../../common/utils/helpers';
 import BaseImage from '../../components/baseImage/BaseImage';
+import { Align } from '../align/Align';
 
 interface Props {
   productName: string;
   product: ProductVariant;
   children?: React.ReactNode;
-  width?: number;
+  width?: string;
   className?: string;
 }
 
@@ -38,15 +39,13 @@ const ProductThumbnail = ({ productName, product, width, children }: Props) => {
           className='card-img-top'
         />
         <Card.Body>
-          <div className='card-body-wrapper'>
+          <Align justify="space-between" align="center">
             <Card.Title>{productName}</Card.Title>
             <Card.Text>
               {formatCurrency(price, countryCode, currency, fractionDigits)}
             </Card.Text>
-          </div>
-          <div>
-            {children && children}
-          </div>
+          </Align>
+          {children && children}
         </Card.Body>
       </Card>
     </StyledProductThumbnail>

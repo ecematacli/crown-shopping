@@ -6,7 +6,7 @@ export const StyledPaymentMethodIcons = styled.div`
   justify-content: space-around;
   margin: 1.8rem 2.3rem 1.8rem;
 
-  @media (${breakPoints('md')}) {
+  @media (${breakPoints('lg')}) {
     display: block;
     margin: 1.5rem 0 0;
   }
@@ -16,7 +16,7 @@ export const StyledPaymentMethodIcons = styled.div`
     width: 4.14rem;
     margin: 0;
 
-    @media (${breakPoints('md')}) {
+    @media (${breakPoints('lg')}) {
       margin: 0 0.7rem;
     }
 

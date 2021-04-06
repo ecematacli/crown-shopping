@@ -18,7 +18,7 @@ const Footer = () => {
   const { t } = useTranslation('footer');
   const [openedItem, setOpenedItem] = useState<string>(null);
   const [inputValue, setInputValue] = useState('');
-  const { isSmallScreen } = useScreenWidth();
+  const { isLargeScreen } = useScreenWidth();
 
   const handleOpenedItem = (item: string) =>
     openedItem === item ? setOpenedItem(null) : setOpenedItem(item);
@@ -116,7 +116,7 @@ const Footer = () => {
     </BgFooterContainer>
   );
 
-  return isSmallScreen ? displaySmScreenFooter() : displayBgScreenFooter();
+  return !isLargeScreen ? displaySmScreenFooter() : displayBgScreenFooter();
 };
 
 export default Footer;

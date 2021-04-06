@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../styles/theme';
 
-interface StyledProps {
-  width: number;
-}
-
-export const StyledProductThumbnail = styled.div<StyledProps>`
+export const StyledProductThumbnail = styled.div<{ width: string }>`
   cursor: pointer;
 
   .card {
-    ${({ width }) => width && `max-width: ${width}rem`};
-    padding: 1.5rem 0.2rem 0;
+    ${({ width }) => width && `max-width: ${width}`};
+    padding: 1rem 0.2rem 0;
     border-radius: 0.1rem;
 
     @media (${breakPoints('md')}) {
@@ -18,18 +14,11 @@ export const StyledProductThumbnail = styled.div<StyledProps>`
     }
   }
 
-  .card-body-wrapper {
-    @media (${breakPoints('md')}) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
   .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding: 0.25rem 0.75rem 0.75rem;
 
     @media (${breakPoints('md')}) {
       padding-bottom: 0;
@@ -38,15 +27,19 @@ export const StyledProductThumbnail = styled.div<StyledProps>`
     }
   }
 
-  .card-title {
+  .card-title,
+  h5 {
+    margin: 0 0.7rem 0 0;
     text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 0.5rem;
-    flex-basis: 65%;
     font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    word-wrap: break-word;
 
     @media (${breakPoints('md')}) {
-      margin-bottom: 0;
       font-size: 14px;
     }
   }
@@ -54,7 +47,7 @@ export const StyledProductThumbnail = styled.div<StyledProps>`
   .card-text {
     margin-bottom: 0.5rem;
     flex-basis: 35%;
-    text-align: left;
+    text-align: right;
     font-size: 14px;
 
     @media (${breakPoints('md')}) {

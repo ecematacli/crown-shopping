@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import { useTranslation, Router } from '../../../i18n';
 import ProductThumbnail from '../../../components/productThumbnail/ProductThumbnail';
@@ -6,10 +7,9 @@ import PaddedLayout from '../../../components/layouts/paddedLayout/PaddedLayout'
 import Layout from '../../../components/layouts/pageLayout/Layout';
 import { getServerSideProductProps } from '../../../common/getServerSideProductProps';
 import { Product, ProductsAPIResponse } from '../../../types/products';
-import ProductListContainer from './index.styles';
+import ProductListContainer, { ProductThumbnailContainer } from './index.styles';
 import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext';
 import useScreenWidth from '../../../common/hooks/useScreenWidth';
-
 interface Props {
   products: ProductsAPIResponse;
 }
@@ -19,23 +19,28 @@ const ProductsPage = ({ products }: Props) => {
   const { countryInfo } = useCountryInfoContext();
   const { isSmallScreen } = useScreenWidth();
 
-  const displayProductList = () =>
-    products.results.map((product: Product) => (
-      <div
-        key={product.id}
-        className='product-thumbnail'
-        onClick={() => Router.push(`/product/${product.masterVariant.sku}`)}>
-        <ProductThumbnail
-          productName={product.name[countryInfo.locale]}
-          product={product.masterVariant}
-          width={!isSmallScreen && 38}
-        />
-      </div>
-    ));
+  const displayProductList = () => (
+    <Container>
+      <Row>
+        {products.results.map((product: Product) => (
+          <Col xs={6} sm={6} md={4} lg={4} key={product.id}>
+            <ProductThumbnailContainer
+              key={product.id}
+              onClick={() => Router.push(`/product/${product.masterVariant.sku}`)}>
+              <ProductThumbnail
+                productName={product.name[countryInfo.locale]}
+                product={product.masterVariant}
+              />
+            </ProductThumbnailContainer>
+          </Col>
+        ))}
+      </Row>
+    </Container >
+  )
 
   return (
     <Layout title={t('title')}>
-      <PaddedLayout>
+      <PaddedLayout padding={{ rightLeft: isSmallScreen && '1' }}>
         <ProductListContainer>{displayProductList()}</ProductListContainer>
       </PaddedLayout>
     </Layout>
