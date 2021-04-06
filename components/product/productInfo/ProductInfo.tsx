@@ -8,7 +8,7 @@ interface Props {
 const ProductInfo = ({ product }: Props) => {
   return (
     <div style={{ margin: '20px 0' }}>
-      <ProductThumbnail productName={product.name} product={product.masterVariant} width={35} />
+      <ProductThumbnail productName={product.name} product={product.masterVariant} width='35rem' />
     </div>
   );
 };
