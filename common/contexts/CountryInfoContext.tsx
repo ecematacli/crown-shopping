@@ -14,9 +14,14 @@ interface Country {
 export interface CountryInfoContextInt {
   countryInfo: Country;
   handleCountryChange: (country: Country) => void;
-}
+};
 
-export const CountryInfoContext = createContext<CountryInfoContextInt>(null);
+const initialContextValue = {
+  countryInfo: null,
+  handleCountryChange: null,
+};
+
+export const CountryInfoContext = createContext<CountryInfoContextInt>(initialContextValue);
 
 const getInitialValue = (): Country =>
   languageOptions[getCookie('next-i18next')] || languageOptions.en;

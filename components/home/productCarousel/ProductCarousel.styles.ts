@@ -3,10 +3,10 @@ import { breakPoints } from '../../../styles/theme';
 
 export const StyledProductCarousel = styled.div`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 3rem;
 
   @media (${breakPoints('md')}) {
-    padding-top: 5rem;
+    padding: 5rem 0;
   }
 
   .product-carousel {
@@ -34,17 +34,22 @@ export const StyledProductCarousel = styled.div`
   }
 
   .product-carousel-item {
-    padding-right: 15px;
+    padding-right: 8px;
+
+    @media (${breakPoints('md')}) {
+      margin-top: 0;
+    }
   }
 
   .btn {
     border-color: ${({ theme: { palette } }) => palette.blacks[2]};
     color: ${({ theme: { palette } }) => palette.blacks[2]};
     padding: 1rem;
-    margin-top: 0.6rem;
+    margin: 0.6rem 0 0.6rem;
 
     @media (${breakPoints('md')}) {
       margin-top: 1.3rem;
+      margin-bottom: 0.3rem;
     }
 
     &:hover {

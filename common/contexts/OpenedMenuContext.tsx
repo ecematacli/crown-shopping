@@ -7,7 +7,14 @@ export interface OpenedMenuContextInt {
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const OpenedMenuContext = createContext<OpenedMenuContextInt | null>(null);
+const initialContextValue = {
+  isMenuOpen: false,
+  setIsMenuOpen: null,
+  isMobileMenuOpen: false,
+  setIsMobileMenuOpen: null
+};
+
+export const OpenedMenuContext = createContext<OpenedMenuContextInt | null>(initialContextValue);
 
 export const OpenedMenuContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
