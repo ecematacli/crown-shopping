@@ -17,8 +17,14 @@ export interface CountryInfoContextInt {
 };
 
 const initialContextValue = {
-  countryInfo: null,
   handleCountryChange: null,
+  countryInfo: {
+    name: '',
+    code: '',
+    currency: '',
+    locale: '',
+    language: ''
+  },
 };
 
 export const CountryInfoContext = createContext<CountryInfoContextInt>(initialContextValue);
