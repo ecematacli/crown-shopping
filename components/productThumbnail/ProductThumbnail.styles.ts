@@ -18,7 +18,7 @@ export const StyledProductThumbnail = styled.div<{ width: string }>`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 0.25rem 0.75rem 0.75rem;
+    padding: 1rem 0.75rem 0.75rem;
 
     @media (${breakPoints('md')}) {
       padding-bottom: 0;
@@ -38,6 +38,7 @@ export const StyledProductThumbnail = styled.div<{ width: string }>`
     text-overflow: ellipsis;
     word-break: break-all;
     word-wrap: break-word;
+    max-width: 100%;
 
     @media (${breakPoints('md')}) {
       font-size: 14px;

@@ -6,6 +6,7 @@ import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext'
 import { formatCurrency } from '../../common/utils/helpers';
 import BaseImage from '../../components/baseImage/BaseImage';
 import { Align } from '../align/Align';
+import useScreenWidth from '../../common/hooks/useScreenWidth';
 
 interface Props {
   productName: string;
@@ -19,6 +20,7 @@ const ProductThumbnail = ({ productName, product, width, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
   } = useCountryInfoContext();
+  const { isSmallScreen } = useScreenWidth()
 
   const countryCode = `${locale}-${code}`;
   const imageSrc = product.images[0].url;
@@ -39,7 +41,7 @@ const ProductThumbnail = ({ productName, product, width, children }: Props) => {
           className='card-img-top'
         />
         <Card.Body>
-          <Align justify="space-between" align="center">
+          <Align justify="space-between" align="center" vertical={isSmallScreen}>
             <Card.Title>{productName}</Card.Title>
             <Card.Text>
               {formatCurrency(price, countryCode, currency, fractionDigits)}

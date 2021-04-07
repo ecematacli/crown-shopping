@@ -3,7 +3,7 @@ import { breakPoints } from '../../../styles/theme';
 
 export const StyledProductCarousel = styled.div`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
-  padding: 4.5rem 0 5rem;
+  padding: 2.5rem 0;
 
   @media (${breakPoints('md')}) {
     padding-top: 5rem;
