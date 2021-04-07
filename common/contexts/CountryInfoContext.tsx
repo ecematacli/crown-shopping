@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 import languageOptions from '../consts/languages';
 import { getCookie, setCookie } from '../utils/cookie';
@@ -30,6 +30,10 @@ export const CountryInfoContextProvider: React.FC<{
     setCookie('country', country);
     setCountryInfo(country);
   };
+
+  useEffect(() => {
+    handleCountryChange(getInitialValue());
+  }, []);
 
   return (
     <CountryInfoContext.Provider value={{ countryInfo, handleCountryChange }}>
