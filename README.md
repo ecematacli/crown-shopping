@@ -1,6 +1,6 @@
 # CROWN Shopping
 
-_Responsive, multi-language e-commerce website_
+_Responsive, multi-language e-commerce web app_
 
 https://crwn-crown.herokuapp.com/
 
