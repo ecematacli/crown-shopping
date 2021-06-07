@@ -12,6 +12,7 @@ import { CountryInfoContextProvider } from '../common/contexts/CountryInfoContex
 import {
   OpenedMenuContextProvider
 } from '../common/contexts/OpenedMenuContext';
+import { NotificationsContextProvider } from '../common/contexts/NotificationContext'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps);
@@ -21,9 +22,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <CountryInfoContextProvider>
-          <OpenedMenuContextProvider>
-            <Component {...pageProps} />
-          </OpenedMenuContextProvider>
+          <NotificationsContextProvider>
+            <OpenedMenuContextProvider>
+              <Component {...pageProps} />
+            </OpenedMenuContextProvider>
+          </NotificationsContextProvider>
         </CountryInfoContextProvider>
       </ThemeProvider>
     </ApolloProvider>

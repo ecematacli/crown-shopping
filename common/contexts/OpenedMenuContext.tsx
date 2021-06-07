@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
 
-export interface OpenedMenuContextInt {
+export interface IOpenedMenuContext {
   isMenuOpen: boolean,
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isMobileMenuOpen: boolean;
@@ -14,9 +14,9 @@ const initialContextValue = {
   setIsMobileMenuOpen: null
 };
 
-export const OpenedMenuContext = createContext<OpenedMenuContextInt | null>(initialContextValue);
+export const OpenedMenuContext = createContext<IOpenedMenuContext | null>(initialContextValue);
 
-export const OpenedMenuContextProvider: React.FC<{ children: React.ReactNode }> = ({
+export const OpenedMenuContextProvider: React.FC = ({
   children,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

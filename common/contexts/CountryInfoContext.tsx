@@ -11,7 +11,7 @@ interface Country {
   language: string;
 }
 
-export interface CountryInfoContextInt {
+export interface ICountryInfoContext {
   countryInfo: Country;
   handleCountryChange: (country: Country) => void;
 };
@@ -27,14 +27,12 @@ const initialContextValue = {
   },
 };
 
-export const CountryInfoContext = createContext<CountryInfoContextInt>(initialContextValue);
+export const CountryInfoContext = createContext<ICountryInfoContext>(initialContextValue);
 
 const getInitialValue = (): Country =>
   languageOptions[getCookie('next-i18next')] || languageOptions.en;
 
-export const CountryInfoContextProvider: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
+export const CountryInfoContextProvider: React.FC = ({ children }) => {
   const [countryInfo, setCountryInfo] = useState<Country>(getInitialValue);
 
   const handleCountryChange = (country: Country) => {

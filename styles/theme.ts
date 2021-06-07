@@ -1,5 +1,8 @@
 export const theme = {
   palette: {
+    success: '#4caf50',
+    error: '#F44336',
+    warning: '#ff9800',
     darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a', '#858585'],
     lightGrays: [
       '#f9f9f9',
@@ -27,7 +30,7 @@ export const theme = {
     lg: '992px',
     xl: '1200px',
   },
-};
+}
 
 export const breakPoints = (key: keyof typeof theme.breakpoints) =>
-  `min-width: ${theme.breakpoints[key]}`;
+  `min-width: ${theme.breakpoints[key]}`
