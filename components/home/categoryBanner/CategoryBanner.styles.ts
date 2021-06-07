@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface StyledProps {
-  width: number;
-  height: number;
-  location: string;
+  width: number
+  height: number
+  location: string
 }
 
 export const BannerContainer = styled.div<StyledProps>`
@@ -14,6 +14,7 @@ export const BannerContainer = styled.div<StyledProps>`
   display: flex;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 
   .banner-image {
     width: 100%;
@@ -62,4 +63,4 @@ export const BannerContainer = styled.div<StyledProps>`
       font-size: 16px;
     }
   }
-`;
+`

@@ -12,7 +12,7 @@ body {
 }
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 
 a:hover {

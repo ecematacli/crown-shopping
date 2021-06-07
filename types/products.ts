@@ -18,7 +18,7 @@ export interface ProductVariant {
   sku: string;
   images: { url: string }[];
   price: ProductPrice;
-  prices: ProductPrice[];
+  prices?: ProductPrice[] | null;
 }
 
 export interface Product {
