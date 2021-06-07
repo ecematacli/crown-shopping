@@ -1,34 +1,21 @@
-import { GetServerSideProps } from 'next';
+import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 
-import { useTranslation } from '../../i18n';
-import Layout from '../../components/layouts/pageLayout/Layout';
-import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout';
-import { createApolloClient } from '../../lib/apolloClient';
-import { GET_PRODUCT } from '../../graphql/queries/product';
-import { getCountryCookie } from '../../common/utils/cookie';
-import { Product, Product_product_masterData, Product_inventoryEntries } from '../../graphql/queries/types/Product';
-import ProductInfo from '../../components/product/productInfo/ProductInfo';
+import { useTranslation } from '../../i18n'
+import Layout from '../../components/layouts/pageLayout/Layout'
+import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout'
+import { GET_PRODUCT } from '../../graphql/queries/product'
+import { Product } from '../../graphql/queries/types/Product'
+import ProductInfo from '../../components/product/productInfo/ProductInfo'
+import useScreenWidth from '../../common/hooks/useScreenWidth'
+import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext'
 
-interface Props {
-  product: Product_product_masterData;
-  productInventories: Product_inventoryEntries;
-}
+const ProductPage = () => {
+  const { t } = useTranslation('product')
+  const { isSmallScreen } = useScreenWidth()
+  const { countryInfo } = useCountryInfoContext()
 
-const ProductPage = ({ product }: Props) => {
-  const { t } = useTranslation('product');
-
-  return (
-    <Layout title={t('title')}>
-      <PaddedLayout>
-        <ProductInfo product={product.current} />
-      </PaddedLayout>
-    </Layout>
-  );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
-  const client = createApolloClient();
-  const countryInfo = getCountryCookie(req?.headers);
+  const { query } = useRouter()
 
   const variables = {
     sku: query.sku,
@@ -38,14 +25,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
     country: countryInfo?.code
   }
 
-  const { data } = await client.query<Product>({ query: GET_PRODUCT, variables });
+  const { data } = useQuery<Product>(GET_PRODUCT, { variables })
 
-  return {
-    props: {
-      product: data.product?.masterData,
-      productInventories: data.inventoryEntries?.results
-    }
-  }
+  return (
+    <Layout title={t('title')}>
+      <PaddedLayout padding={{ rightLeft: isSmallScreen ? '0' : '2.4' }}>
+        {data && <ProductInfo product={data.product?.masterData.current} />}
+      </PaddedLayout>
+    </Layout>
+  )
 }
 
-export default ProductPage;
+export default ProductPage

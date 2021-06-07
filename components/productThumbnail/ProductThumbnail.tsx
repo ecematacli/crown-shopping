@@ -11,12 +11,13 @@ import useScreenWidth from '../../common/hooks/useScreenWidth';
 interface Props {
   productName: string;
   product: ProductVariant;
+  hasNoFrame?: boolean;
   children?: React.ReactNode;
   width?: string;
   className?: string;
 }
 
-const ProductThumbnail = ({ productName, product, width, children }: Props) => {
+const ProductThumbnail = ({ productName, product, width, hasNoFrame, children }: Props) => {
   const {
     countryInfo: { locale, code, currency },
   } = useCountryInfoContext();
@@ -32,7 +33,7 @@ const ProductThumbnail = ({ productName, product, width, children }: Props) => {
     product.prices[0].value.fractionDigits;
 
   return (
-    <StyledProductThumbnail width={width}>
+    <StyledProductThumbnail width={width} hasNoFrame={hasNoFrame}>
       <Card>
         <BaseImage
           src={imageSrc}

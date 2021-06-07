@@ -1,16 +1,22 @@
-import styled from 'styled-components';
-import { breakPoints } from '../../styles/theme';
+import styled from 'styled-components'
+import { breakPoints } from '../../styles/theme'
 
-export const StyledProductThumbnail = styled.div<{ width: string }>`
+interface StyleProps {
+  width: string
+  hasNoFrame: boolean
+}
+
+export const StyledProductThumbnail = styled.div<StyleProps>`
   cursor: pointer;
 
   .card {
-    ${({ width }) => width && `max-width: ${width}`};
-    padding: 1rem 0.2rem 0;
+    ${({ width }) => width && `max-width: ${width}rem`};
+    padding: 0 2rem;
     border-radius: 0.1rem;
+    ${({ hasNoFrame }) => hasNoFrame && `border: unset`};
 
     @media (${breakPoints('md')}) {
-      padding: 1.6rem 1rem 1.5rem;
+      padding: 1.6rem 2rem 1.5rem;
     }
   }
 
@@ -39,9 +45,11 @@ export const StyledProductThumbnail = styled.div<{ width: string }>`
     word-break: break-all;
     word-wrap: break-word;
     max-width: 100%;
+    margin-top: -0.8rem;
 
     @media (${breakPoints('md')}) {
       font-size: 14px;
+      margin-top: unset;
     }
   }
 
@@ -62,4 +70,4 @@ export const StyledProductThumbnail = styled.div<{ width: string }>`
     width: 100%;
     height: auto;
   }
-`;
+`

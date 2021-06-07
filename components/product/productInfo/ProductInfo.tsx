@@ -1,17 +1,25 @@
-import ProductThumbnail from '../../productThumbnail/ProductThumbnail';
-import { Product_product_masterData_current } from '../../../graphql/queries/types/Product';
+import ProductThumbnail from '../../productThumbnail/ProductThumbnail'
+import { Product_product_masterData_current } from '../../../graphql/queries/types/Product'
+import useScreenWidth from '../../../common/hooks/useScreenWidth'
+import { StyledProductInfo } from './ProductInfo.styles'
 
 interface Props {
-  product: Product_product_masterData_current;
+  product: Product_product_masterData_current
 }
 
 const ProductInfo = ({ product }: Props) => {
+  const { isSmallScreen } = useScreenWidth()
+
   return (
-    <div style={{ margin: '20px 0' }}>
-      <ProductThumbnail productName={product.name} product={product.masterVariant} width='35rem' />
-    </div>
-  );
-};
+    <StyledProductInfo>
+      <ProductThumbnail
+        productName={product.name}
+        product={product.masterVariant}
+        width={!isSmallScreen ? '35' : null}
+        hasNoFrame={isSmallScreen}
+      />
+    </StyledProductInfo>
+  )
+}
 
-
-export default ProductInfo;
+export default ProductInfo
