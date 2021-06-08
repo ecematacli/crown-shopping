@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { breakPoints } from '../../../styles/theme';
+import styled from 'styled-components'
+import { breakPoints } from '../../../styles/theme'
 
 export const StyledProductCarousel = styled.div`
   background-color: ${({ theme: { palette } }) => palette.lightGrays[9]};
@@ -36,6 +36,11 @@ export const StyledProductCarousel = styled.div`
   .product-carousel-item {
     padding-right: 8px;
 
+    .card {
+      padding-right: 0.3rem;
+      padding-left: 0.3rem;
+    }
+
     @media (${breakPoints('md')}) {
       margin-top: 0;
     }
@@ -57,4 +62,4 @@ export const StyledProductCarousel = styled.div`
       color: ${({ theme: { palette } }) => palette.whites[0]};
     }
   }
-`;
+`

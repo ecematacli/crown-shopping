@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { breakPoints } from '../../styles/theme';
+import styled from 'styled-components'
+import { breakPoints } from '../../styles/theme'
 
 export const HomeContainer = styled.div`
   @media (${breakPoints('md')}) {
@@ -18,4 +18,4 @@ export const HomeContainer = styled.div`
       order: 3;
     }
   }
-`;
+`

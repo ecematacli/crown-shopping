@@ -11,7 +11,7 @@ export const StyledProductThumbnail = styled.div<StyleProps>`
 
   .card {
     ${({ width }) => width && `max-width: ${width}rem`};
-    padding: 0 2rem;
+    padding: 0.5rem 2rem 0;
     border-radius: 0.1rem;
     ${({ hasNoFrame }) => hasNoFrame && `border: unset`};
 
@@ -45,11 +45,9 @@ export const StyledProductThumbnail = styled.div<StyleProps>`
     word-break: break-all;
     word-wrap: break-word;
     max-width: 100%;
-    margin-top: -0.8rem;
 
     @media (${breakPoints('md')}) {
       font-size: 14px;
-      margin-top: unset;
     }
   }
 
