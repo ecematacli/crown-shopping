@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_PRODUCT = gql`
   query Product(
@@ -7,6 +7,7 @@ export const GET_PRODUCT = gql`
     $currency: Currency!
     $country: Country
     $where: String!
+    $skus: [String!]
   ) {
     product(sku: $sku) {
       id
@@ -24,6 +25,9 @@ export const GET_PRODUCT = gql`
             ...Variant
           }
           masterVariant {
+            ...Variant
+          }
+          allVariants(skus: $skus) {
             ...Variant
           }
         }
@@ -79,5 +83,14 @@ export const GET_PRODUCT = gql`
     images {
       url
     }
+
+    attributesRaw {
+      name
+      value
+      attributeDefinition {
+        name
+        label(locale: $locale)
+      }
+    }
   }
-`;
+`
