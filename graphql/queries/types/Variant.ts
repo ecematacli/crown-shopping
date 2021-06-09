@@ -64,6 +64,19 @@ export interface Variant_images {
   url: string;
 }
 
+export interface Variant_attributesRaw_attributeDefinition {
+  __typename: "AttributeDefinition";
+  name: string;
+  label: string | null;
+}
+
+export interface Variant_attributesRaw {
+  __typename: "RawProductAttribute";
+  name: string;
+  value: any;
+  attributeDefinition: Variant_attributesRaw_attributeDefinition | null;
+}
+
 export interface Variant {
   __typename: "ProductVariant";
   id: number;
@@ -74,4 +87,8 @@ export interface Variant {
    */
   price: Variant_price | null;
   images: Variant_images[];
+  /**
+   * This field contains non-typed data. Consider using `attributes` as a typed alternative.
+   */
+  attributesRaw: Variant_attributesRaw[];
 }

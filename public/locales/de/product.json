@@ -1,4 +1,12 @@
 {
   "title": "Produkt",
-  "noProduct": "Kein Produkt zum Anzeigen..."
+  "noProduct": "Kein Produkt zum Anzeigen...",
+  "inStock": "Auf Lager",
+  "notInStock": "Nicht lagernd",
+  "overview": "Überblick",
+  "deliveryAndReturns": "Lieferung & Rücksendung",
+  "brand": "Marke",
+  "size": "Größe",
+  "gender": "Geschlecht",
+  "madeInItaly": "Hergestellt in Italien"
 }

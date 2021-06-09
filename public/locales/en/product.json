@@ -1,4 +1,11 @@
 {
   "title": "Product",
-  "noProduct": "No product to display..."
+  "noProduct": "No product to display...",
+  "inStock": "In Stock",
+  "notInStock": "Not In Stock",
+  "overview": "Overview",
+  "deliveryAndReturns": "Delivery & Returns",
+  "brand": "Brand",
+  "size": "Size",
+  "madeInItaly": "Made In Italy"
 }
