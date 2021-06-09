@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { breakPoints } from '../../../styles/theme'
 
 export const StyledProductDetails = styled.div`
   font-size: 14px !important;
