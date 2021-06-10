@@ -11,8 +11,6 @@ const ProductReview = () => {
   const { t } = useTranslation('product')
   const { palette } = useTheme()
 
-  console.log('theme', palette)
-
   const displayOverview = () => (
     <Align justify='space-between' padding={[1.5, 0]}>
       <Align align="center">
