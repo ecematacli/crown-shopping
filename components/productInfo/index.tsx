@@ -1,15 +1,15 @@
 import { useQuery } from '@apollo/client'
 
-import ProductThumbnail from '../../productThumbnail/ProductThumbnail'
-import { Product } from '../../../graphql/queries/types/Product'
-import useScreenWidth from '../../../common/hooks/useScreenWidth'
-import { StyledProductInfo } from './ProductInfo.styles'
-import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext'
-import { GET_PRODUCT } from '../../../graphql/queries/product'
-import LoadingSpinner from '../../loadingSpinner/LoadingSpinner'
-import { Align } from '../../align/Align'
-import { useTranslation } from '../../../i18n'
-import ProductDetails from '../productDetails/ProductDetails'
+import { StyledProductInfo } from './index.styles'
+import { Product } from '../../graphql/queries/types/Product'
+import ProductThumbnail from '../productThumbnail/ProductThumbnail'
+import ProductDetails from './productDetails/ProductDetails'
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
+import useScreenWidth from '../../common/hooks/useScreenWidth'
+import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext'
+import { GET_PRODUCT } from '../../graphql/queries/product'
+import { Align } from '../align/Align'
+import { useTranslation } from '../../i18n'
 
 const ProductInfo: React.FC<{ sku: string }> = ({ sku }) => {
   const { isSmallScreen } = useScreenWidth()

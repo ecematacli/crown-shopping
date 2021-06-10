@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from '../../i18n'
 import Layout from '../../components/layouts/pageLayout/Layout'
 import PaddedLayout from '../../components/layouts/paddedLayout/PaddedLayout'
-import ProductInfo from '../../components/product/productInfo/ProductInfo'
+import ProductInfo from '../../components/productInfo'
 import useScreenWidth from '../../common/hooks/useScreenWidth'
 
 const ProductPage = () => {

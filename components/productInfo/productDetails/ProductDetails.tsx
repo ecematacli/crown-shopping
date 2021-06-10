@@ -22,7 +22,7 @@ const ProductDetails: React.FC<Props> = ({ productAttributes }) => {
     )?.value
   }
 
-  const overview = () => (
+  const productOverview = () => (
     <Align vertical fullWidth className='overview-container'>
       <Align align='center' className='space' fullWidth>
         <h4>{t('brand')}: </h4>
@@ -73,7 +73,7 @@ const ProductDetails: React.FC<Props> = ({ productAttributes }) => {
     <StyledProductDetails>
       <PaddedLayout>
         <ProductDetailsAccordion title={t('overview')}>
-          {overview()}
+          {productOverview()}
         </ProductDetailsAccordion>
         <ProductDetailsAccordion title={t('deliveryAndReturns')}>
           {deliveryAndReturnsInfo()}
