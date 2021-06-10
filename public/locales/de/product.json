@@ -7,6 +7,8 @@
   "deliveryAndReturns": "Lieferung & Rücksendung",
   "brand": "Marke",
   "size": "Größe",
-  "gender": "Geschlecht",
-  "madeInItaly": "Hergestellt in Italien"
+  "season": "Jahreszeit",
+  "color": "Farbe",
+  "style": "Stil",
+  "itemNumber": "Artikelnummer"
 }
