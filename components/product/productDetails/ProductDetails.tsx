@@ -3,7 +3,7 @@ import { StyledProductDetails } from './ProductDetails.styles'
 import { Align } from '../../align/Align'
 import PaddedLayout from '../../layouts/paddedLayout/PaddedLayout'
 import { useTranslation } from '../../../i18n'
-import ProductDetailsItem from '../productDetailsItem/ProductDetailsItem'
+import ProductDetailsAccordion from '../productDetailsAccordion/ProductDetailsAccordion'
 import { useCountryInfoContext } from '../../../common/contexts/CountryInfoContext'
 
 interface Props {
@@ -12,50 +12,72 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = ({ productAttributes }) => {
   const { t } = useTranslation('product')
-  const { countryInfo: { locale } } = useCountryInfoContext()
-  console.log('dets!', productAttributes)
+  const {
+    countryInfo: { locale },
+  } = useCountryInfoContext()
 
-  const getProductAttribute = (attrName) => {
-    return productAttributes?.find(attr => attr.attributeDefinition.name === attrName)
+  const getProductAttribute = (attrName: string) => {
+    return productAttributes?.find(
+      attr => attr.attributeDefinition.name === attrName
+    )?.value
   }
 
-  const displayOverview = () => (
-    <Align vertical fullWidth className="attr-container">
-      <Align align="center" className="wrapper" fullWidth>
+  const overview = () => (
+    <Align vertical fullWidth className='overview-container'>
+      <Align align='center' className='space' fullWidth>
         <h4>{t('brand')}: </h4>
-        <span className="attr-value">{getProductAttribute('designer').value?.label || '-'}</span>
+        <span className='attr-value'>
+          {getProductAttribute('designer')?.label || '-'}
+        </span>
       </Align>
-      <Align align="center" className="wrapper">
+      <Align align='center' className='space'>
         <h4>{t('size')}: </h4>
-        <span className="attr-value">{getProductAttribute('size').value || '-'}</span>
+        <span className='attr-value'>{getProductAttribute('size') || '-'}</span>
       </Align>
-      <Align align="center" className="wrapper">
+      <Align align='center' className='space'>
         <h4>{t('color')}: </h4>
-        <span className="attr-value">{getProductAttribute('color').value.label[locale] || '-'}</span>
+        <span className='attr-value'>
+          {getProductAttribute('color')?.label[locale] || '-'}
+        </span>
       </Align>
-      <Align align="center" className="wrapper">
+      <Align align='center' className='space'>
         <h4>{t('season')}: </h4>
-        <span className="attr-value">{getProductAttribute('season').value || '-'}</span>
+        <span className='attr-value'>
+          {getProductAttribute('season') || '-'}
+        </span>
       </Align>
-      <Align align="center" className="wrapper">
+      <Align align='center' className='space'>
         <h4>{t('style')}: </h4>
-        <span className="attr-value">{getProductAttribute('style').value.label || '-'}</span>
+        <span className='attr-value'>
+          {getProductAttribute('style')?.label || '-'}
+        </span>
       </Align>
-      <Align align="center" className="wrapper">
+      <Align align='center' className='space'>
         <h4>{t('itemNumber')}: </h4>
-        <span className="attr-value">{getProductAttribute('matrixId').value || '-'}</span>
+        <span className='attr-value'>
+          {getProductAttribute('matrixId') || '-'}
+        </span>
       </Align>
     </Align>
   )
+
+  const deliveryAndReturnsInfo = () => (
+    <ul className="delivery-return-info">
+      {t('deliveryAndReturnsInfo').split('. ').map(item => (
+        <li className="space" key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+
   return (
     <StyledProductDetails>
       <PaddedLayout>
-        <ProductDetailsItem title={t('overview')}>
-          {displayOverview()}
-        </ProductDetailsItem>
-        <ProductDetailsItem title={t('deliveryAndReturns')}>
-          <p>Hoi </p>
-        </ProductDetailsItem>
+        <ProductDetailsAccordion title={t('overview')}>
+          {overview()}
+        </ProductDetailsAccordion>
+        <ProductDetailsAccordion title={t('deliveryAndReturns')}>
+          {deliveryAndReturnsInfo()}
+        </ProductDetailsAccordion>
       </PaddedLayout>
     </StyledProductDetails>
   )

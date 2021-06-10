@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakPoints } from '../../../styles/theme'
 
 export const StyledProductDetails = styled.div`
   font-size: 14px;
@@ -8,25 +9,26 @@ export const StyledProductDetails = styled.div`
 
   h4 {
     width: 20%;
+
+    @media (${breakPoints('md')}) {
+      width: 12%;
+    }
   }
 
-  .attr-container {
+  .overview-container {
     margin: 1rem 0;
   }
 
-  .title {
-    padding: 1rem 0 0.5rem;
-    margin-bottom: 1rem;
-    border-bottom: ${({ theme: { palette } }) =>
-      `1px solid ${palette.darkGrays[1]}`};
+  .space {
+    padding: 1rem 2rem;
   }
 
-  .wrapper {
-    padding: 1rem 0;
+  .delivery-return-info {
+    padding: 1rem 1.5rem;
   }
 
   .attr-value {
-    padding-left: 0.5rem;
+    padding-left: 2rem;
     text-transform: capitalize;
   }
 `
