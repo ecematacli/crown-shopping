@@ -4,7 +4,7 @@ import { breakPoints } from '../../../styles/theme'
 export const StyledProductDetails = styled.div`
   font-size: 14px;
   background-color: ${({ theme: { palette } }) => palette.lightGrays[11]};
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 2rem 0;
 
   h4 {

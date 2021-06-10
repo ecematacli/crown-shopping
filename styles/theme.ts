@@ -3,7 +3,7 @@ export const theme = {
     success: '#4caf50',
     error: '#F44336',
     warning: '#ff9800',
-    darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a', '#858585'],
+    darkGrays: ['#444', '#adadad', '#99a1ad', '#53565a', '#858585', '#a2a3a8'],
     lightGrays: [
       '#f9f9f9',
       '#d6d6d6',

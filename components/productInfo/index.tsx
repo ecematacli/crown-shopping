@@ -10,6 +10,7 @@ import { useCountryInfoContext } from '../../common/contexts/CountryInfoContext'
 import { GET_PRODUCT } from '../../graphql/queries/product'
 import { Align } from '../align/Align'
 import { useTranslation } from '../../i18n'
+import ProductReview from './productReview/ProductReview'
 
 const ProductInfo: React.FC<{ sku: string }> = ({ sku }) => {
   const { isSmallScreen } = useScreenWidth()
@@ -50,6 +51,7 @@ const ProductInfo: React.FC<{ sku: string }> = ({ sku }) => {
         {isInStock ? t('inStock') : t('notInStock')}
       </Align>
       <ProductDetails productAttributes={productAttributes} />
+      <ProductReview />
     </div>
   )
 
